@@ -13,6 +13,6 @@
 
 build/
 
-docs/doxygen/html
-docs/doxygen/xml/
-docs/doxygen/latex/
+docs/html
+docs/xml/
+docs/latex/

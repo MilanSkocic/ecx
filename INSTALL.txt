@@ -1,0 +1,11 @@
+mkdir build
+
+cd build
+
+cmake -G "Unix Makefiles" -S ..
+
+make
+
+make tests
+
+make install

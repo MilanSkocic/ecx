@@ -30,7 +30,10 @@
 
 /**
  * @brief Compute Butler Volmer equation.
- * @details details
+ * @details \f$ \eta' = \frac{\eta}{RT/F} \f$ 
+ * 
+ * \f$ j = j_0 \frac{\exp(\alpha_a z_a\eta') -\exp(-\alpha_c z_c\eta')}
+ * {1+j_0/j_{dl,a}\exp(\alpha_a z_a\eta')+j_0/j_{dl,c}\exp(-\alpha_c z_c\eta')}\f$
  * @param[in] OCV Open Circuit Potential in Volts
  * @param[in] U Potential to compute in Volts
  * @param[in] j0 Exchange current density in A.cm-2
@@ -46,24 +49,22 @@
  */
 double bv(double OCV, double U, double j0, double jdla, double jdlc,
           double aa, double ac, double za, double zc,
-          double S, double T){
-          double kTe;
-          double num;
-          double denom;
-          double i;
+          double S, double T)
+{
+    double kTe;
+    double num;
+    double denom;
+    double i;
 
-    kTe = kB * (T+T_K) / qe;
-    num = j0 * (exp(aa*za*(U-OCV)/kTe) -  exp(-ac*zc*(U-OCV)/kTe));
-    denom = 1 + j0/jdla*exp(aa*za*(U-OCV)/kTe) + j0/jdlc*exp(-ac*zc*(U-OCV)/kTe);
-    
-    i = S*num/denom;
-    
+    kTe = kB * (T + T_K) / qe;
+    num = j0 * (exp(aa * za * (U - OCV) / kTe) - exp(-ac * zc * (U - OCV) / kTe));
+    denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe);
+
+    i = S * num / denom;
+
     return i;
-
 }
-
 /**
  * @example example1.c
+ * @details Example of how to use bv()
  */
-
-

@@ -24,51 +24,58 @@
  *
  */
 
-#include<stdlib.h>
-#include<stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "electrox.h"
 
 /**
  * @brief Main test suite.
  */
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-    double OCV=0.0;
-    double U=0.0;
-    double j0=1e-6;
-    double jdla=1e6;
-    double jdlc=1e6;
-    double aa=0.5;
-    double ac=0.5;
-    double za=1;
-    double zc=1;
-    double S=1.0;
-    double T=25.0;
+    double OCV = 0.0;
+    double U = 0.0;
+    double j0 = 1e-6;
+    double jdla = 1e6;
+    double jdlc = 1e6;
+    double aa = 0.5;
+    double ac = 0.5;
+    double za = 1;
+    double zc = 1;
+    double S = 1.0;
+    double T = 25.0;
 
-    size_t i ;
+    size_t i;
     size_t n = 1e8;
 
     double *x;
 
     double computed;
     double expected;
+    int equal;
 
     printf("\n");
     printf("***** TESTING BUTLER-VOLMER *****");
     printf("\n");
-    
+
     printf("%s\n", "test at U - OCV = 0.0V");
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
     expected = 0.000;
-    if (gsl_fcmp(computed, expected, 4) != 0){
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = asserEqual(computed, expected, 3);
+    if (!equal)
+    {
         return EXIT_FAILURE;
     }
 
     printf("%s\n", "test at U - OCV = 0.2V");
     U = 0.2;
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
-    expected = 4.900e-5;
-    if (gsl_fcmp(computed, expected, 4) != 0){
+    expected = 4.8997e-5;
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = asserEqual(computed * 1e5, expected * 1e5, 3);
+    if (!equal)
+    {
         return EXIT_FAILURE;
     }
 
@@ -76,11 +83,13 @@ int main (int argc, char **argv)
     U = 0.2;
     S = 2.321;
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
-    expected = 4.900e-5*S;
-    if (gsl_fcmp(computed, expected, 4) != 0){
+    expected = 4.8997e-5 * S;
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = asserEqual(computed * 1e5, expected * 1e5, 3);
+    if (!equal)
+    {
         return EXIT_FAILURE;
     }
 
     return EXIT_SUCCESS;
 }
-

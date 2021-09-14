@@ -46,10 +46,10 @@
 #define qe GSL_CONST_MKSA_ELECTRON_CHARGE /**< Elementary charge */
 
 /* utilities */
-double get_kTe(double temperature);
+double get_kTe(double temperature, int mV);
 double roundn(double x, int n);
 double round_significant(double x, int n);
-int asserEqual(double a, double b, int n);
+int assert_equal(double a, double b, int n);
 
 /* kinetics */
 double bv(double OCV, double U, double j0, double jdla, double jdlc,

@@ -28,15 +28,19 @@
 
 /**
  * @brief Compute Butler Volmer equation
- * @param temperature Temperature in °C
- * @return kTe kT/e in Volts.
+ * @param[in] temperature Temperature in °C
+ * @param[in] mV Flag for indicating if the results is in mV.
+ * @return kT/e in V or mV.
  */
-double get_kTe(double temperature)
+double get_kTe(double temperature, int mV)
 {
 
   double kTe;
-
   kTe = kB * (temperature + T_K) / qe;
+  if (mV)
+  {
+    kTe *= 1000.0;
+  }
   return kTe;
 }
 
@@ -83,7 +87,7 @@ double round_significant(double x, int n)
  * @param[in] n digits
  * @return 0=False or 1=True
  */
-int asserEqual(double a, double b, int n)
+int assert_equal(double a, double b, int n)
 {
 
   double d = a - b;

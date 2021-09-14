@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     value = 100.239;
     equal = 0;
     computed = roundn(value, 2);
-    expected = 100.238;
+    expected = 100.240;
     printf("\tComputed/Expected=%.3f/%.3f\n", computed, expected);
     equal = asserEqual(computed, expected, 2);
     if (!equal)

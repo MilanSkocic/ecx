@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
     expected = 0.000;
     printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
-    equal = asserEqual(computed, expected, 3);
+    equal = assert_equal(computed, expected, 3);
     if (!equal)
     {
         return EXIT_FAILURE;
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
     expected = 4.8997e-5;
     printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
-    equal = asserEqual(computed * 1e5, expected * 1e5, 3);
+    equal = assert_equal(computed * 1e5, expected * 1e5, 3);
     if (!equal)
     {
         return EXIT_FAILURE;
@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     computed = bv(OCV, U, j0, jdla, jdlc, aa, ac, za, zc, S, T);
     expected = 4.8997e-5 * S;
     printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
-    equal = asserEqual(computed * 1e5, expected * 1e5, 3);
+    equal = assert_equal(computed * 1e5, expected * 1e5, 3);
     if (!equal)
     {
         return EXIT_FAILURE;

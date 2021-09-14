@@ -1,7 +1,7 @@
 /** 
  * @file example1.c
  *
- * kinetics equation.
+ * @brief Example of kinetics equation.
  *
  * Copyright (C) 2020-2021  Milan Skocic.
  *

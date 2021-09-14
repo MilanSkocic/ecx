@@ -1,7 +1,7 @@
 /**
  * @file example2.c
  * 
- * Examples.
+ * @brief Examples EIS.
  *
  * Copyright (C) 2020-2021  Milan Skocic.
  *
@@ -24,18 +24,13 @@
 
 #include "electrox.h"
 
-
-void use_eis(){
+void use_eis()
+{
     printf("EIS");
 }
 
-
-
-
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 
     use_eis();
-
 }
-

@@ -44,7 +44,7 @@ double get_kTe(double temperature)
  * @brief Round off a value with n digits
  * @param x Value to be rounded
  * @param n Number of digits
- * @return y Rounded value.
+ * @return Rounded x.
  */
 double roundn(double x, int n)
 {
@@ -56,15 +56,23 @@ double roundn(double x, int n)
   return rounded_x;
 }
 
+/**
+ * @brief Round x to n digits in scientific notation.
+ * @param[in] x Number to be round
+ * @param[in] n Number of digits for rounding.
+ * @return Rounded x.
+ */
 double round_significant(double x, int n)
 {
 
   double rounded_x;
-  double y;
+  double logx;
+  double fac;
 
-  y = floor(log10(x));
+  logx = floor(log10(x));
+  fac = pow(10, -logx);
 
-  rounded_x = roundn(x * pow(10, -y), n) * pow(10, y);
+  rounded_x = roundn(x * fac, n) / fac;
   return rounded_x;
 }
 

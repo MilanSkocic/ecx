@@ -14,6 +14,7 @@ enable_testing()
 add_test(NAME bv COMMAND test_bv)
 add_test(NAME eis COMMAND test_eis)
 add_test(NAME io COMMAND test_io)
+add_test(NAME utilities COMMAND test_utilities)
 
 
 install(TARGETS static_electrox PUBLIC_HEADER DESTINATION include ARCHIVE DESTINATION lib)

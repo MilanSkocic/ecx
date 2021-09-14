@@ -11,3 +11,7 @@ target_link_libraries(test_eis m electrox gsl)
 add_executable(test_io test_io.c)
 target_include_directories(test_io PUBLIC ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(test_io m electrox gsl)
+
+add_executable(test_utilities test_utilities.c)
+target_include_directories(test_utilities PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(test_utilities m electrox gsl)

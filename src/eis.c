@@ -34,7 +34,7 @@
 
 /**
  * @brief Compute resistance impedance
- * @details Z = R
+ * @details \f$ Z = R \forall \omega \f$
  * @param r Resistance in Ohms.
  * @param w Angular frequency in rad.s^-1.
  * @return Z Complex impedance in Ohms.
@@ -44,6 +44,13 @@ double complex resistance(double r, double w)
     return (double complex)r;
 }
 
+/**
+ * @brief Compute resistance impedance in vectorized form. 
+ * @details \f$ Z = p_0 \forall \omega \f$
+ * @param[in] p Pointer to the resistance in Ohms.
+ * @param[in] w Pointer to th angular frequencies in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
+ */
 void gsl_resistance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
 
@@ -76,6 +83,32 @@ double complex capacitance(double c, double w)
 }
 
 /**
+ * @brief Compute capacitance impedance in vectorized form.
+ * @details \f$ Z = \frac{1}{j p_0 \omega} \f$
+ * @param c Capacitance in F.
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms.
+ */
+void gsl_capacitance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+{
+
+    size_t i;
+
+    double complex z;
+    gsl_complex _z;
+    double wi;
+    double c = gsl_vector_get(p, 0);
+
+    for (i = 0; i < w->size; i++)
+    {
+        wi = gsl_vector_get(w, i);
+        z = capacitance(c, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+}
+
+/**
  * @brief Compute inductance impedance
  * @details \f$ Z = j L \omega \f$
  * @param l Capacitance in H.
@@ -87,6 +120,13 @@ double complex inductance(double l, double w)
     return I * l * w;
 }
 
+/**
+ * @brief Compute inductance impedance in vectorized form.
+ * @details \f$ Z = j p_0 \omega \f$
+ * @param l Capacitance in H.
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms.
+ */
 void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
 
@@ -95,12 +135,12 @@ void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
     double complex z;
     gsl_complex _z;
     double wi;
-    double r = gsl_vector_get(p, 0);
+    double l = gsl_vector_get(p, 0);
 
     for (i = 0; i < w->size; i++)
     {
         wi = gsl_vector_get(w, i);
-        z = inductance(r, wi);
+        z = inductance(l, wi);
         _z = gsl_complex_rect(creal(z), cimag(z));
         gsl_vector_complex_set(Z, i, _z);
     }
@@ -153,7 +193,7 @@ double complex finite_space_warburg(double r, double tau, double w)
  * @param type Pointer to the type
  * @return EisElement Pointer to object EisElement
  */
-EisElement *EisElement__new__(char *name, element_type type)
+EisElement *EisElement__new__(char *name, ElementType type)
 {
     /* Memory allocation */
     EisElement *self = (EisElement *)malloc(sizeof(EisElement));
@@ -171,7 +211,7 @@ EisElement *EisElement__new__(char *name, element_type type)
  * @param type Pointer to the type
  * @return None
  */
-void EisElement__init__(EisElement *self, char *name, element_type type)
+void EisElement__init__(EisElement *self, char *name, ElementType type)
 {
     self->name = (char *)malloc(sizeof(char) * (strlen(name) + 1));
     strcpy(self->name, name);
@@ -226,7 +266,7 @@ void EisCircuit__init__(EisCircuit *self, char *name, char *repr)
 {
     int i;
     int N = 3;
-    element_type type = R;
+    ElementType type = R;
     printf("INIT CIRCUIT\n");
     char *names[3] = {"E1", "E2", "E3"};
 

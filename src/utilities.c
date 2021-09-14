@@ -31,12 +31,13 @@
  * @param temperature Temperature in °C
  * @return kTe kT/e in Volts.
  */
-double get_kTe(double temperature){
+double get_kTe(double temperature)
+{
 
-    double kTe;
-    
-    kTe = kB * (temperature+T_K) / qe;
-    return kTe;
+  double kTe;
+
+  kTe = kB * (temperature + T_K) / qe;
+  return kTe;
 }
 
 /**
@@ -45,12 +46,45 @@ double get_kTe(double temperature){
  * @param n Number of digits
  * @return y Rounded value.
  */
-double roundn(double x, int n){
+double roundn(double x, int n)
+{
 
-    double y;
+  double rounded_x;
 
-  y = floor(log10(fabs(x)));
+  rounded_x = round(x * pow(10, n)) * pow(10, -n);
 
-  //return round(x * pow(10, -y+n)) * pow(10, y-n);
-    return x;
+  return rounded_x;
+}
+
+double round_significant(double x, int n)
+{
+
+  double rounded_x;
+  double y;
+
+  y = floor(log10(x));
+
+  rounded_x = roundn(x * pow(10, -y), n) * pow(10, y);
+  return rounded_x;
+}
+
+/**
+ * @brief Test if a and b are equals to n digits.
+ * @param[in] a Number 1
+ * @param[in] b Number 2
+ * @param[in] n digits
+ * @return 0=False or 1=True
+ */
+int asserEqual(double a, double b, int n)
+{
+
+  double d = a - b;
+
+  if (roundn(d, n) != 0.0)
+  {
+    printf("The difference was of %.16e", d);
+    return 0;
+  }
+
+  return 1;
 }

@@ -103,7 +103,7 @@ int main(int argc, char **argv)
     int N = 3;
     char *name = "circuit";
     char *repr = "Rel+Rct";
-    element_type type = R;
+    ElementType type = R;
     EisCircuit *cc = EisCircuit__new__(name, repr);
     EisElement *e = EisElement__new__(name, type);
 

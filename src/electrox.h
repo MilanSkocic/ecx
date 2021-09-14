@@ -48,6 +48,8 @@
 /* utilities */
 double get_kTe(double temperature);
 double roundn(double x, int n);
+double round_significant(double x, int n);
+int asserEqual(double a, double b, int n);
 
 /* kinetics */
 double bv(double OCV, double U, double j0, double jdla, double jdlc,
@@ -58,6 +60,7 @@ double bv(double OCV, double U, double j0, double jdla, double jdlc,
 int read_z(char *fpath, int verbose);
 
 /* EIS functions */
+
 /**
  * @brief Element types 
  * @details Availables types are R, L, C, W, Wd, Wm.
@@ -72,35 +75,13 @@ typedef enum
     W,
     Wd,
     Wm
-} element_type;
-
-/**
- * @brief structure representing an EIS element
- * @details details
- */
-typedef struct eis_element
-{
-    char *name;        /**< Name */
-    element_type type; /**< type */
-    gsl_vector *p;     /**< parameters */
-
-    /* Methods */
-    void (*__init__)(struct eis_element *self, char *name, element_type type); /**< Initialization */
-    void (*__del__)(struct eis_element *self);                                 /**< Destructor */
-    void (*Z)(gsl_vector *p, gsl_vector *w, gsl_vector_complex *z);            /**< Compute impedance*/
-} EisElement;
-
-typedef struct eis_circuit
-{
-    char *name;            /**< EIS Circuit name */
-    char *repr;            /**< Eis Representation */
-    EisElement **elements; /**< Eis Elements of the circuit*/
-} EisCircuit;
+} ElementType;
 
 double complex resistance(double r, double w);
 void gsl_resistance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex capacitance(double c, double w);
+void gsl_capacitance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex inductance(double l, double w);
 void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
@@ -111,8 +92,37 @@ double complex finite_space_warburg(double r, double tau, double w);
 
 double complex finite_length_warburg(double r, double tau, double w);
 
-EisElement *EisElement__new__(char *name, element_type type);
-void EisElement__init__(EisElement *self, char *name, element_type type);
+/* Structures */
+/**
+ * @brief structure representing an EIS element
+ * @details details
+ */
+typedef struct eis_element
+{
+    char *name;       /**< Name */
+    ElementType type; /**< type */
+    gsl_vector *p;    /**< parameters */
+
+    /* Methods */
+    void (*__init__)(struct eis_element *self, char *name, ElementType type); /**< Initialization */
+    void (*__del__)(struct eis_element *self);                                /**< Destructor */
+    void (*Z)(gsl_vector *p, gsl_vector *w, gsl_vector_complex *z);           /**< Compute impedance*/
+} EisElement;
+
+/**
+ * @brief Eis circuit structure
+ * @details Structured representation of a equivalent circuit.
+ */
+typedef struct eis_circuit
+{
+    char *name;            /**< EIS Circuit name */
+    char *repr;            /**< Eis Representation */
+    EisElement **elements; /**< Eis Elements of the circuit*/
+} EisCircuit;
+
+/* Struct methods */
+EisElement *EisElement__new__(char *name, ElementType type);
+void EisElement__init__(EisElement *self, char *name, ElementType type);
 void EisElement__del__(EisElement *self);
 
 EisCircuit *EisCircuit__new__(char *name, char *repr);

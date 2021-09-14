@@ -1,6 +1,5 @@
-
 /** 
- * @file test_utilites.c
+ * @file test_utilities.c
  *
  * @brief Tests Utilities.
  *
@@ -29,6 +28,9 @@
 #include <stdio.h>
 #include "electrox.h"
 
+/**
+ * @brief Main Test Suite
+ */
 int main(int argc, char **argv)
 {
 
@@ -36,6 +38,20 @@ int main(int argc, char **argv)
     double computed;
     int equal;
     double value;
+
+    printf("\n");
+    printf("***** TESTING kT/e *****");
+    printf("\n");
+
+    equal = 0;
+    computed = roundn(get_kTe(25.0, 1), 1);
+    expected = 25.7;
+    printf("\tComputed/Expected=%.3f/%.3f\n", computed, expected);
+    equal = assert_equal(computed, expected, 1);
+    if (!equal)
+    {
+        return EXIT_FAILURE;
+    }
 
     printf("\n");
     printf("***** TESTING ROUNDN *****");
@@ -46,7 +62,7 @@ int main(int argc, char **argv)
     computed = roundn(value, 2);
     expected = 100.240;
     printf("\tComputed/Expected=%.3f/%.3f\n", computed, expected);
-    equal = asserEqual(computed, expected, 2);
+    equal = assert_equal(computed, expected, 2);
     if (!equal)
     {
         return EXIT_FAILURE;
@@ -61,7 +77,7 @@ int main(int argc, char **argv)
     computed = round_significant(value, 2);
     expected = 1.03e-2;
     printf("\tComputed/Expected=%.3e/%.3e\n", computed, expected);
-    equal = asserEqual(computed * 1e2, expected * 1e2, 2);
+    equal = assert_equal(computed * 1e2, expected * 1e2, 2);
     if (!equal)
     {
         return EXIT_FAILURE;

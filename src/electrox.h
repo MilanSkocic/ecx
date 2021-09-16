@@ -48,7 +48,9 @@
 /* utilities */
 double get_kTe(double temperature, int mV);
 double roundn(double x, int n);
+double round_error(double x);
 double round_significant(double x, int n);
+double round_value(double x, double dx);
 int assert_equal(double a, double b, int n);
 
 /* kinetics */

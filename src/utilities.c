@@ -81,6 +81,49 @@ double round_significant(double x, int n)
 }
 
 /**
+ * @brief Round errors.
+ * @details The rounded value is computed as the ceil of the value in scientific
+ * notation without the exponent.
+ * @param[in] x Error value to be rounded.
+ * @return Rounded error value. 
+ */
+double round_error(double x)
+{
+  double logx;
+  double fac;
+  double rounded_error;
+
+  logx = floor(log10(x));
+  fac = pow(10, -logx);
+
+  rounded_error = ceil(x * fac) / fac;
+
+  return rounded_error;
+}
+
+/**
+ * @brief Round x according to its error dx.
+ * @details The difference in precision of x and dx is used to round properly.
+ * @param[in] x Value to be rounded.
+ * @param[in] dx Associated error with x.
+ * @return Rounded value.
+ */
+double round_value(double x, double dx)
+{
+
+  double logx, logdx, d, rounded_x;
+
+  logdx = floor(log10(dx));
+  logx = floor(log10(x));
+
+  d = logx - logdx;
+
+  rounded_x = round_significant(x, d);
+
+  return rounded_x;
+}
+
+/**
  * @brief Test if a and b are equals to n digits.
  * @param[in] a Number 1
  * @param[in] b Number 2

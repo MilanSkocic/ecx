@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     double expected;
     double computed;
     int equal;
-    double value;
+    double value, error;
 
     printf("\n");
     printf("***** TESTING kT/e *****");
@@ -75,6 +75,46 @@ int main(int argc, char **argv)
     value = 1.034e-2;
     equal = 0;
     computed = round_significant(value, 2);
+    expected = 1.03e-2;
+    printf("\tComputed/Expected=%.3e/%.3e\n", computed, expected);
+    equal = assert_equal(computed * 1e2, expected * 1e2, 2);
+    if (!equal)
+    {
+        return EXIT_FAILURE;
+    }
+    value = 1.134e-2;
+    equal = 0;
+    computed = round_significant(value, 0);
+    expected = 1.0e-2;
+    printf("\tComputed/Expected=%.3e/%.3e\n", computed, expected);
+    equal = assert_equal(computed * 1e2, expected * 1e2, 2);
+    if (!equal)
+    {
+        return EXIT_FAILURE;
+    }
+
+    printf("\n");
+    printf("***** TESTING ROUND ERROR *****");
+    printf("\n");
+
+    value = 1.034e-2;
+    equal = 0;
+    computed = round_error(value);
+    expected = 2e-2;
+    printf("\tComputed/Expected=%.3e/%.3e\n", computed, expected);
+    equal = assert_equal(computed * 1e2, expected * 1e2, 2);
+    if (!equal)
+    {
+        return EXIT_FAILURE;
+    }
+
+    printf("\n");
+    printf("***** TESTING ROUND VALUE + ERROR *****");
+    printf("\n");
+
+    value = 1.034e-2;
+    error = 2.3e-4;
+    computed = round_value(value, error);
     expected = 1.03e-2;
     printf("\tComputed/Expected=%.3e/%.3e\n", computed, expected);
     equal = assert_equal(computed * 1e2, expected * 1e2, 2);

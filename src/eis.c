@@ -61,13 +61,7 @@ void gsl_resistance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
     double wi;
     double r = gsl_vector_get(p, 0);
 
-    for (i = 0; i < w->size; i++)
-    {
-        wi = gsl_vector_get(w, i);
-        z = resistance(r, wi);
-        _z = gsl_complex_rect(creal(z), cimag(z));
-        gsl_vector_complex_set(Z, i, _z);
-    }
+    gsl_vector_complex_set_all(Z, gsl_complex_rect(r, 0));
 }
 
 /**

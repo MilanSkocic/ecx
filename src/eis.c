@@ -153,6 +153,31 @@ double complex warburg(double sigma, double w)
 }
 
 /**
+ * @brief Compute semi-infinite warburg impedance
+ * @details \f$ Z = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j) \f$
+ * @param sigma Pseudo-Resistance in Ohms.s^(1/2).
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms.
+ */
+double complex gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+{
+    size_t i;
+    double wi, sigma;
+    gsl_complex _z;
+    double complex z;
+
+    sigma = gsl_vector_get(p, 0);
+
+    for (i = 0; i < w->size; i++)
+    {
+        wi = gsl_vector_get(w, i);
+        z = warburg(sigma, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+}
+
+/**
  * @brief Compute finite length warburg impedance
  * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \tanh \sqrt{j \tau
  * \omega} \f$
@@ -217,8 +242,16 @@ void EisElement__init__(EisElement *self, char *name, ElementType type)
         self->Z = &gsl_resistance;
         self->p = gsl_vector_alloc(1);
         break;
+    case C:
+        self->Z = &gsl_capacitance;
+        self->p = gsl_vector_alloc(1);
+        break;
     case L:
         self->Z = &gsl_inductance;
+        self->p = gsl_vector_alloc(1);
+        break;
+    case W:
+        self->Z = &gsl_warburg;
         self->p = gsl_vector_alloc(1);
         break;
     default:

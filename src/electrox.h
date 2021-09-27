@@ -74,6 +74,7 @@ typedef enum
     R,
     L,
     C,
+    Q,
     W,
     Wd,
     Wm

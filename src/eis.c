@@ -159,7 +159,7 @@ double complex warburg(double sigma, double w)
  * @param w Angular frequency in rad.s^-1.
  * @return Z Complex impedance in Ohms.
  */
-double complex gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+void gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
     size_t i;
     double wi, sigma;

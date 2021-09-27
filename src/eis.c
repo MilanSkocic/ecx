@@ -79,9 +79,9 @@ double complex capacitance(double c, double w)
 /**
  * @brief Compute capacitance impedance in vectorized form.
  * @details \f$ Z = \frac{1}{j p_0 \omega} \f$
- * @param c Capacitance in F.
- * @param w Angular frequency in rad.s^-1.
- * @return Z Complex impedance in Ohms.
+ * @param p Pointer to the capacitance in F.
+ * @param w Pointer to the angular frequency in rad.s^-1.
+ * @return Z Pointer to the complex impedance in Ohms.
  */
 void gsl_capacitance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -117,9 +117,9 @@ double complex inductance(double l, double w)
 /**
  * @brief Compute inductance impedance in vectorized form.
  * @details \f$ Z = j p_0 \omega \f$
- * @param l Capacitance in H.
- * @param w Angular frequency in rad.s^-1.
- * @return Z Complex impedance in Ohms.
+ * @param p Pointer to the capacitance in H.
+ * @param w Pointer to the angular frequency in rad.s^-1.
+ * @return Z Pointer to the Complex impedance in Ohms.
  */
 void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -141,6 +141,44 @@ void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 }
 
 /**
+ * @brief Compute CPE impedance
+ * @details \f$ Z = \frac{1}{Q(j w \omega)^a} \f$
+ * @param Q CPE parameter in S.s^-a.
+ * @param a CPE exponent.
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms.
+ */
+double complex cpe(double Q, double a, double w)
+{
+    return 1.0 / (Q * pow(I * w, a));
+}
+
+/**
+ * @brief Compute CPE impedance in vectorized.
+ * @details \f$ Z = \frac{1}{Q(j w \omega)^a} \f$
+ * @param p Pointer to the CPE parameters.
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms.
+ */
+void gsl_cpe(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+{
+    size_t i;
+    double complex z;
+    gsl_complex _z;
+    double wi;
+    double Q = gsl_vector_get(p, 0);
+    double a = gsl_vector_get(p, 1);
+
+    for (i = 0; i < w->size; i++)
+    {
+        wi = gsl_vector_get(w, i);
+        z = cpe(Q, a, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+}
+
+/**
  * @brief Compute semi-infinite warburg impedance
  * @details \f$ Z = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j) \f$
  * @param sigma Pseudo-Resistance in Ohms.s^(1/2).
@@ -153,11 +191,11 @@ double complex warburg(double sigma, double w)
 }
 
 /**
- * @brief Compute semi-infinite warburg impedance
+ * @brief Compute semi-infinite warburg impedance in vectorized form.
  * @details \f$ Z = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j) \f$
- * @param sigma Pseudo-Resistance in Ohms.s^(1/2).
- * @param w Angular frequency in rad.s^-1.
- * @return Z Complex impedance in Ohms.
+ * @param p Pointer to the pseudo-Resistance in Ohms.s^(1/2).
+ * @param w Pointer to the angular frequency in rad.s^-1.
+ * @return Z Pointer to the complex impedance in Ohms.
  */
 void gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -192,6 +230,33 @@ double complex finite_length_warburg(double r, double tau, double w)
 }
 
 /**
+ * @brief Compute finite length warburg impedance in vectorized form.
+ * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \tanh \sqrt{j \tau
+ * \omega} \f$
+ * @param p Pointer to the parameters in Ohms.
+ * @param w Pointer to the angular frequency in rad.s^-1.
+ * @return Z Pointer to the complex impedance in Ohms.
+ */
+double complex gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+{
+    size_t i;
+    double complex z;
+    gsl_complex _z;
+    double wi;
+    double R = gsl_vector_get(p, 0);
+    double tau = gsl_vector_get(p, 1);
+    double n = gsl_vector_get(p, 2);
+
+    for (i = 0; i < w->size; i++)
+    {
+
+        wi = gsl_vector_get(w, i);
+        z = finite_length_warburg(R, tau, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+}
+/**
  * @brief Compute finite space warburg impedance
  * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \coth \sqrt{j \tau
  * \omega} \f$
@@ -205,6 +270,33 @@ double complex finite_space_warburg(double r, double tau, double w)
     return r / (ctanh(csqrt(I * tau * w)) * csqrt(I * tau * w));
 }
 
+/**
+ * @brief Compute finite space warburg impedance in vectorized form.
+ * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \coth \sqrt{j \tau
+ * \omega} \f$
+ * @param p Pointer to the parameters in Ohms.
+ * @param w Pointer to the angular frequency in rad.s^-1.
+ * @return Z Pointer to the complex impedance in Ohms.
+ */
+double complex gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+{
+    size_t i;
+    double complex z;
+    gsl_complex _z;
+    double wi;
+    double R = gsl_vector_get(p, 0);
+    double tau = gsl_vector_get(p, 1);
+    double n = gsl_vector_get(p, 2);
+
+    for (i = 0; i < w->size; i++)
+    {
+
+        wi = gsl_vector_get(w, i);
+        z = finite_space_warburg(R, tau, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+}
 /**
  * @brief  EIS Element
  * @details Constructor of an EisElement.
@@ -246,6 +338,10 @@ void EisElement__init__(EisElement *self, char *name, ElementType type)
         self->Z = &gsl_capacitance;
         self->p = gsl_vector_alloc(1);
         break;
+    case Q:
+        self->Z = &gsl_cpe;
+        self->p = gsl_vector_alloc(2);
+        break;
     case L:
         self->Z = &gsl_inductance;
         self->p = gsl_vector_alloc(1);
@@ -253,6 +349,14 @@ void EisElement__init__(EisElement *self, char *name, ElementType type)
     case W:
         self->Z = &gsl_warburg;
         self->p = gsl_vector_alloc(1);
+        break;
+    case Wd:
+        self->Z = &gsl_finite_length_warburg;
+        self->p = gsl_vector_alloc(3);
+        break;
+    case Wm:
+        self->Z = &gsl_finite_space_warburg;
+        self->p = gsl_vector_alloc(3);
         break;
     default:
         self->Z = NULL;

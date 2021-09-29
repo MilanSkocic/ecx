@@ -54,8 +54,9 @@ double roundn(double x, int n)
 {
 
   double rounded_x;
+  double fac = pow(10, n);
 
-  rounded_x = round(x * pow(10, n)) * pow(10, -n);
+  rounded_x = round(x * fac) / fac;
 
   return rounded_x;
 }

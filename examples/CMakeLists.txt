@@ -1,6 +1,6 @@
 link_directories(${CMAKE_BINARY_DIR}/src)
 
-add_executable(example1 example1.c)
+add_executable(example1 example_kinetics.c)
 target_include_directories(example1 PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(example1 electrox)
 

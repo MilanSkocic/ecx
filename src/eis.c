@@ -237,7 +237,7 @@ double complex finite_length_warburg(double r, double tau, double w)
  * @param w Pointer to the angular frequency in rad.s^-1.
  * @return Z Pointer to the complex impedance in Ohms.
  */
-double complex gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+void gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
     size_t i;
     double complex z;
@@ -278,7 +278,7 @@ double complex finite_space_warburg(double r, double tau, double w)
  * @param w Pointer to the angular frequency in rad.s^-1.
  * @return Z Pointer to the complex impedance in Ohms.
  */
-double complex gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
+void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
     size_t i;
     double complex z;

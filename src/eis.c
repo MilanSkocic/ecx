@@ -10,6 +10,8 @@
  *  - semi-infinite warburg
  *  - finite length warburg
  *  - finite space warburg 
+ * 
+ * Each element has a scalar form and a vectorized form using GSL vectors.
  *
  * Copyright (C) 2020-2021  Milan Skocic.
  *
@@ -26,8 +28,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>. 
  *
- * Author: Milan Skocic <milan.skocic@gmail.com>
  *
+ *  Author: Milan Skocic <milan.skocic@gmail.com>
  */
 
 #include "electrox.h"
@@ -351,10 +353,15 @@ void EisElement__init__(EisElement *self, char *name, ElementType type)
         self->p = gsl_vector_alloc(1);
         break;
     case Wd:
+    case Ws:
+    case O:
         self->Z = &gsl_finite_length_warburg;
         self->p = gsl_vector_alloc(3);
+
         break;
     case Wm:
+    case Wo:
+    case T:
         self->Z = &gsl_finite_space_warburg;
         self->p = gsl_vector_alloc(3);
         break;

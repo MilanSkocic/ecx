@@ -4,7 +4,6 @@
  * @brief Header of the library libelectox.
  *
  * @details API contains:
- *  - get_kte
  *
  * Copyright (C) 2020-2021  Milan Skocic.
  *
@@ -54,6 +53,9 @@ double round_value(double x, double dx);
 int assert_equal(double a, double b, int n);
 
 /* kinetics */
+double sbv(double OCV, double U, double j0,
+           double aa, double ac, double za, double zc,
+           double S, double T);
 double bv(double OCV, double U, double j0, double jdla, double jdlc,
           double aa, double ac, double za, double zc,
           double S, double T);
@@ -66,8 +68,14 @@ int read_z(char *fpath, int verbose);
 /**
  * @brief Element types 
  * @details Availables types are R, L, C, W, Wd, Wm.
- * R = Resistance
- * L = Inductance
+ * R = Resistor
+ * L = Inductor
+ * C = Capacitor
+ * Q = Constant Phase Element
+ * W = Semi-infinite warburg
+ * Wd or Ws or O = Finite Length Warburg (Short Warburg)
+ * Wm or Wo or T = Finite Space Warburg (Open Warburg)
+ * 
  */
 typedef enum
 {
@@ -77,7 +85,11 @@ typedef enum
     Q,
     W,
     Wd,
-    Wm
+    Ws,
+    O,
+    Wm,
+    Wo,
+    T
 } ElementType;
 
 double complex resistance(double r, double w);

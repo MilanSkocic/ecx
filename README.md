@@ -1,9 +1,10 @@
  C library for electrochemists:
 
-* kinetics 
+* kinetics: Nernst Equation, Butler-Volmer Equation
 
-* complex impedance
+* complex impedance: R, C, L, Q, W, Wd, Wm
 
+* read/write common EIS data files such as \*.z files.
 
 The compilation was tested on Linux (Debian 10). Windows is not supported.
 

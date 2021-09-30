@@ -1,5 +1,5 @@
 /** 
- * @file example1.c
+ * @file example_kinetics.c
  *
  * @brief Example of kinetics equation.
  *

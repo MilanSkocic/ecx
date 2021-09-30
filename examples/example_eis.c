@@ -1,5 +1,5 @@
 /**
- * @file example2.c
+ * @file example_eis.c
  * 
  * @brief Examples EIS.
  *
@@ -24,13 +24,12 @@
 
 #include "electrox.h"
 
-void use_eis()
-{
-    printf("EIS");
-}
-
 int main(int argc, char **argv)
 {
+    double r, w;
 
-    use_eis();
+    r = 1.0;
+    w = 1.0;
+    double complex z;
+    z = resistance(r, w);
 }

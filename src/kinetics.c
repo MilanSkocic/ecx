@@ -23,7 +23,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>. 
  *
  * Author: Milan Skocic <milan.skocic@gmail.com>
- *
+ * 
  * @example example_kinetics.c
  * @details How to use bv()
  */
@@ -34,7 +34,7 @@
  * @brief Compute Butler Volmer equation without mass transport.
  * @details \f$ \eta' = \frac{\eta}{RT/F} \f$ 
  * 
- * \f$ j = j_0 ( \exp(\alpha_a z_a\eta') -\exp(-\alpha_c z_c\eta') )
+ * \f$ j = j_0 ( \exp(\alpha_a z_a\eta') -\exp(-\alpha_c z_c\eta') ) \f$
  * @param[in] OCV Open Circuit Potential in Volts
  * @param[in] U Potential to compute in Volts
  * @param[in] j0 Exchange current density in A.cm-2

@@ -1,9 +1,9 @@
 link_directories(${CMAKE_BINARY_DIR}/src)
 
-add_executable(example1 example_kinetics.c)
-target_include_directories(example1 PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_link_libraries(example1 electrox)
+add_executable(example_kinetics example_kinetics.c)
+target_include_directories(example_kinetics PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(example_kinetics electrox)
 
-add_executable(example2 example2.c)
-target_include_directories(example2 PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_link_libraries(example2 electrox)
+add_executable(example_eis example_eis.c)
+target_include_directories(example_eis PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(example_eis electrox)

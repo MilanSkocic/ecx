@@ -30,6 +30,9 @@
  *
  *
  *  Author: Milan Skocic <milan.skocic@gmail.com>
+ * 
+ * @example example_eis.c
+ * @details How to use resistance()
  */
 
 #include "electrox.h"

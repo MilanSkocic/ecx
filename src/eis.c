@@ -7,6 +7,7 @@
  *  - resistance
  *  - capacitance
  *  - inductance
+ *  - constant phase element
  *  - semi-infinite warburg
  *  - finite length warburg
  *  - finite space warburg 
@@ -32,7 +33,8 @@
  *  Author: Milan Skocic <milan.skocic@gmail.com>
  * 
  * @example example_eis.c
- * @details How to use resistance()
+ * @details How to use resistance(), capacitance(), inductance()
+ * cpe(), warburg(), finite_length_warburg(), finite_space_warburg()
  */
 
 #include "electrox.h"
@@ -84,9 +86,9 @@ double complex capacitance(double c, double w)
 /**
  * @brief Compute capacitance impedance in vectorized form.
  * @details \f$ Z = \frac{1}{j p_0 \omega} \f$
- * @param p Pointer to the capacitance in F.
- * @param w Pointer to the angular frequency in rad.s^-1.
- * @return Z Pointer to the complex impedance in Ohms.
+ * @param[in] p Pointer to the capacitance in F.
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
  */
 void gsl_capacitance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -122,9 +124,9 @@ double complex inductance(double l, double w)
 /**
  * @brief Compute inductance impedance in vectorized form.
  * @details \f$ Z = j p_0 \omega \f$
- * @param p Pointer to the capacitance in H.
- * @param w Pointer to the angular frequency in rad.s^-1.
- * @return Z Pointer to the Complex impedance in Ohms.
+ * @param[in] p Pointer to the inductance in H.
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the Complex impedance in Ohms.
  */
 void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -161,9 +163,9 @@ double complex cpe(double Q, double a, double w)
 /**
  * @brief Compute CPE impedance in vectorized.
  * @details \f$ Z = \frac{1}{Q(j w \omega)^a} \f$
- * @param p Pointer to the CPE parameters.
- * @param w Angular frequency in rad.s^-1.
- * @return Z Complex impedance in Ohms.
+ * @param[in] p Pointer to the CPE parameters.
+ * @param[in] w Angular frequency in rad.s^-1.
+ * @param[out] Z Complex impedance in Ohms.
  */
 void gsl_cpe(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -198,9 +200,9 @@ double complex warburg(double sigma, double w)
 /**
  * @brief Compute semi-infinite warburg impedance in vectorized form.
  * @details \f$ Z = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j) \f$
- * @param p Pointer to the pseudo-Resistance in Ohms.s^(1/2).
- * @param w Pointer to the angular frequency in rad.s^-1.
- * @return Z Pointer to the complex impedance in Ohms.
+ * @param[in] p Pointer to the pseudo-Resistance in Ohms.s^(1/2).
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
  */
 void gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -238,9 +240,9 @@ double complex finite_length_warburg(double r, double tau, double w)
  * @brief Compute finite length warburg impedance in vectorized form.
  * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \tanh \sqrt{j \tau
  * \omega} \f$
- * @param p Pointer to the parameters in Ohms.
- * @param w Pointer to the angular frequency in rad.s^-1.
- * @return Z Pointer to the complex impedance in Ohms.
+ * @param[in] p Pointer to the parameters in Ohms.
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
  */
 void gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {
@@ -279,9 +281,9 @@ double complex finite_space_warburg(double r, double tau, double w)
  * @brief Compute finite space warburg impedance in vectorized form.
  * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \coth \sqrt{j \tau
  * \omega} \f$
- * @param p Pointer to the parameters in Ohms.
- * @param w Pointer to the angular frequency in rad.s^-1.
- * @return Z Pointer to the complex impedance in Ohms.
+ * @param[in] p Pointer to the parameters in Ohms.
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
  */
 void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z)
 {

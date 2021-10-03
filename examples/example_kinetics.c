@@ -119,6 +119,7 @@ int main(int argc, char **argv)
   {
     current = bv(OCV, arguments.U[i], j0, jdla, jdlc, aa, ac, za, zc, S, T);
     printf("U=%f - %.4eA\n", arguments.U[i], current);
+    current = sbv(OCV, arguments.U[i], j0, aa, ac, za, zc, S, T);
   }
 
   free(arguments.U);

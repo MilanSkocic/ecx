@@ -44,6 +44,9 @@
 #define kB GSL_CONST_MKSA_BOLTZMANN       /**< Boltzmann Constant */
 #define qe GSL_CONST_MKSA_ELECTRON_CHARGE /**< Elementary charge */
 
+
+
+
 /* utilities */
 double get_kTe(double temperature, int mV);
 double roundn(double x, int n);
@@ -52,7 +55,10 @@ double round_significant(double x, int n);
 double round_value(double x, double dx);
 int assert_equal(double a, double b, int n);
 
-/* kinetics */
+
+
+
+/********** kinetics **********/
 double sbv(double OCV, double U, double j0,
            double aa, double ac, double za, double zc,
            double S, double T);
@@ -60,8 +66,13 @@ double bv(double OCV, double U, double j0, double jdla, double jdlc,
           double aa, double ac, double za, double zc,
           double S, double T);
 
+
+
 /* io */
 int read_z(char *fpath, int verbose);
+
+
+
 
 /* EIS functions */
 

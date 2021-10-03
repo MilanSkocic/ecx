@@ -25,7 +25,7 @@
  * Author: Milan Skocic <milan.skocic@gmail.com>
  * 
  * @example example_kinetics.c
- * @details How to use bv()
+ * @details How to use bv(), sbv()
  */
 
 #include "electrox.h"

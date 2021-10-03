@@ -26,10 +26,16 @@
 
 int main(int argc, char **argv)
 {
-    double r, w;
+    double r, c, l, w;
 
     r = 1.0;
+    c = 1e-6;
+    l = 1e-2;
     w = 1.0;
     double complex z;
     z = resistance(r, w);
+
+    z = capacitance(c, w);
+
+    z = inductance(l, w);
 }

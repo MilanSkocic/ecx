@@ -4,6 +4,12 @@ project(electrox VERSION 1.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wall")
+
+message("release = " ${CMAKE_C_FLAGS_RELEASE})
+message("debug = " ${CMAKE_C_FLAGS_DEBUG})
+
 add_subdirectory(src)
 add_subdirectory(examples)
 add_subdirectory(tests)

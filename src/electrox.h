@@ -27,9 +27,6 @@
 #ifndef ELECTROX_H
 #define ELECTROX_H
 
-/**
- * @file electrox.h
- */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -45,9 +42,8 @@
 #define qe GSL_CONST_MKSA_ELECTRON_CHARGE /**< Elementary charge */
 
 
-
-
-/* utilities */
+/******************************* utilities *******************************/
+typedef enum bool_t{FALSE, TRUE}bool;
 double get_kTe(double temperature, int mV);
 double roundn(double x, int n);
 double round_error(double x);
@@ -56,9 +52,11 @@ double round_value(double x, double dx);
 int assert_equal(double a, double b, int n);
 
 
+/******************************* I/O Operations *******************************/
+int read_z(char *fpath, int verbose);
 
 
-/********** kinetics **********/
+/******************************* kinetics *******************************/
 double sbv(double OCV, double U, double j0,
            double aa, double ac, double za, double zc,
            double S, double T);
@@ -67,40 +65,24 @@ double bv(double OCV, double U, double j0, double jdla, double jdlc,
           double S, double T);
 
 
-
-/* io */
-int read_z(char *fpath, int verbose);
-
-
-
-
-/* EIS functions */
-
+/******************************* EIS Functions *******************************/
 /**
  * @brief Element types 
- * @details Availables types are R, L, C, W, Wd, Wm.
- * R = Resistor
- * L = Inductor
- * C = Capacitor
- * Q = Constant Phase Element
- * W = Semi-infinite warburg
- * Wd or Ws or O = Finite Length Warburg (Short Warburg)
- * Wm or Wo or T = Finite Space Warburg (Open Warburg)
- * 
+ * @details Availables types are R, C, L, W, Wd, Wm.
  */
-typedef enum
+typedef enum element_t
 {
-    R,
-    L,
-    C,
-    Q,
-    W,
-    Wd,
-    Ws,
-    O,
-    Wm,
-    Wo,
-    T
+    R, /**<  Resistance */
+    C, /**<  Capacitor */
+    L, /**< Inductor */
+    Q, /**< Constant Phase Element */
+    W, /**< Semi-infinite Warburg */
+    Wd, /**< Finite Length Warburg (Short Warburg) */
+    Ws, /**< Finite Length Warburg (Short Warburg) */
+    O, /**< Finite Length Warburg (Short Warburg) */
+    Wm, /**< Finite Space Warburg (Open Warburg) */
+    Wo, /**< Finite Space Warburg (Open Warburg) */
+    T, /**< Finite Space Warburg (Open Warburg) */
 } ElementType;
 
 double complex resistance(double r, double w);
@@ -113,10 +95,14 @@ double complex inductance(double l, double w);
 void gsl_inductance(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex warburg(double sigma, double w);
+void gsl_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex finite_space_warburg(double r, double tau, double w);
+void gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex finite_length_warburg(double r, double tau, double w);
+void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
+
 
 /* Structures */
 /**

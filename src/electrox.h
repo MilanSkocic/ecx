@@ -37,7 +37,8 @@
 #include <gsl/gsl_complex_math.h>
 #include <gsl/gsl_const_mksa.h>
 #include <gsl/gsl_vector.h>
-#define T_K 273.15                        /**< Conversion offset from degree Celsius to degree Kelvin  */
+#include <gsl/gsl_blas.h>
+#define T_K (273.15)                        /**< Conversion offset from degree Celsius to degree Kelvin  */
 #define kB GSL_CONST_MKSA_BOLTZMANN       /**< Boltzmann Constant */
 #define qe GSL_CONST_MKSA_ELECTRON_CHARGE /**< Elementary charge */
 
@@ -63,7 +64,10 @@ double sbv(double OCV, double U, double j0,
 double bv(double OCV, double U, double j0, double jdla, double jdlc,
           double aa, double ac, double za, double zc,
           double S, double T);
-
+double nernst(double E0, 
+              gsl_vector *aox, gsl_vector *vox, 
+              gsl_vector *ared, gsl_vector *vred, 
+              double temperature);
 
 /******************************* EIS Functions *******************************/
 /**
@@ -102,6 +106,9 @@ void gsl_finite_length_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex 
 
 double complex finite_length_warburg(double r, double tau, double w);
 void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
+
+double complex gerisher(double G, double K, double w);
+void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector *Z);
 
 
 /* Structures */

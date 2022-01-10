@@ -90,6 +90,47 @@ int main(int argc, char **argv)
     {
         return EXIT_FAILURE;
     }
+    
+    printf("%s\n", "Test Nernst equation");
+    double Eo = 0.0;
+    n = 1;
+    gsl_vector *Cox = gsl_vector_alloc(n);
+    gsl_vector *Cred = gsl_vector_alloc(n);
+    gsl_vector *aox = gsl_vector_alloc(n);
+    gsl_vector *ared = gsl_vector_alloc(n);
+
+    gsl_vector_set_all(Cox, 1.0);
+    gsl_vector_set_all(Cred, 1.0);
+    gsl_vector_set_all(aox, 1.0);
+    gsl_vector_set_all(ared, 1.0);
+
+    computed = nernst(Eo, Cox, aox, Cred, ared, 25.0);
+    expected = 0.00;
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = assert_equal(computed, expected, 2);
+
+    Eo = 0.10;
+    computed = nernst(Eo, Cox, aox, Cred, ared, 25.0);
+    expected = 0.10;
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = assert_equal(computed, expected, 2);
+    
+    Eo = 0.00;
+    gsl_vector_set_all(Cox, 10.0);
+    computed = nernst(Eo, Cox, aox, Cred, ared, 25.0);
+    expected = 0.00 + get_kTe(25.0, 0) * log(pow(gsl_vector_get(Cox, 0),gsl_vector_get(aox, 0))/pow(gsl_vector_get(Cred, 0),gsl_vector_get(ared, 0)));
+    printf("\tComputed/Expected=%.6e/%.6e\n", computed, expected);
+    equal = assert_equal(computed, expected, 2);
+
+    gsl_vector_free(Cox);
+    gsl_vector_free(Cred);
+    gsl_vector_free(aox);
+    gsl_vector_free(ared);
+    if (!equal)
+    {
+        return EXIT_FAILURE;
+    }
+
 
     return EXIT_SUCCESS;
 }

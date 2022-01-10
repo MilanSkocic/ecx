@@ -94,3 +94,46 @@ double bv(double OCV, double U, double j0, double jdla, double jdlc,
 
     return i;
 }
+
+
+/**
+ * @brief Compute the Nernst potential. 
+ * 
+ * @param[in] E0 Standard potential
+ * @param[in] aox Pointer to the activities of the oxidants
+ * @param[in] vox Pointer to the exponants of the oxidants. 
+ * @param[in] ared Pointer to the activities of the reductants
+ * @param[in] vred Pointer to the exponants of the reductants. 
+ * @param[in] temperature 
+ * @return Potential Electrochemical potential in Volts 
+ */
+double nernst(double E0, 
+              gsl_vector *aox, gsl_vector *vox, 
+              gsl_vector *ared, gsl_vector *vred, 
+              double temperature)
+{
+
+    double potential = 0.0;
+    double products = 0.0;
+    double reactants = 0.0;
+    double kTe = 0.0;
+    int i;
+
+    products = 0.0;
+    for(i=0; i<aox->size; i++){
+
+        products += pow(gsl_vector_get(aox, i), gsl_vector_get(vox, i));
+    }
+
+    for(i=0; i<ared->size; i++){
+
+        reactants += pow(gsl_vector_get(ared, i), gsl_vector_get(vred, i));
+    }
+
+    kTe = get_kTe(temperature, 0);
+
+    potential = E0 + kTe * log(products/reactants);
+
+    return potential;
+
+}

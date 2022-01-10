@@ -11,6 +11,7 @@
  *  - semi-infinite warburg
  *  - finite length warburg
  *  - finite space warburg 
+ *  - Gerisher
  * 
  * Each element has a scalar form and a vectorized form using GSL vectors.
  *
@@ -162,7 +163,7 @@ double complex cpe(double Q, double a, double w)
 
 /**
  * @brief Compute CPE impedance in vectorized.
- * @details \f$ Z = \frac{1}{Q(j w \omega)^a} \f$
+ * @details \f$ Z = \frac{1}{p_0(j \omega)^{p_1}} \f$
  * @param[in] p Pointer to the CPE parameters.
  * @param[in] w Angular frequency in rad.s^-1.
  * @param[out] Z Complex impedance in Ohms.
@@ -199,7 +200,7 @@ double complex warburg(double sigma, double w)
 
 /**
  * @brief Compute semi-infinite warburg impedance in vectorized form.
- * @details \f$ Z = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j) \f$
+ * @details \f$ Z = \frac{p_0}{\sqrt{\omega}} \cdot (1-j) \f$
  * @param[in] p Pointer to the pseudo-Resistance in Ohms.s^(1/2).
  * @param[in] w Pointer to the angular frequency in rad.s^-1.
  * @param[out] Z Pointer to the complex impedance in Ohms.
@@ -238,7 +239,7 @@ double complex finite_length_warburg(double r, double tau, double w)
 
 /**
  * @brief Compute finite length warburg impedance in vectorized form.
- * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \tanh \sqrt{j \tau
+ * @details \f$ Z = \frac{p_0}{\sqrt{j p_1 \omega}} \cdot \tanh \sqrt{j p_1
  * \omega} \f$
  * @param[in] p Pointer to the parameters in Ohms.
  * @param[in] w Pointer to the angular frequency in rad.s^-1.
@@ -279,7 +280,7 @@ double complex finite_space_warburg(double r, double tau, double w)
 
 /**
  * @brief Compute finite space warburg impedance in vectorized form.
- * @details \f$ Z = \frac{r}{\sqrt{j \tau \omega}} \cdot \coth \sqrt{j \tau
+ * @details \f$ Z = \frac{p_0}{\sqrt{j p_1 \omega}} \cdot \coth \sqrt{j p_1
  * \omega} \f$
  * @param[in] p Pointer to the parameters in Ohms.
  * @param[in] w Pointer to the angular frequency in rad.s^-1.
@@ -304,6 +305,45 @@ void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *
         gsl_vector_complex_set(Z, i, _z);
     }
 }
+
+/**
+ * @brief Compute the complex impedance of the Gerisher element.
+ * @details \f$ Z = \frac{G}{\sqrt{K+j\omega}}\f$
+ * @param G Pseudo-Resistance in Ohms.s^(1/2).
+ * @param K Offset in rad.s^-1.
+ * @param w Angular frequency in rad.s^-1.
+ * @return Z Complex impedance in Ohms. 
+ */
+double complex gerisher(double G, double K, double w){
+    return G * csqrt(I*w);
+}
+
+/**
+ * @brief Compute the complex impedance of the Gerisher element in vectorized form.
+ * @details \f$ Z = \frac{p_0}{\sqrt{p_1+j\omega}}\f$
+ * @param[in] p Pointer to the pseudo-resistance in Ohms.s^-1.
+ * @param[in] w Pointer to the angular frequency in rad.s^-1.
+ * @param[out] Z Pointer to the complex impedance in Ohms.
+ */
+void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector *Z){
+
+    size_t i;
+    double complex z;
+    gsl_complex _z;
+    double wi;
+    double G = gsl_vector_get(p, 0);
+    double K = gsl_vector_get(p, 1);
+
+    for (i = 0; i < w->size; i++)
+    {
+        wi = gsl_vector_get(w, i);
+        z = gerisher(G, K, wi);
+        _z = gsl_complex_rect(creal(z), cimag(z));
+        gsl_vector_complex_set(Z, i, _z);
+    }
+
+}
+
 /**
  * @brief  EIS Element
  * @details Constructor of an EisElement.

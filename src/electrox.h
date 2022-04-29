@@ -108,7 +108,7 @@ double complex finite_length_warburg(double r, double tau, double w);
 void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 double complex gerisher(double G, double K, double w);
-void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector *Z);
+void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
 
 /* Structures */

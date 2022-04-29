@@ -325,7 +325,7 @@ double complex gerisher(double G, double K, double w){
  * @param[in] w Pointer to the angular frequency in rad.s^-1.
  * @param[out] Z Pointer to the complex impedance in Ohms.
  */
-void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector *Z){
+void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z){
 
     size_t i;
     double complex z;

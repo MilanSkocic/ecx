@@ -315,7 +315,7 @@ void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *
  * @return Z Complex impedance in Ohms. 
  */
 double complex gerisher(double G, double K, double w){
-    return G * csqrt(I*w);
+    return G / csqrt(K+I*w);
 }
 
 /**

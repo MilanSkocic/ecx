@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(electrox VERSION 1.0 LANGUAGES C)
+project(electrox VERSION 1.0.1 LANGUAGES "C" DESCRIPTION "Electrochemistry for C users.")
+configure_file("./src/config.h.in" "./src/config.h")
 
 set(CMAKE_C_STANDARD 99)
 
@@ -22,8 +23,9 @@ add_test(NAME utilities COMMAND test_utilities)
 
 
 install(TARGETS static_electrox PUBLIC_HEADER DESTINATION include/electrox ARCHIVE DESTINATION lib)
-
 install(TARGETS shared_electrox PUBLIC_HEADER DESTINATION include/electrox LIBRARY DESTINATION lib)
+install(TARGETS celectrox_version RUNTIME DESTINATION bin)
+install(TARGETS example_eis example_kinetics RUNTIME DESTINATION bin)
 
 SET(CPACK_GENERATOR "DEB")
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Milan Skocic") #required

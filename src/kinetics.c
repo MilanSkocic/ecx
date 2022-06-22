@@ -119,14 +119,14 @@ double nernst(double E0,
     double kTe = 0.0;
     int i;
 
-    products = 0.0;
-    for(i=0; i<aox->size; i++){
+    products = pow(gsl_vector_get(aox, 0), gsl_vector_get(vox, 0));
+    reactants = pow(gsl_vector_get(ared, 0), gsl_vector_get(vred, 0));
 
+    for(i=1; i<aox->size; i++){
         products *= pow(gsl_vector_get(aox, i), gsl_vector_get(vox, i));
     }
 
-    for(i=0; i<ared->size; i++){
-
+    for(i=1; i<ared->size; i++){
         reactants *= pow(gsl_vector_get(ared, i), gsl_vector_get(vred, i));
     }
 

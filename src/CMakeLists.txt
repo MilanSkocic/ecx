@@ -16,6 +16,6 @@ set_target_properties(shared_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DI
 
 link_directories(${CMAKE_BINARY_DIR}/src)
 
-add_executable(celectrox_version version.c)
-target_include_directories(celectrox_version PRIVATE ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src)
-target_link_libraries(celectrox_version electrox)
+add_executable(celectrox-config config.c)
+target_include_directories(celectrox-config PRIVATE ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src)
+target_link_libraries(celectrox-config electrox)

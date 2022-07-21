@@ -10,6 +10,8 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wall")
 
 message("release = " ${CMAKE_C_FLAGS_RELEASE})
 message("debug = " ${CMAKE_C_FLAGS_DEBUG})
+message("build type = " ${CMAKE_BUILD_TYPE})
+message("prefix = " ${CMAKE_INSTALL_PREFIX})
 
 add_subdirectory(src)
 add_subdirectory(examples)
@@ -24,7 +26,7 @@ add_test(NAME utilities COMMAND test_utilities)
 
 install(TARGETS static_electrox PUBLIC_HEADER DESTINATION include/electrox ARCHIVE DESTINATION lib)
 install(TARGETS shared_electrox PUBLIC_HEADER DESTINATION include/electrox LIBRARY DESTINATION lib)
-install(TARGETS celectrox_version RUNTIME DESTINATION bin)
+install(TARGETS celectrox-config RUNTIME DESTINATION bin)
 install(TARGETS example_eis example_kinetics RUNTIME DESTINATION bin)
 
 SET(CPACK_GENERATOR "DEB")

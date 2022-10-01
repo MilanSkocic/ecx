@@ -160,7 +160,7 @@ int read_line(FILE *f, char *buf){
 int main(int argc, char **argv){
 
     FILE *fptr =  fopen("./codata.txt", "r");
-    FILE *pcode = fopen("codata.h", "w");
+    FILE *pcode = fopen("electrox_codata.h", "w");
 
     char *line = (char *)malloc(sizeof(char));
     line[0] = '\0';

@@ -39,7 +39,7 @@
  */
 
 #include "electrox.h"
-#include "codata.h"
+#include "electrox_codata.h"
 
 /**
  * @brief Compute resistance impedance

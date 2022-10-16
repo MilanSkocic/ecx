@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
+#define N 256
 
 void format_names(char *line){
     size_t i;
@@ -132,21 +133,14 @@ int read_line(FILE *f, char *buf){
             break;
         }
         else{
-            buf = (char *)realloc(buf, sizeof(char)*(i+2));
-            if(buf == NULL){
-                printf("FAILURE REALLOC\n");
-            }
-            else{
+            if(i<N){
                 buf[i] = c;
-                buf[i+1] = '\n';
-                buf[i+2] = '\0';
                 i++;
                 eof=0;
             }
         }
     }
     if(i==0){
-        buf = (char *)realloc(buf, sizeof(char)*(2));
         buf[0] = '\n';
         buf[1] = '\0';
 
@@ -155,18 +149,26 @@ int read_line(FILE *f, char *buf){
     return eof;
 }
 
+void clean_line(char *buf){
 
+    size_t i;
+    for(i=0; i<=N; i++){
+        buf[i] = ' ';
+    }
+    buf[N] = '\0';
+    buf[N-1] = '\n';
+}
 
 int main(int argc, char **argv){
 
     FILE *fptr =  fopen("./codata.txt", "r");
     FILE *pcode = fopen("electrox_codata.h", "w");
 
-    char *line = (char *)malloc(sizeof(char));
-    line[0] = '\0';
+    char *line = (char *)malloc(sizeof(char)*(N+1));
     int i=0;
     int eof=0;
     while(eof==0){
+        clean_line(line);
         eof = read_line(fptr, line);
         if(i>10){
             format_names(line);

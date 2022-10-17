@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define N 256
+#define N 128
 
 void format_names(char *line){
     size_t i;

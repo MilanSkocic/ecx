@@ -26,6 +26,8 @@ add_test(NAME utilities COMMAND test_utilities)
 
 install(TARGETS static_electrox PUBLIC_HEADER DESTINATION include/electrox ARCHIVE DESTINATION lib)
 install(TARGETS shared_electrox PUBLIC_HEADER DESTINATION include/electrox LIBRARY DESTINATION lib)
+install(TARGETS static_felectrox ARCHIVE DESTINATION lib)
+install(TARGETS shared_felectrox LIBRARY DESTINATION lib)
 install(TARGETS celectrox-config RUNTIME DESTINATION bin)
 install(TARGETS example_eis example_kinetics RUNTIME DESTINATION bin)
 

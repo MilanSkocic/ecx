@@ -36,23 +36,24 @@ void format_values(char *line){
     size_t i;
     size_t j;
     size_t size = 25;
+    size_t i0 = 60;
     char *temp = (char *)malloc(sizeof(char)*25);
     for(i=0; i<25; i++){
         temp[i] = ' ';
     }
     j = 0;
-    temp[j] = line[60];
+    temp[j] = line[i0];
     j++;
-    for(i=61; i<(60+size-2);i++){
+    for(i=(i0+1); i<(i0+size-2);i++){
         if(isdigit(line[i])){
             temp[j] = line[i];
             j++;
         }
-        if((line[i]=='.') & isdigit(line[i-1]) & isdigit(line[i+1])){
+        if((line[i]=='.') & (isdigit(line[i-1])>0) & (isdigit(line[i+1])>0)){
             temp[j] = line[i];
             j++;
         }
-        if((line[i]=='e') & isdigit(line[i-1]) & isdigit(line[i+1])){
+        if(line[i]=='e'){
             temp[j] = line[i];
             j++;
         }
@@ -84,15 +85,22 @@ void format_uncertainties(char *line){
     }
     j++;
     for(i=(i0+1); i<(i0+size-2);i++){
+        if (strncmp(&line[i0], "(exact)", 7)==0){
+            temp[0] = '0';
+            temp[1] = '.';
+            temp[2] = '0';
+            break;
+        }
+
         if(isdigit(line[i])){
             temp[j] = line[i];
             j++;
         }
-        if((line[i]=='.') & isdigit(line[i-1]) & isdigit(line[i+1])){
+        if((line[i]=='.') & (isdigit(line[i-1])>0) & (isdigit(line[i+1])>0)){
             temp[j] = line[i];
             j++;
         }
-        if((line[i]=='e') & isdigit(line[i-1]) & isdigit(line[i+1])){
+        if(line[i]=='e'){
             temp[j] = line[i];
             j++;
         }

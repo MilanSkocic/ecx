@@ -39,6 +39,7 @@
  */
 
 #include "electrox.h"
+#include "electrox_codata.h"
 
 
 void impedance_resistance(double *w, double R, size_t N, double complex *Z){

@@ -41,6 +41,9 @@
 #include "electrox.h"
 #include "electrox_codata.h"
 
+extern void resistance_(double *Z, size_t *N, double *R);
+
+
 /**
  * @brief Compute resistance impedance
  * @details \f$ Z = R \forall \omega \f$

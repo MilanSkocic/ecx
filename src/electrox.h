@@ -41,7 +41,7 @@
 #define T_K (273.15)                        /**< Conversion offset from degree Celsius to degree Kelvin  */
 #define kB GSL_CONST_MKSA_BOLTZMANN       /**< Boltzmann Constant */
 #define qe GSL_CONST_MKSA_ELECTRON_CHARGE /**< Elementary charge */
-
+#include "eis.h"
 
 /******************************* utilities *******************************/
 typedef enum bool_t{FALSE, TRUE}bool;
@@ -110,6 +110,7 @@ void gsl_finite_space_warburg(gsl_vector *p, gsl_vector *w, gsl_vector_complex *
 double complex gerisher(double G, double K, double w);
 void gsl_gerisher(gsl_vector *p, gsl_vector *w, gsl_vector_complex *Z);
 
+void impedance_resistance(double *w, double R, size_t N, double complex *Z);
 
 /* Structures */
 /**

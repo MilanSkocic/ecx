@@ -7,11 +7,9 @@ add_custom_command(
 )
 add_custom_command(TARGET generator POST_BUILD 
                    COMMAND generator
-                   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/electrox_codata.h ${CMAKE_SOURCE_DIR}/src/electrox_codata.h
-                   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/electrox_codata.f90 ${CMAKE_SOURCE_DIR}/src/electrox_codata.f90
                    COMMENT "Generating c code for codata.")
 
-add_library(static_felectrox STATIC eis.f90 electrox_codata.f90)
+add_library(static_felectrox STATIC eis.f90 )
 set_target_properties(static_felectrox PROPERTIES OUTPUT_NAME felectrox)
 
 add_library(shared_felectrox SHARED eis.f90)

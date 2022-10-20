@@ -8,10 +8,11 @@
 #define F90 1
 #define PY3 2
 
-static const size_t BUFFER_SIZE = 128;
+static const size_t BUFFER_SIZE = 200;
 static const size_t NAMES_SIZE = 60;
 static const size_t VALUES_SIZE = 25;
 static const size_t UNCERTAINTIES_SIZE = 25;
+static const size_t UNITS_SIZE = 25;
 
 static const char newline[2] = "\n\0";
 
@@ -213,6 +214,15 @@ void format_uncertainties(char *line, char *uncertainty, int language){
     free(temp);
 }
 
+void format_units(char *line, char *unit, int language){
+    size_t i;
+
+
+    for(i=0; i<UNITS_SIZE; i++){
+        unit[i] = line[i+NAMES_SIZE+VALUES_SIZE+UNCERTAINTIES_SIZE];
+    }
+}
+
 int read_line(FILE *f, char *buf){
 
     char c;
@@ -262,6 +272,7 @@ void write_output(FILE *codata, FILE *output, int language){
     char *dname = (char *)malloc(sizeof(char)*(NAMES_SIZE+1));
     char *value = (char *)malloc(sizeof(char)*(VALUES_SIZE+1));
     char *uncertainty = (char *)malloc(sizeof(char)*(UNCERTAINTIES_SIZE+1));
+    char *unit = (char *)malloc(sizeof(char)*(UNITS_SIZE+1));
 
     switch(language){
         case C:
@@ -298,17 +309,21 @@ void write_output(FILE *codata, FILE *output, int language){
         clean_line(dname, NAMES_SIZE);
         clean_line(value, VALUES_SIZE);
         clean_line(value, UNCERTAINTIES_SIZE);
+        clean_line(unit, UNITS_SIZE);
         eof = read_line(codata, line);
         if(i>10){
             format_names(line, name, dname, language);
             format_values(line, value, language);
             format_uncertainties(line, uncertainty, language);
+            format_units(line, unit, language);
             if(eof==0){
                 fputs(type, output);
                 fputs(name, output);
                 fputs(equal, output);
                 fputs(value, output);
                 fputs(end, output);
+                fputs(comment, output);
+                fputs(unit, output);
                 fputs(newline, output);
 
                 fputs(type, output);
@@ -316,6 +331,8 @@ void write_output(FILE *codata, FILE *output, int language){
                 fputs(equal, output);
                 fputs(uncertainty, output);
                 fputs(end, output);
+                fputs(comment, output);
+                fputs(unit, output);
                 fputs(newline, output);
                 
                 fputs(newline, output);

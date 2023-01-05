@@ -42,10 +42,6 @@
 #include "electrox_codata.h"
 
 
-void impedance_resistance(double *w, double R, size_t N, double complex *Z){
-    impedance_resistance_(w, &R, &N, Z);
-}
-
 
 /**
  * @brief Compute resistance impedance

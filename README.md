@@ -1,4 +1,4 @@
- C library for electrochemists:
+ Library for electrochemists:
 
 * kinetics: Nernst Equation, Butler-Volmer Equation
 

@@ -1,14 +1,3 @@
-add_executable(generator generate_codata.c)
-
-add_custom_command(
-    TARGET generator PRE_BUILD 
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/codata.txt ${CMAKE_BINARY_DIR}/src/codata.txt
-    COMMENT "Copying codata.txt to build directory"
-)
-add_custom_command(TARGET generator POST_BUILD 
-                   COMMAND generator
-                   COMMENT "Generating c code for codata.")
-
 add_library(static_felectrox STATIC eis.f90 )
 set_target_properties(static_felectrox PROPERTIES OUTPUT_NAME felectrox)
 

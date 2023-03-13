@@ -1,7 +1,7 @@
-add_library(static_felectrox STATIC eis.f90 )
+add_library(static_felectrox STATIC ecx.f90 ecx_capi.f90 )
 set_target_properties(static_felectrox PROPERTIES OUTPUT_NAME felectrox)
 
-add_library(shared_felectrox SHARED eis.f90)
+add_library(shared_felectrox SHARED ecx.f90 ecx_capi.f90)
 set_target_properties(shared_felectrox PROPERTIES OUTPUT_NAME felectrox)
 
 add_library(static_electrox STATIC eis.c kinetics.c utilities.c io.c)

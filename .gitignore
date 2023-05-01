@@ -18,3 +18,5 @@ docs/html
 docs/xml/
 docs/latex/
 docs/man
+
+.DS_Store

@@ -23,7 +23,7 @@ pure subroutine ecx_capi_z_r(w, R, n, Z)bind(C)
     real(c_double), dimension(n), intent(in) :: w
     complex(c_double_complex), dimension(n), intent(out) :: Z
 
-    Z(:) = ecx_z_r(w, r)
+    Z(:) = ecx_zr(w, r)
 end subroutine
 
 end module

@@ -39,8 +39,6 @@
  */
 
 #include "electrox.h"
-#include "electrox_codata.h"
-
 
 
 /**

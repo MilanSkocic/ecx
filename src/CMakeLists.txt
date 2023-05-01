@@ -1,7 +1,7 @@
-add_library(static_felectrox STATIC ecx.f90 ecx_capi.f90 )
+add_library(static_felectrox STATIC ecx.f90 ecx_capi.f90 codata.f90)
 set_target_properties(static_felectrox PROPERTIES OUTPUT_NAME felectrox)
 
-add_library(shared_felectrox SHARED ecx.f90 ecx_capi.f90)
+add_library(shared_felectrox SHARED ecx.f90 ecx_capi.f90 ecx_pec.f90)
 set_target_properties(shared_felectrox PROPERTIES OUTPUT_NAME felectrox)
 
 add_library(static_electrox STATIC eis.c kinetics.c utilities.c io.c)
@@ -17,6 +17,10 @@ target_link_libraries(static_electrox PUBLIC m gsl openblas felectrox)
 target_include_directories(shared_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
 target_link_directories(shared_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
 target_link_libraries(shared_electrox PUBLIC m gsl openblas felectrox)
+
+target_include_directories(shared_felectrox PUBLIC ${CMAKE_BINARY_DIR}/src)
+target_link_directories(shared_felectrox PUBLIC ${CMAKE_BINARY_DIR}/src)
+
 
 set_target_properties(static_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h)
 set_target_properties(shared_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h PUBLIC_HEADER ${CMAKE_BINARY_DIR}/src/electrox_codata.h)

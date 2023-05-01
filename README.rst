@@ -1,3 +1,9 @@
+ Description
+ ==============
+
+ .. image:: ./media/logo-ecx.png
+    :width: 200
+ 
  Library for electrochemists:
 
 * kinetics: Nernst Equation, Butler-Volmer Equation
@@ -9,17 +15,20 @@
 The compilation was tested on Linux (Debian 10). Windows is not supported.
 
 
-# Installation
+Installation
+=================
 
 See the file `INSTALL`. 
 
 
-# Dependencies
+Dependencies
+================
 
 See the file `REQUIREMENTS`.
 
 
-# License information
+License information
+======================
 
 See the file `LICENSE` for information on the history of this
 software, terms & conditions for usage, and a DISCLAIMER OF ALL

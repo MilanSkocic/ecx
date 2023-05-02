@@ -1,18 +1,19 @@
- Description
- ==============
+Description
+===================
 
- .. image:: ./media/logo-ecx.png
-    :width: 200
- 
- Library for electrochemists:
+.. image:: ./media/logo-ecx.png
+   :width: 200
 
-* kinetics: Nernst Equation, Butler-Volmer Equation
+.. readme_inclusion_start
 
-* complex impedance: R, C, L, Q, W, Wd, Wm
+`ecx` is a  Fortran library providing the formulas for electrochemistry. 
+It also provides a API for the C language. 
+A shared and a static library `libiapws` are compiled (f2008+) with the Fortran and C headers.
+The static and shared libraries can be installed in order to be included in Fortran or C programs.
 
-* read/write common EIS data files such as \*.z files.
+The compilation was tested on Linux (Debian), MacOS and Windows.
 
-The compilation was tested on Linux (Debian 10). Windows is not supported.
+.. readme_inclusion_end
 
 
 Installation

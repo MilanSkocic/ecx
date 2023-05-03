@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(electrox VERSION 1.0.1 LANGUAGES "C" "Fortran" DESCRIPTION "Electrochemistry for C users.")
+project(electrox VERSION "0.1.0" LANGUAGES "C" "Fortran" DESCRIPTION "Electrochemistry for C users.")
 configure_file("./src/config.h.in" "./src/config.h")
 
 set(CMAKE_C_STANDARD 99)

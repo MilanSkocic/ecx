@@ -14,9 +14,8 @@
 
 build/
 
-docs/html
-docs/xml/
-docs/latex/
-docs/man
-
 .DS_Store
+
+dist/
+
+sphinx/doxygen/xml

@@ -1,7 +1,7 @@
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = IAPWS
+PROJECT_NAME           = ECX
 PROJECT_NUMBER         = 0.1
-PROJECT_BRIEF          = IAPWS
+PROJECT_BRIEF          = Electrochemistry for Modern Fortran
 OUTPUT_DIRECTORY       = ./
 ALLOW_UNICODE_NAMES    = YES
 EXTRACT_ALL            = NO

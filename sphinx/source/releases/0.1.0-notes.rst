@@ -1,0 +1,28 @@
+ecx 0.1.0 Release Note
+==================================
+
+Changes
+--------
+
+* Implementation of kH and kD from ecx G7-04 in fortran + C API
+* Python wrapper for kH and kD.
+* Documentation with sphinx.
+
+Download
+----------
+
+`ecx <https://github.com/MilanSkocic/ecx/releases>`_
+
+`pyecx <https://pypi.org/pyecx>`_
+
+
+Contributors
+---------------
+
+Milan Skocic
+
+
+Commits
+--------
+
+Full Changelog: https://github.com/MilanSkocic/pyecx/compare/....0.1.0

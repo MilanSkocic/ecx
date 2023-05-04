@@ -18,4 +18,6 @@ build/
 
 dist/
 
+__pycache__/
+
 sphinx/doxygen/xml

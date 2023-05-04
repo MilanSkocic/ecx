@@ -6,10 +6,10 @@ Welcome to iapws documentation!
    :caption: Contents:
 
    getting_started/index.rst
-   iapws_theory/index.rst
+   ecx_theory/index.rst
    releases/index.rst
    api/index.rst
-   references/index.rst
+   bibliography/index.rst
 
 
 

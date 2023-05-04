@@ -5,8 +5,8 @@
    viewBox="0 0 80 20"
    version="1.1"
    id="svg8"
-   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
-   sodipodi:docname="logo-iapws.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="logo-ecx.svg"
    inkscape:export-xdpi="150"
    inkscape:export-ydpi="150"
    inkscape:export-filename="logo-ecx.png"
@@ -19,6 +19,58 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect3869"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect3863"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3859"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3855"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2752"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2697"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect683"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect679"
+       is_visible="true"
+       lpeversion="1" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath849">
@@ -61,8 +113,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.3041965"
-     inkscape:cx="148.64184"
-     inkscape:cy="62.928661"
+     inkscape:cx="161.01057"
+     inkscape:cy="63.145656"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -70,7 +122,7 @@
      inkscape:window-width="1280"
      inkscape:window-height="694"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="27"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -113,25 +165,25 @@
     <text
        xml:space="preserve"
        style="font-size:3.175px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#000000;stroke-width:0.372806"
-       x="192.01175"
-       y="161.56085"
+       x="192.93173"
+       y="160.87184"
        id="text3866"><tspan
          sodipodi:role="line"
          id="tspan3864"
-         x="192.01175"
-         y="161.56085"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">Ox + ze<tspan
-   style="font-size:3.175px;baseline-shift:super"
-   id="tspan282">-</tspan> --&gt;Red</tspan></text>
+         x="192.93173"
+         y="160.87184"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">Ox<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan293">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#000000;stroke-width:0.372806"
-       x="147.14799"
+       x="146.61884"
        y="164.85277"
        id="text3866-6"><tspan
          sodipodi:role="line"
          id="tspan3864-2"
-         x="147.14799"
+         x="146.61884"
          y="164.85277"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">ElectroChemistry</tspan></text>
     <text
@@ -145,5 +197,60 @@
          x="140.71336"
          y="156.28894"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.2889px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#734f96;fill-opacity:1;stroke-width:0.372806">Modern Fortran</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#000000;stroke-width:0.372806"
+       x="191.58298"
+       y="166.03134"
+       id="text289"><tspan
+         sodipodi:role="line"
+         id="tspan287"
+         x="191.58298"
+         y="166.03134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">Red<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan291">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#000000;stroke-width:0.372806"
+       x="209.45093"
+       y="166.17349"
+       id="text301"><tspan
+         sodipodi:role="line"
+         id="tspan299"
+         x="209.45093"
+         y="166.17349"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">M</tspan></text>
+    <path
+       style="fill:#333333;stroke-width:0.264583"
+       d="m 118.3315,163.6994 29.83498,16.42723"
+       id="path545" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#000000;stroke-width:0.372806"
+       x="209.45093"
+       y="161.10493"
+       id="text2687"><tspan
+         sodipodi:role="line"
+         id="tspan2685"
+         x="209.45093"
+         y="161.10493"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';fill:#ffffff;stroke-width:0.372806">M<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan2689">z+</tspan></tspan></text>
+    <path
+       style="opacity:1;fill:none;stroke:#b198cd;stroke-width:0.264583;stroke-opacity:1"
+       d="m 197.95091,159.48028 c 2.75157,0.97179 5.50279,1.94345 5.55297,3.01093 0.0502,1.06748 -2.60049,2.23086 -5.25133,3.39431"
+       id="path3861"
+       inkscape:path-effect="#path-effect3863"
+       inkscape:original-d="m 197.95091,159.48028 c 2.75152,0.97194 5.50274,1.94361 8.25379,2.91504 -2.65051,1.16369 -5.30117,2.32706 -7.95215,3.4902"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="opacity:1;fill:none;stroke:#b198cd;stroke-width:0.264583;stroke-opacity:1"
+       d="m 209.4137,159.48028 c -2.75157,0.97179 -5.50279,1.94345 -5.55297,3.01093 -0.0502,1.06748 2.60049,2.23086 5.25133,3.39431"
+       id="path3865"
+       inkscape:path-effect="#path-effect3869"
+       inkscape:original-d="m 209.4137,159.48028 c -2.75152,0.97194 -5.50274,1.94361 -8.25379,2.91504 2.65051,1.16369 5.30117,2.32706 7.95215,3.4902"
+       sodipodi:nodetypes="ccc" />
   </g>
 </svg>

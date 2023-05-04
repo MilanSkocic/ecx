@@ -29,7 +29,7 @@ breathe_default_project = mod.__package_name__
 breathe_projects = {mod.__package_name__: "../doxygen/xml/"}
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
-bibtex_bibfiles = ["references/ecx.bib"]
+bibtex_bibfiles = ["bibliography/ecx.bib"]
 bibtex_default_style = 'unsrt'
 # The suffix(e filenames.
 # You can specify multiple suffix as a list of string:

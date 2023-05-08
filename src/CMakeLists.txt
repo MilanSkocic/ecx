@@ -1,33 +1,16 @@
-add_library(static_felectrox STATIC ecx.f90 ecx_capi.f90 codata.f90)
-set_target_properties(static_felectrox PROPERTIES OUTPUT_NAME felectrox)
+set(ecx_sources "codata.f90" "ecx_common.f90" "ecx_eis.f90" "ecx_pec.f90")
 
-add_library(shared_felectrox SHARED ecx.f90 ecx_capi.f90 ecx_pec.f90)
-set_target_properties(shared_felectrox PROPERTIES OUTPUT_NAME felectrox)
+add_library(static_ecx STATIC "${ecx_sources}")
+set_target_properties(static_ecx PROPERTIES OUTPUT_NAME ecx)
 
-add_library(static_electrox STATIC eis.c kinetics.c utilities.c io.c)
-set_target_properties(static_electrox PROPERTIES OUTPUT_NAME electrox)
+add_library(shared_ecx SHARED "${ecx_sources}")
+set_target_properties(shared_ecx PROPERTIES OUTPUT_NAME ecx)
 
-add_library(shared_electrox SHARED eis.c kinetics.c utilities.c io.c)
-set_target_properties(shared_electrox PROPERTIES OUTPUT_NAME electrox)
+target_include_directories(static_ecx PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_link_directories(static_ecx PUBLIC ${CMAKE_BINARY_DIR}/src)
 
-target_include_directories(static_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-target_link_directories(static_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-target_link_libraries(static_electrox PUBLIC m gsl openblas felectrox)
+target_include_directories(shared_ecx PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_link_directories(shared_ecx PUBLIC ${CMAKE_BINARY_DIR}/src)
 
-target_include_directories(shared_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-target_link_directories(shared_electrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-target_link_libraries(shared_electrox PUBLIC m gsl openblas felectrox)
-
-target_include_directories(shared_felectrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-target_link_directories(shared_felectrox PUBLIC ${CMAKE_BINARY_DIR}/src)
-
-
-set_target_properties(static_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h)
-set_target_properties(shared_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h PUBLIC_HEADER ${CMAKE_BINARY_DIR}/src/electrox_codata.h)
-
-
-link_directories(${CMAKE_BINARY_DIR}/src)
-
-add_executable(celectrox-config config.c)
-target_include_directories(celectrox-config PRIVATE ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src)
-target_link_libraries(celectrox-config electrox)
+#set_target_properties(static_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h)
+#set_target_properties(shared_electrox PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/electrox.h PUBLIC_HEADER ${CMAKE_BINARY_DIR}/src/electrox_codata.h)

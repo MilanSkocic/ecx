@@ -1,7 +1,7 @@
 module ecx_capi
     use iso_fortran_env
     use iso_c_binding
-    use ecx
+    use ecx_eis
     implicit none
     private
 
@@ -23,7 +23,7 @@ pure subroutine ecx_capi_z_r(w, R, n, Z)bind(C)
     real(c_double), dimension(n), intent(in) :: w
     complex(c_double_complex), dimension(n), intent(out) :: Z
 
-    Z(:) = ecx_zr(w, r)
+    Z(:) = ecx_eis_zr(w, r)
 end subroutine
 
 end module

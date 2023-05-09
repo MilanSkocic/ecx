@@ -1,4 +1,4 @@
-Welcome to iapws documentation!
+Welcome to ecx documentation!
 =========================================================
 
 .. toctree::

@@ -108,4 +108,23 @@ pure elemental function flw(w, r, tau)result(Z)
 
 end function
 
+!> @brief Compute the complex impedance for a finite space warburg
+!! @param[in] w Angular frequency in rad.s^-1.
+!! @param[in] r Resistance in Ohms.
+!! @param[in] tau Characteristic time in s.
+!! @return Z Complex impedance in Ohms.
+pure elemental function fsw(w, r, tau)result(Z)
+    implicit none
+    real(real64), intent(in) :: w
+    real(real64), intent(in) :: r
+    real(real64), intent(in) :: tau
+    complex(real64) :: Z
+    complex(real64) :: x
+
+    x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
+
+    Z = r/(x * tanh(x))
+
+end function
+
 end module

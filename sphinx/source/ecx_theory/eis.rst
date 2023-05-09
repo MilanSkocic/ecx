@@ -1,25 +1,5 @@
 EIS
 ========
-The module :mod:`skelectrox.eis.core` aims at simplifying the generation and fitting of data from
-electrochemical impedance measurements. It provides a base class :class:`skelectrox.eis.core.ElectrochemicalCircuit`
-for abstracting the electrochemical circuit elements which inherits from the
-:class:`skelectrox.utilities.core.Function`.
-
-Each circuit element inherits from the base class :class:`skelectrox.eis.core.ElectrochemicalCircuit`:
-
-* :class:`skelectrox.eis.core.Resistance`
-* :class:`skelectrox.eis.core.Capacitance`
-* :class:`skelectrox.eis.core.Inductance`
-* :class:`skelectrox.eis.core.Warburg`
-* :class:`skelectrox.eis.core.WarburgDiffusionConvection`
-* :class:`skelectrox.eis.core.WarburgBlocking`
-* :class:`skelectrox.eis.core.ConstantPhaseElement`
-* :class:`skelectrox.eis.core.MeasurementModel`
-* :class:`skelectrox.eis.core.Gerisher`
-
-It also provides a class for abstracting the differential impedance analysis (DIA) through the class
-:class:`skelectrox.eis.core.DifferentialImpedanceAnalysis`.
-
 
 Introduction
 ------------
@@ -56,14 +36,14 @@ with: :math:`0 \leq \omega < \infty`:
   * Current: :math:`I(\omega) = I_0 \cdot e^{j (\omega t - \phi)}`
 
 .. _fig_ac_waves:
-.. figure:: ../examples/figures/EIS-Principle-AC_waves.png
+.. figure:: ../media/EIS-Principle-AC_waves.png
     :width: 600
     :alt: EIS AC Waves
 
     EIS AC Waves
 
 .. _fig_trig_circle:
-.. figure:: ../examples/figures/EIS-Principle-AC_waves-TrigCircle.png
+.. figure:: ../media/EIS-Principle-AC_waves-TrigCircle.png
     :width: 600
     :alt: Trigonometric Circle
 
@@ -109,21 +89,21 @@ more often used to analyze the characteristics of electrochemical processes.
 
 
 .. _fig_representation_nyquist:
-.. figure:: ../examples/figures/EIS-Principle-Representation_Nyquist.png
+.. figure:: ../media/EIS-Principle-Representation_Nyquist.png
     :width: 600
     :alt: Nyquist Representation
 
     Nyquist Representation
 
 .. _fig_representation_mod:
-.. figure:: ../examples/figures/EIS-Principle-Representation_Bode_Mod.png
+.. figure:: ../media/EIS-Principle-Representation_Bode_Mod.png
     :width: 600
     :alt: Bode Modulus Representation
 
     Bode Modulus Representation
 
 .. _fig_representation_phase:
-.. figure:: ../examples/figures/EIS-Principle-Representation_Bode_Phase.png
+.. figure:: ../media/EIS-Principle-Representation_Bode_Phase.png
     :width: 600
     :alt: Bode Phase Representation
 
@@ -160,21 +140,21 @@ In order to be recognized by the string parser each element must start the one o
 and can be followed by a name. The measurement model element needs an additional parameter which
 the number of Voigt elements defined after an underscore.
 
-* :class:`skelectrox.eis.Resistance`: R[name]: :math:`Z(\omega) = R`
-* :class:`skelectrox.eis.Capacitance`: C[name]: :math:`Z(\omega) = \frac{1}{jC\omega}`
-* :class:`skelectrox.eis.Inductance`: L[name]: :math:`Z(\omega) = jL\omega`
-* :class:`skelectrox.eis.Warburg`: W[name]: :math:`Z(\omega) = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j)`
-* :class:`skelectrox.eis.WarburgDiffusionConvection`: Wd[name]: :math:`Z(\omega) = \frac{R_{\delta} \cdot \tanh \left( \sqrt{j\omega\tau}\right)}{\sqrt{j\omega\tau}}`
-* :class:`skelectrox.eis.WarburgBlocking`: Wm[name]: :math:`Z(\omega) = \frac{R_m \cdot \coth \left( \sqrt{j\omega\tau}\right)}{\sqrt{j\omega\tau}}`
-* :class:`skelectrox.eis.ConstantPhaseElement`: Q[name]: :math:`\frac{1}{Q(jw)^{\alpha}}`
-* :class:`skelectrox.eis.MeasurementModel`: M[name]\_[n]: :math:`Z(\omega) = R_0 + \sum _{k=0} ^{k=n} \frac{R_k}{1+jR_kC_k\omega}`
-* :class:`skelectrox.eis.Gerisher`: G[name]: :math:`Z_G(\omega) = G \cdot (K_g + i \omega)^{-n_g}` 
+* R[name]: :math:`Z(\omega) = R`
+* C[name]: :math:`Z(\omega) = \frac{1}{jC\omega}`
+* L[name]: :math:`Z(\omega) = jL\omega`
+* W[name]: :math:`Z(\omega) = \frac{\sigma}{\sqrt{\omega}} \cdot (1-j)`
+* Wd[name]: :math:`Z(\omega) = \frac{R_{\delta} \cdot \tanh \left( \sqrt{j\omega\tau}\right)}{\sqrt{j\omega\tau}}`
+* Wm[name]: :math:`Z(\omega) = \frac{R_m \cdot \coth \left( \sqrt{j\omega\tau}\right)}{\sqrt{j\omega\tau}}`
+* Q[name]: :math:`\frac{1}{Q(jw)^{\alpha}}`
+* M[name]\_[n]: :math:`Z(\omega) = R_0 + \sum _{k=0} ^{k=n} \frac{R_k}{1+jR_kC_k\omega}`
+* G[name]: :math:`Z_G(\omega) = G \cdot (K_g + i \omega)^{-n_g}` 
 
 Inductor and Finite Space Warburg are rarely encountered in corrosion studies.
 
 
 .. _fig_circuit_elements:
-.. figure:: ../examples/figures/EIS-Principle-CircuitElements.png
+.. figure:: ../media/EIS-Principle-CircuitElements.png
     :width: 600
     :alt: Circuit Elements
 
@@ -234,7 +214,7 @@ Reflects electrochemical reaction controlled only by kinetics as shown in :numre
 * :math:`C_{dl}`: double layer capacitance
 
 .. _fig_simplified_Randles:
-.. figure:: ../examples/figures/EIS-Principle-SimplifiedRandles.png
+.. figure:: ../media/EIS-Principle-SimplifiedRandles.png
     :width: 600
     :alt: Simplified Randles
 
@@ -253,7 +233,7 @@ Reflects electrochemical reaction controlled by kinetics and diffusion as shown 
 
 
 .. _fig_Randles:
-.. figure:: ../examples/figures/EIS-Principle-Randles.png
+.. figure:: ../media/EIS-Principle-Randles.png
     :width: 600
     :alt: Randles
 
@@ -466,7 +446,7 @@ An example with a simple RC circuit:
   ax.invert_yaxis()
 
 .. _fig_DIA_RC:
-.. figure:: ../examples/figures/EIS-DIA-RC.png
+.. figure:: ../media/EIS-DIA-RC.png
     :width: 600
     :alt: Simple RC 
 
@@ -516,7 +496,7 @@ An example with a simple RC circuit:
 
 
 .. _fig_DIA_ta:
-.. figure:: ../examples/figures/EIS-DIA-ta.png
+.. figure:: ../media/EIS-DIA-ta.png
     :width: 600
     :alt: Temporal Analysis 
 
@@ -524,14 +504,14 @@ An example with a simple RC circuit:
 
 
 .. _fig_DIA_dta:
-.. figure:: ../examples/figures/EIS-DIA-dta.png
+.. figure:: ../media/EIS-DIA-dta.png
     :width: 600
     :alt: Differential Temporal Analysis 
 
     Differential Temporal Analysis
 
 .. _fig_DIA_sa:
-.. figure:: ../examples/figures/EIS-DIA-sa.png
+.. figure:: ../media/EIS-DIA-sa.png
     :width: 600
     :alt: Spectral Analysis 
 
@@ -539,7 +519,7 @@ An example with a simple RC circuit:
 
 
 .. _fig_DIA_dsa:
-.. figure:: ../examples/figures/EIS-DIA-dsa.png
+.. figure:: ../media/EIS-DIA-dsa.png
     :width: 600
     :alt: Differential Spectral Analysis 
 

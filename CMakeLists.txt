@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(electrox VERSION "0.1.0" LANGUAGES "Fortran" DESCRIPTION "Electrochemistry for C users.")
+project(electrox VERSION "0.1.0" LANGUAGES "Fortran" DESCRIPTION "Electrochemistry")
 
 set(CMAKE_C_STANDARD 99)
 

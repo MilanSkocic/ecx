@@ -1,7 +1,7 @@
 !> @file
-!! Electrochemistry module.
+!! PEC module.
 
-!> @brief Electrochemistry module.
+!> @brief Module containing functions and subroutines for PhotoElectrochemistry.
 module ecx_pec
     use iso_fortran_env
     use ecx_constants

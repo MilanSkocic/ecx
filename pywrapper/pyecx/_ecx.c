@@ -20,7 +20,8 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
 
     double r;
     double w;
-    double complex z;
+    ecx_cdouble z = ecx_cbuild(0.0, 0.0);
+    Py_ssize_t i;
 
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &r)){
         PyErr_SetString(PyExc_TypeError, "w is a float or a 1d-array like, r is a float.");
@@ -46,18 +47,22 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
             return NULL;
         }else{
 
-            new_buffer.buf = PyMem_Calloc(buffer->len, sizeof(double complex));
+            new_buffer.buf = PyMem_Calloc(buffer->len, sizeof(ecx_cdouble));
             new_buffer.obj = NULL;
             new_buffer.len = buffer->len;
             new_buffer.readonly = buffer->readonly;
             new_buffer.itemsize = buffer->itemsize;
-            new_buffer.format = "Z16";
+            new_buffer.format = "Zd";
             new_buffer.ndim = buffer->ndim;
             new_buffer.shape = buffer->shape;
             new_buffer.strides = buffer->strides;
             new_buffer.suboffsets = NULL;
+
+            for(i=0; new_buffer.ndim; i++){
+                new_buffer.strides[i] *= 2;
+            }
             
-            ecx_capi_zr((double *)buffer->buf, r, buffer->len, (double complex *) new_buffer.buf);
+            ecx_capi_zr((double *)buffer->buf, r, buffer->len, (ecx_cdouble *) new_buffer.buf);
             new_mview = PyMemoryView_FromBuffer(&new_buffer);
             return new_mview;
         }

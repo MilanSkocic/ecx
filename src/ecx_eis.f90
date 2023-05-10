@@ -22,7 +22,6 @@ pure elemental function ecx_eis_zr(w, R) result(Z)
     real(real64), intent(in) :: R
     real(real64), intent(in) :: w
     complex(real64) :: Z
-
     Z = cmplx(R, 0.0d0, kind=real64)
 end function
 

@@ -13,6 +13,7 @@
 .vscode
 
 build/
+*.egg-info
 
 .DS_Store
 

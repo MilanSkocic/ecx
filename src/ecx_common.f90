@@ -1,4 +1,4 @@
-module ecx_constants
+module ecx_common
     use codata
     implicit none
     private

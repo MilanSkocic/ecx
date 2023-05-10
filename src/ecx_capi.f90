@@ -14,16 +14,16 @@ contains
 !! @param[in] R Resistance in Ohms.
 !! @param[in] n Size of w and Z.
 !! @param[out] Z Complex impedance in Ohms (rank-1 array).
-
-pure subroutine ecx_capi_z_r(w, R, n, Z)bind(C)
+pure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
     implicit none
 
-    integer(c_size_t), intent(in) :: n
-    real(c_double), intent(in) :: R
-    real(c_double), dimension(n), intent(in) :: w
-    complex(c_double_complex), dimension(n), intent(out) :: Z
+    integer(c_size_t), intent(in), value :: n
+    real(c_double), intent(in), value :: R
+    real(c_double), intent(in) :: w(n)
+    complex(c_double_complex), dimension(n), intent(out) :: Z(n)
 
     Z(:) = ecx_eis_zr(w, r)
+
 end subroutine
 
 end module

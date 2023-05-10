@@ -4,7 +4,7 @@
 !> @brief Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
 module ecx_eis
     use iso_fortran_env
-    use ecx_constants
+    use ecx_common
     implicit none
     private
 

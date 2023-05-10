@@ -4,51 +4,10 @@ import numpy as np
 from numpy.typing import NDArray
 from . import _ecx
 
-def kh(temperature: Union[int, float, NDArray], gas: str, solvent:str)->Union[float, NDArray]:
-    """
-    Compute the Henry constant for the gas and solvent at temperature.
+def zr(w, r):
     
-    Parameters
-    -----------
-    temperature: int, float or array-like.
-        Temperature in °C.
-    gas: str
-        Desired gas.
-    solvent: str
-        Desired solvent: H2O or D2O.
-
-    Returns
-    --------
-    kh: float or array-like
-        Henry constant.
-    """
-    kh = _ecx.kh(temperature, gas, solvent)
-    if isinstance(kh, memoryview):
-        return np.asarray(kh)
+    v = _ecx.zr(w, r)
+    if isinstance(v, memoryview):
+        return np.asarray(v)
     else:
-        return kh
-
-def kd(temperature: Union[int, float, NDArray], gas: str, solvent:str)->Union[float, NDArray]:
-    """
-    Compute the vapor-liquid distribution constant for the gas and solvent at temperature.
-    
-    Parameters
-    -----------
-    temperature: int, float or array-like.
-        Temperature in °C.
-    gas: str
-        Desired gas.
-    solvent: str
-        Desired solvent: H2O or D2O.
-
-    Returns
-    --------
-    kd: float or array-like
-        Liquid-Vapor distribution constant.
-    """
-    kd = _ecx.kd(temperature, gas, solvent)
-    if isinstance(kd, memoryview):
-        return np.asarray(kd)
-    else:
-        return kd
-
+        return v

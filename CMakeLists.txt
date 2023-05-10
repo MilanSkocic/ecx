@@ -23,10 +23,8 @@ add_subdirectory(src)
 #add_test(NAME utilities COMMAND test_utilities)
 
 
-#install(TARGETS static_electrox PUBLIC_HEADER DESTINATION include/electrox ARCHIVE DESTINATION lib)
-#install(TARGETS shared_electrox PUBLIC_HEADER DESTINATION include/electrox LIBRARY DESTINATION lib)
-#install(TARGETS static_felectrox ARCHIVE DESTINATION lib)
-#install(TARGETS shared_felectrox LIBRARY DESTINATION lib)
+install(TARGETS static_ecx PUBLIC_HEADER DESTINATION include ARCHIVE DESTINATION lib)
+install(TARGETS shared_ecx PUBLIC_HEADER DESTINATION include LIBRARY DESTINATION lib)
 
 #SET(CPACK_GENERATOR "DEB")
 #SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Milan Skocic") #required

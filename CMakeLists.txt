@@ -14,10 +14,10 @@ message("prefix = " ${CMAKE_INSTALL_PREFIX})
 
 add_subdirectory(src)
 add_subdirectory(examples)
-#add_subdirectory(tests)
+add_subdirectory(tests)
 
-#enable_testing()
-#add_test(NAME bv COMMAND test_bv)
+enable_testing()
+add_test(NAME test_eis_r COMMAND test_eis_r)
 #add_test(NAME eis COMMAND test_eis)
 #add_test(NAME io COMMAND test_io)
 #add_test(NAME utilities COMMAND test_utilities)

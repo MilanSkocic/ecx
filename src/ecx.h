@@ -12,7 +12,9 @@ typedef _Dcomplex ecx_cdouble;
 typedef double _Complex ecx_cdouble;
 #define ecx_cbuild(real, imag) (real+I*imag)
 #endif
+
 extern void ecx_capi_zr(double *w, double R, size_t n, ecx_cdouble *Z);
+extern void ecx_capi_zc(double *w, double C, size_t n, ecx_cdouble *Z);
 
 
 

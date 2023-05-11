@@ -11,3 +11,11 @@ def zr(w, r):
         return np.asarray(v)
     else:
         return v
+
+def zc(w, c):
+
+    v = _ecx.zc(w, c)
+    if isinstance(v, memoryview):
+        return np.asarray(v)
+    else:
+        return v

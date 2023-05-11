@@ -7,7 +7,11 @@ PyDoc_STRVAR(module_docstring, "C extension wrapping the Fortran ecx library.");
 
 PyDoc_STRVAR(ecx_zr_doc, 
 "zr(w, R) --> float \n\n"
-"Get the complex impedance for a resistor.");
+"Computes the complex impedance for a resistor.");
+
+PyDoc_STRVAR(ecx_zc_doc, 
+"zr(w, C) --> float \n\n"
+"Computes the complex impedance for a capacitor.");
 
 static Py_buffer create_new_buffer(const char *format,
                                    Py_ssize_t itemsize, 
@@ -32,7 +36,6 @@ static Py_buffer create_new_buffer(const char *format,
     }
 
     strides[ndim-1] = itemsize;
-    printf("elmtsize=%ld\n", itemsize);
     if(ndim > 1){
         for(i=0; i<(ndim-1); i++){
             subsize = 1;
@@ -65,7 +68,7 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
     ecx_cdouble z = ecx_cbuild(0.0, 0.0);
 
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &r)){
-        PyErr_SetString(PyExc_TypeError, "w is a float or a 1d-array like, r is a float.");
+        PyErr_SetString(PyExc_TypeError, "w is a float or a 1d-array like, R is a float.");
         return NULL;
     }
 
@@ -100,9 +103,57 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
 
 }
 
+static PyObject *_ecx_zc(PyObject *self, PyObject *args){
+
+    PyObject *w_obj;
+    PyObject *mview;
+    Py_buffer *buffer;
+    PyObject *new_mview;
+    Py_buffer new_buffer;
+
+    double c;
+    double w;
+    ecx_cdouble z = ecx_cbuild(0.0, 0.0);
+
+    if(!PyArg_ParseTuple(args, "Od", &w_obj, &c)){
+        PyErr_SetString(PyExc_TypeError, "w is a float or a 1d-array like, C is a float.");
+        return NULL;
+    }
+
+    if(PyFloat_Check(w_obj) == 1){
+        w = PyFloat_AsDouble(w_obj);
+        ecx_capi_zr(&w, c, 1, &z);
+        return PyComplex_FromDoubles(creal(z), cimag(z));
+    }else if(PyLong_Check(w_obj)==1){
+        w = PyFloat_AsDouble(w_obj);
+        ecx_capi_zr(&w, c, 1, &z);
+        return PyComplex_FromDoubles(creal(z), cimag(z));
+    }else if(PyObject_CheckBuffer(w_obj)==1){
+        mview = PyMemoryView_FromObject(w_obj);
+        buffer = PyMemoryView_GET_BUFFER(mview);
+        
+        if(strcmp(buffer->format, "d")!=0){
+            PyErr_SetString(PyExc_TypeError, "w must be an array-like of floats.");
+            return NULL;
+        }else if(buffer->ndim>1){
+            PyErr_SetString(PyExc_TypeError, "w must be an rank-1 of floats.");
+            return NULL;
+        }else{
+            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
+            ecx_capi_zc((double *)buffer->buf, c, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
+            new_mview = PyMemoryView_FromBuffer(&new_buffer);
+            return new_mview;
+        }
+    }else{
+        PyErr_SetString(PyExc_TypeError, "w must be an int, a float or a array-like of floats");
+        return NULL;
+    }
+}
+
 
 static PyMethodDef myMethods[] = {
     {"zr", (PyCFunction) _ecx_zr, METH_VARARGS, ecx_zr_doc},
+    {"zc", (PyCFunction) _ecx_zc, METH_VARARGS, ecx_zc_doc},
     { NULL, NULL, 0, NULL }
 };
 

@@ -9,6 +9,48 @@ PyDoc_STRVAR(ecx_zr_doc,
 "zr(w, R) --> float \n\n"
 "Get the complex impedance for a resistor.");
 
+static Py_buffer create_new_buffer(const char *format,
+                                   Py_ssize_t itemsize, 
+                                   Py_ssize_t ndim,
+                                   Py_ssize_t *shape){
+
+    Py_buffer buffer;
+    Py_ssize_t i, j, size, subsize;
+    Py_ssize_t *strides = (Py_ssize_t *)PyMem_Calloc(ndim, sizeof(Py_ssize_t));
+
+    buffer.obj = NULL;
+    buffer.suboffsets = NULL;
+    buffer.format = "Zd";
+    buffer.readonly = 0;
+    buffer.itemsize = itemsize;
+    buffer.ndim = ndim;
+    buffer.shape = shape;
+
+    size = 1;
+    for(i=0; i<ndim; i++){
+        size *= shape[i];
+    }
+
+    strides[ndim-1] = itemsize;
+    printf("elmtsize=%ld\n", itemsize);
+    if(ndim > 1){
+        for(i=0; i<(ndim-1); i++){
+            subsize = 1;
+            for(j=i+1; j<ndim; j++){
+                subsize *= shape[j];
+            }
+            strides[i] = subsize * itemsize;
+        }
+    }
+
+    buffer.len = size * itemsize;
+    buffer.strides = strides;
+    buffer.buf = PyMem_Calloc(size, itemsize);
+
+    return buffer;
+
+}
+
 
 static PyObject *_ecx_zr(PyObject *self, PyObject *args){
 
@@ -21,7 +63,6 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
     double r;
     double w;
     ecx_cdouble z = ecx_cbuild(0.0, 0.0);
-    Py_ssize_t i;
 
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &r)){
         PyErr_SetString(PyExc_TypeError, "w is a float or a 1d-array like, r is a float.");
@@ -47,23 +88,7 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
             PyErr_SetString(PyExc_TypeError, "w must be an rank-1 of floats.");
             return NULL;
         }else{
-            new_buffer.buf = PyMem_Calloc(buffer->shape[0], sizeof(ecx_cdouble));
-            new_buffer.obj = NULL;
-            new_buffer.len = sizeof(ecx_cdouble) * buffer->shape[0];
-            new_buffer.readonly = buffer->readonly;
-            new_buffer.itemsize = sizeof(ecx_cdouble);
-            new_buffer.format = "Zd";
-            new_buffer.ndim = buffer->ndim;
-            new_buffer.shape = buffer->shape;
-            new_buffer.strides = buffer->strides;
-            new_buffer.suboffsets = NULL;
-            printf("buffer->len = %ld %ld\n", new_buffer.len, sizeof(new_buffer.buf));
-
-            for(i=0; i<new_buffer.ndim; i++){
-                new_buffer.strides[i] *= 2;
-                printf("%ld \n", new_buffer.strides[i]);
-            }
-            
+            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
             ecx_capi_zr((double *)buffer->buf, r, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
             new_mview = PyMemoryView_FromBuffer(&new_buffer);
             return new_mview;

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(electrox VERSION "0.1.0" LANGUAGES "Fortran" DESCRIPTION "Electrochemistry")
+project(electrox VERSION "0.1.0" LANGUAGES  "C" "Fortran" DESCRIPTION "Electrochemistry")
 
 set(CMAKE_C_STANDARD 99)
 
@@ -13,7 +13,7 @@ message("build type = " ${CMAKE_BUILD_TYPE})
 message("prefix = " ${CMAKE_INSTALL_PREFIX})
 
 add_subdirectory(src)
-#add_subdirectory(examples)
+add_subdirectory(examples)
 #add_subdirectory(tests)
 
 #enable_testing()

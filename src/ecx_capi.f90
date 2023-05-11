@@ -20,7 +20,7 @@ pure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
     integer(c_size_t), intent(in), value :: n
     real(c_double), intent(in), value :: R
     real(c_double), intent(in) :: w(n)
-    complex(c_double_complex), dimension(n), intent(out) :: Z(n)
+    complex(c_double_complex), intent(out) :: Z(n)
 
     Z(:) = ecx_eis_zr(w, r)
 

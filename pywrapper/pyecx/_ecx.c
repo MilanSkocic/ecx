@@ -31,10 +31,11 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
     if(PyFloat_Check(w_obj) == 1){
         w = PyFloat_AsDouble(w_obj);
         ecx_capi_zr(&w, r, 1, &z);
-        return Py_BuildValue("D", z);
+        return PyComplex_FromDoubles(creal(z), cimag(z));
     }else if(PyLong_Check(w_obj)==1){
+        w = PyFloat_AsDouble(w_obj);
         ecx_capi_zr(&w, r, 1, &z);
-        return Py_BuildValue("D", z);
+        return PyComplex_FromDoubles(creal(z), cimag(z));
     }else if(PyObject_CheckBuffer(w_obj)==1){
         mview = PyMemoryView_FromObject(w_obj);
         buffer = PyMemoryView_GET_BUFFER(mview);
@@ -46,23 +47,24 @@ static PyObject *_ecx_zr(PyObject *self, PyObject *args){
             PyErr_SetString(PyExc_TypeError, "w must be an rank-1 of floats.");
             return NULL;
         }else{
-
-            new_buffer.buf = PyMem_Calloc(buffer->len, sizeof(ecx_cdouble));
+            new_buffer.buf = PyMem_Calloc(buffer->shape[0], sizeof(ecx_cdouble));
             new_buffer.obj = NULL;
-            new_buffer.len = buffer->len;
+            new_buffer.len = sizeof(ecx_cdouble) * buffer->shape[0];
             new_buffer.readonly = buffer->readonly;
-            new_buffer.itemsize = buffer->itemsize;
+            new_buffer.itemsize = sizeof(ecx_cdouble);
             new_buffer.format = "Zd";
             new_buffer.ndim = buffer->ndim;
             new_buffer.shape = buffer->shape;
             new_buffer.strides = buffer->strides;
             new_buffer.suboffsets = NULL;
+            printf("buffer->len = %ld %ld\n", new_buffer.len, sizeof(new_buffer.buf));
 
-            for(i=0; new_buffer.ndim; i++){
+            for(i=0; i<new_buffer.ndim; i++){
                 new_buffer.strides[i] *= 2;
+                printf("%ld \n", new_buffer.strides[i]);
             }
             
-            ecx_capi_zr((double *)buffer->buf, r, buffer->len, (ecx_cdouble *) new_buffer.buf);
+            ecx_capi_zr((double *)buffer->buf, r, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
             new_mview = PyMemoryView_FromBuffer(&new_buffer);
             return new_mview;
         }

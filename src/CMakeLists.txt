@@ -14,4 +14,4 @@ target_include_directories(shared_ecx PUBLIC ${CMAKE_SOURCE_DIR}/src)
 target_link_directories(shared_ecx PUBLIC ${CMAKE_BINARY_DIR}/src)
 
 set_target_properties(static_ecx PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/ecx.h)
-set_target_properties(shared_ecx PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/ecx.h)
+set_target_properties(shared_ecx PROPERTIES PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/src/ecx.h PUBLIC_HEADER ${CMAKE_BINARY_DIR}/src/ecx.mod)

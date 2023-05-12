@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ecx.h"
+#include "ecx_eis_capi.h"
 
 
 int main(void){

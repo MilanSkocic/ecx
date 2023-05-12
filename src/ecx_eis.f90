@@ -95,7 +95,7 @@ end function
 !! @param[in] r Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function flw(w, r, tau)result(Z)
+pure elemental function ecx_eis_flw(w, r, tau)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: r
@@ -114,7 +114,7 @@ end function
 !! @param[in] r Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function fsw(w, r, tau)result(Z)
+pure elemental function ecx_eis_fsw(w, r, tau)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: r
@@ -126,6 +126,23 @@ pure elemental function fsw(w, r, tau)result(Z)
 
     Z = r/(x * tanh(x))
 
+end function
+
+!> @brief Compute the complex impedance of the Gerisher element.
+!! @param G Pseudo-Resistance in Ohms.s^(1/2).
+!! @param K Offset in rad.s^-1.
+!! @param w Angular frequency in rad.s^-1.
+!! @return Z Complex impedance in Ohms. 
+pure elemental function ecx_eis_g(w, G, K)result(Z)
+    implicit none
+    real(real64), intent(in) :: w
+    real(real64), intent(in) :: G
+    real(real64), intent(in) :: K
+    complex(real64) :: Z
+    complex(real64) :: x
+    
+    x = cmplx(0.0d0, w, kind=real64)
+    Z = G / sqrt(K+x)
 end function
 
 end module

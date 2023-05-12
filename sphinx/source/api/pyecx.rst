@@ -2,5 +2,5 @@ pyipaws
 ================
 
 
-.. automodule:: pyecx.ecx
+.. automodule:: pyecx.eis
     :members:

@@ -9,16 +9,17 @@ module ecx_pec
     private
     
     !> PI constant
-    real(real64), parameter, public :: PI = 4.0d0*datan(1.0d0)
+    real(real64), parameter :: PI = 4.0d0*datan(1.0d0)
     !> Speed of light in m/s.
-    real(real64), parameter, public :: c = speed_of_light_in_vacuum
+    real(real64), parameter :: c = speed_of_light_in_vacuum
 
 contains
 
 !> @brief Compute the not scaled absorbance coefficient.
 !! @param[in] hv Light energy in eV.
 !! @param[in] Eg Bandgap in eV.
-!! @preturn alpha  energy in eV.
+!! @param[in] n Exponent for direct (1/2) or indirect transition (2)
+!! @return alpha  energy in eV.
 pure elemental function ecx_pec_alpha(hv, Eg, n)result(alpha)
     implicit none
 

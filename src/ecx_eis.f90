@@ -8,7 +8,7 @@ module ecx_eis
     private
     
     !> PI constant
-    real(real64), parameter, public :: PI = 4.0d0*datan(1.0d0)
+    real(real64), parameter :: PI = 4.0d0*datan(1.0d0)
 
 public :: ecx_eis_zr, ecx_eis_zc
 

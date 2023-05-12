@@ -1,9 +1,9 @@
 /**
- * @file ecx_pec.h
+ * @file ecx_pec_capi.h
  * @brief EIS C header for th ecx library.
  */
-#ifndef ECX_PEC_H
-#define ECX_PEC_H
+#ifndef ECX_PEC_CAPI_H
+#define ECX_PEC_CAPI_H
 #include "ecx_types.h"
 
 

@@ -4,8 +4,8 @@ ecx 0.1.0 Release Note
 Changes
 --------
 
-* Implementation of kH and kD from ecx G7-04 in fortran + C API
-* Python wrapper for kH and kD.
+* Implementation of eis + C API
+* Python wrappers for eis.
 * Documentation with sphinx.
 
 Download

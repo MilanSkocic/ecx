@@ -109,8 +109,8 @@ if __name__ == "__main__":
     found_shared = search_libraries(ecx_library_dirs, ecx_libraries, static=False)
     found_static = search_libraries(ecx_library_dirs, ecx_libraries, static=True)
 
-    mod_ext = Extension(name="pyecx._ecx",
-                                         sources=["./pyecx/_ecx.c"],
+    mod_ext = Extension(name="pyecx.eis",
+                                         sources=["./pyecx/ecx_eis.c"],
                                          libraries=ecx_libraries,
                                          library_dirs=ecx_library_dirs,
                                          include_dirs=ecx_include_dirs)

@@ -16,4 +16,4 @@ if platform.system() == "Windows":
 
 
 from .version import *
-from .ecx import *
+from . import eis

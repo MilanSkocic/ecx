@@ -1,6 +1,6 @@
 program example_in_f
     use iso_fortran_env
-    use ecx
+    use ecx_eis
     implicit none
 
     real(real64) :: w(3) = [1.0d0, 1.0d0, 100.0d0]

@@ -4,9 +4,14 @@
 !> @brief Module containing functions and subroutines for PhotoElectrochemistry.
 module ecx_pec
     use iso_fortran_env
-    use ecx_common
+    use codata
     implicit none
     private
+    
+    !> PI constant
+    real(real64), parameter, public :: PI = 4.0d0*datan(1.0d0)
+    !> Speed of light in m/s.
+    real(real64), parameter, public :: c = speed_of_light_in_vacuum
 
 contains
 

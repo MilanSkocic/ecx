@@ -1,5 +1,5 @@
 set(ecx_public_headers "${CMAKE_BINARY_DIR}/src/ecx.mod" "${CMAKE_SOURCE_DIR}/src/ecx.h")
-set(ecx_sources "codata.f90" "ecx_common.f90" "ecx.f90" "ecx_eis.f90" "ecx_pec.f90" "ecx_capi.f90")
+set(ecx_sources "codata.f90"  "ecx_eis.f90" "ecx_pec.f90" "ecx_capi.f90")
 
 add_library(static_ecx STATIC "${ecx_sources}")
 set_target_properties(static_ecx PROPERTIES OUTPUT_NAME ecx)

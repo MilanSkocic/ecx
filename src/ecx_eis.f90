@@ -4,9 +4,11 @@
 !> @brief Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
 module ecx_eis
     use iso_fortran_env
-    use ecx_common
     implicit none
     private
+    
+    !> PI constant
+    real(real64), parameter, public :: PI = 4.0d0*datan(1.0d0)
 
 public :: ecx_eis_zr, ecx_eis_zc
 

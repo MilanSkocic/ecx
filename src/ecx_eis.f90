@@ -10,7 +10,8 @@ module ecx_eis
     !> PI constant
     real(real64), parameter :: PI = 4.0d0*datan(1.0d0)
 
-public :: ecx_eis_zr, ecx_eis_zc
+public :: ecx_eis_zr, ecx_eis_zc, ecx_eis_zl, ecx_eis_zcpe
+public :: ecx_eis_zw, ecx_eis_zflw, ecx_eis_zfsw, ecx_eis_zg
 
 contains
 
@@ -79,61 +80,61 @@ end function
 !! @param[in] w Angular frequencies in rad.s^-1.
 !! @param[in] s Pseudo-Resistance in Ohms.s^(1/2).
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_w(w, s)result(Z)
+pure elemental function ecx_eis_zw(w, s)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: s
     complex(real64) :: Z
     real(real64) :: s2
-    s2 = s/sqrt(2.0d0)
+    s2 = s/sqrt(w)
     Z = cmplx(s2, -s2, kind=real64)
 end function
 
 
 !> @brief Compute the complex impedance for a finite length warburg
 !! @param[in] w Angular frequency in rad.s^-1.
-!! @param[in] r Resistance in Ohms.
+!! @param[in] R Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_flw(w, r, tau)result(Z)
+pure elemental function ecx_eis_zflw(w, R, tau)result(Z)
     implicit none
     real(real64), intent(in) :: w
-    real(real64), intent(in) :: r
+    real(real64), intent(in) :: R
     real(real64), intent(in) :: tau
     complex(real64) :: Z
     complex(real64) :: x
 
     x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
 
-    Z = r/x * tanh(x)
+    Z = R/x * tanh(x)
 
 end function
 
 !> @brief Compute the complex impedance for a finite space warburg
 !! @param[in] w Angular frequency in rad.s^-1.
-!! @param[in] r Resistance in Ohms.
+!! @param[in] R Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_fsw(w, r, tau)result(Z)
+pure elemental function ecx_eis_zfsw(w, R, tau)result(Z)
     implicit none
     real(real64), intent(in) :: w
-    real(real64), intent(in) :: r
+    real(real64), intent(in) :: R
     real(real64), intent(in) :: tau
     complex(real64) :: Z
     complex(real64) :: x
 
     x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
 
-    Z = r/(x * tanh(x))
+    Z = R/(x * tanh(x))
 
 end function
 
 !> @brief Compute the complex impedance of the Gerisher element.
+!! @param w Angular frequency in rad.s^-1.
 !! @param G Pseudo-Resistance in Ohms.s^(1/2).
 !! @param K Offset in rad.s^-1.
-!! @param w Angular frequency in rad.s^-1.
 !! @return Z Complex impedance in Ohms. 
-pure elemental function ecx_eis_g(w, G, K)result(Z)
+pure elemental function ecx_eis_zg(w, G, K)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: G
@@ -143,6 +144,29 @@ pure elemental function ecx_eis_g(w, G, K)result(Z)
     
     x = cmplx(0.0d0, w, kind=real64)
     Z = G / sqrt(K+x)
+end function
+
+!> @brief Compute the complex impedance of a simple Randles: Rel+Rct/Cdl
+!! @param[in] Rel Electrolyte resistance in Ohms.
+!! @param[in] Rct Charge transfert resistance in Ohms.
+!! @param[in] C Double layer capacitance in Farad.
+!! @return Z Complex impedance in Ohms. 
+pure elemental function ecx_eis_randles(w, Rel, Rct, Cdl)result(Z)
+    implicit none
+    real(real64), intent(in) :: w
+    real(real64), intent(in) :: Rel
+    real(real64), intent(in) :: Rct
+    real(real64), intent(in) :: Cdl
+    complex(real64) :: Z
+    complex(real64) :: zrel
+    complex(real64) :: zrct
+    complex(real64) :: zcdl
+
+    zrct = ecx_eis_zr(w, Rct)
+    zcdl = ecx_eis_zc(w, Cdl)
+    zrel = ecx_eis_zr(w, Rel)
+
+    Z = zrel + (zrct * zcdl)/(zrct+zcdl)
 end function
 
 end module

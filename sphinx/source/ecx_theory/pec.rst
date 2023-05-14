@@ -95,14 +95,14 @@ n4    +2.00e+00
 ===== ========= 
 
 .. _fig_pec_modulus:
-.. figure:: ../examples/figures/PEC-4SC_Mod.png
+.. figure:: ../media/PEC-4SC_Mod.png
     :width: 600
     :alt: PEC Modulus
 
     PEC Modulus
 
 .. _fig_pec_phase:
-.. figure:: ../examples/figures/PEC-4SC_Phase.png
+.. figure:: ../media/PEC-4SC_Phase.png
     :width: 600
     :alt: PEC Phase
 

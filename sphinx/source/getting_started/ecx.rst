@@ -1,7 +1,7 @@
 ecx
 ==============
 
-.. image:: ../media/logo-ecx.png
+.. image:: ../../../media/logo-ecx.png
   :width: 200
   :align: center
 
@@ -9,11 +9,6 @@ ecx
   :start-after: readme_inclusion_start
   :end-before: readme_inclusion_end
 
-.. only:: html
-  
-  PDF documentation: :download:`ecx <../../build/latex/ecx.pdf>`. 
-
-Sources: https://github.com/MilanSkocic/ecx
 
 How to install
 -----------------

@@ -1,9 +1,10 @@
 .. only:: html
 
-bibliography
-==============
+    Bibliography
+    =============================
+    
+    .. toctree::
+        :maxdepth: 2
 
-.. toctree::
-    :maxdepth: 1
 
-    bibliography.rst
+.. bibliography::

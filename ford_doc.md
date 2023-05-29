@@ -11,9 +11,7 @@ twitter: https://twitter.com/fortranlang
 website: https://fortran-lang.org
 src_dir: ./src
 output_dir: ./sphinx/build/html/ford
-page_dir: ./ford_doc_in
-media_dir: ./ford_doc_in/media
-exclude_dir: ./example_packages
+exclude_dir: ./example
              ./test
 display: public
          protected
@@ -29,5 +27,7 @@ md_extensions: markdown.extensions.toc
                markdown.extensions.smarty
 ---
 
-[TOC]
+This is the documentation of the Fortran code. 
+
+Go back to the main documentation [click here](../api/index.html)
 

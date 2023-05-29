@@ -4,6 +4,8 @@ ecx
 Fortran
 --------------
 
+`<../ford/index.html>`_
+
 EIS
 ^^^^^
 .. doxygenfile:: ecx_eis.f90

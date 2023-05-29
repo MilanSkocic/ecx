@@ -16,4 +16,4 @@ clean:
 
 upload:
 	rm -rf ../docs/*
-	cp -r build/html/* ../docs
+	cp -r ./sphinx/build/html/* ../docs

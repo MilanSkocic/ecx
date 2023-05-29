@@ -84,7 +84,22 @@ html_theme = 'classic'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {}
+html_theme_options = {"nosidebar": False,
+                      "rightsidebar": False,
+                        "body_max_width": "100%",
+                        "relbarbgcolor": "#000000",
+                      "relbartextcolor": "#9d9d9d",
+                      "relbarlinkcolor": "#9d9d9d",
+                      "sidebarbgcolor": "#FFFFFF",
+                      "sidebarlinkcolor": "#337ab7",
+                      "footerbgcolor":"#101010",
+                      "sidebartextcolor": "#000000",
+                      "textcolor": "#000000",
+                      "headbgcolor": "#337ab7",
+                      "headtextcolor": "#FFFFFF",
+                      "linkcolor": "#337ab7",
+                      "visitedlinkcolor": "#337ab7",
+                      "codebgcolor":"#f5f5f5"}
 # html_theme_path = []
 
 # Add any paths that contain custom static files (such as style sheets) here,

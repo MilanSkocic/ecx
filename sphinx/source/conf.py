@@ -22,11 +22,9 @@ needs_sphinx = '5.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.intersphinx',
-              'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.imgmath', "breathe",
+              'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.imgmath',
               'sphinx.ext.ifconfig', 'sphinx.ext.viewcode','numpydoc', "sphinxcontrib.bibtex"]
 
-breathe_default_project = mod.__package_name__
-breathe_projects = {mod.__package_name__: "../doxygen/xml/"}
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 bibtex_bibfiles = ["bibliography/ecx.bib"]

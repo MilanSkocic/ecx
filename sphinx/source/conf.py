@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "ecx"
-copyright = mod.__copyright__
+copyright = mod.__copyright__[14:]
 author = mod.__author__
 
 # The version info for the project you're documenting, acts as replacement for
@@ -84,22 +84,30 @@ html_theme = 'classic'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
+ford_blue = "#337ab7"
+ford_light_gray = "#9d9d9d"
+ford_dark_gray = "#101010"
+ford_code_gray = "#f5f5f5"
+ford_white = "#FFFFFF"
+ford_black = "#000000"
 html_theme_options = {"nosidebar": False,
                       "rightsidebar": False,
+                      "headfont": "Helvetica Neue",
+                      "bodyfont": "Helvetica Neue",
                         "body_max_width": "100%",
-                        "relbarbgcolor": "#000000",
-                      "relbartextcolor": "#9d9d9d",
-                      "relbarlinkcolor": "#9d9d9d",
-                      "sidebarbgcolor": "#FFFFFF",
-                      "sidebarlinkcolor": "#337ab7",
-                      "footerbgcolor":"#101010",
-                      "sidebartextcolor": "#000000",
-                      "textcolor": "#000000",
-                      "headbgcolor": "#337ab7",
-                      "headtextcolor": "#FFFFFF",
-                      "linkcolor": "#337ab7",
-                      "visitedlinkcolor": "#337ab7",
-                      "codebgcolor":"#f5f5f5"}
+                        "relbarbgcolor": ford_black,
+                      "relbartextcolor": ford_light_gray,
+                      "relbarlinkcolor": ford_light_gray,
+                      "sidebarbgcolor": ford_white,
+                      "sidebarlinkcolor": ford_blue,
+                      "footerbgcolor": ford_dark_gray,
+                      "sidebartextcolor": ford_black,
+                      "textcolor": ford_black,
+                      "headbgcolor": ford_blue,
+                      "headtextcolor": ford_white,
+                      "linkcolor": ford_blue,
+                      "visitedlinkcolor": ford_blue,
+                      "codebgcolor": ford_code_gray}
 # html_theme_path = []
 
 # Add any paths that contain custom static files (such as style sheets) here,

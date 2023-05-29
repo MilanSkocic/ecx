@@ -9,11 +9,11 @@
 
 #include <complex.h>
 #if _MSC_VER
-typedef _Dcomplex ecx_cdouble;
-#define ecx_cbuild(real, imag) (_Cbuild(real, imag))
+typedef _Dcomplex ecx_cdouble; /**< Cross platform complex type. */
+#define ecx_cbuild(real, imag) (_Cbuild(real, imag))/**< Cross platform complex type constructor*/
 #else
-typedef double _Complex ecx_cdouble;
-#define ecx_cbuild(real, imag) (real+I*imag)
+typedef double _Complex ecx_cdouble; /**< Cross platform complex type. */
+#define ecx_cbuild(real, imag) (real+I*imag) /**< Cross platform complex type constructor*/
 #endif
 
 #endif

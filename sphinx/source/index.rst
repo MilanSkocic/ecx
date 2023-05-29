@@ -10,12 +10,3 @@ Welcome to ecx documentation!
    releases/index.rst
    api/index.rst
    bibliography/index.rst
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

@@ -15,8 +15,7 @@ Common headers
 
 * `ecx_types.h`
 
-.. literalinclude:: ../../../src/ecx_types.h
-    :language: C
+.. doxygenfile:: ecx_types.h
 
 * `ecx.h`
 

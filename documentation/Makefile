@@ -1,6 +1,8 @@
 .PHONY: html latexpdf ford clean upload
 
-html:
+all: ford latexpdf html
+
+html: 
 	$(MAKE) -C ./sphinx html
 
 latexpdf:

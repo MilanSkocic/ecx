@@ -2,4 +2,4 @@
 .PHONY: all
 
 all:
-	$(shell ford conf.md)
+	ford ./conf.md

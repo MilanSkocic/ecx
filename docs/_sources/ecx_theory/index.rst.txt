@@ -1,5 +1,5 @@
 ElectroChemistry - Theoretical background
-===================================
+===========================================
 
 .. toctree::
     :maxdepth: 2

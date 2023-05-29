@@ -15,22 +15,22 @@ Common headers
 
 * `ecx_types.h`
 
-.. literalinclude:: ../../../src/ecx_types.h
+.. literalinclude:: ../../../../include/ecx_types.h
     :language: C
 
 * `ecx.h`
 
-.. literalinclude:: ../../../src/ecx.h
+.. literalinclude:: ../../../../include/ecx.h
     :language: C
 
 EIS headers
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ../../../src/ecx_eis_capi.h
+.. literalinclude:: ../../../../include/ecx_eis_capi.h
     :language: C
 
 PEC headers
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ../../../src/ecx_pec_capi.h
+.. literalinclude:: ../../../../include/ecx_pec_capi.h
     :language: C

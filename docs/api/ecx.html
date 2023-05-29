@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -68,11 +69,11 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;complex.h&gt;</span>
 <span class="cp">#if _MSC_VER</span>
-<span class="k">typedef</span><span class="w"> </span><span class="n">_Dcomplex</span><span class="w"> </span><span class="n">ecx_cdouble</span><span class="p">;</span>
-<span class="cp">#define ecx_cbuild(real, imag) (_Cbuild(real, imag))</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">_Dcomplex</span><span class="w"> </span><span class="n">ecx_cdouble</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; Cross platform complex type. */</span>
+<span class="cp">#define ecx_cbuild(real, imag) (_Cbuild(real, imag))</span><span class="cm">/**&lt; Cross platform complex type constructor*/</span>
 <span class="cp">#else</span>
-<span class="k">typedef</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="kt">_Complex</span><span class="w"> </span><span class="n">ecx_cdouble</span><span class="p">;</span>
-<span class="cp">#define ecx_cbuild(real, imag) (real+I*imag)</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="kt">_Complex</span><span class="w"> </span><span class="n">ecx_cdouble</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; Cross platform complex type. */</span>
+<span class="cp">#define ecx_cbuild(real, imag) (real+I*imag) </span><span class="cm">/**&lt; Cross platform complex type constructor*/</span>
 <span class="cp">#endif</span>
 
 <span class="cp">#endif</span>
@@ -210,8 +211,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright Copyright (C) 2023 Milan Skocic.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+        &#169; Copyright 2023 Milan Skocic.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
   </body>
 </html>

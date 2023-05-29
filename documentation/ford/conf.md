@@ -7,10 +7,10 @@ author: Milan Skocic
 author_email: milan.skocic@icloud.com
 github: https://github.com/MilanSkocic
 website: https://milanskocic.github.io/ecx/index.html
-src_dir: ../src
+src_dir: ../../src
 output_dir: ../sphinx/build/html/ford
-exclude_dir: ../example
-             ../test
+exclude_dir: ../../example
+             ../../test
 display: public
          protected
 source: true

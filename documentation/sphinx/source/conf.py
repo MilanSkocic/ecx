@@ -3,11 +3,11 @@
 
 import os
 import sys, importlib.util
-sys.path.insert(0, os.path.abspath('../../pywrapper/'))
-cautodoc_root = os.path.abspath('../../pywrapper/')
+sys.path.insert(0, os.path.abspath('../../../pywrapper/'))
+cautodoc_root = os.path.abspath('../../../pywrapper/')
 
 # Import only version.py file for extracting the version
-spec = importlib.util.spec_from_file_location('version', '../../pywrapper/pyecx/version.py')
+spec = importlib.util.spec_from_file_location('version', '../../../pywrapper/pyecx/version.py')
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 

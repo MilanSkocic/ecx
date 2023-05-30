@@ -5,6 +5,7 @@
 *.out
 *.so
 *.a
+*.pyd
 *.lib
 *.cmake
 *.mod

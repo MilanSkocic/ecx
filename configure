@@ -1,0 +1,9 @@
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Darwin OS: no static linking"
+else
+    FPM_FFLAGS="-static"
+fi
+
+export FPM_FFLAGS
+
+echo "FPM_FLAGS=" $FPM_FFLAGS

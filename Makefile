@@ -1,17 +1,21 @@
-darwin=false
-FFLAGS_DEBUG_POSIX=-Wall -Wextra -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single
-FFLAGS_RELEASE_POSIX=-O3 -funroll-loops -Wimplicit-interface -fPIC -fmax-errors=1 -fcoarray=single
+name=ecx
+pyw_folder=./pywrapper
+pyw_ext_folder=./pywrapper/pyecx
 
-ifeq ($(darwin), true)
-	FFLAGS_DEBUG=-static $(FFLAGS_DEBUG_POSIX)
-	FFLAGS_RELEASE=-static $(FFLAGS_RELEASE_POSIX)
-else
-	FFLAGS_DEBUG=$(FFLAGS_DEBUG_POSIX)
-	FFLAGS_RELEASE=$(FFLAGS_RELEASE_POSIX)
+.PHONY: fpm
 
-endif
+fpm:
+	fpm clean --all
+	fpm build --profile=release
 
-all:
-	@echo $(FFLAGS_DEBUG)
-	@echo $(FFLAGS_RELEASE)
-
+pywrapper: fpm
+	rm -rf $(pyw_folder)/build
+	rm -rf $(pyw_folder)/*.egg-info
+	rm -rf $(pyw_ext_folder)/__pycache__
+	rm -rf $(pyw_ext_folder)/*.h
+	rm -rf $(pyw_ext_folder)/*.a
+	rm -rf $(pyw_ext_folder)/*.so
+	rm -rf $(pyw_ext_folder)/*.pyd
+	rm -rf $(pyw_ext_folder)/*.dylib
+	cp ./include/*h $(pyw_ext_folder)
+	cp $(shell find ./build -type f -name "lib$(name)*.a") $(pyw_ext_folder)

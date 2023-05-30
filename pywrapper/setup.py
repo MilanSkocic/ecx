@@ -110,10 +110,7 @@ if __name__ == "__main__":
     found_static = search_libraries(ecx_library_dirs, ecx_libraries, static=True)
 
     mod_ext = Extension(name="pyecx.eis",
-                                         sources=["./pyecx/ecx_eis.c"],
-                                         libraries=ecx_libraries,
-                                         library_dirs=ecx_library_dirs,
-                                         include_dirs=ecx_include_dirs)
+                                         sources=["./pyecx/ecx_eis.c"], extra_objects=["./pyecx/libecx.a", "-lgfortran"])
     setup(name=mod.__package_name__,
         version=mod.__version__,
         maintainer=mod.__maintainer__,

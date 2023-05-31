@@ -112,6 +112,7 @@ if __name__ == "__main__":
     mod_ext = Extension(name="pyecx.eis",
                                          sources=["./pyecx/ecx_eis.c"],
                                         extra_objects=["./pyecx/libecx.a"])
+    
     setup(name=mod.__package_name__,
         version=mod.__version__,
         maintainer=mod.__maintainer__,

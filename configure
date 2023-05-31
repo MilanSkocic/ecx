@@ -1,14 +1,14 @@
-FPM_FFLAGS=""
-ECX_PY="python"
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "Darwin OS: no static linking"
-else
-    FPM_FFLAGS="-static"
-fi
+FPM_FFLAGS="-std=f2008 -pedantic"
+FPM_CFLAGS="-std=c11 -pedantic"
+FPM_LDFLAGS=""
+PY="python"
 
 export FPM_FFLAGS
+export FPM_CFLAGS
+export FPM_LDFLAGS
 export PY
 
 echo "FPM_FLAGS=" $FPM_FFLAGS
-echo "ECX_PY=" $ECX_PY
+echo "FPM_CFLAGS=" $FPM_CFLAGS
+echo "FPM_LDFLAGS" $FPM_LDFLAGS
+echo "PY=" $PY

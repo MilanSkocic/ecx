@@ -7,4 +7,4 @@ include requirements.txt
 include site.cfg.example
 
 # bdist
-recursive-include pyecx *.a *.h *.c
+# recursive-include pyecx *.a *.h *.c

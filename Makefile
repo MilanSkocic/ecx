@@ -1,7 +1,3 @@
-name=ecx
-pyw_folder=./pywrapper
-pyecx_dir=./pywrapper/pyecx
-
 ifneq ($(prefix), )
 	install_dir=$(prefix)
 else
@@ -10,10 +6,10 @@ endif
 
 .PHONY: clean install uninstall
 
-all: $(name) 
+all: $(LIBNAME) 
 
-$(name): build
-	cp $(shell find ./build -type f -name "lib$(name)*.a") $(pyecx_dir)/
+$(LIBNAME): build
+	cp $(shell find ./build -type f -name "lib$(LIBNAME)*.a") $(PYW_MOD_DIR)/
 
 build: clean
 	fpm build
@@ -28,5 +24,5 @@ install:
 uninstall:
 	rm -f $(install_dir)/include/ecx*.h
 	rm -f $(install_dir)/include/ecx*.mod
-	rm -f $(install_dir)/lib/lib$(name).a
+	rm -f $(install_dir)/lib/lib$(LIBNAME).a
 	rm -f $(install_dir)/include/codata.mod

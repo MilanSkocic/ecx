@@ -1,0 +1,38 @@
+# Default flags
+fcommon="-std=f2008 -pedantic -Wall -Wextra -fmax-errors=1 -fcheck=array-temps -fbacktrace -fcoarray=single"
+ccommon="-std=c11 -pedantic -Wall -Wextra"
+fpic="-fPIC"
+opt="-O3"
+static="-static"
+osx_ld_flags="-static-libgfortran -static-libquadmath -static-libgcc"
+
+# environment variables
+FPM_FFLAGS=""
+FPM_LDFLAGS=""
+FPM_CFLAGS=""
+DEFAULT_INSTALL_DIR="$HOME/.local"
+
+if [[ "$OSTYPE" == "msys" ]]; then
+    fpic=""
+    opt=""
+    DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]];then
+    FPM_LDFLAGS=$osx_ld_flags
+fi
+
+FPM_FFLAGS="$fcommon $fpic $opt $static"
+FPM_CFLAGS="$ccommon $fpic $opt $static"
+
+export FPM_FFLAGS
+export FPM_CFLAGS
+export FPM_LDFLAGS
+export DEFAULT_INSTALL_DIR
+
+echo "OS TYPE=" $OSTYPE
+echo "DEFAULT INSTALL DIR=" $DEFAULT_INSTALL_DIR
+echo "FPM_FLAGS=" $FPM_FFLAGS
+echo "FPM_CFLAGS=" $FPM_CFLAGS
+echo "FPM_LDFLAGS" $FPM_LDFLAGS
+echo "PY=" $PY

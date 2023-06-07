@@ -21,3 +21,5 @@ build/
 dist/
 
 __pycache__
+
+pywrapper/pyecx/*.h

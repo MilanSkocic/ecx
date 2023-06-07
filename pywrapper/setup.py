@@ -11,7 +11,6 @@ spec.loader.exec_module(mod)
 if __name__ == "__main__":
 
     mod_ext = Extension(name="pyecx.eis",
-                        include_dirs=["../include"],
                         sources=["./pyecx/ecx_eis.c"],
                         extra_objects=["./pyecx/libecx.a"])
     
@@ -29,7 +28,7 @@ if __name__ == "__main__":
         include_package_data=True,
         python_requires='>=3.7',
         install_requires=pathlib.Path("requirements.txt").read_text(encoding="utf-8").split('\n'),
-        classifiers=["Development Status :: 4 - Beta",
+        classifiers=["Development Status :: 5 - Stable",
                     "Intended Audience :: Science/Research",
                     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"],
         ext_modules=[mod_ext]

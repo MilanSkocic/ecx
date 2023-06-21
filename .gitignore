@@ -23,3 +23,7 @@ dist/
 __pycache__
 
 pywrapper/pyecx/*.h
+pywrapper/pyecx/*.dylib
+pywrapper/pyecx/*.so
+pywrapper/pyecx/*.dll
+pywrapper/pyecx/*.dll.a

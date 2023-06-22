@@ -2,7 +2,7 @@
 !! EIS Module.
 
 !> @brief Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
-module ecx_eis
+module ecx__eis
     use iso_fortran_env
     implicit none
     private

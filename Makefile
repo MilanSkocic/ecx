@@ -38,6 +38,7 @@ copy_shared: copy_a
 
 clean:
 	fpm clean --all
+	rm -f src/*.mod
 
 install:
 	mkdir -p $(install_dir)/bin

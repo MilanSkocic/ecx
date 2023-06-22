@@ -1,7 +1,7 @@
-module ecx_eis_capi
+module ecx__eis_capi
     use iso_fortran_env
     use iso_c_binding
-    use ecx_eis
+    use ecx__eis
     implicit none
     private
 

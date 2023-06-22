@@ -1,5 +1,5 @@
 module ecx
-    use ecx_eis
-    use ecx_pec
+    use ecx__eis
+    use ecx__pec
 
 end module

@@ -14,7 +14,10 @@ source-form = "free"
 auto-executables = true
 auto-tests = true
 auto-examples = true
-module-naming = false
+module-naming = true
+
+[dependencies]
+codata = {git="https://github.com/MilanSkocic/codata", tag="0.8.0"}
 
 [install]
 library = true

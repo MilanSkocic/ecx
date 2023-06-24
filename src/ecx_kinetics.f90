@@ -7,9 +7,11 @@ module ecx__kinetics
 
     real(real64), parameter :: T_K=273.15d0
 
+    public :: ecx_kinetics_sbv
+
 contains
 
-pure elemental function sbv(OCV, U, j0, aa, ac, za, zc, A, T)result(I)
+pure elemental function ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation without mass transport.
     real(real64), intent(in) :: OCV
     real(real64), intent(in) :: U

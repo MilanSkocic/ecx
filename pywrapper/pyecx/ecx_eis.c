@@ -59,7 +59,7 @@ static Py_buffer create_new_buffer(const char *format,
 
     buffer.obj = NULL;
     buffer.suboffsets = NULL;
-    buffer.format = "Zd";
+    buffer.format = format;
     buffer.readonly = 0;
     buffer.itemsize = itemsize;
     buffer.ndim = ndim;

@@ -34,6 +34,15 @@ main="example_in_c.c"
 name="test_eis"
 main="test_eis.f90"
 
+[[test]]
+name="test_eis_capi"
+main="test_eis_capi.c"
+
+[[test]]
+name="test_kinetics"
+main="test_kinetics.f90"
+
+
 
 
 

@@ -3,7 +3,7 @@ module ecx__eis_capi
     use iso_c_binding
     use ecx__eis
     implicit none
-    private
+    
 
 contains
 
@@ -13,7 +13,7 @@ contains
 !! @param[in] R Resistance in Ohms.
 !! @param[in] n Size of w and Z.
 !! @param[out] Z Complex impedance in Ohms as 1d-array.
-pure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
+impure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
     implicit none
 
     integer(c_size_t), intent(in), value :: n
@@ -30,7 +30,7 @@ end subroutine
 !! @param[in] C Capacitance in Farad.
 !! @param[in] n Size of w and Z.
 !! @param[out] Z Complex impedance in Ohms as 1d-array.
-pure subroutine ecx_capi_zc(w, C, n, Z)bind(C)
+impure subroutine ecx_capi_zc(w, C, n, Z)bind(C)
     implicit none
 
     integer(c_size_t), intent(in), value :: n
@@ -87,6 +87,19 @@ pure subroutine ecx_capi_zw(w, s, n, Z)bind(C)
     complex(c_double_complex), intent(out) :: Z(n)
 
     Z(:) = ecx_eis_zw(w, s)
+end subroutine
+
+subroutine ecx_eis_capi_z(e, p, w, z, k, n)bind(C)
+    implicit none
+    integer(c_size_t), intent(in), value :: n
+    integer(c_size_t), intent(in), value :: k
+    character(len=1,kind=c_char), intent(in), value :: e
+    real(c_double), intent(in) :: p(k)
+    real(c_double), intent(in) :: w(n)
+    complex(c_double_complex), intent(inout) :: z(n)
+
+    call ecx_eis_z(e, p, w, z)
+
 end subroutine
 
 end module

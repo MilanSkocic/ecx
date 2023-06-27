@@ -4,14 +4,17 @@
 !> @brief Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
 module ecx__eis
     use iso_fortran_env
+    use ieee_arithmetic
     implicit none
     private
     
     !> PI constant
     real(real64), parameter :: PI = 4.0d0*datan(1.0d0)
 
-public :: ecx_eis_zr, ecx_eis_zc, ecx_eis_zl, ecx_eis_zcpe
-public :: ecx_eis_zw, ecx_eis_zflw, ecx_eis_zfsw, ecx_eis_zg
+public :: ecx_eis_z
+public :: ecx_eis_zr, ecx_eis_zc, ecx_eis_zl
+public :: ecx_eis_zw, ecx_eis_zflw, ecx_eis_zfsw
+public :: ecx_eis_zg, ecx_eis_zcpe
 
 contains
 
@@ -32,14 +35,13 @@ end function
 !! @param[in] w Angular frequencies in rad.s^-1.
 !! @param[in] C Capacitance in Farad.
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_zc(w, C) result(Z)
+impure elemental function ecx_eis_zc(w, C) result(Z)
     implicit none
 
     real(real64), intent(in) :: C
     real(real64), intent(in) :: w
     complex(real64) :: Z
-
-    Z = cmplx(0.0d0, -1/(C*w), kind=real64)
+    Z = cmplx(0.0d0, -1.0d0/(C*w), kind=real64)
 end function
 
 
@@ -96,16 +98,17 @@ end function
 !! @param[in] R Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_zflw(w, R, tau)result(Z)
+pure elemental function ecx_eis_zflw(w, R, tau, n)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: R
     real(real64), intent(in) :: tau
+    real(real64), intent(in) :: n
     complex(real64) :: Z
     complex(real64) :: x
 
     x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
-
+    x = x**n
     Z = R/x * tanh(x)
 
 end function
@@ -115,15 +118,17 @@ end function
 !! @param[in] R Resistance in Ohms.
 !! @param[in] tau Characteristic time in s.
 !! @return Z Complex impedance in Ohms.
-pure elemental function ecx_eis_zfsw(w, R, tau)result(Z)
+pure elemental function ecx_eis_zfsw(w, R, tau, n)result(Z)
     implicit none
     real(real64), intent(in) :: w
     real(real64), intent(in) :: R
     real(real64), intent(in) :: tau
+    real(real64), intent(in) :: n
     complex(real64) :: Z
     complex(real64) :: x
 
-    x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
+    x = cmplx(0.0d0, tau*w, kind=real64)
+    x = x**n
 
     Z = R/(x * tanh(x))
 
@@ -146,27 +151,36 @@ pure elemental function ecx_eis_zg(w, G, K)result(Z)
     Z = G / sqrt(K+x)
 end function
 
-!> @brief Compute the complex impedance of a simple Randles: Rel+Rct/Cdl
-!! @param[in] Rel Electrolyte resistance in Ohms.
-!! @param[in] Rct Charge transfert resistance in Ohms.
-!! @param[in] C Double layer capacitance in Farad.
-!! @return Z Complex impedance in Ohms. 
-pure elemental function ecx_eis_randles(w, Rel, Rct, Cdl)result(Z)
+subroutine ecx_eis_z(e, p, w, z)
+    ! Compute the complex impedance for the given element.
     implicit none
-    real(real64), intent(in) :: w
-    real(real64), intent(in) :: Rel
-    real(real64), intent(in) :: Rct
-    real(real64), intent(in) :: Cdl
-    complex(real64) :: Z
-    complex(real64) :: zrel
-    complex(real64) :: zrct
-    complex(real64) :: zcdl
+    character(len=1), intent(in) :: e
+    real(real64), intent(in) :: p(:)
+    real(real64), intent(in) :: w(:)
+    complex(real64), intent(out) :: z(:)
+    select case(e)
+        case("R")
+            z = ecx_eis_zr(w, p(1))
+        case("C")
+            z = ecx_eis_zc(w, p(1))
+        case("L")
+            z = ecx_eis_zl(w, p(1))
+        case("W")
+            z = ecx_eis_zw(w, p(1))
+        case("Q")
+            z = ecx_eis_zcpe(w, p(1), p(2))
+        case("O")
+            z = ecx_eis_zflw(w, p(1), p(2), p(3))
+        case("T")
+            z = ecx_eis_zfsw(w, p(1), p(2), p(3))
+        case("G")
+            z = ecx_eis_zg(w, p(1), p(2))
+        case DEFAULT
+            z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
+                      ieee_value(0.0d0, ieee_quiet_nan), &
+                      real64)
+    end select
 
-    zrct = ecx_eis_zr(w, Rct)
-    zcdl = ecx_eis_zc(w, Cdl)
-    zrel = ecx_eis_zr(w, Rel)
-
-    Z = zrel + (zrct * zcdl)/(zrct+zcdl)
-end function
+end subroutine
 
 end module

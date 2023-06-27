@@ -1,5 +1,4 @@
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
+#include "py_common.h"
 #include "ecx_eis_capi.h"
 
 const char ERR_MSG_ARGS_R[] = "w is an object with the buffer protocol and R is a float.";
@@ -48,172 +47,97 @@ PyDoc_STRVAR(zg_doc,
 "zg(w, G, K) --> memview \n\n"
 "Computes the complex impedance for a Gerisher element.");
 
-static Py_buffer create_new_buffer(const char *format,
-                                   Py_ssize_t itemsize, 
-                                   Py_ssize_t ndim,
-                                   Py_ssize_t *shape){
+// common pointer for RCL elements.
+static void (*fp_zrcl)(double *w, double p, size_t n, ecx_cdouble *Z);
 
-    Py_buffer buffer;
-    Py_ssize_t i, j, size, subsize;
-    Py_ssize_t *strides = (Py_ssize_t *)PyMem_Calloc(ndim, sizeof(Py_ssize_t));
+static Py_buffer *get_buffer(PyObject *o){
 
-    buffer.obj = NULL;
-    buffer.suboffsets = NULL;
-    buffer.format = format;
-    buffer.readonly = 0;
-    buffer.itemsize = itemsize;
-    buffer.ndim = ndim;
-    buffer.shape = shape;
+    PyObject *mview;
+    Py_buffer *buffer;
 
-    size = 1;
-    for(i=0; i<ndim; i++){
-        size *= shape[i];
-    }
-
-    strides[ndim-1] = itemsize;
-    if(ndim > 1){
-        for(i=0; i<(ndim-1); i++){
-            subsize = 1;
-            for(j=i+1; j<ndim; j++){
-                subsize *= shape[j];
-            }
-            strides[i] = subsize * itemsize;
+    if(PyObject_CheckBuffer(o)==1){
+        mview = PyMemoryView_FromObject(o);
+        buffer = PyMemoryView_GET_BUFFER(mview);
+    
+        if(strcmp(buffer->format, "d")!=0){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
+            return NULL;
+        }else if(buffer->ndim>1){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
+            return NULL;
+        }else if(buffer->ndim==0){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
+            return NULL;
+        }else{
+            return buffer;
         }
+    }else{
+        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
+        return NULL;
+    }
+}
+
+static PyObject *zrcl(PyObject *o, char element, double p0){
+
+    Py_buffer *buffer;
+    Py_buffer new_buffer;
+    PyObject *new_mview;
+
+    switch(element){
+        case 'R':
+            fp_zrcl = &ecx_capi_zr;
+            break;
+        case 'C':
+            fp_zrcl = &ecx_capi_zc;
+            break;
+        case 'L':
+            fp_zrcl = &ecx_capi_zl;
+            break;
+        default:
+            fp_zrcl = &ecx_capi_zr;
+            break;
     }
 
-    buffer.len = size * itemsize;
-    buffer.strides = strides;
-    buffer.buf = PyMem_Calloc(size, itemsize);
-
-    return buffer;
-
+    buffer = get_buffer(o);
+    if(buffer != NULL){
+        new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
+        fp_zrcl((double *)buffer->buf, p0, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
+        new_mview = PyMemoryView_FromBuffer(&new_buffer);
+        return new_mview;
+    }else{
+        return NULL;
+    }
 }
 
 
 static PyObject *zr(PyObject *self, PyObject *args){
-
-    // arguments
     PyObject *w_obj;
     double p0; // R
-    // returns
-    PyObject *new_mview;
-
-    // variables 
-    PyObject *mview;
-    Py_buffer *buffer;
-    Py_buffer new_buffer;
-
-
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &p0)){
         PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_R);
         return NULL;
     }
-
-    if(PyObject_CheckBuffer(w_obj)==1){
-        mview = PyMemoryView_FromObject(w_obj);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-        
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else{
-            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
-            ecx_capi_zr((double *)buffer->buf, p0, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
-            new_mview = PyMemoryView_FromBuffer(&new_buffer);
-            return new_mview;
-        }
-    }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
-        return NULL;
-    }
-
+    return zrcl(w_obj, 'R', p0);
 }
 
 static PyObject *zc(PyObject *self, PyObject *args){
-
-    // arguments
     PyObject *w_obj;
-    double p0; //C
-    // returns
-    PyObject *new_mview;
-
-    // variables 
-    PyObject *mview;
-    Py_buffer *buffer;
-    Py_buffer new_buffer;
-
-
+    double p0;
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &p0)){
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_C);
+        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_R);
         return NULL;
     }
-
-    if(PyObject_CheckBuffer(w_obj)==1){
-        mview = PyMemoryView_FromObject(w_obj);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-        
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else{
-            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
-            ecx_capi_zc((double *)buffer->buf, p0, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
-            new_mview = PyMemoryView_FromBuffer(&new_buffer);
-            return new_mview;
-        }
-    }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
-        return NULL;
-    }
-
+    return zrcl(w_obj, 'C', p0);
 }
 
 static PyObject *zl(PyObject *self, PyObject *args){
-
-    // arguments
     PyObject *w_obj;
-    double p0; //L
-    // returns
-    PyObject *new_mview;
-
-    // variables 
-    PyObject *mview;
-    Py_buffer *buffer;
-    Py_buffer new_buffer;
-
-
+    double p0;
     if(!PyArg_ParseTuple(args, "Od", &w_obj, &p0)){
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_L);
+        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_R);
         return NULL;
     }
-
-    if(PyObject_CheckBuffer(w_obj)==1){
-        mview = PyMemoryView_FromObject(w_obj);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-        
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else{
-            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
-            ecx_capi_zl((double *)buffer->buf, p0, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
-            new_mview = PyMemoryView_FromBuffer(&new_buffer);
-            return new_mview;
-        }
-    }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
-        return NULL;
-    }
-
+    return zrcl(w_obj, 'L', p0);
 }
 
 static PyObject *zcpe(PyObject *self, PyObject *args){
@@ -226,7 +150,6 @@ static PyObject *zcpe(PyObject *self, PyObject *args){
     PyObject *new_mview;
 
     // variables 
-    PyObject *mview;
     Py_buffer *buffer;
     Py_buffer new_buffer;
 
@@ -235,25 +158,13 @@ static PyObject *zcpe(PyObject *self, PyObject *args){
         PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_CPE);
         return NULL;
     }
-
-    if(PyObject_CheckBuffer(w_obj)==1){
-        mview = PyMemoryView_FromObject(w_obj);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-        
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else{
-            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
-            ecx_capi_zcpe((double *)buffer->buf, p0, p1, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
-            new_mview = PyMemoryView_FromBuffer(&new_buffer);
-            return new_mview;
-        }
+    buffer = get_buffer(w_obj);
+    if(buffer != NULL){
+        new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
+        ecx_capi_zcpe((double *)buffer->buf, p0, p1, buffer->shape[0], (ecx_cdouble *) new_buffer.buf);
+        new_mview = PyMemoryView_FromBuffer(&new_buffer);
+        return new_mview;
     }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
         return NULL;
     }
 
@@ -301,12 +212,71 @@ static PyObject *zw(PyObject *self, PyObject *args){
 
 }
 
+static PyObject *z(PyObject *self, PyObject *args){
+
+    char * element;
+    PyObject *w_obj;
+    PyObject *p_obj;
+    
+    double *w;
+    double *p;
+    char e;
+    ecx_cdouble *z;
+    PyObject *new_mview;
+    PyObject *mview;
+    PyObject *mview_p;
+    Py_buffer *buffer;
+    Py_buffer *buffer_p;
+    Py_buffer new_buffer;
+    size_t k, n;
+
+
+    if(!PyArg_ParseTuple(args, "sOO", &element, &w_obj, &p_obj)){
+        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_CPE);
+        return NULL;
+    }
+
+    if(PyObject_CheckBuffer(w_obj)==1){
+        mview = PyMemoryView_FromObject(w_obj);
+        buffer = PyMemoryView_GET_BUFFER(mview);
+        mview_p = PyMemoryView_FromObject(p_obj);
+        buffer_p = PyMemoryView_GET_BUFFER(mview_p);
+
+        if(strcmp(buffer->format, "d")!=0){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
+            return NULL;
+        }else if(buffer->ndim>1){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
+            return NULL;
+        }else if(buffer->ndim==0){
+            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
+            return NULL;
+        }else{
+            new_buffer = create_new_buffer("Zd", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
+            w = (double *) buffer->buf;
+            p = (double *) buffer_p->buf;
+            e = element[0];
+            z = (ecx_cdouble *) new_buffer.buf;
+            k = buffer_p->shape[0];
+            n = buffer->shape[0];
+            ecx_eis_capi_z(e, p, w, z, k, n);
+            new_mview = PyMemoryView_FromBuffer(&new_buffer);
+            return new_mview;
+        }
+    }else{
+        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
+        return NULL;
+    }
+
+}
+
 static PyMethodDef myMethods[] = {
     {"zr", (PyCFunction) zr, METH_VARARGS, zr_doc},
     {"zc", (PyCFunction) zc, METH_VARARGS, zc_doc},
     {"zl", (PyCFunction) zl, METH_VARARGS, zl_doc},
     {"zcpe", (PyCFunction) zcpe, METH_VARARGS, zcpe_doc},
     {"zw", (PyCFunction) zw, METH_VARARGS, zw_doc},
+    {"z", (PyCFunction) z, METH_VARARGS, NULL},
     { NULL, NULL, 0, NULL }
 };
 

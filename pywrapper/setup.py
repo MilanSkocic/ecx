@@ -28,7 +28,7 @@ if platform.system() == "Darwin":
 if __name__ == "__main__":
 
     mod_ext = Extension(name="pyecx.eis",
-                        sources=["./pyecx/ecx_eis.c"],
+                        sources=["./pyecx/py_eis.c", "./pyecx/py_common.c"],
                         libraries=libraries,
                         library_dirs=library_dirs,
                         runtime_library_dirs=runtime_library_dirs,

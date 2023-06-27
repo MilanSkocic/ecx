@@ -9,6 +9,6 @@
 
 extern void ecx_kinetics_capi_sbv(double *U, double OCV, double j0, 
                         double aa, double ac, double za, double zc,
-                        double A, double T, double *I, size_t n);
+                        double A, double T, double *i, size_t n);
 
 #endif

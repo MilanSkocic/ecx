@@ -2,7 +2,7 @@ import numpy as np
 from pyecx import eis
 import matplotlib.pyplot as plt
 
-R = 100
+R = 100.0
 C = 1e-6
 Q = 1e-6
 a = 0.85
@@ -10,7 +10,8 @@ L = 1e-2
 s = 5.0
 w = np.logspace(6, -3, 100)
 
-zr = np.asarray(eis.zr(w, R))
+
+zr = np.asarray(eis.z("R", w, np.asarray((R,))))
 zc = np.asarray(eis.zc(w, C))
 zl = np.asarray(eis.zl(w, L))
 zcpe = np.asarray(eis.zcpe(w, Q, a))

@@ -12,6 +12,6 @@ extern void ecx_capi_zc(double *w, double C, size_t n, ecx_cdouble *Z);
 extern void ecx_capi_zl(double *w, double L, size_t n, ecx_cdouble *Z);
 extern void ecx_capi_zcpe(double *w, double Q, double a, size_t n, ecx_cdouble *Z);
 extern void ecx_capi_zw(double *w, double s, size_t n, ecx_cdouble *Z);
-extern void ecx_eis_capi_z(char e, double *p, double *w, ecx_cdouble *z, size_t k, size_t n);
+extern void ecx_eis_capi_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat);
 
 #endif

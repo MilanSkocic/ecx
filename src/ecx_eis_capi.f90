@@ -89,16 +89,17 @@ pure subroutine ecx_capi_zw(w, s, n, Z)bind(C)
     Z(:) = ecx_eis_zw(w, s)
 end subroutine
 
-subroutine ecx_eis_capi_z(e, p, w, z, k, n)bind(C)
+subroutine ecx_eis_capi_z(p, w, z, e, k, n, errstat)bind(C)
     implicit none
     integer(c_size_t), intent(in), value :: n
     integer(c_size_t), intent(in), value :: k
     character(len=1,kind=c_char), intent(in), value :: e
+    integer(c_int), intent(inout) :: errstat
     real(c_double), intent(in) :: p(k)
     real(c_double), intent(in) :: w(n)
     complex(c_double_complex), intent(inout) :: z(n)
 
-    call ecx_eis_z(e, p, w, z)
+    call ecx_eis_z(p, w, z, e, errstat)
 
 end subroutine
 

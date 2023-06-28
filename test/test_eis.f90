@@ -47,8 +47,9 @@ end function
 subroutine test_zr()
     implicit none
 
+    integer(int32) :: errstat
     real(real64) :: w(1) = 1.0d0
-    real(real64) :: p(1) = 100.0d0
+    real(real64) :: p(3) = [100.0d0, 0.0d0, 0.0d0]
     complex(real64) :: z(1)
     complex(real64) :: value
     complex(real64) :: expected = (100.0d0, 0.0d0)
@@ -56,7 +57,7 @@ subroutine test_zr()
 
     write(*, "(4X, A)", advance="no") "Z_R..."
     
-    call ecx_eis_z("R", p, w, z)
+    call ecx_eis_z(p, w, z, "R", errstat)
     value = z(1)
     diff = value - expected
     if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then
@@ -74,8 +75,9 @@ end subroutine
 subroutine test_zc()
     implicit none
 
+    integer(int32) :: errstat
     real(real64) :: w(1) = 0.01d0
-    real(real64) :: p(1) = 100.0d0
+    real(real64) :: p(3) = [100.0d0, 0.0d0, 0.0d0]
     complex(real64) :: z(1)
     complex(real64) :: value
     complex(real64) :: expected = (0.0d0, -1.0d0)
@@ -83,7 +85,7 @@ subroutine test_zc()
 
     write(*, "(4X, A)", advance="no") "Z_C..."
     
-    call ecx_eis_z("C", p, w, z)
+    call ecx_eis_z(p, w, z, "C", errstat)
     value = z(1)
     diff = value - expected
     if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then
@@ -101,8 +103,9 @@ end subroutine
 subroutine test_zl()
     implicit none
 
+    integer(int32) :: errstat
     real(real64) :: w(1) = 0.010d0
-    real(real64) :: p(1) = 100.0d0
+    real(real64) :: p(3) = [100.0d0, 0.0d0, 0.0d0]
     complex(real64) :: z(1)
     complex(real64) :: value
     complex(real64) :: expected = (0.0d0, 1.0d0)
@@ -110,7 +113,7 @@ subroutine test_zl()
 
     write(*, "(4X, A)", advance="no") "Z_L..."
     
-    call ecx_eis_z("L", p, w, z)
+    call ecx_eis_z(p, w, z, "L", errstat)
     value = z(1)
     diff = value - expected
     if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then

@@ -35,7 +35,7 @@ end function
 !! @param[in] w Angular frequencies in rad.s^-1.
 !! @param[in] C Capacitance in Farad.
 !! @return Z Complex impedance in Ohms.
-impure elemental function ecx_eis_zc(w, C) result(Z)
+pure elemental function ecx_eis_zc(w, C) result(Z)
     implicit none
 
     real(real64), intent(in) :: C
@@ -151,35 +151,46 @@ pure elemental function ecx_eis_zg(w, G, K)result(Z)
     Z = G / sqrt(K+x)
 end function
 
-subroutine ecx_eis_z(e, p, w, z)
+pure subroutine ecx_eis_z(p, w, z, e, errstat)
     ! Compute the complex impedance for the given element.
     implicit none
     character(len=1), intent(in) :: e
+    integer(int32), intent(out) :: errstat
     real(real64), intent(in) :: p(:)
     real(real64), intent(in) :: w(:)
     complex(real64), intent(out) :: z(:)
-    select case(e)
-        case("R")
-            z = ecx_eis_zr(w, p(1))
-        case("C")
-            z = ecx_eis_zc(w, p(1))
-        case("L")
-            z = ecx_eis_zl(w, p(1))
-        case("W")
-            z = ecx_eis_zw(w, p(1))
-        case("Q")
-            z = ecx_eis_zcpe(w, p(1), p(2))
-        case("O")
-            z = ecx_eis_zflw(w, p(1), p(2), p(3))
-        case("T")
-            z = ecx_eis_zfsw(w, p(1), p(2), p(3))
-        case("G")
-            z = ecx_eis_zg(w, p(1), p(2))
-        case DEFAULT
-            z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
-                      ieee_value(0.0d0, ieee_quiet_nan), &
-                      real64)
-    end select
+    
+    errstat = 0
+    if(size(p)<3)then
+        errstat = 1
+        z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
+                ieee_value(0.0d0, ieee_quiet_nan), &
+                real64)
+    else
+        select case(e)
+            case("R")
+                z = ecx_eis_zr(w, p(1))
+            case("C")
+                z = ecx_eis_zc(w, p(1))
+            case("L")
+                z = ecx_eis_zl(w, p(1))
+            case("W")
+                z = ecx_eis_zw(w, p(1))
+            case("Q")
+                z = ecx_eis_zcpe(w, p(1), p(2))
+            case("O")
+                z = ecx_eis_zflw(w, p(1), p(2), p(3))
+            case("T")
+                z = ecx_eis_zfsw(w, p(1), p(2), p(3))
+            case("G")
+                z = ecx_eis_zg(w, p(1), p(2))
+            case DEFAULT
+                errstat= 2
+                z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
+                        ieee_value(0.0d0, ieee_quiet_nan), &
+                        real64)
+        end select
+    endif
 
 end subroutine
 

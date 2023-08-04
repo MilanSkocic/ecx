@@ -1,20 +1,28 @@
-!> @file
-!! EIS Module.
-
-!> @brief Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
 module ecx__eis
+    !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
     use ieee_arithmetic
     implicit none
     private
     
-    !> PI constant
-    real(real64), parameter :: PI = 4.0d0*datan(1.0d0)
+    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
+
+    type :: ecx_eis_error_messages_t
+        integer(int32) :: i
+        character(len=64) :: msg
+    end type
+
+    type(ecx_eis_error_messages_t), parameter :: ecx_eis_errmsg(3) = &
+    [ecx_eis_error_messages_t(1, "Parameter array must be at least of size 3."), &
+    ecx_eis_error_messages_t(2, "Unknown element."), &
+    ecx_eis_error_messages_t(3, "n must be greater or equal to 1.")] 
+    
 
 public :: ecx_eis_z
 public :: ecx_eis_zr, ecx_eis_zc, ecx_eis_zl
 public :: ecx_eis_zw, ecx_eis_zflw, ecx_eis_zfsw
 public :: ecx_eis_zg, ecx_eis_zcpe
+public :: ecx_eis_errmsg
 
 contains
 
@@ -134,17 +142,17 @@ pure elemental function ecx_eis_zfsw(w, R, tau, n)result(Z)
 
 end function
 
-!> @brief Compute the complex impedance of the Gerisher element.
-!! @param w Angular frequency in rad.s^-1.
-!! @param G Pseudo-Resistance in Ohms.s^(1/2).
-!! @param K Offset in rad.s^-1.
-!! @return Z Complex impedance in Ohms. 
 pure elemental function ecx_eis_zg(w, G, K)result(Z)
+    !! Compute the complex impedance of the Gerisher element.
     implicit none
     real(real64), intent(in) :: w
+        !! Angular frequency in rad.s^-1.
     real(real64), intent(in) :: G
+        !! Pseudo-Resistance in Ohms.s^(1/2).
     real(real64), intent(in) :: K
+        !! Offset in rad.s^-1.
     complex(real64) :: Z
+        !! Complex impedance in Ohms. 
     complex(real64) :: x
     
     x = cmplx(0.0d0, w, kind=real64)
@@ -155,10 +163,15 @@ pure subroutine ecx_eis_z(p, w, z, e, errstat)
     ! Compute the complex impedance for the given element.
     implicit none
     character(len=1), intent(in) :: e
+        !! Electrochemical element: R, C, L, Q, O, T, G
     integer(int32), intent(out) :: errstat
+        !! Error status
     real(real64), intent(in) :: p(:)
+        !! Parameters.
     real(real64), intent(in) :: w(:)
+        !! Angular frequencies in rad.s-1
     complex(real64), intent(out) :: z(:)
+        !! Complex impedance in Ohms.
     
     errstat = 0
     if(size(p)<3)then
@@ -190,6 +203,39 @@ pure subroutine ecx_eis_z(p, w, z, e, errstat)
                         ieee_value(0.0d0, ieee_quiet_nan), &
                         real64)
         end select
+    endif
+
+end subroutine
+
+pure subroutine ecx_eis_mm(p, w, z, n)
+    !! Compute the measurement model.
+    real(real64), intent(in) :: p(:)
+        !! Parameters.
+    real(real64), intent(in) :: w(:)
+        !! Angular frequencies in rad.s-1
+    complex(real64), intent(out) :: z(:)
+        !! Complex impedance in Ohms.
+    integer(int32), intent(in) :: n
+        !! Number of voigt elements.
+
+    integer(int32) :: i
+    integer(int32) :: errstat
+    complex(real64) :: zr(size(z))
+    complex(real64) :: zc(size(z))
+
+    if(n<1)then
+        errstat = 3
+        z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
+                ieee_value(0.0d0, ieee_quiet_nan), &
+                real64)
+    else
+        call ecx_eis_z(p, w, z, "R", errstat)
+
+        do i = 1, n-2
+            call ecx_eis_z(p(i+1:), w, zr, "R", errstat)
+            call ecx_eis_z(p(i+2:), w, zc, "C", errstat)
+            z = z + (zr*zc) / (zr+zc)
+        enddo
     endif
 
 end subroutine

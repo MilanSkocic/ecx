@@ -5,7 +5,7 @@ module ecx__kinetics
     implicit none
     private
 
-    real(real64), parameter :: T_K=273.15d0
+    real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
 
     public :: ecx_kinetics_sbv
 
@@ -14,14 +14,23 @@ contains
 pure elemental function ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation without mass transport.
     real(real64), intent(in) :: OCV
+        !! Open Circuit Voltage in V.
     real(real64), intent(in) :: U
+        !! Electrochemical potential in V.
     real(real64), intent(in) :: j0
+        !! Exchange current density in A.cm-2.
     real(real64), intent(in) :: aa
+        !! Anodic transfer coefficient.
     real(real64), intent(in) :: ac
+        !! Cathodic transfer coefficient.
     real(real64), intent(in) :: za
+        !! Number of exchnaged electrons in the anodic branch.
     real(real64), intent(in) :: zc
+        !! Number of exchnaged electrons in the cathodic branch.
     real(real64), intent(in) :: A
+        !! Area in cm2.
     real(real64), intent(in) :: T
+        !! Temperature in °C.
 
     real(real64) :: I
 

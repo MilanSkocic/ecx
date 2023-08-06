@@ -26,59 +26,58 @@ public :: ecx_eis_errmsg
 
 contains
 
-!> @brief Compute the complex impedance for a resistor. 
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] R Resistance in Ohms.
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zr(w, R) result(Z)
+    !! Compute the complex impedance for a resistor. 
     implicit none
 
     real(real64), intent(in) :: R
+        !! Resistance in Ohms.
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
     Z = cmplx(R, 0.0d0, kind=real64)
 end function
 
-!> @brief Compute the complex impedance for a capacitor. 
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] C Capacitance in Farad.
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zc(w, C) result(Z)
+    !! Compute the complex impedance for a capacitor. 
     implicit none
 
     real(real64), intent(in) :: C
+        !! Capacitance in Farad.
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
     Z = cmplx(0.0d0, -1.0d0/(C*w), kind=real64)
 end function
 
-
-!> @brief Compute the complex impedance for an inductor. 
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] L Inductance in Henry.
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zl(w, L)result(Z)
+    !! Compute the complex impedance for an inductor. 
     implicit none
 
     real(real64), intent(in) :: L
+        !! Inductance in Henry.
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
 
     Z = cmplx(0.0d0, L*w, kind=real64)
 end function
 
-!> @brief Compute the complex impedance for a CPE. 
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] Q Resistance in S.s^-a
-!! @param[in] a CPE exponent
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zcpe(w, Q, a)result(Z)
+    !! Compute the complex impedance for a CPE. 
     implicit none
 
     real(real64), intent(in) :: Q
+        !! Resistance in S.s^-a
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
     real(real64), intent(in) :: a
+        !! CPE exponent
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
 
     real(real64) :: mod
 
@@ -86,34 +85,35 @@ pure elemental function ecx_eis_zcpe(w, Q, a)result(Z)
     Z = cmplx(mod * cos(a*PI/2), -mod*sin(a*PI/2), kind=real64)
 end function
 
-!> @brief Compute the complex impedance for a semi-infinite Warburg.
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] s Pseudo-Resistance in Ohms.s^(1/2).
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zw(w, s)result(Z)
+    !! Compute the complex impedance for a semi-infinite Warburg.
     implicit none
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
     real(real64), intent(in) :: s
+        !! Pseudo-Resistance in Ohms.s^(1/2).
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
     real(real64) :: s2
     s2 = s/sqrt(w)
     Z = cmplx(s2, -s2, kind=real64)
 end function
 
-
-!> @brief Compute the complex impedance for a finite length warburg
-!! @param[in] w Angular frequency in rad.s^-1.
-!! @param[in] R Resistance in Ohms.
-!! @param[in] tau Characteristic time in s.
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zflw(w, R, tau, n)result(Z)
+    !! @brief Compute the complex impedance for a finite length warburg
     implicit none
     real(real64), intent(in) :: w
+        !! Angular frequency in rad.s^-1.
     real(real64), intent(in) :: R
+        !! Resistance in Ohms.
     real(real64), intent(in) :: tau
+        !! Characteristic time in s.
     real(real64), intent(in) :: n
+        !! Order of the fsw.
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
     complex(real64) :: x
+
 
     x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
     x = x**n
@@ -121,18 +121,19 @@ pure elemental function ecx_eis_zflw(w, R, tau, n)result(Z)
 
 end function
 
-!> @brief Compute the complex impedance for a finite space warburg
-!! @param[in] w Angular frequency in rad.s^-1.
-!! @param[in] R Resistance in Ohms.
-!! @param[in] tau Characteristic time in s.
-!! @return Z Complex impedance in Ohms.
 pure elemental function ecx_eis_zfsw(w, R, tau, n)result(Z)
+    !! Compute the complex impedance for a finite space warburg
     implicit none
     real(real64), intent(in) :: w
+        !! Angular frequency in rad.s^-1.
     real(real64), intent(in) :: R
+        !! Resistance in Ohms.
     real(real64), intent(in) :: tau
+        !! Characteristic time in s.
     real(real64), intent(in) :: n
+        !! Order of the fsw.
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
     complex(real64) :: x
 
     x = cmplx(0.0d0, tau*w, kind=real64)

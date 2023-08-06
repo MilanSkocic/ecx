@@ -161,7 +161,7 @@ pure elemental function ecx_eis_zg(w, G, K)result(Z)
 end function
 
 pure subroutine ecx_eis_z(p, w, z, e, errstat)
-    ! Compute the complex impedance for the given element.
+    !! Compute the complex impedance for the given element.
     implicit none
     character(len=1), intent(in) :: e
         !! Electrochemical element: R, C, L, Q, O, T, G

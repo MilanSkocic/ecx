@@ -1,12 +1,11 @@
 module ecx__pec
     !! Module for PEC.
     use iso_fortran_env
+    use ecx__constants
     use codata
     implicit none
     private
     
-    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI 
-
 contains
 
 pure elemental function ecx_pec_alpha(hv, Eg, n)result(alpha)

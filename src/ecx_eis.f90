@@ -2,11 +2,10 @@ module ecx__eis
     !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
     use ieee_arithmetic
+    use ecx__constants
     implicit none
     private
     
-    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
-
     type :: ecx_eis_error_messages_t
         integer(int32) :: i
         character(len=64) :: msg

@@ -6,6 +6,7 @@ program test_eis
     print "(A)", "***** TESTING FORTRAN CODE FOR COMMON *****"
     call test_pi()
     call test_nm2eV()
+    call test_eV2nm()
 
 contains
 
@@ -76,5 +77,26 @@ subroutine test_nm2eV()
     endif
 
 end subroutine
+
+subroutine test_eV2nm()
+    implicit none
+
+    real(real64) :: value
+    real(real64) :: expected = 1.0d0
+    real(real64) :: diff
+    
+    write(*, "(4X, A)", advance="no") "eV2nm..."
+    value = ecx_eV2nm(1239.84d0)
+    diff = value - expected
+    if(.not. assertEqual(diff, 0.0d0, 2))then
+        write(*, "(A)", advance="yes") "Failed"
+        write(*, "(4X,SP,ES23.16,2X,ES23.16,2X,ES23.16)", advance="yes") value, expected, diff
+        stop 1
+    else
+        write(*, "(A)", advance="yes") "OK"
+    endif
+
+end subroutine
+
 
 end program

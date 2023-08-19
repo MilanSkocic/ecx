@@ -85,7 +85,7 @@ static PyObject *sbv(PyObject *self, PyObject *args){
             PyErr_SetString(PyExc_TypeError, ERR_MSG_U_DIM);
             return NULL;
         }else{
-            new_buffer = create_new_buffer("d", sizeof(ecx_cdouble), buffer->ndim, buffer->shape);
+            new_buffer = create_new_buffer("d", sizeof(double), buffer->ndim, buffer->shape);
             ecx_kinetics_capi_sbv((double *)buffer->buf, OCV, j0, aa, ac, za, zc, A, T,
                                   (double *)new_buffer->buf, buffer->shape[0]);
             new_mview = PyMemoryView_FromBuffer(&new_buffer);

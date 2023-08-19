@@ -1,7 +1,7 @@
 module ecx__pec
     !! Module for PEC.
     use iso_fortran_env
-    use ecx__constants
+    use ecx__common
     use codata
     implicit none
     private
@@ -68,6 +68,5 @@ pure elemental function ecx_pec_iph(hv, K, Eg, theta, n)result(iph)
     iph = cmplx(re, im, kind=real64)
 
 end function
-
 
 end module

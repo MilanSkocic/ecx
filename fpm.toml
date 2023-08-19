@@ -31,6 +31,10 @@ name="example_in_c"
 main="example_in_c.c"
 
 [[test]]
+name="test_common"
+main="test_common.f90"
+
+[[test]]
 name="test_eis"
 main="test_eis.f90"
 

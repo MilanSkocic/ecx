@@ -4,7 +4,7 @@ module ecx__common
     use codata
     implicit none
     
-    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
 
 contains
 
@@ -29,5 +29,25 @@ pure elemental function ecx_eV2nm(E)result(lambda)
     lambda = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (E * 1.0d-9)
 
 end function
+
+pure elemental function ecx_deg2rad(theta)result(phase)
+    !! Converts degrees to rad.
+    implicit none
+    real(real64), intent(in) :: theta
+        !! Angle in degrees.
+    real(real64) :: phase
+        !! Angle in rad.
+    phase = theta * ecx_PI / 180.0d0
+end 
+
+pure elemental function ecx_rad2deg(phase)result(theta)
+    !! Converts degrees to rad.
+    implicit none
+    real(real64), intent(in) :: phase
+        !! Angle in rad.
+    real(real64) :: theta
+        !! Angle in degrees.
+    theta = phase * 180.0d0 / ecx_PI
+end 
 
 end module

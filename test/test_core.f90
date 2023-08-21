@@ -1,9 +1,9 @@
 program test_eis
     use iso_fortran_env
-    use ecx__utilities
+    use ecx__core
     implicit none
     
-    print "(A)", "***** TESTING FORTRAN CODE FOR UTILITIES *****"
+    print "(A)", "***** TESTING FORTRAN CODE FOR CORE *****"
     call test_pi()
     call test_nm2eV()
     call test_eV2nm()
@@ -104,11 +104,12 @@ subroutine test_deg2rad()
     implicit none
 
     real(real64) :: value
-    real(real64) :: expected = ecx_PI
+    real(real64) :: expected
     real(real64) :: diff
     
     write(*, "(4X, A)", advance="no") "deg2rad..."
     value = ecx_deg2rad(180.0d0)
+    expected = ecx_PI
     diff = value - expected
     if(.not. assertEqual(diff, 0.0d0, 16))then
         write(*, "(A)", advance="yes") "Failed"

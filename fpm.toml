@@ -31,8 +31,8 @@ name="example_in_c"
 main="example_in_c.c"
 
 [[test]]
-name="test_utilities"
-main="test_utilities.f90"
+name="test_core"
+main="test_core.f90"
 
 [[test]]
 name="test_eis"

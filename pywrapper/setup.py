@@ -27,8 +27,15 @@ if platform.system() == "Darwin":
 
 if __name__ == "__main__":
 
-    mod_ext = Extension(name="pyecx.eis",
+    mod_eis = Extension(name="pyecx.eis",
                         sources=["./pyecx/py_eis.c", "./pyecx/py_common.c"],
+                        libraries=libraries,
+                        library_dirs=library_dirs,
+                        runtime_library_dirs=runtime_library_dirs,
+                        extra_objects=extra_objects)
+    
+    mod_core = Extension(name="pyecx.core",
+                        sources=["./pyecx/py_core.c", "./pyecx/py_common.c"],
                         libraries=libraries,
                         library_dirs=library_dirs,
                         runtime_library_dirs=runtime_library_dirs,
@@ -52,7 +59,7 @@ if __name__ == "__main__":
         classifiers=["Development Status :: 5 - Production/Stable",
                     "Intended Audience :: Science/Research",
                     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"],
-        ext_modules=[mod_ext]
+        ext_modules=[mod_core, mod_eis]
         )
 
 

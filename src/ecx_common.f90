@@ -1,10 +1,10 @@
 module ecx__common
-    !! Module for constants used in the ECX library.
+    !! Module for constants and utilities functions used in the ECX library.
     use iso_fortran_env, only : real64
     use codata
     implicit none
     
-    real(real64), parameter :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), protected :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
 
 contains
 

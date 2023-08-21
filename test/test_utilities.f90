@@ -1,9 +1,9 @@
 program test_eis
     use iso_fortran_env
-    use ecx__common
+    use ecx__utilities
     implicit none
     
-    print "(A)", "***** TESTING FORTRAN CODE FOR COMMON *****"
+    print "(A)", "***** TESTING FORTRAN CODE FOR UTILITIES *****"
     call test_pi()
     call test_nm2eV()
     call test_eV2nm()

@@ -1,7 +1,7 @@
 module ecx__pec
     !! Module for PEC.
     use iso_fortran_env
-    use ecx__common
+    use ecx__utilities
     use codata
     implicit none
     private

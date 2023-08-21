@@ -1,4 +1,4 @@
-module ecx__common
+module ecx__utilities
     !! Module for constants and utilities functions used in the ECX library.
     use iso_fortran_env, only : real64
     use codata

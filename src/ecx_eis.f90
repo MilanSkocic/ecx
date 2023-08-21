@@ -2,7 +2,7 @@ module ecx__eis
     !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
     use ieee_arithmetic
-    use ecx__common
+    use ecx__utilities
     implicit none
     private
     

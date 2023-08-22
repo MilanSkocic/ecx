@@ -17,7 +17,7 @@ static struct PyModuleDef core = {
 };
 
 // Initializes our module using our above struct
-PyMODINIT_FUNC PyInit_eis(void)
+PyMODINIT_FUNC PyInit_core(void)
 {	
     PyObject *m;
 	PyObject *d;

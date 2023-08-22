@@ -11,7 +11,7 @@ s = 5.0
 w = np.logspace(6, -3, 100)
 
 
-zr = np.asarray(eis.z("R", w, np.asarray((R,))))
+zr = np.asarray(eis.z("R", w, np.asarray((R,0.0, 0.0))))
 zc = np.asarray(eis.zc(w, C))
 zl = np.asarray(eis.zl(w, L))
 zcpe = np.asarray(eis.zcpe(w, Q, a))

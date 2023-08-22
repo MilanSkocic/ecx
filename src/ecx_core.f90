@@ -4,7 +4,7 @@ module ecx__core
     use codata
     implicit none
     
-    real(real64), protected :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
 
 contains
 

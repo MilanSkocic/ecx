@@ -1,4 +1,5 @@
 module ecx__eis_capi
+    !! C API for the module EIS.
     use iso_fortran_env
     use iso_c_binding
     use ecx__eis
@@ -13,7 +14,7 @@ contains
 !! @param[in] R Resistance in Ohms.
 !! @param[in] n Size of w and Z.
 !! @param[out] Z Complex impedance in Ohms as 1d-array.
-impure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
+pure subroutine ecx_capi_zr(w, R, n, Z)bind(C)
     implicit none
 
     integer(c_size_t), intent(in), value :: n
@@ -30,7 +31,7 @@ end subroutine
 !! @param[in] C Capacitance in Farad.
 !! @param[in] n Size of w and Z.
 !! @param[out] Z Complex impedance in Ohms as 1d-array.
-impure subroutine ecx_capi_zc(w, C, n, Z)bind(C)
+pure subroutine ecx_capi_zc(w, C, n, Z)bind(C)
     implicit none
 
     integer(c_size_t), intent(in), value :: n
@@ -98,7 +99,6 @@ subroutine ecx_eis_capi_z(p, w, z, e, k, n, errstat)bind(C)
     real(c_double), intent(in) :: p(k)
     real(c_double), intent(in) :: w(n)
     complex(c_double_complex), intent(inout) :: z(n)
-
     call ecx_eis_z(p, w, z, e, errstat)
 
 end subroutine

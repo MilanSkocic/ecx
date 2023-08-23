@@ -1,5 +1,5 @@
 import numpy as np
-from pyecx import eis
+from pyecx import eis, core
 import matplotlib.pyplot as plt
 
 R = 100.0
@@ -10,6 +10,8 @@ L = 1e-2
 s = 5.0
 w = np.logspace(6, -3, 100)
 
+print(core.PI)
+print(core.nm2eV(np.asarray((1.0,))))
 
 zr = np.asarray(eis.z("R", w, np.asarray((R,0.0, 0.0))))
 zc = np.asarray(eis.zc(w, C))

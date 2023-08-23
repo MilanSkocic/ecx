@@ -8,5 +8,6 @@
 #include "ecx_types.h"
 
 extern const double ecx_core_capi_PI; /**< PI */
+void ecx_core_capi_nm2eV(double *lambda, double *E, size_t n);
 
 #endif

@@ -4,12 +4,14 @@ module ecx__core
     use codata
     implicit none
     
-    real(real64), parameter :: ecx_PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: ecx_core_PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: ecx_core_T_K=273.15d0 !! 0°C in Kelvin.
 
 contains
 
 pure elemental function ecx_nm2eV(lambda)result(E)
     !! Convert wavelength to energy
+    implicit none
     real(real64), intent(in) :: lambda
         !! Wavelength in nm.
     real(real64) :: E
@@ -21,6 +23,7 @@ end function
 
 pure elemental function ecx_eV2nm(E)result(lambda)
     !! Convert wavelength to energy
+    implicit none
     real(real64), intent(in) :: E
         !! Energy in eV.
     real(real64) :: lambda
@@ -37,7 +40,7 @@ pure elemental function ecx_deg2rad(theta)result(phase)
         !! Angle in degrees.
     real(real64) :: phase
         !! Angle in rad.
-    phase = theta * ecx_PI / 180.0d0
+    phase = theta * ecx_core_PI / 180.0d0
 end 
 
 pure elemental function ecx_rad2deg(phase)result(theta)
@@ -47,7 +50,19 @@ pure elemental function ecx_rad2deg(phase)result(theta)
         !! Angle in rad.
     real(real64) :: theta
         !! Angle in degrees.
-    theta = phase * 180.0d0 / ecx_PI
+    theta = phase * 180.0d0 / ecx_core_PI
 end 
+
+pure elemental function ecx_core_kTe(T)result(r)
+    !! Compute the thermal voltage.
+    implicit none
+    real(real64), intent(in) :: T
+        !! Temperature in °C.
+    real(real64) :: r
+        !! Thermal voltage in V.
+    
+    r = (T+ecx_core_T_K) * BOLTZMANN_CONSTANT_IN_EV_K
+
+end function
 
 end module

@@ -2,10 +2,10 @@ module ecx__kinetics
     !! Module for computing kinetics using the Butler-Volmer equations.
     use iso_fortran_env
     use codata
+    use ecx__core
     implicit none
     private
 
-    real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
 
     public :: ecx_kinetics_sbv
 
@@ -36,7 +36,7 @@ pure elemental function ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)result
 
     real(real64) :: kTe
     
-    kTe = BOLTZMANN_CONSTANT * (T+T_K) / ELECTRON_VOLT
+    kTe = ecx_core_kTe(T)
 
     I = A * j0 * (exp(aa * za * (U - OCV) / kTe) - exp(-ac * zc * (U - OCV) / kTe));
 end function

@@ -9,6 +9,7 @@ program test_eis
     call test_eV2nm()
     call test_deg2rad()
     call test_rad2deg()
+    call test_kTe()
 
 contains
 
@@ -48,7 +49,7 @@ subroutine test_pi()
     real(real64) :: diff
     
     write(*, "(4X, A)", advance="no") "PI..."
-    value = ecx_PI
+    value = ecx_core_PI
     diff = value - expected
     if(.not. assertEqual(diff, 0.0d0, 4))then
         write(*, "(A)", advance="yes") "Failed"
@@ -109,7 +110,7 @@ subroutine test_deg2rad()
     
     write(*, "(4X, A)", advance="no") "deg2rad..."
     value = ecx_deg2rad(180.0d0)
-    expected = ecx_PI
+    expected = ecx_core_PI
     diff = value - expected
     if(.not. assertEqual(diff, 0.0d0, 16))then
         write(*, "(A)", advance="yes") "Failed"
@@ -129,9 +130,29 @@ subroutine test_rad2deg()
     real(real64) :: diff
     
     write(*, "(4X, A)", advance="no") "rad2deg..."
-    value = ecx_rad2deg(ecx_PI)
+    value = ecx_rad2deg(ecx_core_PI)
     diff = value - expected
     if(.not. assertEqual(diff, 0.0d0, 16))then
+        write(*, "(A)", advance="yes") "Failed"
+        write(*, "(4X,SP,ES23.16,2X,ES23.16,2X,ES23.16)", advance="yes") value, expected, diff
+        stop 1
+    else
+        write(*, "(A)", advance="yes") "OK"
+    endif
+
+end subroutine
+
+subroutine test_kTe()
+    implicit none
+
+    real(real64) :: value
+    real(real64) :: expected = 25.69d-3
+    real(real64) :: diff
+    
+    write(*, "(4X, A)", advance="no") "kTe..."
+    value = ecx_core_kTe(25.0d0)
+    diff = value - expected
+    if(.not. assertEqual(diff, 0.0d0, 2))then
         write(*, "(A)", advance="yes") "Failed"
         write(*, "(4X,SP,ES23.16,2X,ES23.16,2X,ES23.16)", advance="yes") value, expected, diff
         stop 1

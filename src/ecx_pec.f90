@@ -51,7 +51,7 @@ pure elemental function ecx_pec_iph(hv, K, Eg, theta, n)result(iph)
 
     real(real64) :: re, im, mod, phase
     
-    phase = ecx_deg2rad(theta)
+    phase = ecx_core_deg2rad(theta)
     mod = K**n * ecx_pec_alpha(hv, Eg, n)
     re = mod * cos(phase)
     im = mod *sin(phase)

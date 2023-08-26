@@ -9,33 +9,6 @@ program test_eis
 
 contains
 
-pure elemental function roundn(x, n)result(r)
-    implicit none
-    real(real64), intent(in) :: x
-    integer(int32), intent(in) :: n
-    real(real64) :: r
-    real(real64) :: fac
-
-    fac = 10**n
-    r = nint(x*fac, kind=kind(x)) / fac
-end function
-
- function assertEqual(x1, x2, n)result(r)
-    implicit none
-    real(real64), intent(in) :: x1
-    real(real64), intent(in) :: x2
-    integer(int32), intent(in) :: n
-    logical :: r
-
-    real(real64) :: fac
-    real(real64) :: ix1
-    real(real64) :: ix2
-    
-    fac = 10**n
-    ix1 = nint(x1 * fac, kind=kind(n))
-    ix2 = nint(x2 * fac, kind=kind(n))
-    r = ix1 == ix2
-end function
 
 subroutine test_sbv()
     implicit none
@@ -58,7 +31,7 @@ subroutine test_sbv()
     expected = j0*(exp(10*aa*za) - exp(-ac*zc*10))
     value = ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)
     diff = value - expected
-    if(.not. assertEqual(diff, 0.0d0, 16))then
+    if(.not. ecx_core_assertEqual(diff, 0.0d0, 16))then
         write(*, "(A)", advance="yes") "Failed"
         write(*, "(4X,SP,ES23.16,2X,ES23.16,2X,ES23.16)", advance="yes") value, expected, diff
         stop 1

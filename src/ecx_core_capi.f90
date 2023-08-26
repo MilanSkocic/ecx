@@ -20,7 +20,7 @@ pure subroutine ecx_core_capi_nm2eV(lambda, E, n)bind(C)
         !! Wavelength in nm.
     real(c_double), intent(inout) :: E(n)
         !! Energy in eV.
-    E = ecx_nm2eV(lambda)
+    E = ecx_core_nm2eV(lambda)
 
 end subroutine
 

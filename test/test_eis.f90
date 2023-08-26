@@ -12,38 +12,6 @@ program test_eis
 
 contains
 
-pure elemental function roundn(x, n)result(r)
-    implicit none
-    real(real64), intent(in) :: x
-    integer(int32), intent(in) :: n
-    real(real64) :: r
-    real(real64) :: fac
-
-    fac = 10**n
-    r = nint(x*fac, kind=kind(x)) / fac
-end function
-
- function assertEqual(x1, x2, n)result(r)
-    implicit none
-    real(real64), intent(in) :: x1
-    real(real64), intent(in) :: x2
-    integer(int32), intent(in) :: n
-    logical :: r
-
-    real(real64) :: fac
-    real(real64) :: ix1
-    real(real64) :: ix2
-    
-    if(ieee_is_nan(x1) .or. ieee_is_nan(x2))then
-        r = .false.
-    else
-        fac = 10**n
-        ix1 = nint(x1 * fac, kind=kind(n))
-        ix2 = nint(x2 * fac, kind=kind(n))
-        r = ix1 == ix2
-    endif
-end function
-
 subroutine test_zr()
     implicit none
 
@@ -60,7 +28,7 @@ subroutine test_zr()
     call ecx_eis_z(p, w, z, "R", errstat)
     value = z(1)
     diff = value - expected
-    if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then
+    if((.not. ecx_core_assertEqual(diff%re, 0.0d0, 16)) .or. (.not. ecx_core_assertEqual(diff%im, 0.0d0, 16)))then
         write(*, "(A)", advance="yes") "Failed"
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") value%re, value%im
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") expected%re, expected%im
@@ -88,7 +56,7 @@ subroutine test_zc()
     call ecx_eis_z(p, w, z, "C", errstat)
     value = z(1)
     diff = value - expected
-    if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then
+    if((.not. ecx_core_assertEqual(diff%re, 0.0d0, 16)) .or. (.not. ecx_core_assertEqual(diff%im, 0.0d0, 16)))then
         write(*, "(A)", advance="yes") "Failed"
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") value%re, value%im
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") expected%re, expected%im
@@ -116,7 +84,7 @@ subroutine test_zl()
     call ecx_eis_z(p, w, z, "L", errstat)
     value = z(1)
     diff = value - expected
-    if((.not. assertEqual(diff%re, 0.0d0, 16)) .or. (.not. assertEqual(diff%im, 0.0d0, 16)))then
+    if((.not. ecx_core_assertEqual(diff%re, 0.0d0, 16)) .or. (.not. ecx_core_assertEqual(diff%im, 0.0d0, 16)))then
         write(*, "(A)", advance="yes") "Failed"
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") value%re, value%im
         write(*, "(4X,SP,ES23.16,2X,ES23.16)", advance="yes") expected%re, expected%im

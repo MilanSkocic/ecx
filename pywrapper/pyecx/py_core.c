@@ -28,30 +28,17 @@ static PyObject *nm2eV(PyObject *self, PyObject *args){
         PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_LAMBDA);
         return NULL;
     }
-    if(PyObject_CheckBuffer(l_obj)==1){
-        mview = PyMemoryView_FromObject(l_obj);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_LAMBDA_FORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_LAMBDA_DIM);
-            return NULL;
-        }else if(buffer->ndim==0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_LAMBDA_DIM);
-            return NULL;
-        }else{
-            new_buffer = create_new_buffer("d", sizeof(double), buffer->ndim, buffer->shape);
-            l = (double *) buffer->buf;
-            E = (double *) new_buffer.buf;
-            n = buffer->shape[0];
-            ecx_core_capi_nm2eV(l, E, n);
-            new_mview = PyMemoryView_FromBuffer(&new_buffer);
-            return new_mview;
-        }
+    buffer = get_buffer(l_obj);
+    if(buffer != NULL){
+        new_buffer = create_new_buffer("d", sizeof(double), buffer->ndim, buffer->shape);
+        l = (double *) buffer->buf;
+        E = (double *) new_buffer.buf;
+        n = buffer->shape[0];
+        ecx_core_capi_nm2eV(l, E, n);
+        new_mview = PyMemoryView_FromBuffer(&new_buffer);
+        return new_mview;
     }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_LAMBDA);
+        PyErr_SetString(PyExc_TypeError, "wavelength does not support the buffer protocol of type float.");
         return NULL;
     }
 

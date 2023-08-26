@@ -1,10 +1,7 @@
 #include "py_common.h" 
 
 
-Py_buffer create_new_buffer(char *format,
-                                   Py_ssize_t itemsize, 
-                                   Py_ssize_t ndim,
-                                   Py_ssize_t *shape){
+Py_buffer create_new_buffer(char *format, Py_ssize_t itemsize, Py_ssize_t ndim, Py_ssize_t *shape){
 
     Py_buffer buffer;
     Py_ssize_t i, j, size, subsize;
@@ -40,4 +37,27 @@ Py_buffer create_new_buffer(char *format,
 
     return buffer;
 
+}
+
+Py_buffer *get_buffer(PyObject *o){
+
+    PyObject *mview;
+    Py_buffer *buffer;
+
+    if(PyObject_CheckBuffer(o)==1){
+        mview = PyMemoryView_FromObject(o);
+        buffer = PyMemoryView_GET_BUFFER(mview);
+    
+        if(strcmp(buffer->format, "d")!=0){
+            return NULL;
+        }else if(buffer->ndim>1){
+            return NULL;
+        }else if(buffer->ndim==0){
+            return NULL;
+        }else{
+            return buffer;
+        }
+    }else{
+        return NULL;
+    }
 }

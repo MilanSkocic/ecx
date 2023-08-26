@@ -50,33 +50,6 @@ PyDoc_STRVAR(zg_doc,
 // common pointer for RCL elements.
 static void (*fp_zrcl)(double *w, double p, size_t n, ecx_cdouble *Z);
 
-static Py_buffer *get_buffer(PyObject *o){
-
-    PyObject *mview;
-    Py_buffer *buffer;
-
-    if(PyObject_CheckBuffer(o)==1){
-        mview = PyMemoryView_FromObject(o);
-        buffer = PyMemoryView_GET_BUFFER(mview);
-    
-        if(strcmp(buffer->format, "d")!=0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WFORMAT);
-            return NULL;
-        }else if(buffer->ndim>1){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else if(buffer->ndim==0){
-            PyErr_SetString(PyExc_TypeError, ERR_MSG_WDIM);
-            return NULL;
-        }else{
-            return buffer;
-        }
-    }else{
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_WOBJ);
-        return NULL;
-    }
-}
-
 static PyObject *zrcl(PyObject *o, char element, double p0){
 
     Py_buffer *buffer;

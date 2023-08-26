@@ -51,6 +51,42 @@ function ecx_core_assertEqual(x1, x2, n)result(r)
     endif
 end function
 
+pure subroutine ecx_core_linspace(start, end, x)
+    !! Linear spaced 1d-array.
+    real(real64), intent(in) :: start
+        !! Starting value.
+    real(real64), intent(in) :: end
+        !! Ending value (included).
+    integer(int32), intent(out) :: x(:)
+        !! 1d-array where to put the linear spaced values.
+
+    real(real64) :: dx
+    integer(int32) :: n, i
+
+    n = size(x)
+    dx = (end - start) / (n-1)
+
+    do i=1, n
+        x(i) = start + dx * (i-1)
+    end do
+
+end subroutine
+
+pure subroutine ecx_core_logspace(start, end, x)
+    !! Log spaced 1d-array.
+    real(real64), intent(in) :: start
+        !! Starting value.
+    real(real64), intent(in) :: end
+        !! Ending value (included).
+    integer(int32), intent(out) :: x(:)
+        !! 1d-array where to put the log spaced values.
+
+    call ecx_core_linspace(start, end, x)
+
+    x(:) = 10.0d0**x(:)
+
+end subroutine
+
 pure elemental function ecx_core_nm2eV(lambda)result(E)
     !! Convert wavelength to energy
     implicit none

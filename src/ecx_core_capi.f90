@@ -11,7 +11,7 @@ module ecx__core_capi
 
 contains    
 
-pure subroutine ecx_core_capi_nm2eV(lambda, E, n)bind(C)
+pure subroutine ecx_core_capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_capi_nm2eV")
     !! Convert wavelength to energy
     implicit none
     integer(c_size_t), intent(in), value :: n

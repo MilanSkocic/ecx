@@ -1,10 +1,6 @@
 #include "py_common.h"
 #include "ecx_core.h"
 
-const char ERR_MSG_ARGS_LAMBDA[] = "lambda is an object with the buffer protocol.";
-const char ERR_MSG_LAMBDA_FORMAT[] = "lambda must be an array-like of floats.";
-const char ERR_MSG_LAMBDA_DIM[] = "lambda must be an 1d-array of floats.";
-
 PyDoc_STRVAR(module_docstring, "C extension wrapping the CORE module of the Fortran ecx library.");
 
 PyDoc_STRVAR(nm2eV_doc, 
@@ -25,7 +21,7 @@ static PyObject *nm2eV(PyObject *self, PyObject *args){
 
 
     if(!PyArg_ParseTuple(args, "O", &l_obj)){
-        PyErr_SetString(PyExc_TypeError, ERR_MSG_ARGS_LAMBDA);
+        PyErr_SetString(PyExc_TypeError, "wavelength must be an object with the buffer protocol.");
         return NULL;
     }
     buffer = get_buffer(l_obj);

@@ -13,11 +13,21 @@ w = np.logspace(6, -3, 100)
 print(core.PI)
 print(np.asarray(core.nm2eV(np.asarray((1.0,)))))
 
-zr = np.asarray(eis.z("R", w, np.asarray((R,0.0, 0.0))))
-zc = np.asarray(eis.zc(w, C))
-zl = np.asarray(eis.zl(w, L))
-zcpe = np.asarray(eis.zcpe(w, Q, a))
-zw = np.asarray(eis.zw(w, s))
+p = np.asarray((R, 0.0, 0.0))
+zr = np.asarray(eis.z("R", w, p))
+
+p = np.asarray((C, 0.0, 0.0))
+zc = np.asarray(eis.z("C", w, p))
+
+p = np.asarray((L, 0.0, 0.0))
+zl = np.asarray(eis.z("L", w, p))
+
+p = np.asarray((Q, a, 0.0))
+zcpe = np.asarray(eis.z("Q", w, p))
+
+p = np.asarray((s, 0.0, 0.0))
+zw = np.asarray(eis.z("W", w, p))
+
 zrc = zr*zc / (zr+zc)
 zrl = zr*zl / (zr+zl)
 zrq = zr*zcpe / (zr+zcpe)

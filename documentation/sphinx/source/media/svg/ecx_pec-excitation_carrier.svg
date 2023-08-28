@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7071068"
-     inkscape:cx="400.92953"
+     inkscape:cx="341.53257"
      inkscape:cy="250.31579"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -35,7 +35,7 @@
      inkscape:window-width="1280"
      inkscape:window-height="689"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:showpageshadow="2"
      inkscape:pagecheckerboard="0"
@@ -495,12 +495,12 @@
          x="76.356407"
          y="1015.515"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         id="tspan3490">a) Excitation</tspan><tspan
+         id="tspan3490">a) Thermal</tspan><tspan
          sodipodi:role="line"
          x="76.356407"
          y="1038.015"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         id="tspan3492">    thermique</tspan></text>
+         id="tspan3492">    Excitation</tspan></text>
     <text
        id="text4451"
        y="1017.515"
@@ -971,7 +971,7 @@
          x="598.04987"
          y="1015.455"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Concrete';-inkscape-font-specification:'CMU Concrete';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         id="tspan5555">c) Dopage</tspan></text>
+         id="tspan5555">c) Doping</tspan></text>
     <text
        id="text5557"
        y="954.151"

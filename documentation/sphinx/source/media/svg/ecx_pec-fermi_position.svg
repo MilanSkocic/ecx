@@ -2,22 +2,22 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="8in"
    height="4in"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="Fermi_Position.svg"
-   inkscape:export-filename="C:\Users\mskocic\Documents\1-PhD\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="ecx_pec-fermi_position.svg"
+   inkscape:export-filename="../ecx_pec-fermi_position.png"
    inkscape:export-xdpi="300"
-   inkscape:export-ydpi="300">
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,17 +26,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="52.16886"
-     inkscape:cy="169.41032"
+     inkscape:cx="352.5"
+     inkscape:cy="199"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
      units="in"
-     inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-width="1280"
+     inkscape:window-height="647"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        snapvisiblegridlinesonly="true"
        enabled="true"
@@ -44,7 +47,11 @@
        empspacing="5"
        units="mm"
        id="grid2985"
-       type="xygrid" />
+       type="xygrid"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1" />
   </sodipodi:namedview>
   <defs
      id="defs4">
@@ -201,41 +208,40 @@
      inkscape:label="Layer 1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:STIXGeneral;-inkscape-font-specification:STIXGeneral;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:STIXGeneral;-inkscape-font-specification:STIXGeneral;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
        x="248.03149"
        y="831.74561"
-       id="text3811"
-       sodipodi:linespacing="125%"><tspan
+       id="text3811"><tspan
          sodipodi:role="line"
          id="tspan3813"
-         x="0"
-         y="0"
-         style="font-size:16px"><tspan
-           style="font-size:65.00091553%;baseline-shift:sub"
-           id="tspan3815" /></tspan></text>
+         x="248.03149"
+         y="831.74561"
+         style="font-size:16px;line-height:1.25"> <tspan
+   style="font-size:65.0009%;baseline-shift:sub"
+   id="tspan3815" /></tspan></text>
     <text
        transform="translate(0,512.35975)"
-       sodipodi:linespacing="125%"
        id="text4295"
        y="206.14458"
        x="21.718281"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:STIXGeneral;-inkscape-font-specification:STIXGeneral;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:STIXGeneral;-inkscape-font-specification:STIXGeneral;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
          y="206.14458"
          x="21.718281"
          id="tspan4297"
-         sodipodi:role="line" /></text>
+         sodipodi:role="line"
+         style="font-size:12px;line-height:1.25"> </tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="170"
        y="732.35974"
-       id="text4597"
-       sodipodi:linespacing="100%"><tspan
+       id="text4597"><tspan
          sodipodi:role="line"
          id="tspan4599"
          x="170"
-         y="732.35974" /></text>
+         y="732.35974"
+         style="font-size:13.75px;line-height:1"> </tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.77362543;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 392.84649,793.11128 70.86614,0"
@@ -282,11 +288,10 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="168.9337"
        y="760.82312"
        id="text4263"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -294,37 +299,35 @@
          id="tspan4265"
          x="168.9337"
          y="760.82312"
-         style="font-size:20px"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         style="font-size:20px;line-height:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3409">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4416">c</tspan></tspan></text>
     <text
-       sodipodi:linespacing="100%"
        id="text4269"
        y="930.77136"
        x="168.32919"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
-         style="font-size:20px"
+         style="font-size:20px;line-height:1"
          y="930.77136"
          x="168.32919"
          id="tspan4271"
          sodipodi:role="line"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3413">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4418">v</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:20px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="118.15782"
        y="1039.5933"
        id="text4622-1"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -332,7 +335,7 @@
          x="118.15782"
          y="1039.5933"
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         id="tspan4449">a) Intrinsèque</tspan></text>
+         id="tspan4449">a) Intrinsinc</tspan></text>
     <rect
        y="703.64624"
        x="392.8465"
@@ -353,11 +356,10 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="506.88196"
        y="760.82312"
        id="text4671"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -365,10 +367,10 @@
          id="tspan4673"
          x="506.88196"
          y="760.82312"
-         style="font-size:20px"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         style="font-size:20px;line-height:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3421">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4428">c</tspan></tspan></text>
     <rect
        y="929.57678"
@@ -389,23 +391,22 @@
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300" />
     <text
-       sodipodi:linespacing="100%"
        id="text4687"
        y="930.77136"
        x="507.48645"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
-         style="font-size:20px"
+         style="font-size:20px;line-height:1"
          y="930.77136"
          x="507.48645"
          id="tspan4689"
          sodipodi:role="line"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3415">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4424">v</tspan></tspan></text>
     <rect
        style="fill:#00ff00;fill-opacity:0.19607843;stroke:none;stroke-width:1.77165353;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -445,11 +446,10 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="506.75842"
        y="795.82312"
        id="text5431"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -457,36 +457,34 @@
          id="tspan5433"
          x="506.75842"
          y="795.82312"
-         style="font-size:20px"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         style="font-size:20px;line-height:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3419">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan5437">d</tspan></tspan></text>
     <text
-       sodipodi:linespacing="100%"
        id="text5485"
        y="898.83887"
        x="506.97937"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
-         style="font-size:20px"
+         style="font-size:20px;line-height:1"
          y="898.83887"
          x="506.97937"
          id="tspan5487"
          sodipodi:role="line"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3417">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan5551">a</tspan></tspan></text>
     <text
-       sodipodi:linespacing="100%"
        id="text5557"
        y="1036.9733"
        x="428.2627"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:20px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
@@ -495,14 +493,13 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:center;writing-mode:lr-tb;text-anchor:middle"
          y="1036.9733"
          x="428.2627"
-         sodipodi:role="line">b) type n</tspan></text>
+         sodipodi:role="line">b) n-type</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:20px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="604.31293"
        y="1036.9733"
        id="text5561"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -510,7 +507,7 @@
          x="604.31293"
          y="1036.9733"
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:22.5px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         id="tspan5563">c) type p</tspan></text>
+         id="tspan5563">c) p-type</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -529,11 +526,10 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="167.6662"
        y="844.76422"
        id="text4263-0"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -541,10 +537,10 @@
          id="tspan4265-8"
          x="167.6662"
          y="844.76422"
-         style="font-size:20px"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         style="font-size:20px;line-height:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3411">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4852">F</tspan></tspan></text>
     <path
        inkscape:export-ydpi="300"
@@ -558,21 +554,20 @@
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
-       sodipodi:linespacing="100%"
        id="text4856"
        y="776.17487"
        x="359.62524"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         style="font-size:20px"
+         style="font-size:20px;line-height:1"
          y="776.17487"
          x="359.62524"
          id="tspan4858"
          sodipodi:role="line"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3425">E</tspan><tspan
            id="tspan4860"
-           style="font-size:64.99999762%;baseline-shift:sub">F</tspan></tspan></text>
+           style="font-size:65%;baseline-shift:sub">F</tspan></tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.7725662;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.31769863, 0.77256621;stroke-dashoffset:0;stroke-opacity:1"
        d="m 568.95145,912.33703 70.67669,0"
@@ -583,11 +578,10 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="643.29279"
        y="914.42462"
        id="text4864"
-       sodipodi:linespacing="100%"
        inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Fermi_Position.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"><tspan
@@ -595,10 +589,10 @@
          id="tspan4866"
          x="643.29279"
          y="914.42462"
-         style="font-size:20px"><tspan
-           style="-inkscape-font-specification:'CMU Serif Medium';font-family:'CMU Serif';font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         style="font-size:20px;line-height:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium'"
            id="tspan3423">E</tspan><tspan
-           style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:65%;baseline-shift:sub"
            id="tspan4868">F</tspan></tspan></text>
   </g>
 </svg>

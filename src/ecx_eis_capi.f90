@@ -98,7 +98,7 @@ subroutine ecx_eis_capi_z(p, w, z, e, k, n, errstat)bind(C)
     integer(c_int), intent(inout) :: errstat
     real(c_double), intent(in) :: p(k)
     real(c_double), intent(in) :: w(n)
-    complex(c_double_complex), intent(inout) :: z(n)
+    complex(c_double_complex), intent(out) :: z(n)
     call ecx_eis_z(p, w, z, e, errstat)
 
 end subroutine

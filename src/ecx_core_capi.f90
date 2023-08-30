@@ -18,7 +18,7 @@ pure subroutine ecx_core_capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_capi_nm2
         !! Size of lambda and E.
     real(c_double), intent(in) :: lambda(n)
         !! Wavelength in nm.
-    real(c_double), intent(inout) :: E(n)
+    real(c_double), intent(out) :: E(n)
         !! Energy in eV.
     E = ecx_core_nm2eV(lambda)
 
@@ -30,7 +30,7 @@ pure subroutine ecx_core_capi_kTe(T, kTe, n)bind(C)
         !! Size of T and kTe.
     real(c_double), intent(in) :: T(n)
         !! Temperature in °C.
-    real(c_double), intent(inout) :: kTe(n)
+    real(c_double), intent(out) :: kTe(n)
         !! Thermal voltage in V.
 
     kTe = ecx_core_kTe(T)

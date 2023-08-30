@@ -80,42 +80,52 @@
 			 <table class="table table-striped">
 			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr><td><a href='../proc/ecx_eis_zc.html'>ecx_eis_zc</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a capacitor. 
-@param[in] w Angular frequencies in rad.s^-1.
+			   <tr><td><a href='../proc/ecx_capi_zc.html'>ecx_capi_zc</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td><p>@brief Compute the complex impedance for a capacitor. 
+@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
 @param[in] C Capacitance in Farad.
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zcpe.html'>ecx_eis_zcpe</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a CPE. 
-@param[in] w Angular frequencies in rad.s^-1.
+@param[in] n Size of w and Z.
+@param[out] Z Complex impedance in Ohms as 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_capi_zcpe.html'>ecx_capi_zcpe</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td><p>@brief Compute the complex impedance for a CPE. 
+@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
 @param[in] Q Resistance in S.s^-a
 @param[in] a CPE exponent
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zflw.html'>ecx_eis_zflw</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a finite length warburg
-@param[in] w Angular frequency in rad.s^-1.
-@param[in] R Resistance in Ohms.
-@param[in] tau Characteristic time in s.
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zfsw.html'>ecx_eis_zfsw</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a finite space warburg
-@param[in] w Angular frequency in rad.s^-1.
-@param[in] R Resistance in Ohms.
-@param[in] tau Characteristic time in s.
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zg.html'>ecx_eis_zg</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance of the Gerisher element.
-@param w Angular frequency in rad.s^-1.
-@param G Pseudo-Resistance in Ohms.s^(1/2).
-@param K Offset in rad.s^-1.
-@return Z Complex impedance in Ohms. </p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zl.html'>ecx_eis_zl</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for an inductor. 
-@param[in] w Angular frequencies in rad.s^-1.
+@param[out] Z Complex impedance in Ohms as 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_capi_zl.html'>ecx_capi_zl</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td><p>@brief Compute the complex impedance for a inductor. 
+@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
 @param[in] L Inductance in Henry.
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zr.html'>ecx_eis_zr</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a resistor. 
-@param[in] w Angular frequencies in rad.s^-1.
+@param[in] n Size of w and Z.
+@param[out] Z Complex impedance in Ohms as 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_capi_zr.html'>ecx_capi_zr</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td><p>@brief Compute the complex impedance for a resistor. 
+@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
 @param[in] R Resistance in Ohms.
-@return Z Complex impedance in Ohms.</p></td></tr>
-			   <tr><td><a href='../proc/ecx_eis_zw.html'>ecx_eis_zw</a></td><td><a href='../module/ecx_eis.html'>ecx_eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a semi-infinite Warburg.
-@param[in] w Angular frequencies in rad.s^-1.
+@param[in] n Size of w and Z.
+@param[out] Z Complex impedance in Ohms as 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_capi_zw.html'>ecx_capi_zw</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td><p>@brief Compute the complex impedance for a finite length warburg
+@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
 @param[in] s Pseudo-Resistance in Ohms.s^(1/2).
-@return Z Complex impedance in Ohms.</p></td></tr>
+@param[out] Z Complex impedance in Ohms as 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_assertequal.html'>ecx_core_assertEqual</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Assert if two numbers are equal.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_capi_kte.html'>ecx_core_capi_kTe</a></td><td><a href='../module/ecx__core_capi.html'>ecx__core_capi</a></td><td>Subroutine</td><td><p>Compute the thermal voltage.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_capi_nm2ev.html'>ecx_core_capi_nm2eV</a></td><td><a href='../module/ecx__core_capi.html'>ecx__core_capi</a></td><td>Subroutine</td><td><p>Convert wavelength to energy</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_deg2rad.html'>ecx_core_deg2rad</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Converts degrees to rad.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_ev2nm.html'>ecx_core_eV2nm</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Convert wavelength to energy</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_kte.html'>ecx_core_kTe</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Compute the thermal voltage.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_linspace.html'>ecx_core_linspace</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Subroutine</td><td><p>Linear spaced 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_logspace.html'>ecx_core_logspace</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Subroutine</td><td><p>Log spaced 1d-array.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_nm2ev.html'>ecx_core_nm2eV</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Convert wavelength to energy</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_rad2deg.html'>ecx_core_rad2deg</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Converts degrees to rad.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_core_roundn.html'>ecx_core_roundn</a></td><td><a href='../module/ecx__core.html'>ecx__core</a></td><td>Function</td><td><p>Round x to n digits.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_capi_z.html'>ecx_eis_capi_z</a></td><td><a href='../module/ecx__eis_capi.html'>ecx__eis_capi</a></td><td>Subroutine</td><td></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_z.html'>ecx_eis_z</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Subroutine</td><td><p>Compute the complex impedance for the given element.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zc.html'>ecx_eis_zc</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for a capacitor. </p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zcpe.html'>ecx_eis_zcpe</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for a CPE. </p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zflw.html'>ecx_eis_zflw</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>@brief Compute the complex impedance for a finite length warburg</p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zfsw.html'>ecx_eis_zfsw</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for a finite space warburg</p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zg.html'>ecx_eis_zg</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance of the Gerisher element.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zl.html'>ecx_eis_zl</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for an inductor. </p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zr.html'>ecx_eis_zr</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for a resistor. </p></td></tr>
+			   <tr><td><a href='../proc/ecx_eis_zw.html'>ecx_eis_zw</a></td><td><a href='../module/ecx__eis.html'>ecx__eis</a></td><td>Function</td><td><p>Compute the complex impedance for a semi-infinite Warburg.</p></td></tr>
+			   <tr><td><a href='../proc/ecx_kinetics_sbv.html'>ecx_kinetics_sbv</a></td><td><a href='../module/ecx__kinetics.html'>ecx__kinetics</a></td><td>Function</td><td><p>Compute Butler Volmer equation without mass transport.</p></td></tr>
 			 </tbody></table>
              
         </div>
@@ -132,7 +142,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-05-29T20:45:58.703236           </p>
+ on 2023-08-30T07:10:20.761815           </p>
         </div>
       </div>
       <br>

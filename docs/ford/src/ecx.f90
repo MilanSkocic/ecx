@@ -1,5 +1,8 @@
 module ecx
-    use ecx_eis
-    use ecx_pec
+    !! Main module for the ECX library.
+    use ecx__core
+    use ecx__kinetics
+    use ecx__eis
+    use ecx__pec
 
 end module

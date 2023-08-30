@@ -8,7 +8,7 @@ pyecx
 How to install
 ---------------
 
-.. literalinclude:: ../../../../pywrapper/INSTALL.txt
+.. literalinclude:: ../../../../pywrapper/INSTALL.rst
     :language: bash
 
 Dependencies

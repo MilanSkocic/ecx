@@ -239,57 +239,6 @@ Reflects electrochemical reaction controlled by kinetics and diffusion as shown 
 
     Randles
 
-Example for the Nyquist plot of the Randles circuit.
-
-.. code-block:: python 
-
-    Rel = 20.0
-    R = 100
-    C = 1e-5
-    W = 15.0
-
-    c = skx.eis.ElectrochemicalCircuit.from_string("Rel+(Rct+W)/Cdl")
-    c.set_parameter_values({"Rel": Rel, "Rct": R, "Cdl": C, "W": W})
-
-    Z = c(xi)
-    ReZ = Z.real
-    ImZ = Z.imag
-    modZ = np.absolute(Z)
-    phase = np.angle(Z, deg=True)
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    ax.set_aspect("equal")
-    ax.set_xlabel("ReZ /$\Omega$")
-    ax.set_ylabel("ImZ /$\Omega$")
-
-
-    ax.plot(ReZ, ImZ, "k.", ms=4)
-
-
-
-    ax.text(s=r"High $\omega$", x=0+Rel, y=-55, va="top", ha="left", backgroundcolor="w", color="C1", fontsize="small")
-    ax.text(s=r"Low $\omega$", x=100+Rel, y=-55, va="top", ha="right", backgroundcolor="w", color="C1", fontsize="small")
-    ax.annotate(text="", xy=(20+Rel, -45), xytext=(80+Rel, -45), 
-                arrowprops=dict(arrowstyle="<->", connectionstyle="arc3, rad=0.3", color="C1"))
-
-    ax.annotate(text="", xy=(0, 0), xytext=(Rel, 0), arrowprops=dict(arrowstyle="<->", color="C0"))
-    ax.text(s="$R_{el}$", x=Rel/2, y=-5, va="center", ha="center", color="C0", fontsize="small")
-
-    ax.annotate(text="", xy=(Rel, 0), xytext=(Rel+R, 0), arrowprops=dict(arrowstyle="<->", color="C0"))
-    ax.text(s="$R_{ct}$", x=Rel+R/2, y=-5, va="center", ha="center", color="C0", fontsize="small")
-
-
-    ax.annotate(text=r"", xy=(Rel+R+40, -50), xytext=(Rel+R+10, -20), color="C2",
-                arrowprops=dict(arrowstyle="->", color="C2"))
-    ax.text(s="$W$", x=Rel+R+20, y=-40, va="center", ha="center", color="C2", fontsize="small")
-
-
-
-    ax.set_xlim(0,)
-    ax.set_ylim(-100, 5)
-
-    ax.invert_yaxis()
 
 Differential Impedance analysis
 ---------------------------------
@@ -415,85 +364,12 @@ The spectral line is expressed in dB.
 
 An example with a simple RC circuit:
 
-.. code-block:: python
-
-  f = np.logspace(5, -2, 100)
-  w = 2*np.pi*f
-  xi = (w,)
-
-  c = skx.eis.ElectrochemicalCircuit.from_string("Rel+R/C")
-
-  values = {"Rel":10.0, "R":100, "C": 1e-5}
-  c.set_parameter_values(values)
-
-  Z = c(xi)
-
-  ReZ = Z.real
-  ImZ = Z.imag
-  modZ = np.absolute(Z)
-  phase = np.angle(Z, deg=True)
-
-  fig = plt.figure()
-  ax = fig.add_subplot(111)
-  ax.set_aspect("equal")
-  ax.set_xlabel("ReZ /$\Omega$")
-  ax.set_ylabel("ImZ /$\Omega$")
-
-
-  ax.plot(ReZ, ImZ, "k.", ms=4)
-
-
-  ax.invert_yaxis()
-
 .. _fig_DIA_RC:
 .. figure:: ../media/EIS-DIA-RC.png
     :width: 600
     :alt: Simple RC 
 
     Simple RC
-
-.. code-block:: python
-
-    dia = skx.eis.DifferentialImpedanceAnalysis(f, ReZ, ImZ)
-
-    plt.figure()
-    plt.xlabel(r"$\nu$")
-    plt.ylabel("$L_j$")
-    for key, values in dia.temporal_analysis().items():
-        x = values["v"]
-        y = values["L"]
-        plt.plot(x, y, label = key)
-    plt.legend()
-        
-    plt.figure()
-    plt.xlabel(r"$\nu$")
-    plt.ylabel("$d_j$")
-    for key, values in dia.differential_temporal_analysis().items():
-        x = values["v"]
-        y = values["d"]
-        plt.plot(x, y, label = key)
-    plt.legend()
-        
-    plt.figure()
-    plt.xlabel(r"$L_j$")
-    plt.ylabel("I /dB")
-    for key, values in dia.spectral_analysis(nbins=20).items():
-        x = values["bins"]
-        y = values["I"]
-        plt.bar(x, y, width=dia.sa_width, label = key)
-    plt.legend()
-    name = 'EIS-DIA-sa.png'
-    plt.savefig('./figures/' +  name , dpi=DPI, format="png")
-        
-    plt.figure()
-    plt.xlabel(r"$d_j$")
-    plt.ylabel("I /dB")
-    for key, values in dia.differential_spectral_analysis(nbins=20).items():
-        x = values["bins"]
-        y = values["I"]
-        plt.bar(x, y, width=dia.dsa_width, label = key)
-    plt.legend()
-
 
 .. _fig_DIA_ta:
 .. figure:: ../media/EIS-DIA-ta.png
@@ -524,7 +400,3 @@ An example with a simple RC circuit:
     :alt: Differential Spectral Analysis 
 
     Differential Spectral Analysis
-
-References
-------------
-:cite:t:`Barsoukov2005,Orazem2008,Boukamp1986,Stoynov2005,Bevington2003,Press2007`

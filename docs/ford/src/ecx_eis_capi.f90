@@ -1,9 +1,10 @@
-module ecx_eis_capi
+module ecx__eis_capi
+    !! C API for the module EIS.
     use iso_fortran_env
     use iso_c_binding
-    use ecx_eis
+    use ecx__eis
     implicit none
-    private
+    
 
 contains
 
@@ -87,6 +88,19 @@ pure subroutine ecx_capi_zw(w, s, n, Z)bind(C)
     complex(c_double_complex), intent(out) :: Z(n)
 
     Z(:) = ecx_eis_zw(w, s)
+end subroutine
+
+subroutine ecx_eis_capi_z(p, w, z, e, k, n, errstat)bind(C)
+    implicit none
+    integer(c_size_t), intent(in), value :: n
+    integer(c_size_t), intent(in), value :: k
+    character(len=1,kind=c_char), intent(in), value :: e
+    integer(c_int), intent(inout) :: errstat
+    real(c_double), intent(in) :: p(k)
+    real(c_double), intent(in) :: w(n)
+    complex(c_double_complex), intent(out) :: z(n)
+    call ecx_eis_z(p, w, z, e, errstat)
+
 end subroutine
 
 end module

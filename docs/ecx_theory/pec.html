@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>PEC &#8212; ecx 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=7ea05869" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,77 +34,103 @@
           <a href="eis.html" title="EIS"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">ElectroChemistry - Theoretical background</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">PEC</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-        <div class="bodywrapper">
           <div class="body" role="main">
             
   <section id="pec">
-<h1>PEC<a class="headerlink" href="#pec" title="Permalink to this heading">¶</a></h1>
+<h1>PEC<a class="headerlink" href="#pec" title="Link to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>PEC takes advantage of the photovoltaic effect, discovered by <span id="id1">[<a class="reference internal" href="../bibliography/index.html#id35" title="E. Becquerel. Mémoire sur les effets électriques produits sous l'influence des rayons solaires. Comptes Rendus des Séances Hebdomadaires, 9:561–567, 1839.">6</a>]</span> in 1839,
+that occurs at the interface of a semiconductor and an electrolyte. In fact, the first experience showed
+the occurence of a photopotential and a photocurrent under illumination when a silver electrode, covered with an
+oxide layer, was immersed in an acidic medium and connected to a platinum electrode.
+Nonetheless, the first studies focused on the understanding of the interfacial processes were performed
+much later <span id="id2">[<a class="reference internal" href="../bibliography/index.html#id11" title="Ulrich Stimming. Photoelectrochemical studies of passive films. Electrochimica Acta, 31(4):415–429, 1986.">7</a>, <a class="reference internal" href="../bibliography/index.html#id42" title="H Gerischer. Electrochemical Behavior of Semiconductors under Illumination. Journal of The Electrochemical Society, 113(11):1174–1182, 1966.">8</a>, <a class="reference internal" href="../bibliography/index.html#id38" title="\relax A. Wallace Copeland, Otis D. Black, and A. B. Garrett. The Photovoltaic Effect. Chemical Reviews, 31(1):177–226, 1942. doi:10.1021/cr60098a004.">9</a>]</span>.</p>
+<p>The basics of photoelectrochemistry and application examples are presented here and they are largely
+described in the literature <span id="id3">[<a class="reference internal" href="../bibliography/index.html#id9" title="S R Morrison. Electrochemistry at Semiconductor and Oxidized Metal Electrodes. Plenum Press, New York, 1980.">10</a>, <a class="reference internal" href="../bibliography/index.html#id43" title="H Gerischer. Semiconductor electrodes and their interaction with light. In Mario Schiavello, editor, Photoelectrochemistry, Photocatalysis and Photoreactor, pages 39–106. D. Reidel Publishing Company, Dordrecht, 1985.">11</a>, <a class="reference internal" href="../bibliography/index.html#id10" title="R Memming. Semiconductor Electrochemistry. WILEY-VCH Verlag GmbH, Weinheim, 2008.">12</a>, <a class="reference internal" href="../bibliography/index.html#id44" title="P. Marcus and F Mansfield. Analytical Methods in Corrosion Science and Engineering. CRC Press, Boca Raton, FL, 2006.">13</a>, <a class="reference internal" href="../bibliography/index.html#id34" title="Allen J. Bard and M. Stratmann. Fundamentals of Semiconductors Electrochemistry and Photoelectrochemistry. Wiley-VCH, 2002.">14</a>, <a class="reference internal" href="../bibliography/index.html#id47" title="Norio Sato. Electrochemistry at Metal and Semiconductors Electrodes. Elsevier Science, Amsterdam, 1998.">15</a>]</span>.
+Several hypotheses are needed in order to apply the theoretical concepts:</p>
+<ul class="simple">
+<li><p>semiconductors are considered to be ideal i.e. crystalized and homogeneous</p></li>
+<li><p>the dielectric constant of the semiconductor is independent of the light wavelength</p></li>
+<li><p>the capacity of the Helmholtz layer is greater than the capacity of the space charge capacitance</p></li>
+<li><p>the potential drop in the Helmholtz layer is independent of the applied potential and is negligible</p></li>
+</ul>
+<p>The hypotheses are rarely fully respected in the case of oxides or passive films formed on common alloys.
+Nonetheless, the literature shows that the developed models can be applied to non-ideal systems
+such as oxides or passive layers.</p>
 <p>Solids are generally classified into three groups: <em>condcutors</em>, <em>semiconductors</em> and <em>insulators</em>.
 Each category can be illustrated with a specific band structure as shown in figure <a class="reference internal" href="#fig-band-structure"><span class="std std-numref">Fig. 14</span></a>
-<span id="id1">[<a class="reference internal" href="../bibliography/index.html#id45" title="Jean-Francis Marucco. Chimie Des Solides. EDP Sciences, Paris, 2006. ISBN 978-2-86883-673-1.">7</a>]</span>.</p>
-<figure class="align-center" id="id2">
-<span id="fig-band-structure"></span><a class="reference internal image-reference" href="../_images/ecx_pec-band_structure.png"><img alt="Band structure" src="../_images/ecx_pec-band_structure.png" style="width: 400px;" /></a>
+<span id="id4">[<a class="reference internal" href="../bibliography/index.html#id45" title="Jean-Francis Marucco. Chimie Des Solides. EDP Sciences, Paris, 2006. ISBN 978-2-86883-673-1.">16</a>]</span>.
+Valence and conduction bands correspond to the allowed energy states for the electrons.
+The lowest energy level of the conduction band is labeled <img class="math" src="../_images/math/30453d8679f18efe6cba13aabbb727121a58935c.png" alt="E_c"/> and the highest energy level
+of the valence is labeled <img class="math" src="../_images/math/096ac33d562de919eda1bca35773c65e6d855696.png" alt="E_v"/>. They are separated by a band gap, <img class="math" src="../_images/math/7c0ec9815375b4035453f9f662a28c89caa80904.png" alt="E_g"/>, with no allowed
+energy states.
+The repartition of the electrons among both bands are described by the position of the Fermi level, <img class="math" src="../_images/math/8d25663e979951275f78f4903ea0a8ce11bab18b.png" alt="E_F"/>,
+which represents the highest energy state that can be occupied at 0K.</p>
+<figure class="align-center" id="id5">
+<span id="fig-band-structure"></span><a class="reference internal image-reference" href="../_images/ecx_pec-band_structure.png"><img alt="Band structure" src="../_images/ecx_pec-band_structure.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Band Structure</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Band Structure</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
+<p>The electronic conduction is due to the movement either of the negatively charge electrons
+in the conduction band or the positively charged holes in the valence band or both simultaneously.
+Consequently, the conduction depends on the number of available charge carriers in the conduction and valence bands.
+In conductors, an overlap of the conduction and the valence bands occurs which means that the highest
+allowed energy band is partilly filled.
+The distinction between a semiconductor and an isolator is less obvious because the conduction depends on the band
+gap and the energy provided by the environment to the electron from the valence band in order to jump into
+the conduction band.</p>
+<p>In semiconductors, charge carriers can be generated by three mechanisms: <em>thermal</em>, <em>excitation</em>, <em>photoexcitation</em>,
+<em>doping</em>, as shown in figure <a class="reference internal" href="#fig-charge-generation"><span class="std std-numref">Fig. 15</span></a>.</p>
+<figure class="align-center" id="id6">
+<span id="fig-charge-generation"></span><a class="reference internal image-reference" href="../_images/ecx_pec-excitation_charges.png"><img alt="Band structure" src="../_images/ecx_pec-excitation_charges.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Schematic representation of the mechanisms generating charge carriers in semiconductors</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>In the case of very low band gaps, thermal excitation can be enough to eject an electron
+from the valence band into the conduction band.
+Photoexcitation ejects electrons from the valence band into the conduction band when an
+incident photon, with an energy greater than the band gap, is absorbed.
+Doping introduces additional energy levels located in between the conduction and valence bands.</p>
+<p>Doping occurs when the stoichiometry is altered or when impurities are introduced in the
+crystallographic lattice of the semiconductor. In the case of n-type semiconductors, the donor
+energy levels <img class="math" src="../_images/math/b37b34b8ea30ee28d1bb9937c0c116d5b7e657d9.png" alt="E_d"/> lie just under the conduction band. The electrons from the donor levels
+are ejected by thermal excitation. Consequently, the majority charge carriers are negatively charged
+electrons in the conduction band. Similarly, the acceptor energy levels <img class="math" src="../_images/math/8b401e71d30c7883fb91cebc893c7ab36634858c.png" alt="E_a"/>, of p-type
+semiconductors, lie just above the valence band. The latter trap electrons from the valence band
+and therefore create holes. Consequently, the majority charge carriers are positively charged holes.</p>
+<p>The Fermi level <img class="math" src="../_images/math/8d25663e979951275f78f4903ea0a8ce11bab18b.png" alt="E_F"/> in intrinsic semiconductors is located at the mid-gap.
+The n-type and p-type doping shift the Fermi level towards band edges <img class="math" src="../_images/math/30453d8679f18efe6cba13aabbb727121a58935c.png" alt="E_c"/> and <img class="math" src="../_images/math/096ac33d562de919eda1bca35773c65e6d855696.png" alt="E_v"/>,
+respectively.
+The figure <a class="reference internal" href="#fig-fermi-position"><span class="std std-numref">Fig. 16</span></a> shows the position of the Fermi level with respect to
+the semiconductor types.</p>
+<figure class="align-center" id="id7">
+<span id="fig-fermi-position"></span><a class="reference internal image-reference" href="../_images/ecx_pec-fermi_position.png"><img alt="Fermi position" src="../_images/ecx_pec-fermi_position.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Schematic representation of the Fermi level position</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="semiconductor-electroyte-interface-in-dark">
+<h2>Semiconductor/electroyte interface in dark<a class="headerlink" href="#semiconductor-electroyte-interface-in-dark" title="Link to this heading">¶</a></h2>
+</section>
+<section id="semiconductor-electroyte-interface-under-illumination">
+<h2>Semiconductor/electroyte interface under illumination<a class="headerlink" href="#semiconductor-electroyte-interface-under-illumination" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
 
             <div class="clearer"></div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">PEC</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="eis.html"
-                          title="previous chapter">EIS</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="../releases/index.html"
-                          title="next chapter">Release Notes</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/ecx_theory/pec.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
       </div>
       <div class="clearer"></div>
     </div>
@@ -125,13 +150,13 @@ Each category can be illustrated with a specific band structure as shown in figu
           <a href="eis.html" title="EIS"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >ElectroChemistry - Theoretical background</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">PEC</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023 Milan Skocic.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    &#169; Copyright 2023 Milan Skocic.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.2.
     </div>
   </body>
 </html>

@@ -1,4 +1,4 @@
-ElectroChemistry - Theoretical background
+Theoretical background
 ===========================================
 
 .. toctree::

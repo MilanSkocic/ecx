@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>EIS &#8212; ecx 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=7ea05869" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,20 +34,19 @@
           <a href="kinetics.html" title="Kinetics"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">ElectroChemistry - Theoretical background</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">EIS</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-        <div class="bodywrapper">
           <div class="body" role="main">
             
   <section id="eis">
-<h1>EIS<a class="headerlink" href="#eis" title="Permalink to this heading">¶</a></h1>
+<h1>EIS<a class="headerlink" href="#eis" title="Link to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>Frequency dispersion measurements (or impedance spectroscopy) have become a common technique for the study of mass
 and charge transport in electrochemical systems. With the availability of automated high quality frequency response
 analysis systems immittance (i.e. impedance or admittance) measurements can be obtained in fairly easy way
@@ -68,7 +66,7 @@ parameters must be adjusted simultaneously in order to obtain the optimum fit to
 <span id="id3">[<a class="reference internal" href="../bibliography/index.html#id4" title="B.A. Boukamp. A Nonlinear Least Squares Fit Procedure for Analysis of Immittance Data of Electrochemical Systems. Solid State Ionics, pages 31–44, 1986.">3</a>, <a class="reference internal" href="../bibliography/index.html#id15" title="Philip R. Bevington and D. Keith Robinson. Data Reduction and Error Analysis for Physical Sciences. McGraw Hill, New York, third edition, 2003. ISBN 0-07-247227-8.">4</a>, <a class="reference internal" href="../bibliography/index.html#id14" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes: The Art of Scientific Computing. Cambridge University Press, Cambridge, third edition, 2007.">5</a>]</span></p>
 </section>
 <section id="black-box-approach">
-<h2>Black Box Approach<a class="headerlink" href="#black-box-approach" title="Permalink to this heading">¶</a></h2>
+<h2>Black Box Approach<a class="headerlink" href="#black-box-approach" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Assume a black box with two terminals.</p></li>
 <li><p>One applies a voltage and measures the current response (or visa versa) as show in <a class="reference internal" href="#fig-ac-waves"><span class="std std-numref">Fig. 1</span></a></p></li>
@@ -82,21 +80,21 @@ as shown in <a class="reference internal" href="#fig-trig-circle"><span class="s
 </ul>
 </dd>
 </dl>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id4">
 <span id="fig-ac-waves"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-AC_waves.png"><img alt="EIS AC Waves" src="../_images/EIS-Principle-AC_waves.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">EIS AC Waves</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">EIS AC Waves</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id5">
 <span id="fig-trig-circle"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-AC_waves-TrigCircle.png"><img alt="Trigonometric Circle" src="../_images/EIS-Principle-AC_waves-TrigCircle.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Trigonometric Circle</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Trigonometric Circle</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="what-is-eis">
-<h2>What is EIS?<a class="headerlink" href="#what-is-eis" title="Permalink to this heading">¶</a></h2>
+<h2>What is EIS?<a class="headerlink" href="#what-is-eis" title="Link to this heading">¶</a></h2>
 <p>The impedance is determined from the imposed voltage/current and the measured current/voltage through the Ohm’s law:</p>
 <div class="math">
 <p><img src="../_images/math/6980eb4802ff696bfeea4521622e5f57d3a37d7d.png" alt="Z(\omega) = \frac{V(\omega)}{I(\omega)} = \frac{V_0}{I_0} e^{j\phi} = Z_0 e^{j\phi}"/></p>
@@ -108,7 +106,7 @@ as shown in <a class="reference internal" href="#fig-trig-circle"><span class="s
 <p><img src="../_images/math/626c0ef011bbdc4a1b29f2c8640414082afc66a7.png" alt="Y(\omega)=\frac{1}{Z(\omega)}"/></p>
 </div></section>
 <section id="representation">
-<h2>Representation<a class="headerlink" href="#representation" title="Permalink to this heading">¶</a></h2>
+<h2>Representation<a class="headerlink" href="#representation" title="Link to this heading">¶</a></h2>
 <p>The impedance <img class="math" src="../_images/math/af1d34e2f1f661f053f45df7b0e4799e776fd851.png" alt="Z(\omega)"/> can be represented in two different ways as shown in:</p>
 <ol class="arabic simple">
 <li><p><strong>Bode plot</strong>: shows the phase shift and magnitude changes in the applied frequency ranges
@@ -122,34 +120,34 @@ electronic devices.</p>
 <p>The Nyquist plot provides insight into the possible mechanism or governing phenomena
 in an equivalent circuit model system. Among these two types of representations, the Nyquist plot is
 more often used to analyze the characteristics of electrochemical processes.</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id6">
 <span id="fig-representation-nyquist"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-Representation_Nyquist.png"><img alt="Nyquist Representation" src="../_images/EIS-Principle-Representation_Nyquist.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Nyquist Representation</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Nyquist Representation</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<span id="fig-representation-mod"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-Representation_Bode_Mod.png"><img alt="Bode Modulus Representation" src="../_images/EIS-Principle-Representation_Bode_Mod.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode Modulus Representation</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<span id="fig-representation-mod"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-Representation_Bode_Mod.png"><img alt="Bode Modulus Representation" src="../_images/EIS-Principle-Representation_Bode_Mod.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode Modulus Representation</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id9">
 <span id="fig-representation-phase"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-Representation_Bode_Phase.png"><img alt="Bode Phase Representation" src="../_images/EIS-Principle-Representation_Bode_Phase.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Bode Phase Representation</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Bode Phase Representation</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="series-and-parallel-connections">
-<h2>Series and Parallel Connections<a class="headerlink" href="#series-and-parallel-connections" title="Permalink to this heading">¶</a></h2>
+<h2>Series and Parallel Connections<a class="headerlink" href="#series-and-parallel-connections" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Series connection: <img class="math" src="../_images/math/099fbbe748c96ea3f3f834be629b90bd22c45245.png" alt="Z_1 - Z_2 - \ldots - Z_n"/> = <cite>Z_{eq} = sum Z_i</cite></p></li>
 <li><p>Parallel connection: <img class="math" src="../_images/math/c583592ab740f5a37e8b9822a36652bb981b51ac.png" alt="Z_1/Z_2/\ldots/Z_n"/> = <cite>Z_{eq} = left( sum frac{1}{Z_i} right)^{-1}</cite></p></li>
 </ul>
 </section>
 <section id="equivalent-circuit-models">
-<h2>Equivalent Circuit Models<a class="headerlink" href="#equivalent-circuit-models" title="Permalink to this heading">¶</a></h2>
+<h2>Equivalent Circuit Models<a class="headerlink" href="#equivalent-circuit-models" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The circuit model for EIS consists of a combination of electrical circuit elements:</p>
 <ul>
@@ -165,7 +163,7 @@ meaningful and minimizes the number of variables.</p></li>
 </ul>
 </section>
 <section id="circuit-elements">
-<h2>Circuit elements<a class="headerlink" href="#circuit-elements" title="Permalink to this heading">¶</a></h2>
+<h2>Circuit elements<a class="headerlink" href="#circuit-elements" title="Link to this heading">¶</a></h2>
 <p>The differents circuit elements available with their string representation
 are listed here and their Nyquist representation is shown in <a class="reference internal" href="#fig-circuit-elements"><span class="std std-numref">Fig. 6</span></a>.
 In order to be recognized by the string parser each element must start the one or two letters defined below
@@ -183,15 +181,15 @@ the number of Voigt elements defined after an underscore.</p>
 <li><p>G[name]: <img class="math" src="../_images/math/2f5d0037bdfcef9d5396662db5728259f1d6ee2d.png" alt="Z_G(\omega) = G \cdot (K_g + i \omega)^{-n_g}"/></p></li>
 </ul>
 <p>Inductor and Finite Space Warburg are rarely encountered in corrosion studies.</p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id9">
 <span id="fig-circuit-elements"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-CircuitElements.png"><img alt="Circuit Elements" src="../_images/EIS-Principle-CircuitElements.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Circuit Elements</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Circuit Elements</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="link-between-circuit-elements-and-physical-parameters">
-<h2>Link between circuit elements and physical parameters<a class="headerlink" href="#link-between-circuit-elements-and-physical-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Link between circuit elements and physical parameters<a class="headerlink" href="#link-between-circuit-elements-and-physical-parameters" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Resistors can be linked to resistivity or kinetics:</p>
 <ul>
@@ -227,7 +225,7 @@ the number of Voigt elements defined after an underscore.</p>
 </ul>
 </section>
 <section id="simplified-randles-circuit">
-<h2>Simplified Randles Circuit<a class="headerlink" href="#simplified-randles-circuit" title="Permalink to this heading">¶</a></h2>
+<h2>Simplified Randles Circuit<a class="headerlink" href="#simplified-randles-circuit" title="Link to this heading">¶</a></h2>
 <p>Reflects electrochemical reaction controlled only by kinetics as shown in <a class="reference internal" href="#fig-simplified-randles"><span class="std std-numref">Fig. 7</span></a></p>
 <ul class="simple">
 <li><p><img class="math" src="../_images/math/89ddfb5b4135c0642e04a801014e3c776a9cff6e.png" alt="R_{el} + R_{ct} / C_{dl}"/></p></li>
@@ -235,15 +233,15 @@ the number of Voigt elements defined after an underscore.</p>
 <li><p><img class="math" src="../_images/math/e8860380b09b862a158e91d75bc90faff0645921.png" alt="R_{ct}"/>: charge transfer resistance</p></li>
 <li><p><img class="math" src="../_images/math/1fc924ca3098a2374996c52d3981bad9f73e4880.png" alt="C_{dl}"/>: double layer capacitance</p></li>
 </ul>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id10">
 <span id="fig-simplified-randles"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-SimplifiedRandles.png"><img alt="Simplified Randles" src="../_images/EIS-Principle-SimplifiedRandles.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Simplified Randles</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Simplified Randles</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="randles-circuit">
-<h2>Randles Circuit<a class="headerlink" href="#randles-circuit" title="Permalink to this heading">¶</a></h2>
+<h2>Randles Circuit<a class="headerlink" href="#randles-circuit" title="Link to this heading">¶</a></h2>
 <p>Reflects electrochemical reaction controlled by kinetics and diffusion as shown in <a class="reference internal" href="#fig-randles"><span class="std std-numref">Fig. 8</span></a></p>
 <ul class="simple">
 <li><p><img class="math" src="../_images/math/89ddfb5b4135c0642e04a801014e3c776a9cff6e.png" alt="R_{el} + R_{ct} / C_{dl}"/></p></li>
@@ -252,65 +250,15 @@ the number of Voigt elements defined after an underscore.</p>
 <li><p><img class="math" src="../_images/math/1fc924ca3098a2374996c52d3981bad9f73e4880.png" alt="C_{dl}"/>: double layer capacitance</p></li>
 <li><p><img class="math" src="../_images/math/1fbee781f84569077719a167b64e12064360fac1.png" alt="W"/>: semi-infinite diffusion</p></li>
 </ul>
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id11">
 <span id="fig-randles"></span><a class="reference internal image-reference" href="../_images/EIS-Principle-Randles.png"><img alt="Randles" src="../_images/EIS-Principle-Randles.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Randles</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Randles</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Example for the Nyquist plot of the Randles circuit.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Rel</span> <span class="o">=</span> <span class="mf">20.0</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mf">1e-5</span>
-<span class="n">W</span> <span class="o">=</span> <span class="mf">15.0</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">skx</span><span class="o">.</span><span class="n">eis</span><span class="o">.</span><span class="n">ElectrochemicalCircuit</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s2">&quot;Rel+(Rct+W)/Cdl&quot;</span><span class="p">)</span>
-<span class="n">c</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">({</span><span class="s2">&quot;Rel&quot;</span><span class="p">:</span> <span class="n">Rel</span><span class="p">,</span> <span class="s2">&quot;Rct&quot;</span><span class="p">:</span> <span class="n">R</span><span class="p">,</span> <span class="s2">&quot;Cdl&quot;</span><span class="p">:</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">W</span><span class="p">})</span>
-
-<span class="n">Z</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span>
-<span class="n">ReZ</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">real</span>
-<span class="n">ImZ</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">imag</span>
-<span class="n">modZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;ReZ /$\Omega$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ImZ /$\Omega$&quot;</span><span class="p">)</span>
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ReZ</span><span class="p">,</span> <span class="n">ImZ</span><span class="p">,</span> <span class="s2">&quot;k.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;High $\omega$&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="o">+</span><span class="n">Rel</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">55</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Low $\omega$&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="o">+</span><span class="n">Rel</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">55</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="o">+</span><span class="n">Rel</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="o">+</span><span class="n">Rel</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">),</span>
-            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;&lt;-&gt;&quot;</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3, rad=0.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">Rel</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;&lt;-&gt;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;$R_</span><span class="si">{el}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">Rel</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">Rel</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">Rel</span><span class="o">+</span><span class="n">R</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;&lt;-&gt;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;$R_</span><span class="si">{ct}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">Rel</span><span class="o">+</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">Rel</span><span class="o">+</span><span class="n">R</span><span class="o">+</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">Rel</span><span class="o">+</span><span class="n">R</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span>
-            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;$W$&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">Rel</span><span class="o">+</span><span class="n">R</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">40</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
-
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
-</pre></div>
-</div>
 </section>
 <section id="differential-impedance-analysis">
-<h2>Differential Impedance analysis<a class="headerlink" href="#differential-impedance-analysis" title="Permalink to this heading">¶</a></h2>
+<h2>Differential Impedance analysis<a class="headerlink" href="#differential-impedance-analysis" title="Link to this heading">¶</a></h2>
 <p>The differential Impedance Analysis (DIA) is based on the use of a Local Operator Model (LOM)
 which is a equivalent circuit for a simple Faradic reaction but has direct meaning with the
 experimental spectrum that is being analyzed.</p>
@@ -322,13 +270,13 @@ experimental spectrum that is being analyzed.</p>
 <li><p>Frequency analysis of the LOM parameters’ estimates</p></li>
 </ul>
 <section id="scanning-with-the-lom-operator">
-<h3>Scanning with the LOM operator<a class="headerlink" href="#scanning-with-the-lom-operator" title="Permalink to this heading">¶</a></h3>
+<h3>Scanning with the LOM operator<a class="headerlink" href="#scanning-with-the-lom-operator" title="Link to this heading">¶</a></h3>
 <p>The impedance of the LOM operator is defined as shown in <a class="reference internal" href="#equation-eq-lom-impedance">Eq.1</a>:</p>
 <div class="math" id="equation-eq-lom-impedance">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-lom-impedance" title="Permalink to this equation">¶</a></span><img src="../_images/math/2ef28bc2481da54e9b16597973b701b54a489ebe.png" alt="Z_{LOM} = R_{ads} + \frac{R}{1+T ^2\omega ^2} - j\frac{\omega R T}{1+T ^2\omega ^2}"/></p>
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-lom-impedance" title="Link to this equation">¶</a></span><img src="../_images/math/2ef28bc2481da54e9b16597973b701b54a489ebe.png" alt="Z_{LOM} = R_{ads} + \frac{R}{1+T ^2\omega ^2} - j\frac{\omega R T}{1+T ^2\omega ^2}"/></p>
 </div></section>
 <section id="parametric-idenfication-of-the-lom-parameters">
-<h3>Parametric idenfication of the LOM parameters<a class="headerlink" href="#parametric-idenfication-of-the-lom-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parametric idenfication of the LOM parameters<a class="headerlink" href="#parametric-idenfication-of-the-lom-parameters" title="Link to this heading">¶</a></h3>
 <p>The objective is to identify the LOM parameters <img class="math" src="../_images/math/c8a945676faef14558570eebeed19be29159c3f9.png" alt="P_j=Rads, R, C, T"/>.</p>
 <p>First the effective resistance and the effective inductance are expressed:</p>
 <div class="math">
@@ -355,30 +303,30 @@ experimental spectrum that is being analyzed.</p>
 <p><img src="../_images/math/2de8e48fc33d02a84b4e764aa56fadbbca45afa0.png" alt="C(\omega) = \frac{T}{R}"/></p>
 </div></section>
 <section id="temporal-analysis">
-<h3>Temporal analysis<a class="headerlink" href="#temporal-analysis" title="Permalink to this heading">¶</a></h3>
+<h3>Temporal analysis<a class="headerlink" href="#temporal-analysis" title="Link to this heading">¶</a></h3>
 <p>The temporal analysis computes the logarithmic values of the LOM parameters <img class="math" src="../_images/math/f010d9292ba00b3e6db5b04333f09e687a3b0f7f.png" alt="L_j=a, r, c, t"/> with respect to
 <img class="math" src="../_images/math/14eb89266154200b9c81dcfc3bd058638fa221bf.png" alt="\nu"/> as defined in <a class="reference internal" href="#equation-eq-lj">Eq.2</a>:</p>
 <div class="math" id="equation-eq-lj">
-<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-lj" title="Permalink to this equation">¶</a></span><img src="../_images/math/9aa43affa03aecbaeff7f3fe963f0752e6855212.png" alt="L_j = \log_{10} P_j = \log_{10} Rads, \log_{10} R, \log_{10} C, \log_{10} T
+<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-lj" title="Link to this equation">¶</a></span><img src="../_images/math/9aa43affa03aecbaeff7f3fe963f0752e6855212.png" alt="L_j = \log_{10} P_j = \log_{10} Rads, \log_{10} R, \log_{10} C, \log_{10} T
 
   L_j = a, r, c, t
 
   \nu = \log_{10} \frac{1}{\omega}"/></p>
 </div></section>
 <section id="differential-temporal-analysis">
-<h3>Differential temporal analysis<a class="headerlink" href="#differential-temporal-analysis" title="Permalink to this heading">¶</a></h3>
+<h3>Differential temporal analysis<a class="headerlink" href="#differential-temporal-analysis" title="Link to this heading">¶</a></h3>
 <p>The differential temporal analysis computes the derivatives <img class="math" src="../_images/math/40b2016b0a343a9ecd6b8c92a5dc4716f58cfe32.png" alt="d_j"/> of <img class="math" src="../_images/math/61b84163ba0a778618fb55671db982ecfe9ca48f.png" alt="L_j"/> with respect to <img class="math" src="../_images/math/14eb89266154200b9c81dcfc3bd058638fa221bf.png" alt="\nu"/>
 as defined in <a class="reference internal" href="#equation-eq-dj">Eq.3</a></p>
 <div class="math" id="equation-eq-dj">
-<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-dj" title="Permalink to this equation">¶</a></span><img src="../_images/math/bc3e9c5030c69d6398069bd0f94610d9ddcf5cc9.png" alt="d_j = \frac{dL_j}{d\nu} = da, dr, dc, dt"/></p>
+<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-dj" title="Link to this equation">¶</a></span><img src="../_images/math/bc3e9c5030c69d6398069bd0f94610d9ddcf5cc9.png" alt="d_j = \frac{dL_j}{d\nu} = da, dr, dc, dt"/></p>
 </div></section>
 <section id="spectral-analysis">
-<h3>Spectral analysis<a class="headerlink" href="#spectral-analysis" title="Permalink to this heading">¶</a></h3>
+<h3>Spectral analysis<a class="headerlink" href="#spectral-analysis" title="Link to this heading">¶</a></h3>
 <p>The spectral analysis is obtained by accumulating frequency bands with approximatively equal values
 of the parameters <img class="math" src="../_images/math/61b84163ba0a778618fb55671db982ecfe9ca48f.png" alt="L_j"/>. The amplitude of the individual spectral line <img class="math" src="../_images/math/968c2d311f93704a7450d79aee024eafe883a207.png" alt="S_{j,l}"/>
 can be expressed as shown in <a class="reference internal" href="#equation-eq-s-spectral">Eq.4</a>.</p>
 <div class="math" id="equation-eq-s-spectral">
-<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-s-spectral" title="Permalink to this equation">¶</a></span><img src="../_images/math/d75a4365e5c603bf90db36602af5c28f92ed973a.png" alt="S_{j,l} = \sum _1 ^N B(L_{j,i})
+<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-s-spectral" title="Link to this equation">¶</a></span><img src="../_images/math/d75a4365e5c603bf90db36602af5c28f92ed973a.png" alt="S_{j,l} = \sum _1 ^N B(L_{j,i})
 
   B(L_{j,i}) = w_0 \text{ if } l &lt; L_{j,l} &lt; l+s
 
@@ -388,12 +336,12 @@ can be expressed as shown in <a class="reference internal" href="#equation-eq-s-
 </div><p>The spectral line is expressed in dB.</p>
 </section>
 <section id="differential-spectral-analysis">
-<h3>Differential spectral analysis<a class="headerlink" href="#differential-spectral-analysis" title="Permalink to this heading">¶</a></h3>
+<h3>Differential spectral analysis<a class="headerlink" href="#differential-spectral-analysis" title="Link to this heading">¶</a></h3>
 <p>The differential spectral analysis is obtained by accumulating frequency bands with approximatively equal values
 of the parameters <img class="math" src="../_images/math/40b2016b0a343a9ecd6b8c92a5dc4716f58cfe32.png" alt="d_j"/>. The amplitude of the individual spectral line <img class="math" src="../_images/math/968c2d311f93704a7450d79aee024eafe883a207.png" alt="S_{j,l}"/>
 can be expressed as shown in <a class="reference internal" href="#equation-eq-s-differential-spectral">Eq.5</a>.</p>
 <div class="math" id="equation-eq-s-differential-spectral">
-<p><span class="eqno">(5)<a class="headerlink" href="#equation-eq-s-differential-spectral" title="Permalink to this equation">¶</a></span><img src="../_images/math/327b901d91d87e88c0180a70d2a74bc97b99d35f.png" alt="S_{j,l} = \sum _1 ^N B(d_{j,i})
+<p><span class="eqno">(5)<a class="headerlink" href="#equation-eq-s-differential-spectral" title="Link to this equation">¶</a></span><img src="../_images/math/327b901d91d87e88c0180a70d2a74bc97b99d35f.png" alt="S_{j,l} = \sum _1 ^N B(d_{j,i})
 
   B(d_{j,i}) = w_0 \text{ if } l &lt; d_{j,l} &lt; l+s
 
@@ -402,178 +350,43 @@ can be expressed as shown in <a class="reference internal" href="#equation-eq-s-
   w_0 = N_{frequencies} / N_{decades}"/></p>
 </div><p>The spectral line is expressed in dB.</p>
 <p>An example with a simple RC circuit:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>
-<span class="n">xi</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="p">,)</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">skx</span><span class="o">.</span><span class="n">eis</span><span class="o">.</span><span class="n">ElectrochemicalCircuit</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s2">&quot;Rel+R/C&quot;</span><span class="p">)</span>
-
-<span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Rel&quot;</span><span class="p">:</span><span class="mf">10.0</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">1e-5</span><span class="p">}</span>
-<span class="n">c</span><span class="o">.</span><span class="n">set_parameter_values</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-
-<span class="n">Z</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span>
-
-<span class="n">ReZ</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">real</span>
-<span class="n">ImZ</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">imag</span>
-<span class="n">modZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;ReZ /$\Omega$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ImZ /$\Omega$&quot;</span><span class="p">)</span>
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ReZ</span><span class="p">,</span> <span class="n">ImZ</span><span class="p">,</span> <span class="s2">&quot;k.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-
-<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
-</pre></div>
-</div>
-<figure class="align-default" id="id13">
-<span id="fig-dia-rc"></span><a class="reference internal image-reference" href="media/EIS-DIA-RC.png"><img alt="Simple RC" src="media/EIS-DIA-RC.png" style="width: 600px;" /></a>
+<figure class="align-default" id="id12">
+<span id="fig-dia-rc"></span><a class="reference internal image-reference" href="../_images/EIS-DIA-RC.png"><img alt="Simple RC" src="../_images/EIS-DIA-RC.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Simple RC</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Simple RC</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dia</span> <span class="o">=</span> <span class="n">skx</span><span class="o">.</span><span class="n">eis</span><span class="o">.</span><span class="n">DifferentialImpedanceAnalysis</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">ReZ</span><span class="p">,</span> <span class="n">ImZ</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$L_j$&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">dia</span><span class="o">.</span><span class="n">temporal_analysis</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;L&quot;</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$d_j$&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">dia</span><span class="o">.</span><span class="n">differential_temporal_analysis</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$L_j$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I /dB&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">dia</span><span class="o">.</span><span class="n">spectral_analysis</span><span class="p">(</span><span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">dia</span><span class="o">.</span><span class="n">sa_width</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;EIS-DIA-sa.png&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/&#39;</span> <span class="o">+</span>  <span class="n">name</span> <span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$d_j$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I /dB&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">dia</span><span class="o">.</span><span class="n">differential_spectral_analysis</span><span class="p">(</span><span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">dia</span><span class="o">.</span><span class="n">dsa_width</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-<figure class="align-default" id="id14">
-<span id="fig-dia-ta"></span><a class="reference internal image-reference" href="media/EIS-DIA-ta.png"><img alt="Temporal Analysis" src="media/EIS-DIA-ta.png" style="width: 600px;" /></a>
+<figure class="align-default" id="id13">
+<span id="fig-dia-ta"></span><a class="reference internal image-reference" href="../_images/EIS-DIA-ta.png"><img alt="Temporal Analysis" src="../_images/EIS-DIA-ta.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Temporal Analysis</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Temporal Analysis</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<span id="fig-dia-dta"></span><a class="reference internal image-reference" href="../_images/EIS-DIA-dta.png"><img alt="Differential Temporal Analysis" src="../_images/EIS-DIA-dta.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Differential Temporal Analysis</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
-<span id="fig-dia-dta"></span><a class="reference internal image-reference" href="media/EIS-DIA-dta.png"><img alt="Differential Temporal Analysis" src="media/EIS-DIA-dta.png" style="width: 600px;" /></a>
+<span id="fig-dia-sa"></span><a class="reference internal image-reference" href="../_images/EIS-DIA-sa.png"><img alt="Spectral Analysis" src="../_images/EIS-DIA-sa.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Differential Temporal Analysis</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Spectral Analysis</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id16">
-<span id="fig-dia-sa"></span><a class="reference internal image-reference" href="media/EIS-DIA-sa.png"><img alt="Spectral Analysis" src="media/EIS-DIA-sa.png" style="width: 600px;" /></a>
+<span id="fig-dia-dsa"></span><a class="reference internal image-reference" href="../_images/EIS-DIA-dsa.png"><img alt="Differential Spectral Analysis" src="../_images/EIS-DIA-dsa.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Spectral Analysis</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id17">
-<span id="fig-dia-dsa"></span><a class="reference internal image-reference" href="media/EIS-DIA-dsa.png"><img alt="Differential Spectral Analysis" src="media/EIS-DIA-dsa.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Differential Spectral Analysis</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Differential Spectral Analysis</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
-<p><span id="id4">Barsoukov and Macdonald [<a class="reference internal" href="../bibliography/index.html#id3" title="Evgenij Barsoukov and J.R. Macdonald. Impedance Spectroscopy: Theory, Experiment, and Applications. John Wiley &amp; Sons, Inc., Hoboken, NJ, USA, second edition, 2005.">1</a>], Orazem and Tribollet [<a class="reference internal" href="../bibliography/index.html#id2" title="Mark E. Orazem and Bernard Tribollet. Electrochemical Impedance Spectroscopy. John Wiley &amp; Sons, Inc., 2008. ISBN 978-0-470-04140-6.">2</a>], Boukamp [<a class="reference internal" href="../bibliography/index.html#id4" title="B.A. Boukamp. A Nonlinear Least Squares Fit Procedure for Analysis of Immittance Data of Electrochemical Systems. Solid State Ionics, pages 31–44, 1986.">3</a>], Bevington and Robinson [<a class="reference internal" href="../bibliography/index.html#id15" title="Philip R. Bevington and D. Keith Robinson. Data Reduction and Error Analysis for Physical Sciences. McGraw Hill, New York, third edition, 2003. ISBN 0-07-247227-8.">4</a>], Press <em>et al.</em> [<a class="reference internal" href="../bibliography/index.html#id14" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes: The Art of Scientific Computing. Cambridge University Press, Cambridge, third edition, 2007.">5</a>], Stoynov and Vladikova [<a class="reference internal" href="../bibliography/index.html#id33" title="Z. Stoynov and D. Vladikova. Differential Impdedance Analysis. Marin Drinov Academic Publishing House, Sofia, 2005.">6</a>]</span></p>
 </section>
 </section>
 
 
             <div class="clearer"></div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">EIS</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#black-box-approach">Black Box Approach</a></li>
-<li><a class="reference internal" href="#what-is-eis">What is EIS?</a></li>
-<li><a class="reference internal" href="#representation">Representation</a></li>
-<li><a class="reference internal" href="#series-and-parallel-connections">Series and Parallel Connections</a></li>
-<li><a class="reference internal" href="#equivalent-circuit-models">Equivalent Circuit Models</a></li>
-<li><a class="reference internal" href="#circuit-elements">Circuit elements</a></li>
-<li><a class="reference internal" href="#link-between-circuit-elements-and-physical-parameters">Link between circuit elements and physical parameters</a></li>
-<li><a class="reference internal" href="#simplified-randles-circuit">Simplified Randles Circuit</a></li>
-<li><a class="reference internal" href="#randles-circuit">Randles Circuit</a></li>
-<li><a class="reference internal" href="#differential-impedance-analysis">Differential Impedance analysis</a><ul>
-<li><a class="reference internal" href="#scanning-with-the-lom-operator">Scanning with the LOM operator</a></li>
-<li><a class="reference internal" href="#parametric-idenfication-of-the-lom-parameters">Parametric idenfication of the LOM parameters</a></li>
-<li><a class="reference internal" href="#temporal-analysis">Temporal analysis</a></li>
-<li><a class="reference internal" href="#differential-temporal-analysis">Differential temporal analysis</a></li>
-<li><a class="reference internal" href="#spectral-analysis">Spectral analysis</a></li>
-<li><a class="reference internal" href="#differential-spectral-analysis">Differential spectral analysis</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="kinetics.html"
-                          title="previous chapter">Kinetics</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="pec.html"
-                          title="next chapter">PEC</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/ecx_theory/eis.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
       </div>
       <div class="clearer"></div>
     </div>
@@ -593,13 +406,13 @@ can be expressed as shown in <a class="reference internal" href="#equation-eq-s-
           <a href="kinetics.html" title="Kinetics"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >ElectroChemistry - Theoretical background</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">EIS</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023 Milan Skocic.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    &#169; Copyright 2023 Milan Skocic.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.2.
     </div>
   </body>
 </html>

@@ -10,6 +10,14 @@ Description
 
 .. readme_inclusion_end
 
+To use `ecx` within your `fpm <https://github.com/fortran-lang/fpm>`_ project,
+add the following to your `fpm.toml` file:
+
+.. code-block::
+
+    [dependencies]
+    ecx = { git="https://github.com/MilanSkocic/ecx.git" }
+    
 
 Installation
 =================

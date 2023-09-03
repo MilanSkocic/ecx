@@ -3,6 +3,7 @@ module ecx__core
     use iso_fortran_env
     use ieee_arithmetic
     use codata
+    use stdlib_math
     implicit none
     
     real(real64), parameter :: ecx_core_PI = 4.0d0*datan(1.0d0) !! PI
@@ -65,10 +66,11 @@ pure subroutine ecx_core_linspace(start, end, x)
 
     n = size(x)
     dx = (end - start) / (n-1)
-
+    
     do i=1, n
         x(i) = start + dx * (i-1)
     end do
+    x = linspace(start, end, size(x))
 
 end subroutine
 

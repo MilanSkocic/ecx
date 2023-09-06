@@ -83,9 +83,7 @@ pure subroutine ecx_core_logspace(start, end, x)
     integer(int32), intent(out) :: x(:)
         !! 1d-array where to put the log spaced values.
 
-    call ecx_core_linspace(start, end, x)
-
-    x(:) = 10.0d0**x(:)
+    x(:) = logspace(start, end, size(x))
 
 end subroutine
 

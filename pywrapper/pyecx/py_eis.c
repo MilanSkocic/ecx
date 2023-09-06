@@ -1,5 +1,4 @@
 #include "py_common.h"
-#include "ecx_eis_capi.h"
 
 PyDoc_STRVAR(module_docstring, "C extension wrapping the EIS module of the Fortran ecx library.");
 

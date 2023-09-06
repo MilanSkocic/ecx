@@ -7,8 +7,8 @@
 #define ECX_H
 
 #include "ecx_core.h"
-#include "ecx_eis_capi.h"
-#include "ecx_pec_capi.h"
+#include "ecx_eis.h"
+#include "ecx_pec.h"
 #include "ecx_kinetics.h"
 
 #endif

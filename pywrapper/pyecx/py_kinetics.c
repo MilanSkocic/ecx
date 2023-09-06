@@ -1,6 +1,4 @@
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
-#include "ecx_kinetics_capi.h"
+#include "py_common.h"
 
 const char ERR_MSG_ARGS[] = "U must be objects with the buffer protocol and all other parameter are floats.";
 const char ERR_MSG_U_OBJ[] = "U must be an object with the buffer protocol such as numpy arrays.";

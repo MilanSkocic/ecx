@@ -84,7 +84,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="14.7% of total for modules and submodules.">59 statements</a>
+    title=" 4.2% of total for modules and submodules.">18 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/ecx_eis_capi.f90"> Source File</a></li>
   </ul>
@@ -112,11 +112,6 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-0" class="panel-collapse collapse">
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zc">ecx_capi_zc</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zcpe">ecx_capi_zcpe</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zl">ecx_capi_zl</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zr">ecx_capi_zr</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zw">ecx_capi_zw</a>
       <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_eis_capi_z">ecx_eis_capi_z</a>
     </div>
   </div>
@@ -135,9 +130,9 @@
       <ul class="list-group">
       <li class="list-group-item">
   <ul class="list-inline">
+    <li><a href='../module/ecx__eis.html'>ecx__eis</a></li>
     <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
     <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
-    <li><a href='../module/ecx__eis.html'>ecx__eis</a></li>
   </ul>
       </li>
       </ul>
@@ -153,11 +148,6 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-1" class="panel-collapse collapse">
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zc">ecx_capi_zc</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zcpe">ecx_capi_zcpe</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zl">ecx_capi_zl</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zr">ecx_capi_zr</a>
-      <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_capi_zw">ecx_capi_zw</a>
       <a class="list-group-item" href="../module/ecx__eis_capi.html#proc-ecx_eis_capi_z">ecx_eis_capi_z</a>
     </div>
   </div>
@@ -176,234 +166,11 @@
     <section>
     <h2>Subroutines</h2>
       <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_capi_zc"></span><h3>public pure subroutine <a href='../proc/ecx_capi_zc.html'>ecx_capi_zc</a>(w, C, n, Z) bind(C)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a capacitor. 
-@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
-@param[in] C Capacitance in Farad.
-@param[in] n Size of w and Z.
-@param[out] Z Complex impedance in Ohms as 1d-array.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>C</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
-<td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Z</strong>(n)</td><td></td>
-</tr>
-</tbody>
-</table>
-
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_capi_zcpe"></span><h3>public pure subroutine <a href='../proc/ecx_capi_zcpe.html'>ecx_capi_zcpe</a>(w, Q, a, n, Z) bind(C)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a CPE. 
-@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
-@param[in] Q Resistance in S.s^-a
-@param[in] a CPE exponent
-@param[out] Z Complex impedance in Ohms as 1d-array.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>Q</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>a</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
-<td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Z</strong>(n)</td><td></td>
-</tr>
-</tbody>
-</table>
-
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_capi_zl"></span><h3>public pure subroutine <a href='../proc/ecx_capi_zl.html'>ecx_capi_zl</a>(w, L, n, Z) bind(C)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a inductor. 
-@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
-@param[in] L Inductance in Henry.
-@param[in] n Size of w and Z.
-@param[out] Z Complex impedance in Ohms as 1d-array.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>L</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
-<td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Z</strong>(n)</td><td></td>
-</tr>
-</tbody>
-</table>
-
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_capi_zr"></span><h3>public pure subroutine <a href='../proc/ecx_capi_zr.html'>ecx_capi_zr</a>(w, R, n, Z) bind(C)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a resistor. 
-@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
-@param[in] R Resistance in Ohms.
-@param[in] n Size of w and Z.
-@param[out] Z Complex impedance in Ohms as 1d-array.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>R</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
-<td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Z</strong>(n)</td><td></td>
-</tr>
-</tbody>
-</table>
-
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_capi_zw"></span><h3>public pure subroutine <a href='../proc/ecx_capi_zw.html'>ecx_capi_zw</a>(w, s, n, Z) bind(C)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a finite length warburg
-@param[in] w Angular frequencies in rad.s^-1 as 1d-array.
-@param[in] s Pseudo-Resistance in Ohms.s^(1/2).
-@param[out] Z Complex impedance in Ohms as 1d-array.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=c_double),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>s</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
-<td>intent(in),</td>
-  <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
-<td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Z</strong>(n)</td><td></td>
-</tr>
-</tbody>
-</table>
-
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_capi_z"></span><h3>public subroutine <a href='../proc/ecx_eis_capi_z.html'>ecx_eis_capi_z</a>(p, w, z, e, k, n, errstat) bind(C)</h3></div>
   <div class="panel-body">
-           
+       
+<p>Compute the complex impedance for the given element.</p>
+    
 <h4>Arguments</h4>      <table class="table table-striped varlist">
 <thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
@@ -411,43 +178,43 @@
   <td><span class="anchor" ></span>real(kind=c_double),</td>
 <td>intent(in)</td>
   <td></td>  <td></td><td>::</td>
-  <td><strong>p</strong>(k)</td><td></td>
+  <td><strong>p</strong>(k)</td><td><p>Parameters.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>real(kind=c_double),</td>
 <td>intent(in)</td>
   <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong>(n)</td><td></td>
+  <td><strong>w</strong>(n)</td><td><p>Angular frequencies in rad.s-1</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>complex(kind=c_double_complex),</td>
 <td>intent(out)</td>
   <td></td>  <td></td><td>::</td>
-  <td><strong>z</strong>(n)</td><td></td>
+  <td><strong>z</strong>(n)</td><td><p>Complex impedance in Ohms.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>character(kind=c_char,len=1),</td>
 <td>intent(in),</td>
   <td></td>  <td>value</td><td>::</td>
-  <td><strong>e</strong></td><td></td>
+  <td><strong>e</strong></td><td><p>Electrochemical element: R, C, L, Q, O, T, G</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
 <td>intent(in),</td>
   <td></td>  <td>value</td><td>::</td>
-  <td><strong>k</strong></td><td></td>
+  <td><strong>k</strong></td><td><p>Size of p</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>integer(kind=c_size_t),</td>
 <td>intent(in),</td>
   <td></td>  <td>value</td><td>::</td>
-  <td><strong>n</strong></td><td></td>
+  <td><strong>n</strong></td><td><p>Size of w</p></td>
 </tr>
 <tr>
   <td><span class="anchor" ></span>integer(kind=c_int),</td>
 <td>intent(inout)</td>
   <td></td>  <td></td><td>::</td>
-  <td><strong>errstat</strong></td><td></td>
+  <td><strong>errstat</strong></td><td><p>Error status</p></td>
 </tr>
 </tbody>
 </table>
@@ -474,7 +241,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-08-30T07:10:20.761815           </p>
+ on 2023-09-06T08:14:10.813387           </p>
         </div>
       </div>
       <br>

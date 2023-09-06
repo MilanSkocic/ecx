@@ -26,11 +26,11 @@ Common headers
 EIS headers
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ../../../../include/ecx_eis_capi.h
+.. literalinclude:: ../../../../include/ecx_eis.h
     :language: C
 
 PEC headers
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ../../../../include/ecx_pec_capi.h
+.. literalinclude:: ../../../../include/ecx_pec.h
     :language: C

@@ -11,16 +11,14 @@ module ecx__eis
         character(len=64) :: msg
     end type
 
-    type(ecx_eis_error_messages_t), parameter :: ecx_eis_errmsg(3) = &
+    type(ecx_eis_error_messages_t), parameter :: ecx_eis_errmsg(4) = &
     [ecx_eis_error_messages_t(1, "Parameter array must be at least of size 3."), &
     ecx_eis_error_messages_t(2, "Unknown element."), &
-    ecx_eis_error_messages_t(3, "n must be greater or equal to 1.")] 
+    ecx_eis_error_messages_t(3, "n must be greater or equal to 1."), &
+    ecx_eis_error_messages_t(4, "Number of parameter in p is incorrect.")] 
     
 
 public :: ecx_eis_z
-public :: ecx_eis_zr, ecx_eis_zc, ecx_eis_zl
-public :: ecx_eis_zw, ecx_eis_zflw, ecx_eis_zfsw
-public :: ecx_eis_zg, ecx_eis_zcpe
 public :: ecx_eis_errmsg
 
 contains
@@ -225,18 +223,21 @@ pure subroutine ecx_eis_mm(p, w, z, n)
 
     if(n<1)then
         errstat = 3
-        z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
-                ieee_value(0.0d0, ieee_quiet_nan), &
-                real64)
-    else
-        call ecx_eis_z(p, w, z, "R", errstat)
-
-        do i = 1, n-2
-            call ecx_eis_z(p(i+1:), w, zr, "R", errstat)
-            call ecx_eis_z(p(i+2:), w, zc, "C", errstat)
-            z = z + (zr*zc) / (zr+zc)
-        enddo
+        z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), ieee_value(0.0d0, ieee_quiet_nan), real64)
+    else 
+        if(size(p) == (1+n*2))then
+            call ecx_eis_z(p, w, z, "R", errstat)
+            do i = 1, n-2
+                call ecx_eis_z(p(i+1:), w, zr, "R", errstat)
+                call ecx_eis_z(p(i+2:), w, zc, "C", errstat)
+                z = z + (zr*zc) / (zr+zc)
+            enddo
+        else
+            errstat = 4
+            z = cmplx(ieee_value(0.0d0, ieee_quiet_nan), ieee_value(0.0d0, ieee_quiet_nan), real64)
+        endif
     endif
+
 
 end subroutine
 

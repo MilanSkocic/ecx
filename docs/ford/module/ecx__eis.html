@@ -84,7 +84,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="36.8% of total for modules and submodules.">148 statements</a>
+    title="35.0% of total for modules and submodules.">150 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/ecx_eis.f90"> Source File</a></li>
   </ul>
@@ -117,21 +117,6 @@
   </div>
 </div>
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
-  <div id="funcs-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zc">ecx_eis_zc</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zcpe">ecx_eis_zcpe</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zflw">ecx_eis_zflw</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zfsw">ecx_eis_zfsw</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zg">ecx_eis_zg</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zl">ecx_eis_zl</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zr">ecx_eis_zr</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zw">ecx_eis_zw</a>
-    </div>
-  </div>
-</div>
-<div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-0" class="panel-collapse collapse">
@@ -154,8 +139,8 @@
       <li class="list-group-item">
   <ul class="list-inline">
     <li><a href="http://fortranwiki.org/fortran/show/ieee_arithmetic">ieee_arithmetic</a></li>
-    <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
     <li><a href='../module/ecx__core.html'>ecx__core</a></li>
+    <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
   </ul>
       </li>
       </ul>
@@ -172,21 +157,6 @@
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
       <a class="list-group-item" href="../module/ecx__eis.html#variable-ecx_eis_errmsg">ecx_eis_errmsg</a>
-    </div>
-  </div>
-</div>
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
-  <div id="funcs-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zc">ecx_eis_zc</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zcpe">ecx_eis_zcpe</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zflw">ecx_eis_zflw</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zfsw">ecx_eis_zfsw</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zg">ecx_eis_zg</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zl">ecx_eis_zl</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zr">ecx_eis_zr</a>
-      <a class="list-group-item" href="../module/ecx__eis.html#proc-ecx_eis_zw">ecx_eis_zw</a>
     </div>
   </div>
 </div>
@@ -211,7 +181,7 @@
 <tr>
   <td><span class="anchor" id="variable-ecx_eis_errmsg"></span>type(ecx_eis_error_messages_t),</td>
 <td>public,</td>  <td>parameter</td><td>::</td>
-  <td><strong>ecx_eis_errmsg</strong>(3)</td><td> =</td><td>[ecx_eis_error_messages_t(1, "Parameter array must be at least of size 3."), ecx_eis_error_messages_t(2, "Unknown element."), ecx_eis_error_messages_t(3, "n must be greater or equal to 1.")]</td><td></td>
+  <td><strong>ecx_eis_errmsg</strong>(4)</td><td> =</td><td>[ecx_eis_error_messages_t(1, "Parameter array must be at least of size 3."), ecx_eis_error_messages_t(2, "Unknown element."), ecx_eis_error_messages_t(3, "n must be greater or equal to 1."), ecx_eis_error_messages_t(4, "Number of parameter in p is incorrect.")]</td><td></td>
 </tr>
 </tbody>
 </table>
@@ -223,279 +193,6 @@
 
     
     
- 
-    <section>
-    <h2>Functions</h2>
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zc"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zc.html'>ecx_eis_zc</a>(w, C) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for a capacitor. </p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequencies in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>C</strong></td><td><p>Capacitance in Farad.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zcpe"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zcpe.html'>ecx_eis_zcpe</a>(w, Q, a) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for a CPE. </p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequencies in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>Q</strong></td><td><p>Resistance in S.s^-a</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>a</strong></td><td><p>CPE exponent</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zflw"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zflw.html'>ecx_eis_zflw</a>(w, R, tau, n) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>@brief Compute the complex impedance for a finite length warburg</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequency in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>R</strong></td><td><p>Resistance in Ohms.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>tau</strong></td><td><p>Characteristic time in s.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Order of the fsw.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zfsw"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zfsw.html'>ecx_eis_zfsw</a>(w, R, tau, n) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for a finite space warburg</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequency in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>R</strong></td><td><p>Resistance in Ohms.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>tau</strong></td><td><p>Characteristic time in s.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Order of the fsw.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zg"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zg.html'>ecx_eis_zg</a>(w, G, K) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance of the Gerisher element.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequency in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>G</strong></td><td><p>Pseudo-Resistance in Ohms.s^(1/2).</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>K</strong></td><td><p>Offset in rad.s^-1.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms. </p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zl"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zl.html'>ecx_eis_zl</a>(w, L) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for an inductor. </p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequencies in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>L</strong></td><td><p>Inductance in Henry.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zr"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zr.html'>ecx_eis_zr</a>(w, R) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for a resistor. </p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequencies in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>R</strong></td><td><p>Resistance in Ohms.</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-ecx_eis_zw"></span><h3>public pure elemental function <a href='../proc/ecx_eis_zw.html'>ecx_eis_zw</a>(w, s) result(Z)</h3></div>
-  <div class="panel-body">
-       
-<p>Compute the complex impedance for a semi-infinite Warburg.</p>
-    
-<h4>Arguments</h4>      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>w</strong></td><td><p>Angular frequencies in rad.s^-1.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" ></span>real(kind=real64),</td>
-<td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>s</strong></td><td><p>Pseudo-Resistance in Ohms.s^(1/2).</p></td>
-</tr>
-</tbody>
-</table>
-
-<h4>Return Value <small>complex(kind=real64)</small></h4>  <p>Complex impedance in Ohms.</p>
-
-  </div>
-  </div>
-
-    </section>
-    <br>
 
     <section>
     <h2>Subroutines</h2>
@@ -563,7 +260,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-08-30T07:10:20.761815           </p>
+ on 2023-09-06T08:14:10.813387           </p>
         </div>
       </div>
       <br>

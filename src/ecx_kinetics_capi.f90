@@ -17,7 +17,7 @@ pure subroutine ecx_kinetics_capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bin
     real(c_double), intent(in) :: U(n)
         !! Potential in volts.
     real(c_double), intent(in), value :: j0
-        !! Exchange current density in A.cm-2
+        !! Exchange current density in A.cm-2.
     real(c_double), intent(in), value :: aa
         !! Anodic transfert coefficient.
     real(c_double), intent(in), value :: ac
@@ -49,9 +49,9 @@ pure subroutine ecx_kinetics_capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, 
     real(c_double), intent(in), value :: j0
         !! Exchange current density in A.cm-2
     real(real64), intent(in) :: jdla
-        !! Anodic diffusion limiting current density in A.cm-2
+        !! Anodic diffusion limiting current density in A.cm-2.
     real(real64), intent(in) :: jdlc
-        !! Cathodic diffusion limiting current density in A.cm-2
+        !! Cathodic diffusion limiting current density in A.cm-2.
     real(c_double), intent(in), value :: aa
         !! Anodic transfert coefficient.
     real(c_double), intent(in), value :: ac

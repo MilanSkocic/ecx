@@ -8,7 +8,7 @@
 #include "ecx_types.h"
 #include "ecx_core.h"
 
-extern double ecx_kinetics_capi_nernst(double E0, size_t z, 
+extern double ecx_kinetics_capi_nernst(double E0, int z, 
                                        double *aox, double *vox, size_t nox, 
                                        double *ared, double *vred, size_t nred, 
                                        double T);

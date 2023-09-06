@@ -12,7 +12,7 @@ pure function ecx_kinetics_capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T
     implicit none
     real(c_double), intent(in), value :: E0
         !! Standard electrochemical potential in V.
-    real(c_double), intent(in), value :: z
+    integer(c_int), intent(in), value :: z
         !! Number of exchanged electrons.
     integer(c_size_t), intent(in), value :: nox
         !! Number of oxidants.

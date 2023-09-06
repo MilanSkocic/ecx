@@ -16,7 +16,7 @@ pure function ecx_kinetics_nernst(E0, z, aox, vox, ared, vred, T)result(E)
     implicit none
     real(real64), intent(in) :: E0
         !! Standard electrochemical potential in V.
-    real(real64), intent(in) :: z
+    integer(int32), intent(in) :: z
         !! Number of exchanged electrons.
     real(real64), intent(in) :: aox(:)
         !! Activities of the oxidants.

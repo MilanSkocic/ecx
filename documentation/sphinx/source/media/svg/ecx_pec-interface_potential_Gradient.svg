@@ -2,22 +2,22 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="8in"
    height="3in"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="Interface_Potential_Gradient.svg"
-   inkscape:export-filename="C:\Users\Milan Skocic\Documents\Areva_thesis\1-Bibliography\4-Pictures\Drawings\Interfacial_Potential_Gradient.png"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="ecx_pec-interface_potential_Gradient.svg"
+   inkscape:export-filename="../Interfacial_Potential_Gradient.png"
    inkscape:export-xdpi="300"
-   inkscape:export-ydpi="300">
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs4">
     <marker
@@ -131,25 +131,34 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="294.88772"
-     inkscape:cy="79.068299"
+     inkscape:zoom="1.0919038"
+     inkscape:cx="327.4098"
+     inkscape:cy="99.367731"
      inkscape:document-units="px"
      inkscape:current-layer="g3382"
      showgrid="true"
      inkscape:snap-global="true"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1280"
+     inkscape:window-height="694"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      height="744.09448px"
-     units="in">
+     units="in"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
-       id="grid2985" />
+       id="grid2985"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="in"
+       visible="true" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -213,51 +222,48 @@
          id="path4586"
          inkscape:connector-curvature="0" />
       <text
-         transform="matrix(0,-1,1,0,0,0)"
-         sodipodi:linespacing="100%"
+         transform="rotate(-90)"
          id="text4588"
          y="86.496277"
          x="-1054.3823"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="86.496277"
            x="-1054.3823"
            id="tspan4590"
            sodipodi:role="line"
-           style="font-size:20px">Potentiel</tspan></text>
+           style="font-size:20px;line-height:1">Potential</tspan></text>
       <text
          transform="scale(-1,1)"
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="-559.17267"
          y="1136.0883"
-         id="text4592"
-         sodipodi:linespacing="100%"><tspan
-           style="font-size:17.5px"
+         id="text4592"><tspan
+           style="font-size:17.5px;line-height:1"
            sodipodi:role="line"
            id="tspan4594"
            x="-559.17267"
            y="1136.0883">x</tspan></text>
       <text
          transform="scale(-1,1)"
-         sodipodi:linespacing="100%"
          id="text4596"
          y="1136.6597"
          x="-333.31549"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="1136.6597"
            x="-333.31549"
            id="tspan4598"
-           sodipodi:role="line">0</tspan></text>
+           sodipodi:role="line"
+           style="font-size:13.75px;line-height:1">0</tspan></text>
       <text
-         sodipodi:linespacing="100%"
          id="text4608"
          y="915.58014"
          x="111.26839"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
-           style="font-size:20px"
+           style="font-size:20px;line-height:1"
            y="915.58014"
            x="111.26839"
            id="tspan4612"
@@ -266,12 +272,11 @@
    id="tspan3417">SC</tspan></tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="509.69611"
          y="1034.9672"
-         id="text4616"
-         sodipodi:linespacing="100%"><tspan
-           style="font-size:20px"
+         id="text4616"><tspan
+           style="font-size:20px;line-height:1"
            sodipodi:role="line"
            id="tspan4618"
            x="509.69611"
@@ -279,17 +284,16 @@
    style="font-size:65%;baseline-shift:sub"
    id="tspan3415">el</tspan></tspan></text>
       <text
-         sodipodi:linespacing="100%"
          id="text4624"
          y="1136.6597"
          x="399.95694"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="1136.6597"
            x="399.95694"
            id="tspan4626"
            sodipodi:role="line"
-           style="font-size:20px">w<tspan
+           style="font-size:20px;line-height:1">w<tspan
    style="font-size:65%;baseline-shift:sub"
    id="tspan3385">H</tspan></tspan></text>
       <path
@@ -298,21 +302,20 @@
          d="m 504.80702,926.85456 0,88.87244"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
       <text
-         sodipodi:linespacing="100%"
          id="text4748"
          y="973.57642"
          x="514.41064"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
-           style="font-size:20px"
+           style="font-size:20px;line-height:1"
            y="973.57642"
            x="514.41064"
            id="tspan4752"
            sodipodi:role="line">ΔΦ<tspan
    id="tspan4299"
-   style="font-size:64.99999762%;baseline-shift:sub">SC/el</tspan><tspan
+   style="font-size:65%;baseline-shift:sub">SC/el</tspan><tspan
    id="tspan4756"
-   style="font-size:64.99999762%;baseline-shift:sub" /></tspan></text>
+   style="font-size:65%;baseline-shift:sub" /></tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.15188527;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.4556559, 1.1518853;stroke-dashoffset:0;stroke-opacity:1"
          d="m 211.85041,903.76226 0,218.92864"
@@ -320,29 +323,28 @@
          inkscape:connector-curvature="0" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="200.16086"
          y="1136.6597"
-         id="text4219"
-         sodipodi:linespacing="100%"><tspan
+         id="text4219"><tspan
            sodipodi:role="line"
            id="tspan4221"
            x="200.16086"
            y="1136.6597"
-           style="font-size:20px">w<tspan
+           style="font-size:20px;line-height:1">w<tspan
    style="font-size:65%;baseline-shift:sub"
    id="tspan3383">sc</tspan></tspan></text>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.75px;line-height:100%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:0%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="360"
        y="1042.3622"
-       id="text4295"
-       sodipodi:linespacing="100%"><tspan
+       id="text4295"><tspan
          sodipodi:role="line"
          id="tspan4297"
          x="360"
-         y="1042.3622" /></text>
+         y="1042.3622"
+         style="font-size:13.75px;line-height:1"> </tspan></text>
   </g>
 </svg>

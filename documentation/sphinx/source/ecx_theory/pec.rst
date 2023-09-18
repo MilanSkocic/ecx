@@ -93,7 +93,58 @@ the semiconductor types.
 
 Semiconductor/electroyte interface in dark
 ---------------------------------------------
+A potential gradient occurs when a semiconductor comes into contact with an
+electrolyte as shown in figure :numref:`fig_potential_gradient`.
 
+.. _fig_potential_gradient:
+.. figure:: ../media/ecx_pec-interfacial_potential_gradient.png
+    :width: 600
+    :align: center
+    :alt: Interfacial gradient potential
+
+    Schematic representation of the interfacial gradient potential
+
+The position of the Fermi level in the electrolyte with respect to the conduction
+and valence band edges leads to three different situations after a transient charge transfer.
+The flat band occurs when the Fermi level in the electrolyte matches the Fermi level in the
+semiconductor. Consequently, there is no potential gradient in the semiconductor.
+In a case of Fermi level mismatch, a band bending occurs in the semiconductor near the
+semiconductor/electrolyte interface. The band bending leads to either depletion or accumulation
+of majority charge carriers near the semiconductor/electrolyte interface.
+The spatial extension of the depletion/accumulation zone is called space charge as shown in
+figure :numref:`fig_space_charge`.
+
+.. _fig_space_charge:
+.. figure:: ../media/ecx_pec-bending_example.png
+    :width: 600
+    :align: center
+    :alt: Space charge
+
+    Schematic representation ofthe space charge
+
+Depletion and accumulation as well as band bending can be obtained by polarizing the semiconductor.
+As long as the hypothesis described in the introduction paragraph stand, the polarization
+does not modify the surface band edges :math:`E_{cs}` and :math:`E_{vs}`. Consequently, the
+polarization will only alter the band bending in the space charge. Depending on the applied potential, 
+:math:`U`, with respect to the flat band, :math:`U_{fb}`, three different situations will occur:
+
+* :math:`U = U_{fb}`: flat band situation no matter the semiconductor type
+* :math:`U > U_{fb}`: depletion (accumulation) in a case of n-type (p-type) semiconductor 
+* :math:`U < U_{fb}`: accumulation (depletion) in a case of p-type (n-type) semiconductor
+
+.. _fig_bending_polarization:
+.. figure:: ../media/ecx_pec-bending_polarization.png
+    :width: 600
+    :align: center
+    :alt: Band bending
+
+    Schematic representation of the band bending in p-type and n-type semiconductors.
+
+Without illumination, cathodic (anodic) currents are favored in a case of accumulation
+of electrons (holes) for an n-type (p-type) semiconductor. In fact, the majority charge carriers
+of n-type (p-type) semiconductors are electrons (holes). Reciprocally, anodic (cathodic) currents 
+are not favored in a case of depends of electrons (holes) for an n-type (p-type) semiconductor.
+The junction between a semiconductor and an electrolyte acts like a Schottky diode.
 
 Semiconductor/electroyte interface under illumination
 -------------------------------------------------------

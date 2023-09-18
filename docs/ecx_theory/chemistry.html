@@ -14,7 +14,9 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Kinetics" href="kinetics.html" />
+    <link rel="prev" title="Theoretical background" href="index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -25,7 +27,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="kinetics.html" title="Kinetics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Theoretical background"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Chemistry</a></li> 
       </ul>
     </div>  
@@ -49,99 +58,99 @@ about electrolytic solutions actually developped along different path.</p>
 charged species. The starting point was the classical thermodynamic formula for the chemical potential <img class="math" src="../_images/math/c637d31b93bac48092a2f4176f6e352e41a4786c.png" alt="\mu _i"/>
 of a nonelectrolyte solute</p>
 <div class="math" id="equation-eq-chemical-potential">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential" title="Link to this equation">¶</a></span><img src="../_images/math/d20ba8ac3143e175d4e0db113f95f36ba407d230.png" alt="\mu _i = \mu ^{0}_{i} + RT \ln x_i"/></p>
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-chemical-potential" title="Link to this equation">¶</a></span><img src="../_images/math/d20ba8ac3143e175d4e0db113f95f36ba407d230.png" alt="\mu _i = \mu ^{0}_{i} + RT \ln x_i"/></p>
 </div><p>In this expression, <img class="math" src="../_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.png" alt="x_i"/> is the concentration of the solute in mole fraction units, and
 <img class="math" src="../_images/math/7c540fd003e55ab08561656d97bdd89de41a6a3c.png" alt="\mu ^0 _i"/> is its the chemical potential in the standard state, i.e., when <img class="math" src="../_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.png" alt="x_i"/> a standard
 or a normalized value of unity</p>
 <div class="math" id="equation-eq-standard-chemical-potential">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-standard-chemical-potential" title="Link to this equation">¶</a></span><img src="../_images/math/ab041daaff06d0115f2c36008d8242e48dedd5a9.png" alt="\mu _i = \mu _i ^{0} \text{ when } x_i = 1"/></p>
+<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-standard-chemical-potential" title="Link to this equation">¶</a></span><img src="../_images/math/ab041daaff06d0115f2c36008d8242e48dedd5a9.png" alt="\mu _i = \mu _i ^{0} \text{ when } x_i = 1"/></p>
 </div><p>Since the solute particles in a solution of a nonlectrolyte are uncharged, they do not engage
 in long-range Coulombic interactions. The short-range interaction arising from dipole-dipole or dispersion forces
 become significant only when the mean distance between the solute particles is small, i.e., when the concentration
 of the solute is high. Thus, one can to a good approximation say that there are no between solute particles
-in dilute nonelectrolyte solutions. Hence, if <a class="reference internal" href="#equation-eq-chemical-potential">Eq.</a> for the chemical potential of a solute
+in dilute nonelectrolyte solutions. Hence, if <a class="reference internal" href="#equation-eq-chemical-potential">Eq.1</a> for the chemical potential of a solute
 in a nonelectrolyte solution (with noninteracting particles) is used fot the chemical potential of an ionic species <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>
 in an electrolytic solution, then it is tantamount to ignoring the long-range Coulombic interactions between ions.
 In an actual electrolytic solution, however, ion-ion interactions operate whether one ignores them or not.
 It is obvious therefore that measurements of the chemical potential <img class="math" src="../_images/math/c637d31b93bac48092a2f4176f6e352e41a4786c.png" alt="\mu _i"/> of an ionic species or, rather,
-measurements of any property that depends on the chemical potential would reveal the error in <a class="reference internal" href="#equation-eq-chemical-potential">Eq.</a>,
+measurements of any property that depends on the chemical potential would reveal the error in <a class="reference internal" href="#equation-eq-chemical-potential">Eq.1</a>,
 which is blind to ion-ion interactions. In other words, experiments show that even in dilute solutions,</p>
 <div class="math" id="equation-eq-chemical-potential-error">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-error" title="Link to this equation">¶</a></span><img src="../_images/math/d3f7578bf7dcec047acbcab733a65b08f384dace.png" alt="\mu _i - \mu _i^0 \neq RT \ln x_i"/></p>
+<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-chemical-potential-error" title="Link to this equation">¶</a></span><img src="../_images/math/d3f7578bf7dcec047acbcab733a65b08f384dace.png" alt="\mu _i - \mu _i^0 \neq RT \ln x_i"/></p>
 </div><p>In this context, a frankly empirical approach was adopted by earlier workers not
-yet blessed by Debye and Huckel’s light. Solutions that obeyed <a class="reference internal" href="#equation-eq-chemical-potential">Eq.</a> were
+yet blessed by Debye and Huckel’s light. Solutions that obeyed <a class="reference internal" href="#equation-eq-chemical-potential">Eq.1</a> were
 characterized as <em>ideal</em> solutions since this equation applies to systems of noninteracting solute particles,
 i.e, ideal particles. Electrolytic solutions that do not obey the equation were said to be <em>nonideal</em>. In order to use
-an equation of the form of <a class="reference internal" href="#equation-eq-chemical-potential">Eq.</a> to treat nonideal electrolytic solutions, an empirical
+an equation of the form of <a class="reference internal" href="#equation-eq-chemical-potential">Eq.1</a> to treat nonideal electrolytic solutions, an empirical
 correction factor <img class="math" src="../_images/math/a960eb612c236288975208781dc321395934f356.png" alt="f_i"/> was introduced by Lewis as a modifier of the concentration term.</p>
 <div class="math" id="equation-eq-chemical-potential-correction">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-correction" title="Link to this equation">¶</a></span><img src="../_images/math/2f9937a2da1e15225ffee246e2dd1678690d1516.png" alt="\mu _i - \mu _i^0 = RT \ln x_i f_i"/></p>
+<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-chemical-potential-correction" title="Link to this equation">¶</a></span><img src="../_images/math/2f9937a2da1e15225ffee246e2dd1678690d1516.png" alt="\mu _i - \mu _i^0 = RT \ln x_i f_i"/></p>
 </div><p>It was argued that, in nonideal solutions, it was not just the analytical concentration
 <img class="math" src="../_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.png" alt="x_i"/> of species <em>i</em>, but its effective concentration <img class="math" src="../_images/math/251bee32ba709f38b2989b524a3434cc3cd458f8.png" alt="x_i f_i"/> which determined the chemical-potential
 change <img class="math" src="../_images/math/7497aef104b2b1e924f848b43a04ac46cd91aecc.png" alt="\mu _i - \mu _i ^0"/>. This effective concentration <img class="math" src="../_images/math/251bee32ba709f38b2989b524a3434cc3cd458f8.png" alt="x_i f_i"/> was also known as the <em>activity</em>
 <img class="math" src="../_images/math/8a0ac94597494eec7882eb3baaf5e42c5bf0e314.png" alt="a_i"/> of the species <em>i</em>, i.e.,</p>
 <div class="math" id="equation-eq-activity-definition">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-activity-definition" title="Link to this equation">¶</a></span><img src="../_images/math/12552ac89e15b148d18ea2d45bd92ff60806ef47.png" alt="a_i = x_i f_i"/></p>
+<p><span class="eqno">(5)<a class="headerlink" href="#equation-eq-activity-definition" title="Link to this equation">¶</a></span><img src="../_images/math/12552ac89e15b148d18ea2d45bd92ff60806ef47.png" alt="a_i = x_i f_i"/></p>
 </div><p>and the correction factor <img class="math" src="../_images/math/a960eb612c236288975208781dc321395934f356.png" alt="f_i"/>, as the <em>activity coefficient</em>. For ideal solutions, the activity coefficient
 is unity, and the activity <img class="math" src="../_images/math/8a0ac94597494eec7882eb3baaf5e42c5bf0e314.png" alt="a_i"/> becomes identical to the concentration <img class="math" src="../_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.png" alt="x_i"/>, i.e.,</p>
 <div class="math" id="equation-eq-activity-ideal-solution">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-activity-ideal-solution" title="Link to this equation">¶</a></span><img src="../_images/math/402f58a2382fb03332107fcb1616d26885942ff7.png" alt="a_i = x_i \text{ when } f_i = 1"/></p>
+<p><span class="eqno">(6)<a class="headerlink" href="#equation-eq-activity-ideal-solution" title="Link to this equation">¶</a></span><img src="../_images/math/402f58a2382fb03332107fcb1616d26885942ff7.png" alt="a_i = x_i \text{ when } f_i = 1"/></p>
 </div><p>Thus, the chemical-potential change in going from the standard state to the final state can be written as</p>
 <div class="math" id="equation-eq-chemical-potential-activity">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-activity" title="Link to this equation">¶</a></span><img src="../_images/math/e0a3e3d2911521cb71783b36c56c43a49e4e663c.png" alt="\mu _i - \mu _i ^0 = RT\ln x_i + RT \ln f_i"/></p>
-</div><p><a class="reference internal" href="#equation-eq-chemical-potential-activity">Eq.</a> summarizes the empirical or formal treatment of the behavior of electrolytic
+<p><span class="eqno">(7)<a class="headerlink" href="#equation-eq-chemical-potential-activity" title="Link to this equation">¶</a></span><img src="../_images/math/e0a3e3d2911521cb71783b36c56c43a49e4e663c.png" alt="\mu _i - \mu _i ^0 = RT\ln x_i + RT \ln f_i"/></p>
+</div><p><a class="reference internal" href="#equation-eq-chemical-potential-activity">Eq.7</a> summarizes the empirical or formal treatment of the behavior of electrolytic
 solutions. Such a treatment cannot furnish a theoretical expression for the acitivity coefficient <img class="math" src="../_images/math/a960eb612c236288975208781dc321395934f356.png" alt="f_i"/>.
-It merely recognizes that expressions such as <a class="reference internal" href="#equation-eq-chemical-potential">Eq.</a> must be modified if significant forces exist
+It merely recognizes that expressions such as <a class="reference internal" href="#equation-eq-chemical-potential">Eq.1</a> must be modified if significant forces exist
 between solute particules.</p>
 </section>
 <section id="the-physical-significance-of-activity-coefficients">
 <h3>The physical significance of activity coefficients<a class="headerlink" href="#the-physical-significance-of-activity-coefficients" title="Link to this heading">¶</a></h3>
 <p>For a hypothetical system of ideal (noninteracting) particles, the chemical potential has been stated to be given by</p>
 <div class="math" id="equation-eq-chemical-potential-3-52">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-3-52" title="Link to this equation">¶</a></span><img src="../_images/math/5e9d32751290b1a81509687038def804c15b83b5.png" alt="\mu _i (ideal) = \mu _i ^0 + RT \ln x_i"/></p>
+<p><span class="eqno">(8)<a class="headerlink" href="#equation-eq-chemical-potential-3-52" title="Link to this equation">¶</a></span><img src="../_images/math/5e9d32751290b1a81509687038def804c15b83b5.png" alt="\mu _i (ideal) = \mu _i ^0 + RT \ln x_i"/></p>
 </div><p>For a real system of interacting particles, the chemical potential has been expressed in
 the form</p>
 <div class="math" id="equation-eq-chemical-potential-3-57">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-3-57" title="Link to this equation">¶</a></span><img src="../_images/math/7829cac17b9efb95e8344752fd5e0a890b0df8e5.png" alt="\mu _i (real) = \mu _i ^0 + RT \ln x_i + RT \ln f_i"/></p>
-</div><p>Hence, to analyze the physical significance of the activity coefficient term in <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.</a>
-, it is necessary to compare this equation with <a class="reference internal" href="#equation-eq-chemical-potential-3-52">Eq.</a>. It is obvious that when
-<a class="reference internal" href="#equation-eq-chemical-potential-3-52">Eq.</a> is substracted from <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.</a>, the difference is the
+<p><span class="eqno">(9)<a class="headerlink" href="#equation-eq-chemical-potential-3-57" title="Link to this equation">¶</a></span><img src="../_images/math/7829cac17b9efb95e8344752fd5e0a890b0df8e5.png" alt="\mu _i (real) = \mu _i ^0 + RT \ln x_i + RT \ln f_i"/></p>
+</div><p>Hence, to analyze the physical significance of the activity coefficient term in <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.9</a>
+, it is necessary to compare this equation with <a class="reference internal" href="#equation-eq-chemical-potential-3-52">Eq.8</a>. It is obvious that when
+<a class="reference internal" href="#equation-eq-chemical-potential-3-52">Eq.8</a> is substracted from <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.9</a>, the difference is the
 chemical-potential change <img class="math" src="../_images/math/e035c4e09fe6727aba3f0dc0249cb933f5e80c80.png" alt="\Delta \mu _{i-I}"/> arising from the interactions between the solute particles
 (ions in the case of electrolytic solutions). That is</p>
 <div class="math" id="equation-eq-chemical-potential-error-3-58">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-error-3-58" title="Link to this equation">¶</a></span><img src="../_images/math/16ac760e1e9e6f2617230323406a5f0fe2811360.png" alt="\mu _i (real) - \mu _i (ideal) = \Delta \mu_{i-I}"/></p>
+<p><span class="eqno">(10)<a class="headerlink" href="#equation-eq-chemical-potential-error-3-58" title="Link to this equation">¶</a></span><img src="../_images/math/16ac760e1e9e6f2617230323406a5f0fe2811360.png" alt="\mu _i (real) - \mu _i (ideal) = \Delta \mu_{i-I}"/></p>
 </div><p>and therefore,</p>
 <div class="math" id="equation-eq-chemical-potential-error-3-59">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chemical-potential-error-3-59" title="Link to this equation">¶</a></span><img src="../_images/math/3c1ad039675db48077a2d17df691336ba4eab453.png" alt="\Delta \mu _{i-I} = RT \ln f_i"/></p>
+<p><span class="eqno">(11)<a class="headerlink" href="#equation-eq-chemical-potential-error-3-59" title="Link to this equation">¶</a></span><img src="../_images/math/3c1ad039675db48077a2d17df691336ba4eab453.png" alt="\Delta \mu _{i-I} = RT \ln f_i"/></p>
 </div><p>Thus, the activity coefficient is a measure of the chemical-potential change arising from ion-ion interactions.
 There are several well-established methods of experimentally determining activity coefficients, and these methods are
 treated in adequate details in standard treatises.</p>
 <p>Now, according to the Debye-Huckel theory, the chemical-potential change <img class="math" src="../_images/math/e035c4e09fe6727aba3f0dc0249cb933f5e80c80.png" alt="\Delta \mu _{i-I}"/> arising
 from ion-ion interactions has been shown to be given by</p>
 <div class="math" id="equation-eq-chem-pot-change-3-51">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-chem-pot-change-3-51" title="Link to this equation">¶</a></span><img src="../_images/math/dd9eb7b1b07d86d8b108031902f3f3c94fe6033a.png" alt="\Delta \mu _{i-I} = - \frac{N_A(z_i e_0)^2}{2 \epsilon \kappa ^{-1}}"/></p>
-</div><p>Hence, combining <a class="reference internal" href="#equation-eq-chem-pot-change-3-51">Eq.</a> and <a class="reference internal" href="#equation-eq-chemical-potential-error-3-58">Eq.</a>, the result is</p>
+<p><span class="eqno">(12)<a class="headerlink" href="#equation-eq-chem-pot-change-3-51" title="Link to this equation">¶</a></span><img src="../_images/math/dd9eb7b1b07d86d8b108031902f3f3c94fe6033a.png" alt="\Delta \mu _{i-I} = - \frac{N_A(z_i e_0)^2}{2 \epsilon \kappa ^{-1}}"/></p>
+</div><p>Hence, combining <a class="reference internal" href="#equation-eq-chem-pot-change-3-51">Eq.12</a> and <a class="reference internal" href="#equation-eq-chemical-potential-error-3-58">Eq.10</a>, the result is</p>
 <div class="math" id="equation-eq-3-60">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-3-60" title="Link to this equation">¶</a></span><img src="../_images/math/ef9e234d4450b14e4c451983b2415b7be888ec2e.png" alt="RT \ln f_i = - \frac{N_A(z_i e_0)^2}{2 \epsilon \kappa ^{-1}}"/></p>
+<p><span class="eqno">(13)<a class="headerlink" href="#equation-eq-3-60" title="Link to this equation">¶</a></span><img src="../_images/math/ef9e234d4450b14e4c451983b2415b7be888ec2e.png" alt="RT \ln f_i = - \frac{N_A(z_i e_0)^2}{2 \epsilon \kappa ^{-1}}"/></p>
 </div><p>Thus, the Debye-Huckel ionic-cloud model for ion-ion interactions has permitted a theoretical calculation
-of activity coefficients resulting in <a class="reference internal" href="#equation-eq-3-60">Eq.</a>.</p>
-<p>The activity coefficient in <a class="reference internal" href="#equation-eq-chemical-potential-error-3-59">Eq.</a> arises from the formula <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.</a>
+of activity coefficients resulting in <a class="reference internal" href="#equation-eq-3-60">Eq.13</a>.</p>
+<p>The activity coefficient in <a class="reference internal" href="#equation-eq-chemical-potential-error-3-59">Eq.11</a> arises from the formula <a class="reference internal" href="#equation-eq-chemical-potential-3-57">Eq.9</a>
 for the chemical potential, in which the concentration of the species <em>i</em> is expressed in mole fraction units <img class="math" src="../_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.png" alt="x_i"/>.
 One can also express the concentration in moles per liter of solution (molarity) or in moles per kilogram of solvent (molality).
 Thus, alternative formulas for the chemical potential of a species <em>i</em> in an ideal solution read</p>
 <div class="math" id="equation-eq-3-61">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-3-61" title="Link to this equation">¶</a></span><img src="../_images/math/f347c5d4da7556382d667b2956d388d4d196a1db.png" alt="\mu _i = \mu _i^0 (c) + RT \ln c_i"/></p>
+<p><span class="eqno">(14)<a class="headerlink" href="#equation-eq-3-61" title="Link to this equation">¶</a></span><img src="../_images/math/f347c5d4da7556382d667b2956d388d4d196a1db.png" alt="\mu _i = \mu _i^0 (c) + RT \ln c_i"/></p>
 </div><p>and</p>
 <div class="math" id="equation-eq-3-62">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-3-62" title="Link to this equation">¶</a></span><img src="../_images/math/645975e2c281b307b52dceb78ada3296916eefd6.png" alt="\mu _i = \mu _i^0 (m) + RT \ln m_i"/></p>
+<p><span class="eqno">(15)<a class="headerlink" href="#equation-eq-3-62" title="Link to this equation">¶</a></span><img src="../_images/math/645975e2c281b307b52dceb78ada3296916eefd6.png" alt="\mu _i = \mu _i^0 (m) + RT \ln m_i"/></p>
 </div><p>where <img class="math" src="../_images/math/30634b08f5df289a7acab4963cb6a3e6b99aba0f.png" alt="c_i"/> and <img class="math" src="../_images/math/e1aaac0305e1b00c3c08173dd3e8402b6320c110.png" alt="m_i"/> are the molarity and molality of the species <em>i</em>, respectively, <img class="math" src="../_images/math/b9f5a98a5ecd931a1f7513355f92b90e381adf42.png" alt="\mu _i^0(c)"/>
 and <img class="math" src="../_images/math/612637ce61f39c2eebe8c35fdaf7a0d414a8143a.png" alt="\mu _i^0(m)"/> are the corresponding standard chemical potentials.</p>
 <p>When the concentration of the ionic species in a real solution is expressed as molarity <img class="math" src="../_images/math/30634b08f5df289a7acab4963cb6a3e6b99aba0f.png" alt="c_i"/> and molality <img class="math" src="../_images/math/e1aaac0305e1b00c3c08173dd3e8402b6320c110.png" alt="m_i"/>
 , there are corresponding activity coefficients <img class="math" src="../_images/math/dc558eb5e6c1a3e12a5bc2258d0281816b26c75d.png" alt="\gamma _c"/> and <img class="math" src="../_images/math/3cb7f136fa15fbdf00650e7a359d6d79c4830787.png" alt="\gamma _m"/> and corresponding expressions for <img class="math" src="../_images/math/c637d31b93bac48092a2f4176f6e352e41a4786c.png" alt="\mu _i"/></p>
 <div class="math" id="equation-eq-3-63">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-3-63" title="Link to this equation">¶</a></span><img src="../_images/math/3f7f2159186f65d0ac3df472cc4bfb4d0c8dcb8d.png" alt="\mu _i = \mu _i^0 (c) + RT \ln c_i + RT \ln \gamma _c"/></p>
+<p><span class="eqno">(16)<a class="headerlink" href="#equation-eq-3-63" title="Link to this equation">¶</a></span><img src="../_images/math/3f7f2159186f65d0ac3df472cc4bfb4d0c8dcb8d.png" alt="\mu _i = \mu _i^0 (c) + RT \ln c_i + RT \ln \gamma _c"/></p>
 </div><div class="math" id="equation-eq-3-64">
-<p><span class="eqno">()<a class="headerlink" href="#equation-eq-3-64" title="Link to this equation">¶</a></span><img src="../_images/math/74e9b1eafc28f46b624e068872364f912c4546ff.png" alt="\mu _i = \mu _i^0 (m) + RT \ln m_i + RT \ln \gamma _m"/></p>
+<p><span class="eqno">(17)<a class="headerlink" href="#equation-eq-3-64" title="Link to this equation">¶</a></span><img src="../_images/math/74e9b1eafc28f46b624e068872364f912c4546ff.png" alt="\mu _i = \mu _i^0 (m) + RT \ln m_i + RT \ln \gamma _m"/></p>
 </div></section>
 <section id="the-activity-coefficient-of-a-single-ionic-species-cannot-be-measured">
 <h3>The activity coefficient of a single ionic species cannot be measured<a class="headerlink" href="#the-activity-coefficient-of-a-single-ionic-species-cannot-be-measured" title="Link to this heading">¶</a></h3>
@@ -164,13 +173,20 @@ and <img class="math" src="../_images/math/612637ce61f39c2eebe8c35fdaf7a0d414a81
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="kinetics.html" title="Kinetics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Theoretical background"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ecx 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Theoretical background</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Chemistry</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2023 Milan Skocic.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

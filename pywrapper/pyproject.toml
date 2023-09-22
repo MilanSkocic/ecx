@@ -1,3 +1,25 @@
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyecx"
+version = "0.1.0"
+authors = [{name = "Milan Skocic", email = "milan.skocic@icloud.com"}]
+description = "pyecx: electrochemistry for Python."
+readme = "README.rst"
+requires-python = ">=3.8"
+license = {text = "GNU General Public License v3 (GPLv3)"}
+classifiers=["Development Status :: 5 - Production/Stable",
+            "Intended Audience :: Science/Research",
+            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"]
+
+[project.urls]
+Documentation = "https://milanskocic.github.io/ecx/index.html"
+Source = "https://github.com/MilanSkocic/ecx"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+pycodata = ["libecx.*"]

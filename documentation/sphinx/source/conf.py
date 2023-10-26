@@ -11,6 +11,7 @@ spec = importlib.util.spec_from_file_location('version', '../../../pywrapper/pye
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
+package_name = "pyecx"
 
 # -- General configuration ------------------------------------------------
 
@@ -40,8 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "ecx"
-copyright = mod.__copyright__[14:]
-author = mod.__author__
+author = "M. Skocic"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -118,7 +118,7 @@ html_theme_options = {"nosidebar": True,
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = mod.__package_name__
+htmlhelp_basename = package_name
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -145,7 +145,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ecx.tex', 'ecx Documentation',
+    (master_doc, f'{project}.tex', f'{project} Documentation',
      'M. Skocic', 'manual'),
 ]
 
@@ -155,7 +155,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ecx Demonstration', 'ecx Demonstration Documentation',
+    (master_doc, f'{project} Demonstration', f'{project} Demonstration Documentation',
      [author], 1)
 ]
 
@@ -166,8 +166,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ecx', "ecx library",
-     author, 'pyecx Demonstration', "ecx",
+    (master_doc, project, f"{project} library",
+     author, f'{project} Demonstration', f"{project}",
      'Science'),
 ]
 

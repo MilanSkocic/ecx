@@ -4,7 +4,7 @@ PEC
 Introduction
 ------------
 
-PEC takes advantage of the photovoltaic effect, discovered by :cite:p:`becquerel1839` in 1839,
+PEC takes advantage of the photovoltaic effect, discovered by :cite:t:`becquerel1839` in 1839,
 that occurs at the interface of a semiconductor and an electrolyte. In fact, the first experience showed
 the occurence of a photopotential and a photocurrent under illumination when a silver electrode, covered with an
 oxide layer, was immersed in an acidic medium and connected to a platinum electrode.
@@ -148,3 +148,48 @@ The junction between a semiconductor and an electrolyte acts like a Schottky dio
 
 Semiconductor/electroyte interface under illumination
 -------------------------------------------------------
+The illumination of the semiconductor/electrolyte interface, with photons having an energy
+greater than the band gap, :math:`E_g`, creates electron/hole pairs in the semiconductor.
+By applying the adequate potential the pairs can be separated. As a consequence, the majority
+charge carriers are attracted to the semiconductor bulk whereas the minority charge carriers
+are drawn to the semiconductor/electrolyte interface where they can be transferred to a RedOx
+species creating an additional current called photocurrent.
+
+Figure :numref:`fig_photocurrent_generation` illustrates schematically the mechanism leading
+to the creation of a photocurrent. 
+n-type (p-type) semiconductors generate anodic (cathodic) photocurrents where the electrons (holes)
+move towards the external circuit whereas the holes (electrons) move towards the interface.
+The photocurrent is significant when the semiconductor/electrolyte junction is in depletion.
+Therefore, the applied potential on n-type (p-type) semiconductors is greater (lower) than the 
+flat band potential.
+
+.. _fig_photocurrent_generation:
+.. figure:: ../media/ecx_pec-photocurrent_generation.png
+    :width: 600
+    :align: center
+    :alt: Photocurrent generation
+
+    Schematic representation of the mechanism generating a photocurrent.
+
+Figure :numref:`fig_iph_ntype` and :numref:`fig_iph_ptype` show the anodic (cathodic) photocurrent 
+for a GaAs n-type (p-type) semiconductor.
+
+.. _fig_iph_ntype:
+.. figure:: ../media/ecx_pec-iph_example_n_type.png
+    :width: 300
+    :align: center
+    :alt: Anodic photocurrent
+
+    Anodic photocurrent for n-type GaAs.
+
+.. _fig_iph_ptype:
+.. figure:: ../media/ecx_pec-iph_example_p_type.png
+    :width: 300
+    :align: center
+    :alt: Cathodic photocurrent
+
+    Cathodic photocurrent for p-type GaAs.
+
+:cite:t:`gartner1959-0` and :cite:t:`butler1977-0` proposed a simple and robust model
+for describing the photocurrent considering that the recombination of the photogenerated
+electron/hole pairs does not occur in the space charge.

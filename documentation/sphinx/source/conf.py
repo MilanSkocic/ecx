@@ -89,7 +89,7 @@ ford_code_gray = "#f5f5f5"
 ford_white = "#FFFFFF"
 ford_black = "#000000"
 ford_purple = "#734f96"
-html_theme_options = {"nosidebar": True,
+html_theme_options = {"nosidebar": False,
                       "rightsidebar": False,
                       "headfont": "Helvetica Neue",
                       "bodyfont": "Helvetica Neue",

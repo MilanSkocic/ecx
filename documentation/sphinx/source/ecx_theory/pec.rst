@@ -245,7 +245,7 @@ and :eq:`eq_alpha`.
 .. math::
     :label: eq_iph_approx_complete
 
-    I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \text{ with } \cdot  \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
+    I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \cdot \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
 
 The linear transform with respect to the energy of the equation :eq:`eq_iph_approx_complete`
 is shown in equation :eq:`eq_linear_trans_hv` and it is used for determining the band gaps.

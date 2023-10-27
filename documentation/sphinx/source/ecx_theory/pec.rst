@@ -228,7 +228,7 @@ the applied potential, :math:`U_{fb}` represents the flat band potential, :math:
     w_{sc} = \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
 
 The expression of the absorption coefficient :math:`\alpha _{sc}` with respect to the light energy
-:math:`h\nu` is shown in equation :eq:`eq_alpha. The value of :math:`n` depends on the band-band 
+:math:`h\nu` is shown in equation :eq:`eq_alpha`. The value of :math:`n` depends on the band-band 
 transition type. :math:`n` takes discreet values 0.5 or 2 when direct or indirect transitions
 are allowed, respectively.
 

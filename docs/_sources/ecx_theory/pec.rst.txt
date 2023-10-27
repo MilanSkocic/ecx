@@ -190,6 +190,74 @@ for a GaAs n-type (p-type) semiconductor.
 
     Cathodic photocurrent for p-type GaAs.
 
-:cite:t:`gartner1959-0` and :cite:t:`butler1977-0` proposed a simple and robust model
+:cite:t:`gartner1959-1` and :cite:t:`butler1977-1` proposed a simple and robust model
 for describing the photocurrent considering that the recombination of the photogenerated
-electron/hole pairs does not occur in the space charge.
+electron/hole pairs does not occur in the space charge. Therefore, the photocurrent is proportional
+to the photon flux :math:`\Phi_0`. Moreover, the photocurrent depends on the relative ratio 
+between the space charge width, :math:`w_{sc}`, the depth of penetration given by the
+inverse of the absorption coefficient, :math:`\alpha` and the average diffusion length,
+:math:`L_{sc}`, of the minority charge carriers.
+In other words, all absorbed photons generate electron/hole pairs and the 
+minority charge carriers are transferred to the electrolyte and therefore contribute to the
+photocurrent whose expression is given by the equation :eq:`eq_iph_complete`.
+
+.. math::
+    :label: eq_iph_complete
+
+    I_{ph} = \Phi _0 \left[ 1 - \frac{\exp (-\alpha _{sc} \cdot w_{sc})}{1+\alpha _{sc} \cdot L_{sc}} \right]
+
+When :math:`\alpha _{sc} \cdot w_{sc} << 1` and :math:`\alpha _{sc} \cdot L_{sc} << 1`,
+the photocurrent is approximated by the equation :eq:`eq_iph_approx`.
+
+.. math::
+    :label: eq_iph_approx
+
+    I_{ph} = \Phi _0 \cdot \alpha _{sc} \cdot w_{sc} 
+
+The expression of the space charge width, :math:`w_{sc}`, in depletion is given by the equation 
+:eq:`eq_wsc_depletion` according to the Mott-Schottky theory. 
+:math:`N_{cc}` represents the number of majority carriers, supposed to be equal to the doping,
+:math:`e` corresponds to the elementary charge of an electron, :math:`U` represents 
+the applied potential, :math:`U_{fb}` represents the flat band potential, :math:`\epsilon` and 
+:math:`\epsilon _0` represent the relative and the vacuum permittivity, respectively.
+
+
+.. math::
+    :label: eq_wsc_depletion
+
+    w_{sc} = \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
+
+The expression of the absorption coefficient :math:`\alpha _{sc}` with respect to the light energy
+:math:`h\nu` is shown in equation :eq:`eq_alpha`. The value of :math:`n` depends on the band-band 
+transition type. :math:`n` takes discreet values 0.5 or 2 when direct or indirect transitions
+are allowed, respectively.
+
+.. math::
+    :label: eq_alpha
+
+    \alpha _{sc} = C \cdot \frac{(h\nu-E_g)^n}{h\nu} \text{ with } C=\text{constant}
+
+The complete expression of the photocurrent is therefore given by the equation :eq:`eq_iph_approx_complete`.
+The latter is obtained by substituting the absorption coefficient :math:`\alpha _{sc}` and the space charge
+width :math:`w_{sc}` from the equation :eq:`eq_iph_approx` by the equations :eq:`eq_wsc_depletion`
+and :eq:`eq_alpha`.
+
+.. math::
+    :label: eq_iph_approx_complete
+
+    I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \text{ with } \cdot  \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
+
+The linear transform with respect to the energy of the equation :eq:`eq_iph_approx_complete`
+is shown in equation :eq:`eq_linear_trans_hv` and it is used for determining the band gaps.
+The linear transform with respect to the potential is shown in equation :eq:`eq_linear_trans_U` and 
+it is used for determining the semiconduction type, the flat band potential and the number of majority charge carriers.
+
+.. math::
+    :label: eq_linear_trans_hv
+
+    \left[ \frac{I_{ph}\cdot h\nu}{\Phi _0} \right]^{1/n} = C \cdot (h\nu - E_g)
+
+.. math::
+    :label: eq_linear_trans_U
+
+    I_{ph}^2 = C\cdot \left( U-U_{fb}-\frac{kT}{e} \right)

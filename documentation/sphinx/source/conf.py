@@ -11,8 +11,6 @@ spec = importlib.util.spec_from_file_location('version', '../../../pywrapper/pye
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
-package_name = "pyecx"
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -41,6 +39,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "ecx"
+copyright = "2023 Milan Skocic"
 author = "M. Skocic"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -118,7 +117,7 @@ html_theme_options = {"nosidebar": False,
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = package_name
+htmlhelp_basename = project
 
 
 # -- Options for LaTeX output ---------------------------------------------

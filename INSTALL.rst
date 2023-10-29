@@ -14,7 +14,8 @@ Build
 
 .. code-block:: bash
 
-    source configuration
+    chmod +x configure.sh
+    . ./configure.sh
     make
 
 Run tests

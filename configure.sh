@@ -11,15 +11,24 @@ FPM_LDFLAGS="-static"
 DEFAULT_INSTALL_DIR="$HOME/.local"
 PLATFORM="linux"
 
-if [[ "$OSTYPE" == "msys" ]]; then
-    DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
-    PLATFORM="windows"
-fi
-
-if [[ "$OSTYPE" == "darwin"* ]];then
-    FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
-    PLATFORM="darwin"
-fi
+case $OSTYPE in
+    "msys")
+        FPM_LDFLAGS="-static"
+        DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
+        PLATFORM="windows"
+        ;;
+    "darwin"*)
+        FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
+        DEFAULT_INSTALL_DIR="$HOME/.local"
+        PLATFORM="darwin"
+        ;;
+    *)
+        FPM_LDFLAGS="-static"
+        DEFAULT_INSTALL_DIR="$HOME/.local"
+        PLATFORM="linux"
+        ;;
+esac 
+    
 
 export FPM_FFLAGS
 export FPM_CFLAGS

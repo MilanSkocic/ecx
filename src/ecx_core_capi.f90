@@ -6,7 +6,7 @@ module ecx__core_capi
 
     real(c_double), protected, bind(C, name="ecx_core_capi_PI") :: &
     ecx_core_capi_PI = ecx_core_PI
-    real(c_double), protected, bind(C, name="T_K") :: &
+    real(c_double), protected, bind(C, name="ecx_core_capi_T_K") :: &
     ecx_core_capi_T_K = ecx_core_T_K
 
 contains    
@@ -24,7 +24,7 @@ pure subroutine ecx_core_capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_capi_nm2
 
 end subroutine
 
-pure subroutine ecx_core_capi_kTe(T, kTe, n)bind(C)
+pure subroutine ecx_core_capi_kTe(T, kTe, n)bind(C, name="ecx_core_capi_kTe")
     !! Compute the thermal voltage.
     integer(c_size_t), intent(in), value :: n
         !! Size of T and kTe.

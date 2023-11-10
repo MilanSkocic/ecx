@@ -41,4 +41,6 @@ jobs:
       run: source ./configure.sh
     - name: Compile
       run: make 
+    - name: FPM
+      run: fpm build --profile=debug
     

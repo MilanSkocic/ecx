@@ -18,4 +18,4 @@ jobs:
     #     fpm-version: 0.9.0
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Configure
-      run: . ./configure
+      run: . ./configure.sh

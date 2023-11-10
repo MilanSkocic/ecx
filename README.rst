@@ -4,6 +4,8 @@ Description
 .. image:: ./media/logo-ecx.png
    :width: 200
 
+![Build Status](https://github.com/MilanSkocic/ecx/actions/workflows/ci.yml/badge.svg)
+
 .. readme_inclusion_start
 
 `ecx` is a Fortran library providing formulas for electrochemistry with a C API. 

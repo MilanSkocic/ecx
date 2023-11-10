@@ -13,10 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build: [fpm]
         os: [ubuntu-latest]
         gcc: [10] # Version of GFortran we want to use.
-        build-type: [debug]
     env:
       FC: gfortran
       CC: gcc
@@ -37,8 +35,10 @@ jobs:
           --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc }} 100 \
           --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc }} \
           --slave /usr/bin/gcov gcov /usr/bin/gcov-${{ matrix.gcc }}
-    - name: Configure
-      run: . ./configure.sh
     - name: Gfortran version
       run : gfortran --version
+    - name: Configure
+      run: . ./configure.sh
+    - name: Compile
+      run: make 
     

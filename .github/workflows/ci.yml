@@ -9,7 +9,19 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [fpm]
+        os: [ubuntu-latest]
+        gcc: [10] # Version of GFortran we want to use.
+        build-type: [debug]
+    env:
+      FC: gfortran
+      CC: gcc
+      FPM_FC: gfortran
+      FPM_CC: gcc
 
     steps:
     - uses: actions/checkout@v4

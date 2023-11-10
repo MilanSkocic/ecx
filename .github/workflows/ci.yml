@@ -30,6 +30,13 @@ jobs:
     #   with: 
     #     fpm-version: 0.9.0
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install GFortran (Linux)
+      if: ${{ contains(matrix.os, 'ubuntu') }}
+      run: |
+        sudo update-alternatives \
+          --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc }} 100 \
+          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc }} \
+          --slave /usr/bin/gcov gcov /usr/bin/gcov-${{ matrix.gcc }}
     - name: Configure
       run: . ./configure.sh
     - name: Gfortran version

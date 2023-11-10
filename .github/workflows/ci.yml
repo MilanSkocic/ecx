@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: fortran-lang/setup-fpm@v5
+    - uses: fortran-lang/setup-fpm@v2
       with: 
         fpm-version: 0.9.0
         github-token: ${{ secrets.GITHUB_TOKEN }}

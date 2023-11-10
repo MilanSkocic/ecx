@@ -4,7 +4,7 @@ Description
 .. image:: ./media/logo-ecx.png
    :width: 200
 
-`<https://github.com/MilanSkocic/ecx/actions/workflows/ci.yml/badge.svg>`_
+.. image:: https://github.com/MilanSkocic/ecx/actions/workflows/ci.yml/badge.svg
 
 .. readme_inclusion_start
 

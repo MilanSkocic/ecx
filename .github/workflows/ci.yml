@@ -37,8 +37,8 @@ jobs:
           --slave /usr/bin/gcov gcov /usr/bin/gcov-${{ matrix.gcc }}
     - name: Gfortran version
       run : gfortran --version
-    - name: Configure
-      run: . ./configure.sh
     - name: Compile
-      run: make 
+      run: |
+        . ./configure.sh
+        make 
     

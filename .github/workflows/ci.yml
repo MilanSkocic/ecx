@@ -8,33 +8,28 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        gcc: [10] # Version of GFortran we want to use.
-    env:
-      FC: gfortran
-      CC: gcc
-      FPM_FC: gfortran
-      FPM_CC: gcc
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        toolchain:
+          - {compiler: gcc, version: 10}
+          - {compiler: intel-classic, version: '2021.10'}
 
     steps:
-    - name : Checkout
+    - name: Set Compilers  
+      uses: fortran-lang/setup-fortran@v1.3
+      id: setup-fortran
+      with:
+          compiler: ${{ matrix.toolchain.compiler }}
+          version: ${{ matrix.toolchain.version }}
+    - name: Checkout
       uses: actions/checkout@v4
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
         fpm-version: "v0.9.0"
-    - name: Install GFortran (Linux)
-      if: ${{ contains(matrix.os, 'ubuntu') }}
-      run: |
-        sudo update-alternatives \
-          --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc }} 100 \
-          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc }} \
-          --slave /usr/bin/gcov gcov /usr/bin/gcov-${{ matrix.gcc }}
     - name: Gfortran version
       run : gfortran --version
     - name: Compile

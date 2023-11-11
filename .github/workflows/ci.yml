@@ -24,8 +24,8 @@ jobs:
     steps:
     - name : Checkout
       uses: actions/checkout@v4
-    -name: Set FPM
-     uses: fortran-lang/setup-fpm@v5
+    - name: Set FPM
+      uses: fortran-lang/setup-fpm@v5
       with: 
         fpm-version: "0.9.0"
     - name: Install GFortran (Linux)

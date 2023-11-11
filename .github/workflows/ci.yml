@@ -47,7 +47,7 @@ jobs:
     - name: Gfortran version
       run : gfortran --version
     - name: Configure
-      run: source ./configure.sh
+      run: bash . ./configure.sh
     - name: Compile
       run: make 
     

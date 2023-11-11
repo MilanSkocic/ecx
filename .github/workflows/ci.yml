@@ -21,6 +21,7 @@ jobs:
       FPM_FC: gfortran
       FPM_CC: gcc
       PLATFORM: linux
+      LIBNAME: ecx
 
     steps:
     - name : Checkout

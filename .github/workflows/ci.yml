@@ -20,6 +20,7 @@ jobs:
       CC: gcc
       FPM_FC: gfortran
       FPM_CC: gcc
+      PLATFORM: linux
 
     steps:
     - name : Checkout

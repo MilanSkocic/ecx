@@ -21,15 +21,14 @@ jobs:
       FPM_FC: gfortran
       FPM_CC: gcc
       LIBNAME: ecx
-      PYW_DIR: "./pywrapper"
-      BUILD_DIR: "./build"
-      INCLUDE_DIR: "./include"
-      PYW_MOD_DIR: "$PYW_DIR/py$LIBNAME"
-      FPM_FFLAGS: "-std=f2008 -pedantic -Wall -Wextra"
-      FPM_CFLAGS: "-std=c11 -pedantic -Wall -Wextra"
-      FPM_LDFLAGS: "-static"
-      DEFAULT_INSTALL_DIR: "$HOME/.local"
-      PLATFORM: "linux"
+      PYW_DIR: ./pywrapper
+      BUILD_DIR: ./build
+      INCLUDE_DIR: ./include
+      PYW_MOD_DIR: ${PYW_DIR}/py${LIBNAME}
+      FPM_FFLAGS: -std=f2008 -pedantic -Wall -Wextra
+      FPM_CFLAGS: -std=c11 -pedantic -Wall -Wextra
+      FPM_LDFLAGS: -static
+      PLATFORM: linux
 
     steps:
     - name : Checkout

@@ -8,36 +8,31 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        toolchain:
-          - {compiler: gcc, version: 10}
-          #- {compiler: intel-classic, version: '2021.10'}
-
+    runs-on: ubuntu-latest
     steps:
     - name: Set Compilers  
-      uses: fortran-lang/setup-fortran@v1.3
-      id: setup-fortran
-      with:
-          compiler: ${{ matrix.toolchain.compiler }}
-          version: ${{ matrix.toolchain.version }}
-    - name: Checkout
-      uses: actions/checkout@v4
+      run: |
+        sudo update-alternatives \
+          --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
+          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
+          --slave /usr/bin/gcov gcov /usr/bin/gcov-10
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
         fpm-version: "v0.9.0"
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Gfortran version
       run : gfortran --version
     - name: Compile
       run: |
         fpm clean --all
         fpm build --profile=debug 
+
+  macos: 
+    runs-on: macos-latest
   
-  windows: 
+  windows_MSYS2: 
     runs-on: windows-latest
     defaults:
       run:
@@ -49,17 +44,14 @@ jobs:
         msystem: MINGW64
         install: >-
           mingw-w64-x86_64-gcc-fortran
+          mingw-w64-x86_64-fpm
           git
           curl
           make
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Set FPM
-      uses: fortran-lang/setup-fpm@v5
-      with: 
-        fpm-version: "v0.9.0"
     - name: Gfortran version
       run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Compile
       run: |
         . ./configure.sh

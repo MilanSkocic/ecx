@@ -47,7 +47,11 @@ jobs:
       uses: msys2/setup-msys2@v2
       with:
         msystem: MINGW64
-        install: mingw-w64-x86_64-gcc-fortran
+        install: >-
+          mingw-w64-x86_64-gcc-fortran
+          git
+          curl
+          make
     - name: Checkout
       uses: actions/checkout@v4
     - name: Set FPM

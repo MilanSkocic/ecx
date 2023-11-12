@@ -32,8 +32,12 @@ jobs:
   macos: 
     runs-on: macos-latest
     steps:
-    - name: Gfortran and fpm
-      run: brew install gcc fpm
+    - name: Gfortran
+      run: brew install gcc
+    - name: Set FPM
+      uses: fortran-lang/setup-fpm@v5
+      with: 
+        fpm-version: "v0.9.0"
     - name: Gfortran version
       run : gfortran --version
     - name: Checkout

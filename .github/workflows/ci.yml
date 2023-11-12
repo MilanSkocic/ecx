@@ -14,7 +14,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         toolchain:
-          - {compiler: gcc, version: 13}
+          - {compiler: gcc, version: 10}
           #- {compiler: intel-classic, version: '2021.10'}
 
     steps:
@@ -34,6 +34,6 @@ jobs:
       run : gfortran --version
     - name: Compile
       run: |
-        . ./configure.sh
-        make 
+        fpm clean --all
+        fpm build --profile=debug 
     

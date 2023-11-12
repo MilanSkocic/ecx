@@ -7,10 +7,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  linux:
     runs-on: ubuntu-latest
     steps:
-    - name: Set Gfortran  
+    - name: Gfortran  
       run: |
         sudo update-alternatives \
           --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
@@ -20,22 +20,30 @@ jobs:
       uses: fortran-lang/setup-fpm@v5
       with: 
         fpm-version: "v0.9.0"
-    - name: Checkout
-      uses: actions/checkout@v4
     - name: Gfortran version
       run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Compile
       run: |
-        fpm clean --all
-        fpm build --profile=debug 
+        . ./configure.sh
+        make
 
   macos: 
     runs-on: macos-latest
     steps:
-    - name: Set Gfortran and fpm
-      run: ls
+    - name: Gfortran and fpm
+      run: brew install gcc fpm
+    - name: Gfortran version
+      run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make
   
-  windows_MSYS2: 
+  windows: 
     runs-on: windows-latest
     defaults:
       run:
@@ -48,8 +56,6 @@ jobs:
         install: >-
           mingw-w64-x86_64-gcc-fortran
           mingw-w64-x86_64-fpm
-          git
-          curl
           make
     - name: Gfortran version
       run : gfortran --version

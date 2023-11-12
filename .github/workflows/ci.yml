@@ -56,3 +56,7 @@ jobs:
         fpm-version: "v0.9.0"
     - name: Gfortran version
       run : gfortran --version
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make

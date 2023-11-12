@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Set Compilers  
+    - name: Set Gfortran  
       run: |
         sudo update-alternatives \
           --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
@@ -31,6 +31,9 @@ jobs:
 
   macos: 
     runs-on: macos-latest
+    steps:
+    - name: Set Gfortran and fpm
+      run: ls
   
   windows_MSYS2: 
     runs-on: windows-latest
@@ -38,7 +41,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps: 
-    - name: MSYS2
+    - name: MSYS2, Gfortran, fpm
       uses: msys2/setup-msys2@v2
       with:
         msystem: MINGW64

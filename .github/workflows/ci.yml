@@ -34,7 +34,7 @@ jobs:
     steps:
     - name: Gfortran
       run: |
-        brew reinstall gcc@13
+        brew reinstall gcc@10 gcc@13
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
@@ -45,7 +45,6 @@ jobs:
       uses: actions/checkout@v4
     - name: Compile
       run: |
-        export LD_LIBRARY_PATH="/usr/local/opt/ggc@13/gcc/13/"
         . ./configure.sh
         make
   

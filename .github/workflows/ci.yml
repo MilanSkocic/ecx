@@ -33,13 +33,15 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Gfortran
-      run: brew reinstall gfortran
+      run: |
+        brew reinstall gfortran
+        brew link gfortran
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
         fpm-version: "v0.9.0"
     - name: Gfortran version
-      run : gfortran-13 --version
+      run : gfortran --version
     - name: Checkout
       uses: actions/checkout@v4
     - name: Compile

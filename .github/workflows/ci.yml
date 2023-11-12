@@ -34,7 +34,6 @@ jobs:
     steps:
     - name: Gfortran
       run: |
-        brew uninstall gcc@10
         brew reinstall gfortran
         brew link gfortran
     - name: Set FPM

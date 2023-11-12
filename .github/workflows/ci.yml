@@ -33,7 +33,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Gfortran
-      run: brew install gcc
+      run: brew install gfortran
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
@@ -60,6 +60,7 @@ jobs:
         install: >-
           mingw-w64-x86_64-gcc-fortran
           mingw-w64-x86_64-fpm
+          git
           make
     - name: Gfortran version
       run : gfortran --version

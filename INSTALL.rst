@@ -1,17 +1,12 @@
 
-The library is built with `fpm <https://fpm.fortran-lang.org/en/index.html>`_ which will
-build the fortran code into a static library. 
-An Makefile is provided which uses fpm with additional options for:
+A Makefile is provided, which uses `fpm <https://fpm.fortran-lang.org/en/index.html>`_, 
+for building the library.
 
-* making the shared library from the static one
-* copying the shared library into the python wrapper folder
-* installing the libary and the headers 
-* uninstalling the librariy and headers
+On windows, `msys2 <https://www.msys2.org>`_ needs to be installed.
 
-On windows, `msys2 <https://www.msys2.org>`_ needs to be installed. 
+On Darwin, the `gcc <https://formulae.brew.sh/formula/gcc>`_ toolchain needs to be installed.
 
-
-Build
+Build: the configuration file will set all the environmental variables necessary for the compilation
 
 .. code-block:: bash
 

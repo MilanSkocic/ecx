@@ -6,6 +6,10 @@ PyDoc_STRVAR(nm2eV_doc,
 "nm2eV(lambda) --> memview \n\n"
 "Convert wavelength in nm to energy in eV.");
 
+PyDoc_STRVAR(kTe_doc, 
+"kTe(T) --> memview \n\n"
+"Compute the thermal voltage in Volts.");
+
 static PyObject *nm2eV(PyObject *self, PyObject *args){
 
     PyObject *l_obj;
@@ -38,8 +42,41 @@ static PyObject *nm2eV(PyObject *self, PyObject *args){
 
 }
 
+static PyObject *kTe(PyObject *self, PyObject *args){
+
+    PyObject *l_obj;
+    
+    double *T;
+    double *kTe;
+    PyObject *new_mview;
+    Py_buffer *buffer;
+    Py_buffer new_buffer;
+    size_t n;
+
+
+    if(!PyArg_ParseTuple(args, "O", &l_obj)){
+        PyErr_SetString(PyExc_TypeError, "T must be an object with the buffer protocol.");
+        return NULL;
+    }
+    buffer = get_buffer(l_obj);
+    if(buffer != NULL){
+        new_buffer = create_new_buffer("d", sizeof(double), buffer->ndim, buffer->shape);
+        T = (double *) buffer->buf;
+        kTe = (double *) new_buffer.buf;
+        n = buffer->shape[0];
+        ecx_core_capi_kTe(T, kTe, n);
+        new_mview = PyMemoryView_FromBuffer(&new_buffer);
+        return new_mview;
+    }else{
+        PyErr_SetString(PyExc_TypeError, "T does not support the buffer protocol of type float.");
+        return NULL;
+    }
+
+}
+
 static PyMethodDef myMethods[] = {
     {"nm2eV", (PyCFunction) nm2eV, METH_VARARGS, nm2eV_doc},
+    {"kTe", (PyCFunction) kTe, METH_VARARGS, kTe_doc},
     { NULL, NULL, 0, NULL }
 };
 
@@ -63,6 +100,10 @@ PyMODINIT_FUNC PyInit_core(void)
 
 	v = PyFloat_FromDouble(ecx_core_capi_PI);
 	PyDict_SetItemString(d, "PI", v);
+	Py_INCREF(v);
+	
+    v = PyFloat_FromDouble(ecx_core_capi_T_K);
+	PyDict_SetItemString(d, "T_K", v);
 	Py_INCREF(v);
 
     return m;

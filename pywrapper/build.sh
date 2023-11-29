@@ -10,7 +10,8 @@ fi
 rm -r build
 rm -r dist
 rm -r *egg-info
-rm ./pyiapws/g704*.so
+rm ./pyecx/core*.so
+rm ./pyecx/eis*.so
 
 py311 setup.py sdist
 

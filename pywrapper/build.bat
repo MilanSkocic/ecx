@@ -1,7 +1,7 @@
 rd /s /q build
 rd /s /q dist
-rd /s /q pyiapws.egg-info
-del .\pyiapws\*.pyd
+rd /s /q pyecx.egg-info
+del .\pyecx\*.pyd
 
 py -3.11 setup.py sdist
 

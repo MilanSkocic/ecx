@@ -17,7 +17,7 @@ auto-examples = true
 module-naming = false
 
 [dependencies]
-codata = {git="https://github.com/MilanSkocic/codata", tag="0.8.1"}
+codata = {git="https://github.com/MilanSkocic/codata", tag="0.8.2"}
 stdlib = "*"
 
 [install]

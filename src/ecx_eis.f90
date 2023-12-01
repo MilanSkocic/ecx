@@ -1,7 +1,7 @@
 module ecx__eis
     !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
-    use ieee_arithmetic
+    use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
     use ecx__core
     implicit none
     private

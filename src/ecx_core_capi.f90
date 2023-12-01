@@ -1,6 +1,6 @@
 module ecx__core_capi
     !! C API for the core module.
-    use iso_c_binding, only : c_double
+    use iso_c_binding, only : c_double, c_size_t
     use ecx__core
     implicit none
 

@@ -2,8 +2,8 @@ module ecx__core
     !! Module for constants and utilities functions used in the ECX library.
     use iso_fortran_env
     use ieee_arithmetic
-    use codata
-    use stdlib_math
+    use codata, only: BOLTZMANN_CONSTANT, PLANCK_CONSTANT_IN_EV_HZ, SPEED_OF_LIGHT_IN_VACUUM, BOLTZMANN_CONSTANT_IN_EV_K
+    use stdlib_math, only: linspace, logspace
     implicit none
     
     real(real64), parameter :: ecx_core_PI = 4.0d0*datan(1.0d0) !! PI

@@ -1,5 +1,6 @@
 program test_eis
     use iso_fortran_env
+    use test__common
     use ecx__core
     implicit none
     

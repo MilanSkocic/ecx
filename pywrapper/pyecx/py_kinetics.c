@@ -1,3 +1,6 @@
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
+#include "ecx.h"
 #include "py_common.h"
 
 const char ERR_MSG_ARGS[] = "U must be objects with the buffer protocol and all other parameter are floats.";

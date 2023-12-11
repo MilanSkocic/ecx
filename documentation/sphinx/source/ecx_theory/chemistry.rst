@@ -1,6 +1,12 @@
 Chemistry
 =============
 
+In chemistry, the most important parameter that is always needed for performing thermodynamic 
+computations is the activity coefficient :math:`\gamma`. The latter is the correction applied to 
+the concentration in order to compute the activity. The Debye-Huckel is extensively explained
+in Bockris.
+
+
 The Debye-Huckel (or ion-cloud) theory of ion-ion interaction
 ------------------------------------------------------------------
 

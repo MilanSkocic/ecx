@@ -1,7 +1,6 @@
-import importlib
-import pathlib
+r"""setup"""
 import platform
-from setuptools import setup, find_packages, Extension
+from setuptools import setup, Extension
 
 libraries = None
 library_dirs = None

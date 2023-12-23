@@ -4,7 +4,7 @@
 dev |cidev| / main |cimain|
 
 
-Description
+Introduction
 ===================
 
 .. image:: ./media/logo-ecx.png

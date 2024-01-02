@@ -71,7 +71,6 @@ pure subroutine ecx_core_linspace(start, end, x)
         x(i) = start + dx * (i-1)
     end do
     x = linspace(start, end, size(x))
-
 end subroutine
 
 pure subroutine ecx_core_logspace(start, end, x)
@@ -84,7 +83,6 @@ pure subroutine ecx_core_logspace(start, end, x)
         !! 1d-array where to put the log spaced values.
 
     x(:) = logspace(start, end, size(x))
-
 end subroutine
 
 pure elemental function ecx_core_nm2eV(lambda)result(E)
@@ -96,7 +94,6 @@ pure elemental function ecx_core_nm2eV(lambda)result(E)
         !! Energy in eV.
 
     E = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (lambda*1.0d-9)
-
 end function
 
 pure elemental function ecx_core_eV2nm(E)result(lambda)
@@ -108,7 +105,6 @@ pure elemental function ecx_core_eV2nm(E)result(lambda)
         !! Wavelength in nm.
 
     lambda = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (E * 1.0d-9)
-
 end function
 
 pure elemental function ecx_core_deg2rad(theta)result(phase)
@@ -140,7 +136,6 @@ pure elemental function ecx_core_kTe(T)result(r)
         !! Thermal voltage in V.
     
     r = (T+ecx_core_T_K) * BOLTZMANN_CONSTANT_IN_EV_K
-
 end function
 
 end module

@@ -11,7 +11,6 @@
 #define ADD_IMPORT
 #endif
 #include "ecx_types.h"
-
 ADD_IMPORT const double ecx_core_capi_PI; /**< PI */
 ADD_IMPORT extern const double ecx_core_capi_T_K; /**< 0°C in Kelvin */
 void ecx_core_capi_nm2eV(double *lambda, double *E, size_t n); /**< Convert wavelength (nm) to energy (eV)*/

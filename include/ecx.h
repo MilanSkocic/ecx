@@ -10,6 +10,7 @@
 #include "ecx_eis.h"
 #include "ecx_pec.h"
 #include "ecx_kinetics.h"
+#include "ecx_version.h"
 
 #endif
 

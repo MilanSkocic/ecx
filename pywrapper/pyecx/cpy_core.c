@@ -1,7 +1,7 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "ecx.h"
-#include "py_common.h"
+#include "cpy_common.h"
 
 PyDoc_STRVAR(module_docstring, "C extension wrapping the CORE module of the Fortran ecx library.");
 

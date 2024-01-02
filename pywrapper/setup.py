@@ -20,19 +20,25 @@ if platform.system() == "Darwin":
 
 
 if __name__ == "__main__":
-
+    
+    mod_version = Extension(name="pyecx.version",
+                         sources=["./pyecx/cpy_version.c"],
+                         libraries=libraries,
+                         library_dirs=library_dirs,
+                         runtime_library_dirs=runtime_library_dirs,
+                         extra_objects=extra_objects)
     mod_eis = Extension(name="pyecx.eis",
-                        sources=["./pyecx/py_eis.c", "./pyecx/py_common.c"],
+                        sources=["./pyecx/cpy_eis.c", "./pyecx/cpy_common.c"],
                         libraries=libraries,
                         library_dirs=library_dirs,
                         runtime_library_dirs=runtime_library_dirs,
                         extra_objects=extra_objects)
     mod_core = Extension(name="pyecx.core",
-                         sources=["./pyecx/py_core.c", "./pyecx/py_common.c"],
+                         sources=["./pyecx/cpy_core.c", "./pyecx/cpy_common.c"],
                          libraries=libraries,
                          library_dirs=library_dirs,
                          runtime_library_dirs=runtime_library_dirs,
                          extra_objects=extra_objects)
 
-    setup(ext_modules=[mod_core, mod_eis])
+    setup(ext_modules=[mod_version, mod_core, mod_eis])
 

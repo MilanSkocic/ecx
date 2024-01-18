@@ -1,12 +1,5 @@
-# sdist
-
-
 include INSTALL.rst
 include LICENSE.TXT
 include MANIFEST.in
 include README.rst
 include requirements.txt
-
-include pyecx/*.c
-include pyecx/*.h
-include pyecx/libecx.*

@@ -1,14 +1,16 @@
 *.o
 *.obj
 *.exe
-*.dll
 *.out
-*.so
-*.a
 *.pyd
 *.lib
 *.cmake
 *.mod
+*.dylib
+*.dll
+*.dll.a
+*.so
+*.a
 
 .idea
 .vscode
@@ -24,9 +26,9 @@ __pycache__
 
 generator*
 
-pywrapper/pyecx/ecx*.h
-pywrapper/pyecx/*.dylib
-pywrapper/pyecx/*.so
-pywrapper/pyecx/*.dll
-pywrapper/pyecx/*.dll.a
+pywrapper/src/pyecx/ecx*.h
+pywrapper/src/pyecx/*.dylib
+pywrapper/src/pyecx/*.so
+pywrapper/src/pyecx/*.dll
+pywrapper/src/pyecx/*.dll.a
 pywrapper/wheelhouse/

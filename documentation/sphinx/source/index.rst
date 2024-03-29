@@ -5,8 +5,8 @@ Welcome to ecx documentation!
    :maxdepth: 1
    :caption: Contents:
 
-   getting_started/index.rst
-   ecx_theory/index.rst
-   releases/index.rst
-   api/index.rst
-   bibliography/index.rst
+   0-getting_started/index.rst
+   1-user_guide/index.rst
+   2-releases/index.rst
+   3-api/index.rst
+   references/index.rst

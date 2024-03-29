@@ -101,11 +101,11 @@ PyMODINIT_FUNC PyInit_core(void)
 	m = PyModule_Create(&core);
 	d = PyModule_GetDict(m);
 
-	v = PyFloat_FromDouble(ecx_core_capi_PI);
+	v = PyFloat_FromDouble(ecx_core_PI);
 	PyDict_SetItemString(d, "PI", v);
 	Py_INCREF(v);
 	
-    v = PyFloat_FromDouble(ecx_core_capi_T_K);
+    v = PyFloat_FromDouble(ecx_core_T_K);
 	PyDict_SetItemString(d, "T_K", v);
 	Py_INCREF(v);
 

@@ -1,7 +1,6 @@
 module ecx__kinetics
     !! Module for computing kinetics using the Butler-Volmer equations.
     use iso_fortran_env
-    use codata
     use ecx__core
     implicit none
     private

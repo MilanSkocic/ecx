@@ -1,13 +1,23 @@
+!> @file
+!! @brief Core module.
+
+!> @brief Core module.
 module ecx__core
-    !! Module for constants and utilities functions used in the ECX library.
     use iso_fortran_env
+    use iso_c_binding, only: c_ptr, c_loc, c_double
     use ieee_arithmetic
     use codata, only: BOLTZMANN_CONSTANT, PLANCK_CONSTANT_IN_EV_HZ, SPEED_OF_LIGHT_IN_VACUUM, BOLTZMANN_CONSTANT_IN_EV_K
     use stdlib_math, only: linspace, logspace
     implicit none
     
-    real(real64), parameter :: ecx_core_PI = 4.0d0*datan(1.0d0) !! PI
-    real(real64), parameter :: ecx_core_T_K=273.15d0 !! 0°C in Kelvin.
+    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
+    
+    real(c_double), bind(C, name="ecx_core_PI") :: &
+    capi_PI = PI
+    real(c_double), bind(C, name="ecx_core_T_K") :: &
+    capi_T_K = T_K
+
 
 contains
 
@@ -114,7 +124,7 @@ pure elemental function ecx_core_deg2rad(theta)result(phase)
         !! Angle in degrees.
     real(real64) :: phase
         !! Angle in rad.
-    phase = theta * ecx_core_PI / 180.0d0
+    phase = theta * PI / 180.0d0
 end 
 
 pure elemental function ecx_core_rad2deg(phase)result(theta)
@@ -124,7 +134,7 @@ pure elemental function ecx_core_rad2deg(phase)result(theta)
         !! Angle in rad.
     real(real64) :: theta
         !! Angle in degrees.
-    theta = phase * 180.0d0 / ecx_core_PI
+    theta = phase * 180.0d0 / PI
 end 
 
 pure elemental function ecx_core_kTe(T)result(r)
@@ -135,7 +145,7 @@ pure elemental function ecx_core_kTe(T)result(r)
     real(real64) :: r
         !! Thermal voltage in V.
     
-    r = (T+ecx_core_T_K) * BOLTZMANN_CONSTANT_IN_EV_K
+    r = (T+T_K) * BOLTZMANN_CONSTANT_IN_EV_K
 end function
 
 end module

@@ -79,7 +79,7 @@ pure elemental function ecx_eis_zcpe(w, Q, a)result(Z)
     real(real64) :: mod
 
     mod = 1/(Q*w**a)
-    Z = cmplx(mod * cos(a*ecx_core_PI/2), -mod*sin(a*ecx_core_PI/2), kind=real64)
+    Z = cmplx(mod * cos(a*PI/2), -mod*sin(a*PI/2), kind=real64)
 end function
 
 pure elemental function ecx_eis_zw(w, s)result(Z)

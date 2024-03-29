@@ -3,11 +3,8 @@ module ecx__core_capi
     use iso_c_binding, only : c_double, c_size_t
     use ecx__core
     implicit none
+    private
 
-    real(c_double), protected, bind(C, name="ecx_core_capi_PI") :: &
-    ecx_core_capi_PI = ecx_core_PI
-    real(c_double), protected, bind(C, name="ecx_core_capi_T_K") :: &
-    ecx_core_capi_T_K = ecx_core_T_K
 
 contains    
 

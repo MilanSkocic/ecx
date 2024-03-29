@@ -1,6 +1,7 @@
 module ecx__eis
        !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
+    use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
     use ecx__core
     implicit none
@@ -202,6 +203,28 @@ pure subroutine ecx_eis_z(p, w, z, e, errstat)
                         real64)
         end select
     endif
+
+end subroutine
+
+subroutine ecx_eis_capi_z(p, w, z, e, k, n, errstat)bind(C)
+    !! Compute the complex impedance for the given element.
+    implicit none
+    integer(c_size_t), intent(in), value :: n
+        !! Size of w
+    integer(c_size_t), intent(in), value :: k
+        !! Size of p
+    character(len=1,kind=c_char), intent(in), value :: e
+        !! Electrochemical element: R, C, L, Q, O, T, G
+    integer(c_int), intent(inout) :: errstat
+        !! Error status
+    real(c_double), intent(in) :: p(k)
+        !! Parameters.
+    real(c_double), intent(in) :: w(n)
+        !! Angular frequencies in rad.s-1
+    complex(c_double_complex), intent(out) :: z(n)
+        !! Complex impedance in Ohms.
+    
+    call ecx_eis_z(p, w, z, e, errstat)
 
 end subroutine
 

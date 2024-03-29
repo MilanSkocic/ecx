@@ -35,7 +35,7 @@ static PyObject *nm2eV(PyObject *self, PyObject *args){
         l = (double *) buffer->buf;
         E = (double *) new_buffer.buf;
         n = buffer->shape[0];
-        ecx_core_capi_nm2eV(l, E, n);
+        ecx_core_nm2eV(l, E, n);
         new_mview = PyMemoryView_FromBuffer(&new_buffer);
         return new_mview;
     }else{
@@ -67,7 +67,7 @@ static PyObject *kTe(PyObject *self, PyObject *args){
         T = (double *) buffer->buf;
         kTe = (double *) new_buffer.buf;
         n = buffer->shape[0];
-        ecx_core_capi_kTe(T, kTe, n);
+        ecx_core_kTe(T, kTe, n);
         new_mview = PyMemoryView_FromBuffer(&new_buffer);
         return new_mview;
     }else{

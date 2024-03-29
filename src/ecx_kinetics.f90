@@ -28,13 +28,13 @@ pure function ecx_kinetics_nernst(E0, z, aox, vox, ared, vred, T)result(E)
     real(real64), intent(in) :: T
         !! Temperature in °C.
 
-    real(real64) :: E, ox, red, kTe
+    real(real64) :: E, ox, red, kTe_
     
-    kTe = ecx_core_kTe(T)
+    kTe_ = kTe(T)
     ox = product(aox**vox)
     red = product(ared**vred)
 
-    E = E0 + kTe/z * log(ox/red)
+    E = E0 + kTe_/z * log(ox/red)
 
 end function
 
@@ -61,11 +61,11 @@ pure elemental function ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)result
 
     real(real64) :: I
 
-    real(real64) :: kTe
+    real(real64) :: kTe_
     
-    kTe = ecx_core_kTe(T)
+    kTe_ = kTe(T)
 
-    I = A * j0 * (exp(aa * za * (U - OCV) / kTe) - exp(-ac * zc * (U - OCV) / kTe));
+    I = A * j0 * (exp(aa * za * (U - OCV) / kTe_) - exp(-ac * zc * (U - OCV) / kTe_));
 end function
 
 pure elemental function ecx_kinetics_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I)
@@ -94,12 +94,12 @@ pure elemental function ecx_kinetics_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, 
     real(real64), intent(in) :: T
         !! Temperature in °C.
 
-    real(real64) :: I, kTe, num, denom
+    real(real64) :: I, kTe_, num, denom
 
-    kTe = ecx_core_kTe(T)
+    kTe_ = kTe(T)
     
     num = ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, 1.0d0, T)
-    denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe);
+    denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe_) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe_);
 
     I = A * num / denom;
 

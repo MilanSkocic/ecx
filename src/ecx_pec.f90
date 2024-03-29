@@ -55,7 +55,7 @@ pure elemental function iph(hv, K, Eg, theta, n)result(res)
 
     real(real64) :: re, im, mod, phase
     
-    phase = ecx_core_deg2rad(theta)
+    phase = deg2rad(theta)
     mod = K**n * alpha(hv, Eg, n)
     re = mod * cos(phase)
     im = mod *sin(phase)

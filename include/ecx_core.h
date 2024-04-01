@@ -1,5 +1,5 @@
 /**
- * @file ecx_core.h
+ * @file 
  * @brief EIS C header for the ecx_core module.
  * @details Constants and utilities functions.
  */

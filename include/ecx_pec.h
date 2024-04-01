@@ -1,5 +1,5 @@
 /**
- * @file ecx_pec_capi.h
+ * @file 
  * @brief EIS C header for th ecx library.
  */
 #ifndef ECX_PEC_CAPI_H

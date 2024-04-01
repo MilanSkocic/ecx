@@ -1,5 +1,5 @@
 /**
- * @file ecx_kinetics_capi.h
+ * @file 
  * @brief KINETICS C header for th ecx library.
  * @details Kinetics
  */

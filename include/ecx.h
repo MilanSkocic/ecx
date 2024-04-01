@@ -1,5 +1,5 @@
 /**
- * @file ecx.h
+ * @file 
  * @brief Main C header for th ecx library.
  * @details Includes all the headers for each submodule.
  */

@@ -1,5 +1,5 @@
 /**
- * @file ecx_types.h
+ * @file 
  * @brief Type C header for th ecx library.
  * @details Compatibilty layer for handling complex numbers with MSC.
  * It is imported by all headers for each submodule.

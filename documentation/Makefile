@@ -1,9 +1,7 @@
 .PHONY: html latexpdf doxygen clean upload logo
 
-all: logo doxygen latexpdf html
+all: doxygen latexpdf html
 
-logo: 
-	cp ../media/logo-codata.png ./sphinx/source/media
 
 html: 
 	$(MAKE) -C ./sphinx html

@@ -41,7 +41,7 @@ static PyObject *z(PyObject *self, PyObject *args){
         z = (ecx_cdouble *) new_buffer.buf;
         k = buffer_p->shape[0];
         n = buffer->shape[0];
-        ecx_eis_capi_z(p, w, z, e, k, n, &errstat);
+        ecx_eis_z(p, w, z, e, k, n, &errstat);
         new_mview = PyMemoryView_FromBuffer(&new_buffer);
         return new_mview;
     }else{

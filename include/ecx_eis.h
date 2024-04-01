@@ -15,7 +15,8 @@ extern void ecx_capi_zcpe(double *w, double Q, double a, size_t n, ecx_cdouble *
 extern void ecx_capi_zw(double *w, double s, size_t n, ecx_cdouble *Z);
 
 /**
- * @brief C API Compute the complex impedance for the given element.
+ * @brief C API - Compute the complex impedance for the given element 
+ * @details @ref ecx__eis::capi_z  
  * @param[in] n Size of w
  * @param[in] k Size of p
  * @param[in] e Electrochemical element: R, C, L, Q, O, T, G
@@ -23,7 +24,8 @@ extern void ecx_capi_zw(double *w, double s, size_t n, ecx_cdouble *Z);
  * @param[in] p Parameters.
  * @param[in] w Angular frequencies in rad.s-1
  * @param[in] z Complex impedance in Ohms.
+ * @param[in] errmsg Error message
  */
-extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat); 
+extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat, char *errmsg); 
 
 #endif

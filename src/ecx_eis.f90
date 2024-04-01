@@ -5,7 +5,7 @@
 module ecx__eis
        !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
-    use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char
+    use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char, c_loc, c_ptr, c_null_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
     use ecx__core
     implicit none
@@ -152,21 +152,31 @@ pure elemental function zg(w, G, K)result(Z)
 end function
 
 !> @brief Compute the complex impedance for the given element.
-!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
-!! @param[in] errstat Error status
 !! @param[in] p Parameters.
 !! @param[in] w Angular frequencies in rad.s-1
-!! @param[in] z Complex impedance in Ohms.
-pure subroutine z(p, w, zout, e, errstat)
+!! @param[in] zout Complex impedance in Ohms.
+!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
+!! @param[in] k Size of p
+!! @param[in] n Size of w
+!! @param[in] errstat Error status
+!! @param[in] errmsg Error message
+subroutine z(p, w, zout, e, errstat, errmsg)
     implicit none
-    character(len=1), intent(in) :: e
-    integer(int32), intent(out) :: errstat
     real(real64), intent(in) :: p(:)
     real(real64), intent(in) :: w(:)
+    character(len=1), intent(in) :: e
     complex(real64), intent(out) :: zout(:)
+    integer(int32), intent(out) :: errstat
+    character(len=:), intent(out), pointer :: errmsg
+    
+    
+    if(allocated(errmsg_f))then
+        deallocate(errmsg_f)
+    endif
     
     errstat = 0
     if(size(p)<3)then
+        errmsg_f = "The size of p must be 3."
         errstat = 1
         zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
                 ieee_value(0.0d0, ieee_quiet_nan), &
@@ -175,54 +185,76 @@ pure subroutine z(p, w, zout, e, errstat)
         select case(e)
             case("R")
                 zout = zr(w, p(1))
+                errmsg_f = "No error"
             case("C")
                 zout = zc(w, p(1))
+                errmsg_f = "No error"
             case("L")
                 zout = zl(w, p(1))
+                errmsg_f = "No error"
             case("W")
                 zout = zw(w, p(1))
+                errmsg_f = "No error"
             case("Q")
                 zout = zq(w, p(1), p(2))
+                errmsg_f = "No error"
             case("O")
                 zout = zo(w, p(1), p(2), p(3))
+                errmsg_f = "No error"
             case("T")
                 zout = zt(w, p(1), p(2), p(3))
+                errmsg_f = "No error"
             case("G")
                 zout = zg(w, p(1), p(2))
+                errmsg_f = "No error"
             case DEFAULT
                 errstat= 2
+                errmsg_f = "Unknown element: "//e
                 zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
                         ieee_value(0.0d0, ieee_quiet_nan), &
                         real64)
         end select
     endif
+    errmsg => errmsg_f
 
 end subroutine
 
 
-!> @brief C API Compute the complex impedance for the given element.
-!! @param[in] n Size of w
-!! @param[in] k Size of p
-!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
-!! @param[in] errstat Error status
+!> @brief C API - Compute the complex impedance for the given element.
 !! @param[in] p Parameters.
 !! @param[in] w Angular frequencies in rad.s-1
-!! @param[in] z Complex impedance in Ohms.
-subroutine capi_z(p, w, zout, e, k, n, errstat)bind(C, name="ecx_eis_z")
+!! @param[in] zout Complex impedance in Ohms.
+!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
+!! @param[in] k Size of p
+!! @param[in] n Size of w
+!! @param[in] errstat Error status
+!! @param[in] errmsg Error message
+subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
     implicit none
     integer(c_size_t), intent(in), value :: n
     integer(c_size_t), intent(in), value :: k
     character(len=1,kind=c_char), intent(in), value :: e
-    integer(c_int), intent(inout) :: errstat
     real(c_double), intent(in) :: p(k)
     real(c_double), intent(in) :: w(n)
     complex(c_double_complex), intent(out) :: zout(n)
+    integer(c_int), intent(out) :: errstat
+    type(c_ptr), intent(out) :: errmsg
     
-    call z(p, w, zout, e, errstat)
+    character(len=:), pointer :: fptr
+
+    call z(p, w, zout, e, errstat, fptr)
+
+    if(allocated(errmsg_c))then
+        deallocate(errmsg_c)
+    endif
+    allocate(character(len=len(fptr)+1) :: errmsg_c)
+
+    errmsg_c = fptr // c_null_char
+    errmsg = c_loc(errmsg_c)
 
 end subroutine
 
-pure subroutine mm(p, w, zout, n)
+subroutine mm(p, w, zout, n)
     !! Compute the measurement model.
     real(real64), intent(in) :: p(:)
         !! Parameters.
@@ -235,6 +267,7 @@ pure subroutine mm(p, w, zout, n)
 
     integer(int32) :: i
     integer(int32) :: errstat
+    character(len=:), pointer :: errmsg
     complex(real64) :: zr(size(zout))
     complex(real64) :: zc(size(zout))
 
@@ -243,10 +276,10 @@ pure subroutine mm(p, w, zout, n)
         zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), ieee_value(0.0d0, ieee_quiet_nan), real64)
     else 
         if(size(p) == (1+n*2))then
-            call z(p, w, zout, "R", errstat)
+            call z(p, w, zout, "R", errstat, errmsg)
             do i = 1, n-2
-                call z(p(i+1:), w, zr, "R", errstat)
-                call z(p(i+2:), w, zc, "C", errstat)
+                call z(p(i+1:), w, zr, "R", errstat, errmsg)
+                call z(p(i+2:), w, zc, "C", errstat, errmsg)
                 zout = zout + (zr*zc) / (zr+zc)
             enddo
         else

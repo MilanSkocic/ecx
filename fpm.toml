@@ -4,6 +4,9 @@ license = "GNU General Public License v3 (GPLv3)"
 author = "Milan Skocic"
 maintainer = "milan.skocic@icloud.com"
 copyright = "Copyright 2021-2024, Milan Skocic"
+categories  =["Science"]
+keywords = ["electrochemistry", "impedance", "photoelectrochemistry"]
+homepage = "https://milanskocic.github.io/ecx/index.html"
 
 [fortran]
 implicit-typing = false

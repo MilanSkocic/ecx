@@ -1,7 +1,7 @@
 !> @file
-!! @brief Module for PEC.
+!! @brief PEC Module.
 
-!> @brief Module for PEC.
+!> @brief PEC Module.
 module ecx__pec
     use iso_fortran_env
     use ecx__core

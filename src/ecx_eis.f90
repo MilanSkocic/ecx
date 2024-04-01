@@ -1,7 +1,7 @@
 !> @file
-!! @brief Module for EIS.
+!! @brief EIS module.
 
-!> @brief Module for EIS. 
+!> @brief EIS module. 
 module ecx__eis
        !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
@@ -10,34 +10,23 @@ module ecx__eis
     use ecx__core
     implicit none
     private
-    
-    type :: error_messages_t
-        integer(int32) :: i
-        character(len=64) :: msg
-    end type
 
-    type(error_messages_t), parameter :: errmsg(4) = &
-    [error_messages_t(1, "Parameter array must be at least of size 3."), &
-    error_messages_t(2, "Unknown element."), &
-    error_messages_t(3, "n must be greater or equal to 1."), &
-    error_messages_t(4, "Number of parameter in p is incorrect.")] 
+    character(len=:), allocatable, target :: errmsg_f
+    character(len=:), allocatable, target :: errmsg_c
     
-
 public :: z, capi_z
-public :: errmsg
 
 contains
 
+!> @brief Compute the complex impedance for a resistor. 
+!! @param[in] w Angular frequencies in rad.s^-1.
+!! @param[in] R Resistance in Ohms.
+!! @return Complex impedance in Ohms.
 pure elemental function zr(w, R) result(Z)
-    !! Compute the complex impedance for a resistor. 
     implicit none
-
     real(real64), intent(in) :: R
-        !! Resistance in Ohms.
     real(real64), intent(in) :: w
-        !! Angular frequencies in rad.s^-1.
     complex(real64) :: Z
-        !! Complex impedance in Ohms.
     Z = cmplx(R, 0.0d0, kind=real64)
 end function
 
@@ -68,7 +57,7 @@ pure elemental function zl(w, L)result(Z)
     Z = cmplx(0.0d0, L*w, kind=real64)
 end function
 
-pure elemental function zcpe(w, Q, a)result(Z)
+pure elemental function zq(w, Q, a)result(Z)
     !! Compute the complex impedance for a CPE. 
     implicit none
 
@@ -101,7 +90,7 @@ pure elemental function zw(w, s)result(Z)
     Z = cmplx(s2, -s2, kind=real64)
 end function
 
-pure elemental function zflw(w, R, tau, n)result(Z)
+pure elemental function zo(w, R, tau, n)result(Z)
     !! @brief Compute the complex impedance for a finite length warburg
     implicit none
     real(real64), intent(in) :: w
@@ -123,7 +112,7 @@ pure elemental function zflw(w, R, tau, n)result(Z)
 
 end function
 
-pure elemental function zfsw(w, R, tau, n)result(Z)
+pure elemental function zt(w, R, tau, n)result(Z)
     !! Compute the complex impedance for a finite space warburg
     implicit none
     real(real64), intent(in) :: w
@@ -193,11 +182,11 @@ pure subroutine z(p, w, zout, e, errstat)
             case("W")
                 zout = zw(w, p(1))
             case("Q")
-                zout = zcpe(w, p(1), p(2))
+                zout = zq(w, p(1), p(2))
             case("O")
-                zout = zflw(w, p(1), p(2), p(3))
+                zout = zo(w, p(1), p(2), p(3))
             case("T")
-                zout = zfsw(w, p(1), p(2), p(3))
+                zout = zt(w, p(1), p(2), p(3))
             case("G")
                 zout = zg(w, p(1), p(2))
             case DEFAULT

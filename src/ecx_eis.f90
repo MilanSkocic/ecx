@@ -3,7 +3,6 @@
 
 !> @brief EIS module. 
 module ecx__eis
-       !! Module containing functions and subroutines for Electrochemical Impedance Spectroscopy.
     use iso_fortran_env
     use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char, c_loc, c_ptr, c_null_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value

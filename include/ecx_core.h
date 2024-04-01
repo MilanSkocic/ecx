@@ -1,6 +1,6 @@
 /**
  * @file 
- * @brief C API - EIS
+ * @brief C API - core
  */
 #ifndef ECX_CORE_H
 #define ECX_CORE_H

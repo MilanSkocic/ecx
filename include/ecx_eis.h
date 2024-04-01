@@ -1,7 +1,6 @@
 /**
  * @file 
- * @brief EIS C header for the ecx library.
- * @details Complex impedance
+ * @brief CAPI - EIS
  */
 #ifndef ECX_EIS_CAPI_H
 #define ECX_EIS_CAPI_H

@@ -9,11 +9,13 @@ program example_in_f
     character(len=1) :: e 
     integer :: errstat
     complex(real64) :: zout(3)
+    character(len=:), pointer :: errmsg
 
     p(1) = r
     e = "R"
-    call z(p, w, zout, e, errstat)
+    call z(p, w, zout, e, errstat, errmsg)
     print *, zout
+    print *, errstat, errmsg
     
 
 end program

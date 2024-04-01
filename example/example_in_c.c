@@ -5,14 +5,16 @@
 
 int main(void){
 
-    int errstat;
-    double w = 1.0;
-    double r = 100.00;
-    ecx_cdouble z = ecx_cbuild(0.0,0.0);
+    int errstat, i;
+    double w[3] = {1.0, 1.0, 1.0};
+    double p[3] = {100.00, 0.0, 0.0};
+    ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), ecx_cbuild(0.0, 0.0), ecx_cbuild(0.0, 0.0)};
 
-    ecx_eis_capi_z(&r, &w, &z, "R", 1, 1, &errstat);
-
-    printf("%f I%f \n", creal(z), cimag(z));
+    ecx_eis_z(p, w, z, 'R', 3, 3, &errstat);
+    
+    for(i=0; i<3;i++){
+        printf("%f %f \n", creal(z[i]), cimag(z[i]));
+    }
     
     return EXIT_SUCCESS;
 }

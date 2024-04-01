@@ -1,7 +1,6 @@
 /**
  * @file 
- * @brief Main C header for th ecx library.
- * @details Includes all the headers for each submodule.
+ * @brief C API - Main C header for the ecx library.
  */
 #ifndef ECX_H
 #define ECX_H

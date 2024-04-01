@@ -1,7 +1,6 @@
 /**
  * @file 
- * @brief EIS C header for the ecx_core module.
- * @details Constants and utilities functions.
+ * @brief C API - EIS
  */
 #ifndef ECX_CORE_H
 #define ECX_CORE_H

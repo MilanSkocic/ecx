@@ -1,5 +1,8 @@
+!> @file
+!! @brief Main module for the ECX library.
+
+!> @brief Main module for the ECX library.
 module ecx
-    !! Main module for the ECX library.
     use ecx__core
     use ecx__kinetics
     use ecx__eis

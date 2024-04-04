@@ -1,6 +1,6 @@
 /**
- * @file ecx_pec_capi.h
- * @brief EIS C header for th ecx library.
+ * @file 
+ * @brief C API - PEC.
  */
 #ifndef ECX_PEC_CAPI_H
 #define ECX_PEC_CAPI_H

@@ -25,6 +25,7 @@ static PyObject *z(PyObject *self, PyObject *args){
     Py_buffer new_buffer;
     size_t k, n;
     int errstat;
+    char *errmsg;
 
 
     if(!PyArg_ParseTuple(args, "sOO", &element, &w_obj, &p_obj)){
@@ -41,7 +42,7 @@ static PyObject *z(PyObject *self, PyObject *args){
         z = (ecx_cdouble *) new_buffer.buf;
         k = buffer_p->shape[0];
         n = buffer->shape[0];
-        ecx_eis_capi_z(p, w, z, e, k, n, &errstat);
+        ecx_eis_z(p, w, z, e, k, n, &errstat, &errmsg);
         new_mview = PyMemoryView_FromBuffer(&new_buffer);
         return new_mview;
     }else{

@@ -1,17 +1,32 @@
+!> @file
+!! @brief Core module.
+
+!> @brief Core module.
 module ecx__core
-    !! Module for constants and utilities functions used in the ECX library.
     use iso_fortran_env
+    use iso_c_binding, only: c_ptr, c_loc, c_double, c_size_t
     use ieee_arithmetic
     use codata, only: BOLTZMANN_CONSTANT, PLANCK_CONSTANT_IN_EV_HZ, SPEED_OF_LIGHT_IN_VACUUM, BOLTZMANN_CONSTANT_IN_EV_K
     use stdlib_math, only: linspace, logspace
     implicit none
+    private
     
-    real(real64), parameter :: ecx_core_PI = 4.0d0*datan(1.0d0) !! PI
-    real(real64), parameter :: ecx_core_T_K=273.15d0 !! 0°C in Kelvin.
+    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
+    real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
+    
+    real(c_double), bind(C, name="ecx_core_PI") :: &
+    capi_PI = PI
+    real(c_double), bind(C, name="ecx_core_T_K") :: &
+    capi_T_K = T_K
+
+public :: PI, T_K
+public :: capi_PI, capi_T_K
+
+public :: roundn, assertEqual, kTe, nm2eV, deg2rad, rad2deg
 
 contains
 
-pure elemental function ecx_core_roundn(x, n)result(r)
+pure elemental function roundn(x, n)result(r)
     !! Round x to n digits.
     implicit none
     real(real64), intent(in) :: x
@@ -26,7 +41,7 @@ pure elemental function ecx_core_roundn(x, n)result(r)
     r = nint(x*fac, kind=kind(x)) / fac
 end function
 
-function ecx_core_assertEqual(x1, x2, n)result(r)
+function assertEqual(x1, x2, n)result(r)
     !! Assert if two numbers are equal.
     implicit none
     real(real64), intent(in) :: x1
@@ -85,7 +100,7 @@ pure subroutine ecx_core_logspace(start, end, x)
     x(:) = logspace(start, end, size(x))
 end subroutine
 
-pure elemental function ecx_core_nm2eV(lambda)result(E)
+pure elemental function nm2eV(lambda)result(E)
     !! Convert wavelength to energy
     implicit none
     real(real64), intent(in) :: lambda
@@ -96,7 +111,20 @@ pure elemental function ecx_core_nm2eV(lambda)result(E)
     E = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (lambda*1.0d-9)
 end function
 
-pure elemental function ecx_core_eV2nm(E)result(lambda)
+pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
+    !! Convert wavelength to energy
+    implicit none
+    integer(c_size_t), intent(in), value :: n
+        !! Size of lambda and E.
+    real(c_double), intent(in) :: lambda(n)
+        !! Wavelength in nm.
+    real(c_double), intent(out) :: E(n)
+        !! Energy in eV.
+    E = nm2eV(lambda)
+
+end subroutine
+
+pure elemental function eV2nm(E)result(lambda)
     !! Convert wavelength to energy
     implicit none
     real(real64), intent(in) :: E
@@ -107,27 +135,27 @@ pure elemental function ecx_core_eV2nm(E)result(lambda)
     lambda = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (E * 1.0d-9)
 end function
 
-pure elemental function ecx_core_deg2rad(theta)result(phase)
+pure elemental function deg2rad(theta)result(phase)
     !! Converts degrees to rad.
     implicit none
     real(real64), intent(in) :: theta
         !! Angle in degrees.
     real(real64) :: phase
         !! Angle in rad.
-    phase = theta * ecx_core_PI / 180.0d0
+    phase = theta * PI / 180.0d0
 end 
 
-pure elemental function ecx_core_rad2deg(phase)result(theta)
+pure elemental function rad2deg(phase)result(theta)
     !! Converts degrees to rad.
     implicit none
     real(real64), intent(in) :: phase
         !! Angle in rad.
     real(real64) :: theta
         !! Angle in degrees.
-    theta = phase * 180.0d0 / ecx_core_PI
+    theta = phase * 180.0d0 / PI
 end 
 
-pure elemental function ecx_core_kTe(T)result(r)
+pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none
     real(real64), intent(in) :: T
@@ -135,7 +163,20 @@ pure elemental function ecx_core_kTe(T)result(r)
     real(real64) :: r
         !! Thermal voltage in V.
     
-    r = (T+ecx_core_T_K) * BOLTZMANN_CONSTANT_IN_EV_K
+    r = (T+T_K) * BOLTZMANN_CONSTANT_IN_EV_K
 end function
+
+pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe")
+    !! Compute the thermal voltage.
+    integer(c_size_t), intent(in), value :: n
+        !! Size of T and kTe.
+    real(c_double), intent(in) :: T(n)
+        !! Temperature in °C.
+    real(c_double), intent(out) :: kTe_(n)
+        !! Thermal voltage in V.
+
+    kTe_ = kTe(T)
+
+end subroutine
 
 end module

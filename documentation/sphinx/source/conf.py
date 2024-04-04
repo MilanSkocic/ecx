@@ -2,14 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys, importlib.util
-sys.path.insert(0, os.path.abspath('../../../pywrapper/'))
+import sys
+sys.path.insert(0, os.path.abspath('../../../pywrapper/src/'))
 cautodoc_root = os.path.abspath('../../../pywrapper/')
-
-# Import only version.py file for extracting the version
-spec = importlib.util.spec_from_file_location('version', '../../../pywrapper/pyecx/version.py')
-mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
 
 # -- General configuration ------------------------------------------------
 
@@ -39,7 +34,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "ecx"
-copyright = "2023 Milan Skocic"
+copyright = "2021-2024 Milan Skocic"
 author = "M. Skocic"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -47,7 +42,7 @@ author = "M. Skocic"
 # built documents.
 #
 # The short X.Y version.
-version = mod.__version__
+version = "0.1.0"
 # The full version, including alpha/beta/rc tags.
 release = version
 

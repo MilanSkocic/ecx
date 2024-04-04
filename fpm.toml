@@ -3,7 +3,10 @@ version = "0.1.0"
 license = "GNU General Public License v3 (GPLv3)"
 author = "Milan Skocic"
 maintainer = "milan.skocic@icloud.com"
-copyright = "Copyright 2023, Milan Skocic"
+copyright = "Copyright 2021-2024, Milan Skocic"
+categories  =["Science"]
+keywords = ["electrochemistry", "impedance", "photoelectrochemistry"]
+homepage = "https://milanskocic.github.io/ecx/index.html"
 
 [fortran]
 implicit-typing = false
@@ -17,7 +20,7 @@ auto-examples = true
 module-naming = false
 
 [dependencies]
-codata = {git="https://github.com/MilanSkocic/codata", tag="0.8.2"}
+codata = {git="https://github.com/MilanSkocic/codata", tag="0.10.0"}
 stdlib = "*"
 
 [install]

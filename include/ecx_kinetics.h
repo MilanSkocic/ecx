@@ -1,6 +1,6 @@
 /**
- * @file ecx_kinetics_capi.h
- * @brief KINETICS C header for th ecx library.
+ * @file 
+ * @brief C API - kinetics.
  * @details Kinetics
  */
 #ifndef ECX_KINETICS_CAPI_H

@@ -1,8 +1,5 @@
-!> @file
-!! @brief EIS module.
-
-!> @brief EIS module. 
 module ecx__eis
+    !! EIS module
     use iso_fortran_env
     use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char, c_loc, c_ptr, c_null_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
@@ -13,19 +10,21 @@ module ecx__eis
     character(len=:), allocatable, target :: errmsg_f
     character(len=:), allocatable, target :: errmsg_c
     
-public :: z, capi_z
+    public :: z, capi_z
 
 contains
 
-!> @brief Compute the complex impedance for a resistor. 
-!! @param[in] w Angular frequencies in rad.s^-1.
-!! @param[in] R Resistance in Ohms.
-!! @return Complex impedance in Ohms.
 pure elemental function zr(w, R) result(Z)
+    !! Compute the complex impedance for a resistor. 
     implicit none
     real(real64), intent(in) :: R
+        !! Resistance in Ohms.
     real(real64), intent(in) :: w
+        !! Angular frequencies in rad.s^-1.
+
     complex(real64) :: Z
+        !! Complex impedance in Ohms.
+
     Z = cmplx(R, 0.0d0, kind=real64)
 end function
 

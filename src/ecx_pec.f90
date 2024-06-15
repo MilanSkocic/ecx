@@ -5,7 +5,6 @@
 module ecx__pec
     use iso_fortran_env
     use ecx__core
-    use codata
     implicit none
     private
 

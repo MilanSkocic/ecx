@@ -1,18 +1,12 @@
-!> @file
-!! @brief Version module.
-
-!> @brief Version module.
 module ecx__version
-use iso_fortran_env
-use iso_c_binding
-implicit none
-private
+    !! Version
+    implicit none
+    private
 
-character(len=*), parameter :: version = "0.1.0"
-character(len=:), allocatable, target :: version_f
-character(len=:), allocatable, target :: version_c
+    character(len=*), parameter :: version = "0.1.0"
+    character(len=:), allocatable, target :: version_f
 
-public :: get_version
+    public :: get_version
 
 contains
 
@@ -32,24 +26,5 @@ function get_version()result(fptr)
     fptr => version_f    
 end function
 
-function capi_get_version()bind(c,name="ecx_get_version")result(cptr)
-    !! Get the version.
-    implicit none
-    
-    ! Returns   
-    type(c_ptr) :: cptr
-        !! Pointer to version string.
-
-    character(len=:), pointer :: fptr
-    fptr => get_version() 
-
-    if(allocated(version_c))then
-        deallocate(version_c)
-    endif
-    allocate(character(len=len(fptr)+1) :: version_c)
-
-    version_c = fptr // c_null_char
-    cptr = c_loc(fptr)
-end function
 
 end module ecx__version

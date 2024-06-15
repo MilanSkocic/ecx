@@ -4,15 +4,21 @@
 !> @brief Core module.
 module ecx__core
     use iso_fortran_env
+    use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_ptr, c_loc, c_double, c_size_t
     use ieee_arithmetic
-    use codata, only: BOLTZMANN_CONSTANT, PLANCK_CONSTANT_IN_EV_HZ, SPEED_OF_LIGHT_IN_VACUUM, BOLTZMANN_CONSTANT_IN_EV_K
+    use codata, only: PLANCK_CONSTANT_IN_EV_HZ, &
+                      SPEED_OF_LIGHT_IN_VACUUM, &
+                      BOLTZMANN_CONSTANT_IN_EV_K
     use stdlib_math, only: linspace, logspace
     implicit none
     private
     
     real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
     real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
+    real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value
+    real(dp), parameter :: h_eV = PLANCK_CONSTANT_IN_EV_HZ%value 
+    real(dp), parameter :: c = SPEED_OF_LIGHT_IN_VACUUM%value
     
     real(c_double), bind(C, name="ecx_core_PI") :: &
     capi_PI = PI
@@ -108,7 +114,7 @@ pure elemental function nm2eV(lambda)result(E)
     real(real64) :: E
         !! Energy in eV.
 
-    E = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (lambda*1.0d-9)
+    E = h_eV * c / (lambda*1.0d-9)
 end function
 
 pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
@@ -132,7 +138,7 @@ pure elemental function eV2nm(E)result(lambda)
     real(real64) :: lambda
         !! Wavelength in nm.
 
-    lambda = PLANCK_CONSTANT_IN_EV_HZ * SPEED_OF_LIGHT_IN_VACUUM / (E * 1.0d-9)
+    lambda = h_eV * c / (E * 1.0d-9)
 end function
 
 pure elemental function deg2rad(theta)result(phase)
@@ -163,7 +169,7 @@ pure elemental function kTe(T)result(r)
     real(real64) :: r
         !! Thermal voltage in V.
     
-    r = (T+T_K) * BOLTZMANN_CONSTANT_IN_EV_K
+    r = (T+T_K) * kB_eV
 end function
 
 pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe")

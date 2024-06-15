@@ -20,7 +20,7 @@ auto-examples = true
 module-naming = false
 
 [dependencies]
-codata = {git="https://github.com/MilanSkocic/codata", tag="0.10.0"}
+codata = {git="https://github.com/MilanSkocic/codata", tag="1.2.0"}
 stdlib = "*"
 
 [install]

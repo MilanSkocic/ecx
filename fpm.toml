@@ -1,9 +1,9 @@
 name = "ecx"
 version = "0.1.0"
-license = "GNU General Public License v3 (GPLv3)"
+license = "MIT"
 author = "Milan Skocic"
 maintainer = "milan.skocic@icloud.com"
-copyright = "Copyright 2021-2024, Milan Skocic"
+copyright = "Copyright, Milan Skocic"
 categories  =["Science"]
 keywords = ["electrochemistry", "impedance", "photoelectrochemistry"]
 homepage = "https://milanskocic.github.io/ecx/index.html"
@@ -28,11 +28,11 @@ library = true
 
 [[example]]
 name="example_in_f"
-main="example_in_f.f90"
+main="example.f90"
 
 [[example]]
 name="example_in_c"
-main="example_in_c.c"
+main="example.c"
 
 [[test]]
 name="test_core"

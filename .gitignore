@@ -1,34 +1,42 @@
-*.o
-*.obj
-*.exe
-*.out
-*.pyd
-*.lib
-*.cmake
-*.mod
-*.dylib
-*.dll
-*.dll.a
-*.so
-*.a
+#API: an (incompatible) API change
+#BENCH: changes to the benchmark suite
+#BLD: change related to building numpy
+#BUG: bug fix
+#DEP: deprecate something, or remove a deprecated object
+#DEV: development tool or utility
+#DOC: documentation
+#ENH: enhancement
+#MAINT: maintenance commit (refactoring, typos, etc.)
+#REV: revert an earlier commit
+#STY: style fix (whitespace, PEP8)
+#TST: addition or modification of tests
+#REL: related to releasing
 
-.idea
-.vscode
-
+.idea/
+bin/
 build/
+docs/build/
+dist/
+local/
+API-doc/
+.vscode/
+*.obj
+*.o
+*.mod
+*.pyd
+*.dll.a
+*.a
+*.dll
+*.so
+*.dylib
+
 *.egg-info
+__pycache__
+*.so
 
 .DS_Store
 
-dist/
-
-__pycache__
-
-generator*
-
-pywrapper/src/pyecx/ecx*.h
-pywrapper/src/pyecx/*.dylib
-pywrapper/src/pyecx/*.so
-pywrapper/src/pyecx/*.dll
-pywrapper/src/pyecx/*.dll.a
-pywrapper/wheelhouse/
+py/wheelhouse/
+py/src/pyecx/bin/
+py/src/pyecx/include/
+py/src/pyecx/lib/

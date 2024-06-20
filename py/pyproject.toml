@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyecx"
-version = "0.1.0"
+dynamic=["version"]
 authors = [{name = "Milan Skocic", email = "milan.skocic@icloud.com"}]
 description = "pyecx: electrochemistry for Python."
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "GNU General Public License v3 (GPLv3)"}
+license = {text = "MIT"}
 classifiers=["Development Status :: 5 - Production/Stable",
             "Intended Audience :: Science/Research",
-            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"]
+            "License :: OSI Approved :: MIT License"]
 
 [project.urls]
 Documentation = "https://milanskocic.github.io/ecx/index.html"

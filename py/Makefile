@@ -56,14 +56,14 @@ clean:
 	rm -rf *.egg-info 
 	rm -rf __pycache__ 
 	rm -rf wheelhouse 
-	rm -rf $(PYW_SRC)/__pycache__
-	
-cleanall: clean
-	
-	rm -f $(PYW_SRC)/$(HEADER_PREFIX)*.h 
-	rm -f $(PYW_SRC)/*.a 
-	rm -f $(PYW_SRC)/*.so 
-	rm -f $(PYW_SRC)/*.dylib 
-	rm -f $(PYW_SRC)/*.dll 
-	rm -f $(PYW_SRC)/*.dll.a 
-	rm -f $(PYW_SRC)/*.pyd
+	rm -rf $(PY_SRC)/__pycache__
+	rm -f $(PY_SRC)/$(NAME)*.h 
+	rm -f $(PY_SRC)/*.a 
+	rm -f $(PY_SRC)/*.so 
+	rm -f $(PY_SRC)/*.dylib 
+	rm -f $(PY_SRC)/*.dll 
+	rm -f $(PY_SRC)/*.dll.a 
+	rm -f $(PY_SRC)/*.pyd
+	rm -rf $(PY_SRC)/bin
+	rm -rf $(PY_SRC)/include
+	rm -rf $(PY_SRC)/lib

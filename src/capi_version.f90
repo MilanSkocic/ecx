@@ -1,4 +1,4 @@
-module cecx__version
+module capi__version
     !! version
     use iso_c_binding, only: c_loc, c_ptr, c_null_char
     use ecx__version, only: get_version
@@ -7,11 +7,11 @@ module cecx__version
 
     character(len=:), allocatable, target :: version_c
     
-    public :: cecx_get_version
+    public ::  capi_get_version
 
 contains
 
-function cecx_get_version()bind(c)result(cptr)
+function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
     !! Get the version.
     implicit none
     
@@ -31,4 +31,4 @@ function cecx_get_version()bind(c)result(cptr)
     cptr = c_loc(fptr)
 end function
 
-end module cecx__version
+end module capi__version

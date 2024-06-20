@@ -196,108 +196,71 @@ are not favored in a case of depends of electrons (holes) for an n-type (p-type)
 The junction between a semiconductor and an electrolyte acts like a Schottky diode.</p>
 <h1 id="semiconductorelectroyte-interface-under-illumination">Semiconductor/electroyte interface under illumination</h1>
 <p>The illumination of the semiconductor/electrolyte interface, with photons having an energy
-greater than the band gap, :math:<code>E_g</code>, creates electron/hole pairs in the semiconductor.
+greater than the band gap, <script type="math/tex">E_g</script>, creates electron/hole pairs in the semiconductor.
 By applying the adequate potential the pairs can be separated. As a consequence, the majority
 charge carriers are attracted to the semiconductor bulk whereas the minority charge carriers
 are drawn to the semiconductor/electrolyte interface where they can be transferred to a RedOx
 species creating an additional current called photocurrent.</p>
-<p>Figure :numref:<code>fig_photocurrent_generation</code> illustrates schematically the mechanism leading
+<p>The next figure illustrates schematically the mechanism leading
 to the creation of a photocurrent. 
 n-type (p-type) semiconductors generate anodic (cathodic) photocurrents where the electrons (holes)
 move towards the external circuit whereas the holes (electrons) move towards the interface.
 The photocurrent is significant when the semiconductor/electrolyte junction is in depletion.
 Therefore, the applied potential on n-type (p-type) semiconductors is greater (lower) than the 
 flat band potential.</p>
-<p>.. _fig_photocurrent_generation:
-.. figure:: ../media/ecx_pec-photocurrent_generation.png
-    :width: 600
-    :align: center
-    :alt: Photocurrent generation</p>
-<div class="codehilite"><pre><span></span><code>Schematic representation of the mechanism generating a photocurrent.
-</code></pre></div>
-
-<p>Figure :numref:<code>fig_iph_ntype</code> and :numref:<code>fig_iph_ptype</code> show the anodic (cathodic) photocurrent 
+<p><img src="../../media/ecx_pec-photocurrent_generation.png" alt="Photocurrent generation" width="800px"/></p>
+<p>Figures below show the anodic (cathodic) photocurrent 
 for a GaAs n-type (p-type) semiconductor.</p>
-<p>.. _fig_iph_ntype:
-.. figure:: ../media/ecx_pec-iph_example_n_type.png
-    :width: 300
-    :align: center
-    :alt: Anodic photocurrent</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">Anodic</span><span class="w"> </span><span class="nx">photocurrent</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">n</span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">GaAs</span><span class="p">.</span>
-</code></pre></div>
-
-<p>.. _fig_iph_ptype:
-.. figure:: ../media/ecx_pec-iph_example_p_type.png
-    :width: 300
-    :align: center
-    :alt: Cathodic photocurrent</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">Cathodic</span><span class="w"> </span><span class="nx">photocurrent</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">p</span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">GaAs</span><span class="p">.</span>
-</code></pre></div>
-
-<p>:cite:t:<code>gartner1959-1</code> and :cite:t:<code>butler1977-1</code> proposed a simple and robust model
+<p><img src="../../media/ecx_pec-iph_example_n_type.png" alt="Anodic photocurrent" width="800px"/></p>
+<p><img src="../../media/ecx_pec-iph_example_p_type.png" alt="Cathodic photocurrent" width="800px"/></p>
+<p><a href="../references.html">Gartner and Butler</a> proposed a simple and robust model
 for describing the photocurrent considering that the recombination of the photogenerated
 electron/hole pairs does not occur in the space charge. Therefore, the photocurrent is proportional
-to the photon flux :math:<code>\Phi_0</code>. Moreover, the photocurrent depends on the relative ratio 
-between the space charge width, :math:<code>w_{sc}</code>, the depth of penetration given by the
-inverse of the absorption coefficient, :math:<code>\alpha</code> and the average diffusion length,
-:math:<code>L_{sc}</code>, of the minority charge carriers.
+to the photon flux <script type="math/tex">\Phi_0</script>. Moreover, the photocurrent depends on the relative ratio 
+between the space charge width, <script type="math/tex">w_{sc}</script>, the depth of penetration given by the
+inverse of the absorption coefficient, <script type="math/tex">\alpha</script> and the average diffusion length,
+<script type="math/tex">L_{sc}</script>, of the minority charge carriers.
 In other words, all absorbed photons generate electron/hole pairs and the 
 minority charge carriers are transferred to the electrolyte and therefore contribute to the
-photocurrent whose expression is given by the equation :eq:<code>eq_iph_complete</code>.</p>
-<p>.. math::
-    :label: eq_iph_complete</p>
-<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi <span class="ge">_0 \left[ 1 - \frac{\exp (-\alpha _</span>{sc} \cdot w_{sc})}{1+\alpha <span class="ge">_{sc} \cdot L_</span>{sc}} \right]
-</code></pre></div>
-
-<p>When :math:<code>\alpha _{sc} \cdot w_{sc} &lt;&lt; 1</code> and :math:<code>\alpha _{sc} \cdot L_{sc} &lt;&lt; 1</code>,
-the photocurrent is approximated by the equation :eq:<code>eq_iph_approx</code>.</p>
-<p>.. math::
-    :label: eq_iph_approx</p>
-<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi <span class="ge">_0 \cdot \alpha _</span>{sc} \cdot w_{sc}
-</code></pre></div>
-
-<p>The expression of the space charge width, :math:<code>w_{sc}</code>, in depletion is given by the equation 
-:eq:<code>eq_wsc_depletion</code> according to the Mott-Schottky theory. 
-:math:<code>N_{cc}</code> represents the number of majority carriers, supposed to be equal to the doping,
-:math:<code>e</code> corresponds to the elementary charge of an electron, :math:<code>U</code> represents 
-the applied potential, :math:<code>U_{fb}</code> represents the flat band potential, :math:<code>\epsilon</code> and 
-:math:<code>\epsilon _0</code> represent the relative and the vacuum permittivity, respectively.</p>
-<p>.. math::
-    :label: eq_wsc_depletion</p>
-<div class="codehilite"><pre><span></span><code>w_{sc} = \sqrt{\frac{2 \epsilon \epsilon <span class="ge">_0}{e N_</span>{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
-</code></pre></div>
-
-<p>The expression of the absorption coefficient :math:<code>\alpha _{sc}</code> with respect to the light energy
-:math:<code>h\nu</code> is shown in equation :eq:<code>eq_alpha</code>. The value of :math:<code>n</code> depends on the band-band 
-transition type. :math:<code>n</code> takes discreet values 0.5 or 2 when direct or indirect transitions
+photocurrent whose expression is given by the equation below.</p>
+<p>
+<script type="math/tex; mode=display"> I_{ph} = \Phi _0 \left[ 1 - \frac{\exp (-\alpha _{sc} \cdot w_{sc})}{1+\alpha _{sc} \cdot L_{sc}} \right] </script>
+</p>
+<p>When <script type="math/tex">\alpha _{sc} \cdot w_{sc} << 1</script> and <script type="math/tex">\alpha _{sc} \cdot L_{sc} << 1</script>,
+the photocurrent is approximated by the next equation.</p>
+<p>
+<script type="math/tex; mode=display"> I_{ph} = \Phi _0 \cdot \alpha _{sc} \cdot w_{sc} </script>
+</p>
+<p>The expression of the space charge width, <script type="math/tex">w_{sc}</script>, in depletion is given by the equation 
+below according to the Mott-Schottky theory. 
+<script type="math/tex">N_{cc}</script> represents the number of majority carriers, supposed to be equal to the doping,
+<script type="math/tex">e</script> corresponds to the elementary charge of an electron, <script type="math/tex">U</script> represents 
+the applied potential, <script type="math/tex">U_{fb}</script> represents the flat band potential, <script type="math/tex">\epsilon</script> and 
+<script type="math/tex">\epsilon _0</script> represent the relative and the vacuum permittivity, respectively.</p>
+<p>
+<script type="math/tex; mode=display">    w_{sc} = \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)} </script>
+</p>
+<p>The expression of the absorption coefficient <script type="math/tex">\alpha _{sc}</script> with respect to the light energy
+_(h\nu) is shown in equation :eq:<code>eq_alpha</code>. The value of <script type="math/tex">n</script> depends on the band-band 
+transition type. <script type="math/tex">n</script> takes discreet values 0.5 or 2 when direct or indirect transitions
 are allowed, respectively.</p>
-<p>.. math::
-    :label: eq_alpha</p>
-<div class="codehilite"><pre><span></span><code>\<span class="n">alpha</span><span class="w"> </span><span class="n">_</span><span class="p">{</span><span class="n">sc</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="w"> </span>\<span class="n">cdot</span><span class="w"> </span>\<span class="n">frac</span><span class="p">{(</span><span class="n">h</span>\<span class="n">nu</span><span class="o">-</span><span class="n">E_g</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">}{</span><span class="n">h</span>\<span class="n">nu</span><span class="p">}</span><span class="w"> </span>\<span class="n">text</span><span class="p">{</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">C</span><span class="o">=</span>\<span class="n">text</span><span class="p">{</span><span class="n">constant</span><span class="p">}</span>
-</code></pre></div>
-
+<p>
+<script type="math/tex; mode=display">    \alpha _{sc} = C \cdot \frac{(h\nu-E_g)^n}{h\nu} \text{ with } C=\text{constant} </script>
+</p>
 <p>The complete expression of the photocurrent is therefore given by the equation :eq:<code>eq_iph_approx_complete</code>.
-The latter is obtained by substituting the absorption coefficient :math:<code>\alpha _{sc}</code> and the space charge
-width :math:<code>w_{sc}</code> from the equation :eq:<code>eq_iph_approx</code> by the equations :eq:<code>eq_wsc_depletion</code>
-and :eq:<code>eq_alpha</code>.</p>
-<p>.. math::
-    :label: eq_iph_approx_complete</p>
-<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \cdot \sqrt{\frac{2 \epsilon \epsilon <span class="ge">_0}{e N_</span>{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
-</code></pre></div>
-
-<p>The linear transform with respect to the energy of the equation :eq:<code>eq_iph_approx_complete</code>
-is shown in equation :eq:<code>eq_linear_trans_hv</code> and it is used for determining the band gaps.
-The linear transform with respect to the potential is shown in equation :eq:<code>eq_linear_trans_U</code> and 
-it is used for determining the semiconduction type, the flat band potential and the number of majority charge carriers.</p>
-<p>.. math::
-    :label: eq_linear_trans_hv</p>
-<div class="codehilite"><pre><span></span><code>\left[ \frac{I_{ph}\cdot h\nu}{\Phi _0} \right]^{1/n} = C \cdot (h\nu - E_g)
-</code></pre></div>
-
-<p>.. math::
-    :label: eq_linear_trans_U</p>
-<div class="codehilite"><pre><span></span><code>I_{ph}^2 = C\cdot \left( U-U_{fb}-\frac{kT}{e} \right)
-</code></pre></div>
+The latter is obtained by substituting the absorption coefficient <script type="math/tex">\alpha _{sc}</script> and the space charge
+width <script type="math/tex">w_{sc}</script> from the previous equations.</p>
+<p>
+<script type="math/tex; mode=display">    I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \cdot \sqrt{\frac{2 \epsilon \epsilon _0}{e N_{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)} </script>
+</p>
+<p>The linear transform with respect to the energy is used for determining the band gaps.
+The linear transform with respect to the potential is used for determining the semiconduction type, the flat band potential and the number of majority charge carriers.</p>
+<p>
+<script type="math/tex; mode=display">    \left[ \frac{I_{ph}\cdot h\nu}{\Phi _0} \right]^{1/n} = C \cdot (h\nu - E_g) </script>
+</p>
+<p>
+<script type="math/tex; mode=display">    I_{ph}^2 = C\cdot \left( U-U_{fb}-\frac{kT}{e} \right) </script>
+</p>
     </div>
   </div>
       <hr>
@@ -315,7 +278,7 @@ it is used for determining the semiconduction type, the flat band potential and 
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-20T14:57:14.154103             </p>
+ on 2024-06-20T16:00:02.235527             </p>
           </div>
         </div>
         <br>

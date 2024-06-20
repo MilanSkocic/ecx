@@ -1,0 +1,347 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ECX - Electrochemistry">
+    <meta name="author" content="Milan Skocic" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>PhotoElectroChemistry (PEC) &ndash; ecx</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">ecx </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Contributing and specs</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>PhotoElectroChemistry (PEC)</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>Contributing and specs</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Specifications (specs)</a></li>
+              <li class="breadcrumb-item active" aria-current="page">PhotoElectroChemistry (PEC)</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Contributing and specs</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../changelog.html">Changelog</a>
+              <a class="nav-link" href="../examples.html">Examples</a>
+              <a class="nav-link" href="../license.html">License</a>
+              <a class="nav-link" href="../references.html">References</a>
+              <a class="nav-link" href="index.html">Specifications (specs)</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="capi.html">C API</a>
+              <a class="nav-link active disabled" href="pec.html">PhotoElectroChemistry (PEC)</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <h1 id="introduction">Introduction</h1>
+<p>PEC takes advantage of the photovoltaic effect, discovered by <a href="../references.html">Becquerel</a> in 1839,
+that occurs at the interface of a semiconductor and an electrolyte. In fact, the first experience showed
+the occurence of a photopotential and a photocurrent under illumination when a silver electrode, covered with an
+oxide layer, was immersed in an acidic medium and connected to a platinum electrode.
+Nonetheless, the first studies focused on the understanding of the interfacial processes were performed
+much later (<a href="../references.html">Stimming, Gerischer, Copeland</a>).</p>
+<p>The basics of photoelectrochemistry and application examples are presented here and they are largely 
+described in the literature (<a href="../references.html">Morrison, Gerischer, Memming, Marcus, Bard, Sato</a>).
+Several hypotheses are needed in order to apply the theoretical concepts:</p>
+<ul>
+<li>semiconductors are considered to be ideal i.e. crystalized and homogeneous</li>
+<li>the dielectric constant of the semiconductor is independent of the light wavelength</li>
+<li>the capacity of the Helmholtz layer is greater than the capacity of the space charge capacitance</li>
+<li>the potential drop in the Helmholtz layer is independent of the applied potential and is negligible</li>
+</ul>
+<p>The hypotheses are rarely fully respected in the case of oxides or passive films formed on common alloys.
+Nonetheless, the literature shows that the developed models can be applied to non-ideal systems
+such as oxides or passive layers.</p>
+<p>Solids are generally classified into three groups: <em>condcutors</em>, <em>semiconductors</em> and <em>insulators</em>.
+Each category can be illustrated with a specific band structure as shown in the figure below (<a href="../references.html">Marucco</a>).
+Valence and conduction bands correspond to the allowed energy states for the electrons.
+The lowest energy level of the conduction band is labeled <script type="math/tex">E_c</script> and the highest energy level 
+of the valence is labeled <script type="math/tex">E_v</script>. They are separated by a band gap, <script type="math/tex">E_g</script>, with no allowed
+energy states.
+The repartition of the electrons among both bands are described by the position of the Fermi level, <script type="math/tex">E_F</script>,
+which represents the highest energy state that can be occupied at 0K.</p>
+<p><img src="../../media/ecx_pec-band_structure.png" alt="Band Structure" width="800px"/></p>
+<p>The electronic conduction is due to the movement either of the negatively charge electrons
+in the conduction band or the positively charged holes in the valence band or both simultaneously.
+Consequently, the conduction depends on the number of available charge carriers in the conduction and valence bands.
+In conductors, an overlap of the conduction and the valence bands occurs which means that the highest
+allowed energy band is partilly filled.
+The distinction between a semiconductor and an isolator is less obvious because the conduction depends on the band
+gap and the energy provided by the environment to the electron from the valence band in order to jump into
+the conduction band.</p>
+<p>In semiconductors, charge carriers can be generated by three mechanisms: <em>thermal</em>, <em>excitation</em>, <em>photoexcitation</em>,
+<em>doping</em>, as shown here.</p>
+<p><img src="../../media/ecx_pec-excitation_charges.png" alt="Charge carrier generation", width="800px"/></p>
+<p>In the case of very low band gaps, thermal excitation can be enough to eject an electron 
+from the valence band into the conduction band. 
+Photoexcitation ejects electrons from the valence band into the conduction band when an 
+incident photon, with an energy greater than the band gap, is absorbed. 
+Doping introduces additional energy levels located in between the conduction and valence bands.</p>
+<p>Doping occurs when the stoichiometry is altered or when impurities are introduced in the 
+crystallographic lattice of the semiconductor. In the case of n-type semiconductors, the donor
+energy levels <script type="math/tex">E_d</script> lie just under the conduction band. The electrons from the donor levels
+are ejected by thermal excitation. Consequently, the majority charge carriers are negatively charged
+electrons in the conduction band. Similarly, the acceptor energy levels <script type="math/tex">E_a</script>, of p-type
+semiconductors, lie just above the valence band. The latter trap electrons from the valence band 
+and therefore create holes. Consequently, the majority charge carriers are positively charged holes.</p>
+<p>The Fermi level <script type="math/tex">E_F</script> in intrinsic semiconductors is located at the mid-gap.
+The n-type and p-type doping shift the Fermi level towards band edges <script type="math/tex">E_c</script> and <script type="math/tex">E_v</script>, 
+respectively. 
+The next figure shows the position of the Fermi level with respect to
+the semiconductor types.</p>
+<p><img src="../../media/ecx_pec-fermi_position.png" alt="Fermi level positions" width="800px"/></p>
+<h1 id="semiconductorelectroyte-interface-in-dark">Semiconductor/electroyte interface in dark</h1>
+<p>A potential gradient occurs when a semiconductor comes into contact with an
+electrolyte as shown below.</p>
+<p><img src="../../media/ecx_pec-interfacial_potential_gradient.png" alt="Interfacial gradient potential" width="800px"/></p>
+<p>The position of the Fermi level in the electrolyte with respect to the conduction
+and valence band edges leads to three different situations after a transient charge transfer.
+The flat band occurs when the Fermi level in the electrolyte matches the Fermi level in the
+semiconductor. Consequently, there is no potential gradient in the semiconductor.
+In a case of Fermi level mismatch, a band bending occurs in the semiconductor near the
+semiconductor/electrolyte interface. The band bending leads to either depletion or accumulation
+of majority charge carriers near the semiconductor/electrolyte interface.
+The spatial extension of the depletion/accumulation zone is called space charge as shown below.</p>
+<p><img src="../../media/ecx_pec-bending_example.png" alt="Space charge" width="800px"/></p>
+<p>Depletion and accumulation as well as band bending can be obtained by polarizing the semiconductor.
+As long as the hypothesis described in the introduction paragraph stand, the polarization
+does not modify the surface band edges <script type="math/tex">E_{cs}</script> and <script type="math/tex">E_{vs}</script>. Consequently, the
+polarization will only alter the band bending in the space charge. Depending on the applied potential, 
+<script type="math/tex">U</script>, with respect to the flat band, <script type="math/tex">U_{fb}</script>, three different situations will occur:</p>
+<ul>
+<li>
+<script type="math/tex">U = U_{fb}</script>: flat band situation no matter the semiconductor type</li>
+<li>
+<script type="math/tex">U > U_{fb}</script>: depletion (accumulation) in a case of n-type (p-type) semiconductor </li>
+<li>
+<script type="math/tex">U < U_{fb}</script>: accumulation (depletion) in a case of p-type (n-type) semiconductor</li>
+</ul>
+<p><img src="../../media/ecx_pec-bending_polarization.png" alt="Band bending" width="800px"/></p>
+<p>Without illumination, cathodic (anodic) currents are favored in a case of accumulation
+of electrons (holes) for an n-type (p-type) semiconductor. In fact, the majority charge carriers
+of n-type (p-type) semiconductors are electrons (holes). Reciprocally, anodic (cathodic) currents 
+are not favored in a case of depends of electrons (holes) for an n-type (p-type) semiconductor.
+The junction between a semiconductor and an electrolyte acts like a Schottky diode.</p>
+<h1 id="semiconductorelectroyte-interface-under-illumination">Semiconductor/electroyte interface under illumination</h1>
+<p>The illumination of the semiconductor/electrolyte interface, with photons having an energy
+greater than the band gap, :math:<code>E_g</code>, creates electron/hole pairs in the semiconductor.
+By applying the adequate potential the pairs can be separated. As a consequence, the majority
+charge carriers are attracted to the semiconductor bulk whereas the minority charge carriers
+are drawn to the semiconductor/electrolyte interface where they can be transferred to a RedOx
+species creating an additional current called photocurrent.</p>
+<p>Figure :numref:<code>fig_photocurrent_generation</code> illustrates schematically the mechanism leading
+to the creation of a photocurrent. 
+n-type (p-type) semiconductors generate anodic (cathodic) photocurrents where the electrons (holes)
+move towards the external circuit whereas the holes (electrons) move towards the interface.
+The photocurrent is significant when the semiconductor/electrolyte junction is in depletion.
+Therefore, the applied potential on n-type (p-type) semiconductors is greater (lower) than the 
+flat band potential.</p>
+<p>.. _fig_photocurrent_generation:
+.. figure:: ../media/ecx_pec-photocurrent_generation.png
+    :width: 600
+    :align: center
+    :alt: Photocurrent generation</p>
+<div class="codehilite"><pre><span></span><code>Schematic representation of the mechanism generating a photocurrent.
+</code></pre></div>
+
+<p>Figure :numref:<code>fig_iph_ntype</code> and :numref:<code>fig_iph_ptype</code> show the anodic (cathodic) photocurrent 
+for a GaAs n-type (p-type) semiconductor.</p>
+<p>.. _fig_iph_ntype:
+.. figure:: ../media/ecx_pec-iph_example_n_type.png
+    :width: 300
+    :align: center
+    :alt: Anodic photocurrent</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Anodic</span><span class="w"> </span><span class="nx">photocurrent</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">n</span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">GaAs</span><span class="p">.</span>
+</code></pre></div>
+
+<p>.. _fig_iph_ptype:
+.. figure:: ../media/ecx_pec-iph_example_p_type.png
+    :width: 300
+    :align: center
+    :alt: Cathodic photocurrent</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Cathodic</span><span class="w"> </span><span class="nx">photocurrent</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">p</span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">GaAs</span><span class="p">.</span>
+</code></pre></div>
+
+<p>:cite:t:<code>gartner1959-1</code> and :cite:t:<code>butler1977-1</code> proposed a simple and robust model
+for describing the photocurrent considering that the recombination of the photogenerated
+electron/hole pairs does not occur in the space charge. Therefore, the photocurrent is proportional
+to the photon flux :math:<code>\Phi_0</code>. Moreover, the photocurrent depends on the relative ratio 
+between the space charge width, :math:<code>w_{sc}</code>, the depth of penetration given by the
+inverse of the absorption coefficient, :math:<code>\alpha</code> and the average diffusion length,
+:math:<code>L_{sc}</code>, of the minority charge carriers.
+In other words, all absorbed photons generate electron/hole pairs and the 
+minority charge carriers are transferred to the electrolyte and therefore contribute to the
+photocurrent whose expression is given by the equation :eq:<code>eq_iph_complete</code>.</p>
+<p>.. math::
+    :label: eq_iph_complete</p>
+<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi <span class="ge">_0 \left[ 1 - \frac{\exp (-\alpha _</span>{sc} \cdot w_{sc})}{1+\alpha <span class="ge">_{sc} \cdot L_</span>{sc}} \right]
+</code></pre></div>
+
+<p>When :math:<code>\alpha _{sc} \cdot w_{sc} &lt;&lt; 1</code> and :math:<code>\alpha _{sc} \cdot L_{sc} &lt;&lt; 1</code>,
+the photocurrent is approximated by the equation :eq:<code>eq_iph_approx</code>.</p>
+<p>.. math::
+    :label: eq_iph_approx</p>
+<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi <span class="ge">_0 \cdot \alpha _</span>{sc} \cdot w_{sc}
+</code></pre></div>
+
+<p>The expression of the space charge width, :math:<code>w_{sc}</code>, in depletion is given by the equation 
+:eq:<code>eq_wsc_depletion</code> according to the Mott-Schottky theory. 
+:math:<code>N_{cc}</code> represents the number of majority carriers, supposed to be equal to the doping,
+:math:<code>e</code> corresponds to the elementary charge of an electron, :math:<code>U</code> represents 
+the applied potential, :math:<code>U_{fb}</code> represents the flat band potential, :math:<code>\epsilon</code> and 
+:math:<code>\epsilon _0</code> represent the relative and the vacuum permittivity, respectively.</p>
+<p>.. math::
+    :label: eq_wsc_depletion</p>
+<div class="codehilite"><pre><span></span><code>w_{sc} = \sqrt{\frac{2 \epsilon \epsilon <span class="ge">_0}{e N_</span>{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
+</code></pre></div>
+
+<p>The expression of the absorption coefficient :math:<code>\alpha _{sc}</code> with respect to the light energy
+:math:<code>h\nu</code> is shown in equation :eq:<code>eq_alpha</code>. The value of :math:<code>n</code> depends on the band-band 
+transition type. :math:<code>n</code> takes discreet values 0.5 or 2 when direct or indirect transitions
+are allowed, respectively.</p>
+<p>.. math::
+    :label: eq_alpha</p>
+<div class="codehilite"><pre><span></span><code>\<span class="n">alpha</span><span class="w"> </span><span class="n">_</span><span class="p">{</span><span class="n">sc</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="w"> </span>\<span class="n">cdot</span><span class="w"> </span>\<span class="n">frac</span><span class="p">{(</span><span class="n">h</span>\<span class="n">nu</span><span class="o">-</span><span class="n">E_g</span><span class="p">)</span><span class="o">^</span><span class="n">n</span><span class="p">}{</span><span class="n">h</span>\<span class="n">nu</span><span class="p">}</span><span class="w"> </span>\<span class="n">text</span><span class="p">{</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">C</span><span class="o">=</span>\<span class="n">text</span><span class="p">{</span><span class="n">constant</span><span class="p">}</span>
+</code></pre></div>
+
+<p>The complete expression of the photocurrent is therefore given by the equation :eq:<code>eq_iph_approx_complete</code>.
+The latter is obtained by substituting the absorption coefficient :math:<code>\alpha _{sc}</code> and the space charge
+width :math:<code>w_{sc}</code> from the equation :eq:<code>eq_iph_approx</code> by the equations :eq:<code>eq_wsc_depletion</code>
+and :eq:<code>eq_alpha</code>.</p>
+<p>.. math::
+    :label: eq_iph_approx_complete</p>
+<div class="codehilite"><pre><span></span><code>I_{ph} = \Phi _0 \cdot C \cdot \frac{(h\nu-E_g)^n}{h\nu} \cdot \sqrt{\frac{2 \epsilon \epsilon <span class="ge">_0}{e N_</span>{cc}} \cdot \left( U-U_{fb}-\frac{kT}{e} \right)}
+</code></pre></div>
+
+<p>The linear transform with respect to the energy of the equation :eq:<code>eq_iph_approx_complete</code>
+is shown in equation :eq:<code>eq_linear_trans_hv</code> and it is used for determining the band gaps.
+The linear transform with respect to the potential is shown in equation :eq:<code>eq_linear_trans_U</code> and 
+it is used for determining the semiconduction type, the flat band potential and the number of majority charge carriers.</p>
+<p>.. math::
+    :label: eq_linear_trans_hv</p>
+<div class="codehilite"><pre><span></span><code>\left[ \frac{I_{ph}\cdot h\nu}{\Phi _0} \right]^{1/n} = C \cdot (h\nu - E_g)
+</code></pre></div>
+
+<p>.. math::
+    :label: eq_linear_trans_U</p>
+<div class="codehilite"><pre><span></span><code>I_{ph}^2 = C\cdot \left( U-U_{fb}-\frac{kT}{e} \right)
+</code></pre></div>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              ecx
+ was developed by Milan Skocic<br>              &copy; 2024 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-06-20T14:57:14.154103             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

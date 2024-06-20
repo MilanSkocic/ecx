@@ -99,7 +99,3 @@ title: References
 *  A. W. Copeland, O. D. Black, and A. B. Garrett, “The Photovoltaic Effect,” Chemical Reviews, vol. 31, no. 1, pp. 177–226, 1942, doi: 10.1021/cr60098a004.
 
 *  NIST, “Thermophysical Properties of Fluid Systems.” 2017.
-
-
-
-

@@ -1,21 +1,18 @@
-!> @file
-!! @brief Core module.
-
-!> @brief Core module.
 module ecx__core
-    use iso_fortran_env
+    !! Core.
     use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_ptr, c_loc, c_double, c_size_t
     use ieee_arithmetic
-    use codata, only: PLANCK_CONSTANT_IN_EV_HZ, &
+    use codata, only: PI_dp &,
+                        PLANCK_CONSTANT_IN_EV_HZ, &
                       SPEED_OF_LIGHT_IN_VACUUM, &
                       BOLTZMANN_CONSTANT_IN_EV_K
     use stdlib_math, only: linspace, logspace
     implicit none
     private
     
-    real(real64), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
-    real(real64), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
+    real(dp), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
+    real(dp), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
     real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value
     real(dp), parameter :: h_eV = PLANCK_CONSTANT_IN_EV_HZ%value 
     real(dp), parameter :: c = SPEED_OF_LIGHT_IN_VACUUM%value
@@ -35,13 +32,13 @@ contains
 pure elemental function roundn(x, n)result(r)
     !! Round x to n digits.
     implicit none
-    real(real64), intent(in) :: x
+    real(dp), intent(in) :: x
         !! Number to be rounded.
     integer(int32), intent(in) :: n
         !! Number of digits.s
-    real(real64) :: r
+    real(dp) :: r
         !! Rounded number
-    real(real64) :: fac
+    real(dp) :: fac
 
     fac = 10**n
     r = nint(x*fac, kind=kind(x)) / fac
@@ -50,18 +47,18 @@ end function
 function assertEqual(x1, x2, n)result(r)
     !! Assert if two numbers are equal.
     implicit none
-    real(real64), intent(in) :: x1
+    real(dp), intent(in) :: x1
         !! First number to be compared.
-    real(real64), intent(in) :: x2
+    real(dp), intent(in) :: x2
         !! Second number to be compared.
     integer(int32), intent(in) :: n
         !! Number of digits.
     logical :: r
         !! Comparison result.
 
-    real(real64) :: fac
-    real(real64) :: ix1
-    real(real64) :: ix2
+    real(dp) :: fac
+    real(dp) :: ix1
+    real(dp) :: ix2
     
     if(ieee_is_nan(x1) .or. ieee_is_nan(x2))then
         r = .false.
@@ -75,14 +72,14 @@ end function
 
 pure subroutine ecx_core_linspace(start, end, x)
     !! Linear spaced 1d-array.
-    real(real64), intent(in) :: start
+    real(dp), intent(in) :: start
         !! Starting value.
-    real(real64), intent(in) :: end
+    real(dp), intent(in) :: end
         !! Ending value (included).
     integer(int32), intent(out) :: x(:)
         !! 1d-array where to put the linear spaced values.
 
-    real(real64) :: dx
+    real(dp) :: dx
     integer(int32) :: n, i
 
     n = size(x)
@@ -96,9 +93,9 @@ end subroutine
 
 pure subroutine ecx_core_logspace(start, end, x)
     !! Log spaced 1d-array.
-    real(real64), intent(in) :: start
+    real(dp), intent(in) :: start
         !! Starting value.
-    real(real64), intent(in) :: end
+    real(dp), intent(in) :: end
         !! Ending value (included).
     integer(int32), intent(out) :: x(:)
         !! 1d-array where to put the log spaced values.
@@ -109,9 +106,9 @@ end subroutine
 pure elemental function nm2eV(lambda)result(E)
     !! Convert wavelength to energy
     implicit none
-    real(real64), intent(in) :: lambda
+    real(dp), intent(in) :: lambda
         !! Wavelength in nm.
-    real(real64) :: E
+    real(dp) :: E
         !! Energy in eV.
 
     E = h_eV * c / (lambda*1.0d-9)
@@ -133,9 +130,9 @@ end subroutine
 pure elemental function eV2nm(E)result(lambda)
     !! Convert wavelength to energy
     implicit none
-    real(real64), intent(in) :: E
+    real(dp), intent(in) :: E
         !! Energy in eV.
-    real(real64) :: lambda
+    real(dp) :: lambda
         !! Wavelength in nm.
 
     lambda = h_eV * c / (E * 1.0d-9)
@@ -144,9 +141,9 @@ end function
 pure elemental function deg2rad(theta)result(phase)
     !! Converts degrees to rad.
     implicit none
-    real(real64), intent(in) :: theta
+    real(dp), intent(in) :: theta
         !! Angle in degrees.
-    real(real64) :: phase
+    real(dp) :: phase
         !! Angle in rad.
     phase = theta * PI / 180.0d0
 end 
@@ -154,9 +151,9 @@ end
 pure elemental function rad2deg(phase)result(theta)
     !! Converts degrees to rad.
     implicit none
-    real(real64), intent(in) :: phase
+    real(dp), intent(in) :: phase
         !! Angle in rad.
-    real(real64) :: theta
+    real(dp) :: theta
         !! Angle in degrees.
     theta = phase * 180.0d0 / PI
 end 
@@ -164,9 +161,9 @@ end
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none
-    real(real64), intent(in) :: T
+    real(dp), intent(in) :: T
         !! Temperature in °C.
-    real(real64) :: r
+    real(dp) :: r
         !! Thermal voltage in V.
     
     r = (T+T_K) * kB_eV

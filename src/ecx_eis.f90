@@ -1,6 +1,6 @@
 module ecx__eis
-    !! EIS module
-    use iso_fortran_env
+    !! EIS module.
+    use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char, c_loc, c_ptr, c_null_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
     use ecx__core

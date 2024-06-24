@@ -1,9 +1,7 @@
-!> @file
-!! @brief PEC Module.
-
-!> @brief PEC Module.
 module ecx__pec
+    !! PEC.
     use iso_fortran_env
+    use stdlib_kinds, only: dp
     use ecx__core
     implicit none
     private
@@ -13,18 +11,18 @@ public :: alpha, iph
 contains
 
 
-!> @brief Compute the not scaled absorbance coefficient.
-!! @param[in] hv Light energy in eV.
-!! @param[in] Eg Bandgap in eV.
-!! @param[in] n Exponent for direct (1/2) or indirect transition (2)
-!! @return Absorbance coefficient in eV.
 pure elemental function alpha(hv, Eg, n)result(res)
+    !> Compute the not scaled absorbance coefficient.
     implicit none
     real(real64), intent(in) :: hv
+        !! Light energy in eV.
     real(real64), intent(in) :: Eg
+        !! Bandgap in eV.
     real(real64), intent(in) :: n
+        !! Exponent for direct (1/2) or indirect transition (2)
 
     real(real64) :: res
+        !! Absorbance coefficient in eV.
 
     real(real64) :: d
     d = hv - Eg
@@ -36,21 +34,21 @@ pure elemental function alpha(hv, Eg, n)result(res)
     endif
 end function
 
-!> @brief Compute the complex photocurrent
-!! @param[in] hv Light energy in eV.
-!! @param[in] K Scaling factor for absorbance in .
-!! @param[in] Eg Bandgap in eV.
-!! @param[in] theta Phase in degrees.
-!! @param[in] n Transition type: n=1/2 for direct transition and n=2 for indirect transition
-!! @return iph Complex photocurrent.
 pure elemental function iph(hv, K, Eg, theta, n)result(res)
+    !! Compute the complex photocurrent
     implicit none
     real(real64), intent(in) :: hv
+        !! Light energy in eV.
     real(real64), intent(in) :: K
+        !! Scaling factor for absorbance in .
     real(real64), intent(in) :: Eg
+        !! Bandgap in eV.
     real(real64), intent(in) :: theta
+        !! Phase in degrees.
     real(real64), intent(in) :: n 
+        !! Transition type: n=1/2 for direct transition and n=2 for indirect transition
     complex(real64) :: res
+        !! Complex photocurrent.
 
     real(real64) :: re, im, mod, phase
     

@@ -1,13 +1,14 @@
-module ecx__kinetics_capi
-    use iso_fortran_env
+module capi__kinetics    
+    !! Kinetics: C API.
+    use stdlib_kinds, only: dp, int32
     use iso_c_binding
-    use ecx__kinetics
+    use ecx__kinetics, only: bv, sbv, nernst
     implicit none
     private
 
 contains
 
-pure function ecx_kinetics_capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T)result(E)bind(C)
+pure function capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T)result(E)bind(C, name="ecx_kinetics_nernst")
     !! Compute the Nernst electrochemical potential in V.
     implicit none
     real(c_double), intent(in), value :: E0
@@ -29,11 +30,11 @@ pure function ecx_kinetics_capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T
     real(c_double), intent(in), value :: T
         !! Temperature in °C.
     real(c_double) :: E
-    E = ecx_kinetics_nernst(E0, z, aox, vox, ared, vred, T)
+    E = nernst(E0, z, aox, vox, ared, vred, T)
 
 end function
 
-pure subroutine ecx_kinetics_capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bind(c)
+pure subroutine capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bind(c, name="ecx_kinetics_sbv")
     !! Compute Butler Volmer equation without mass transport.
     ! arguments
     integer(c_size_t), intent(in), value :: n
@@ -59,11 +60,11 @@ pure subroutine ecx_kinetics_capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bin
     real(c_double), intent(out) :: I(n)
         !! Current in A.
 
-    I = ecx_kinetics_sbv(U, OCV, j0, aa, ac, za, zc, A, T)
+    I = sbv(U, OCV, j0, aa, ac, za, zc, A, T)
 
 end subroutine
 
-pure subroutine ecx_kinetics_capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T, I, n)bind(c)
+pure subroutine capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T, I, n)bind(c, name="ecx_kinetics_bv")
     !! Compute Butler Volmer equation without mass transport.
     ! arguments
     integer(c_size_t), intent(in), value :: n
@@ -74,9 +75,9 @@ pure subroutine ecx_kinetics_capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, 
         !! Potential in volts.
     real(c_double), intent(in), value :: j0
         !! Exchange current density in A.cm-2
-    real(real64), intent(in), value :: jdla
+    real(c_double), intent(in), value :: jdla
         !! Anodic diffusion limiting current density in A.cm-2.
-    real(real64), intent(in), value :: jdlc
+    real(c_double), intent(in), value :: jdlc
         !! Cathodic diffusion limiting current density in A.cm-2.
     real(c_double), intent(in), value :: aa
         !! Anodic transfert coefficient.
@@ -93,7 +94,7 @@ pure subroutine ecx_kinetics_capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, 
     real(c_double), intent(out) :: I(n)
         !! Current in A.
 
-    I = ecx_kinetics_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)
+    I = bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)
 end subroutine
 
 end module

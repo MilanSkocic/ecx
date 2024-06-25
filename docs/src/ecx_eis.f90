@@ -1,6 +1,6 @@
 module ecx__eis
-    !! EIS module
-    use iso_fortran_env
+    !! EIS module.
+    use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_double, c_int, c_double_complex, c_size_t, c_char, c_loc, c_ptr, c_null_char
     use ieee_arithmetic, only: ieee_quiet_nan, ieee_value
     use ecx__core
@@ -10,101 +10,101 @@ module ecx__eis
     character(len=:), allocatable, target :: errmsg_f
     character(len=:), allocatable, target :: errmsg_c
     
-    public :: z, capi_z
+    public :: z
 
 contains
 
 pure elemental function zr(w, R) result(Z)
     !! Compute the complex impedance for a resistor. 
     implicit none
-    real(real64), intent(in) :: R
+    real(dp), intent(in) :: R
         !! Resistance in Ohms.
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequencies in rad.s^-1.
 
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
 
-    Z = cmplx(R, 0.0d0, kind=real64)
+    Z = cmplx(R, 0.0_dp, kind=dp)
 end function
 
 pure elemental function zc(w, C) result(Z)
     !! Compute the complex impedance for a capacitor. 
     implicit none
 
-    real(real64), intent(in) :: C
+    real(dp), intent(in) :: C
         !! Capacitance in Farad.
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequencies in rad.s^-1.
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
-    Z = cmplx(0.0d0, -1.0d0/(C*w), kind=real64)
+    Z = cmplx(0.0_dp, -1.0_dp/(C*w), kind=dp)
 end function
 
 pure elemental function zl(w, L)result(Z)
     !! Compute the complex impedance for an inductor. 
     implicit none
 
-    real(real64), intent(in) :: L
+    real(dp), intent(in) :: L
         !! Inductance in Henry.
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequencies in rad.s^-1.
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
 
-    Z = cmplx(0.0d0, L*w, kind=real64)
+    Z = cmplx(0.0_dp, L*w, kind=dp)
 end function
 
 pure elemental function zq(w, Q, a)result(Z)
     !! Compute the complex impedance for a CPE. 
     implicit none
 
-    real(real64), intent(in) :: Q
+    real(dp), intent(in) :: Q
         !! Resistance in S.s^-a
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequencies in rad.s^-1.
-    real(real64), intent(in) :: a
+    real(dp), intent(in) :: a
         !! CPE exponent
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
 
-    real(real64) :: mod
+    real(dp) :: mod
 
     mod = 1/(Q*w**a)
-    Z = cmplx(mod * cos(a*PI/2), -mod*sin(a*PI/2), kind=real64)
+    Z = cmplx(mod * cos(a*PI/2), -mod*sin(a*PI/2), kind=dp)
 end function
 
 pure elemental function zw(w, s)result(Z)
     !! Compute the complex impedance for a semi-infinite Warburg.
     implicit none
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequencies in rad.s^-1.
-    real(real64), intent(in) :: s
+    real(dp), intent(in) :: s
         !! Pseudo-Resistance in Ohms.s^(1/2).
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
-    real(real64) :: s2
+    real(dp) :: s2
     s2 = s/sqrt(w)
-    Z = cmplx(s2, -s2, kind=real64)
+    Z = cmplx(s2, -s2, kind=dp)
 end function
 
 pure elemental function zo(w, R, tau, n)result(Z)
     !! @brief Compute the complex impedance for a finite length warburg
     implicit none
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequency in rad.s^-1.
-    real(real64), intent(in) :: R
+    real(dp), intent(in) :: R
         !! Resistance in Ohms.
-    real(real64), intent(in) :: tau
+    real(dp), intent(in) :: tau
         !! Characteristic time in s.
-    real(real64), intent(in) :: n
+    real(dp), intent(in) :: n
         !! Order of the fsw.
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
-    complex(real64) :: x
+    complex(dp) :: x
 
 
-    x = sqrt(cmplx(0.0d0, tau*w, kind=real64))
+    x = sqrt(cmplx(0.0_dp, tau*w, kind=dp))
     x = x**n
     Z = R/x * tanh(x)
 
@@ -113,19 +113,19 @@ end function
 pure elemental function zt(w, R, tau, n)result(Z)
     !! Compute the complex impedance for a finite space warburg
     implicit none
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequency in rad.s^-1.
-    real(real64), intent(in) :: R
+    real(dp), intent(in) :: R
         !! Resistance in Ohms.
-    real(real64), intent(in) :: tau
+    real(dp), intent(in) :: tau
         !! Characteristic time in s.
-    real(real64), intent(in) :: n
+    real(dp), intent(in) :: n
         !! Order of the fsw.
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms.
-    complex(real64) :: x
+    complex(dp) :: x
 
-    x = cmplx(0.0d0, tau*w, kind=real64)
+    x = cmplx(0.0_dp, tau*w, kind=dp)
     x = x**n
 
     Z = R/(x * tanh(x))
@@ -135,38 +135,36 @@ end function
 pure elemental function zg(w, G, K)result(Z)
     !! Compute the complex impedance of the Gerisher element.
     implicit none
-    real(real64), intent(in) :: w
+    real(dp), intent(in) :: w
         !! Angular frequency in rad.s^-1.
-    real(real64), intent(in) :: G
+    real(dp), intent(in) :: G
         !! Pseudo-Resistance in Ohms.s^(1/2).
-    real(real64), intent(in) :: K
+    real(dp), intent(in) :: K
         !! Offset in rad.s^-1.
-    complex(real64) :: Z
+    complex(dp) :: Z
         !! Complex impedance in Ohms. 
-    complex(real64) :: x
+    complex(dp) :: x
     
-    x = cmplx(0.0d0, w, kind=real64)
+    x = cmplx(0.0_dp, w, kind=dp)
     Z = G / sqrt(K+x)
 end function
 
-!> @brief Compute the complex impedance for the given element.
-!! @param[in] p Parameters.
-!! @param[in] w Angular frequencies in rad.s-1
-!! @param[in] zout Complex impedance in Ohms.
-!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
-!! @param[in] k Size of p
-!! @param[in] n Size of w
-!! @param[in] errstat Error status
-!! @param[in] errmsg Error message
 subroutine z(p, w, zout, e, errstat, errmsg)
+    !! Compute the complex impedance for the given element.
     implicit none
-    real(real64), intent(in) :: p(:)
-    real(real64), intent(in) :: w(:)
+    real(dp), intent(in) :: p(:)
+        !! Parameters
+    real(dp), intent(in) :: w(:)
+        !! Angular frequencies in rad.s-1
     character(len=1), intent(in) :: e
-    complex(real64), intent(out) :: zout(:)
+        !! Electrochemical element: R, C, L, Q, O, T, G
+    complex(dp), intent(out) :: zout(:)
+        !! Complex impedance in Ohms.
     integer(int32), intent(out) :: errstat
+        !! Error status
     character(len=:), intent(out), pointer :: errmsg
-    
+        !! Error message
+     
     
     if(allocated(errmsg_f))then
         deallocate(errmsg_f)
@@ -176,9 +174,9 @@ subroutine z(p, w, zout, e, errstat, errmsg)
     if(size(p)<3)then
         errmsg_f = "The size of p must be 3."
         errstat = 1
-        zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
-                ieee_value(0.0d0, ieee_quiet_nan), &
-                real64)
+        zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
+                ieee_value(0.0_dp, ieee_quiet_nan), &
+                dp)
     else
         select case(e)
             case("R")
@@ -208,57 +206,22 @@ subroutine z(p, w, zout, e, errstat, errmsg)
             case DEFAULT
                 errstat= 2
                 errmsg_f = "Unknown element: "//e
-                zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), &
-                        ieee_value(0.0d0, ieee_quiet_nan), &
-                        real64)
+                zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
+                        ieee_value(0.0_dp, ieee_quiet_nan), &
+                        dp)
         end select
     endif
     errmsg => errmsg_f
 
 end subroutine
 
-
-!> @brief C API - Compute the complex impedance for the given element.
-!! @param[in] p Parameters.
-!! @param[in] w Angular frequencies in rad.s-1
-!! @param[in] zout Complex impedance in Ohms.
-!! @param[in] e Electrochemical element: R, C, L, Q, O, T, G
-!! @param[in] k Size of p
-!! @param[in] n Size of w
-!! @param[in] errstat Error status
-!! @param[in] errmsg Error message
-subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
-    implicit none
-    integer(c_size_t), intent(in), value :: n
-    integer(c_size_t), intent(in), value :: k
-    character(len=1,kind=c_char), intent(in), value :: e
-    real(c_double), intent(in) :: p(k)
-    real(c_double), intent(in) :: w(n)
-    complex(c_double_complex), intent(out) :: zout(n)
-    integer(c_int), intent(out) :: errstat
-    type(c_ptr), intent(out) :: errmsg
-    
-    character(len=:), pointer :: fptr
-
-    call z(p, w, zout, e, errstat, fptr)
-
-    if(allocated(errmsg_c))then
-        deallocate(errmsg_c)
-    endif
-    allocate(character(len=len(fptr)+1) :: errmsg_c)
-
-    errmsg_c = fptr // c_null_char
-    errmsg = c_loc(errmsg_c)
-
-end subroutine
-
 subroutine mm(p, w, zout, n)
     !! Compute the measurement model.
-    real(real64), intent(in) :: p(:)
+    real(dp), intent(in) :: p(:)
         !! Parameters.
-    real(real64), intent(in) :: w(:)
+    real(dp), intent(in) :: w(:)
         !! Angular frequencies in rad.s-1
-    complex(real64), intent(out) :: zout(:)
+    complex(dp), intent(out) :: zout(:)
         !! Complex impedance in Ohms.
     integer(int32), intent(in) :: n
         !! Number of voigt elements.
@@ -266,12 +229,12 @@ subroutine mm(p, w, zout, n)
     integer(int32) :: i
     integer(int32) :: errstat
     character(len=:), pointer :: errmsg
-    complex(real64) :: zr(size(zout))
-    complex(real64) :: zc(size(zout))
+    complex(dp) :: zr(size(zout))
+    complex(dp) :: zc(size(zout))
 
     if(n<1)then
         errstat = 3
-        zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), ieee_value(0.0d0, ieee_quiet_nan), real64)
+        zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
     else 
         if(size(p) == (1+n*2))then
             call z(p, w, zout, "R", errstat, errmsg)
@@ -282,7 +245,7 @@ subroutine mm(p, w, zout, n)
             enddo
         else
             errstat = 4
-            zout = cmplx(ieee_value(0.0d0, ieee_quiet_nan), ieee_value(0.0d0, ieee_quiet_nan), real64)
+            zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
         endif
     endif
 

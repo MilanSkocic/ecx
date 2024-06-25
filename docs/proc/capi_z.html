@@ -72,20 +72,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 8.6% of total for procedures.">19 statements</a>
+                 title=" 7.8% of total for procedures.">18 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ecx_eis.f90"> Source File</a>
+              <a href="../src/capi_eis.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ecx_eis.f90.html'>ecx_eis.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/ecx__eis.html'>ecx__eis</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/capi_eis.f90.html'>capi_eis.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/capi__eis.html'>capi__eis</a></li>
             <li class="breadcrumb-item active" aria-current="page">capi_z</li>
           </ol>
         </nav>
@@ -105,7 +105,18 @@
       <div id="sidebar">
       <h3>Contents</h3>
   
-  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../proc/capi_z.html#variable-fptr~2">fptr</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -135,15 +146,7 @@
 </h2>
     
 
-    <p>@brief C API - Compute the complex impedance for the given element.
-@param[in] p Parameters.
-@param[in] w Angular frequencies in rad.s-1
-@param[in] zout Complex impedance in Ohms.
-@param[in] e Electrochemical element: R, C, L, Q, O, T, G
-@param[in] k Size of p
-@param[in] n Size of w
-@param[in] errstat Error status
-@param[in] errmsg Error message</p>
+    <p>Compute the complex impedance for the given element.</p>
 
 
     <h3>Arguments</h3>
@@ -159,7 +162,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-p~2"></span>
+              <span class="anchor" id="variable-p~3"></span>
               real(kind=c_double),
             </td>
 <td>intent(in)</td>
@@ -169,12 +172,12 @@
             <td>::</td>
             <td><strong>p</strong>(k)</td>
             <td>
-                
+                <p>Parameters.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-w~10"></span>
+              <span class="anchor" id="variable-w~11"></span>
               real(kind=c_double),
             </td>
 <td>intent(in)</td>
@@ -184,12 +187,12 @@
             <td>::</td>
             <td><strong>w</strong>(n)</td>
             <td>
-                
+                <p>Angular frequencies in rad.s-1</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-zout~2"></span>
+              <span class="anchor" id="variable-zout~3"></span>
               complex(kind=c_double_complex),
             </td>
 <td>intent(out)</td>
@@ -199,7 +202,7 @@
             <td>::</td>
             <td><strong>zout</strong>(n)</td>
             <td>
-                
+                <p>Complex impedance in Ohms.</p>
             </td>
         </tr>
         <tr>
@@ -214,7 +217,7 @@
             <td>::</td>
             <td><strong>e</strong></td>
             <td>
-                
+                <p>Electrochemical element: R, C, L, Q, O, T, G</p>
             </td>
         </tr>
         <tr>
@@ -229,12 +232,12 @@
             <td>::</td>
             <td><strong>k</strong></td>
             <td>
-                
+                <p>Size of p</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~5"></span>
+              <span class="anchor" id="variable-n~11"></span>
               integer(kind=c_size_t),
             </td>
 <td>intent(in),</td>
@@ -244,12 +247,12 @@
             <td>::</td>
             <td><strong>n</strong></td>
             <td>
-                
+                <p>Size of w</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-errstat~2"></span>
+              <span class="anchor" id="variable-errstat~3"></span>
               integer(kind=c_int),
             </td>
 <td>intent(out)</td>
@@ -259,12 +262,12 @@
             <td>::</td>
             <td><strong>errstat</strong></td>
             <td>
-                
+                <p>Error status</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-errmsg~2"></span>
+              <span class="anchor" id="variable-errmsg~3"></span>
               type(c_ptr),
             </td>
 <td>intent(out)</td>
@@ -274,7 +277,7 @@
             <td>::</td>
             <td><strong>errmsg</strong></td>
             <td>
-                
+                <p>errmsg Error message</p>
             </td>
         </tr>
     </tbody>
@@ -404,6 +407,40 @@ large graphs.</div>
     <br>
 
 
+    <section>    
+      <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fptr~2"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>fptr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
     
     
 
@@ -432,7 +469,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-20T16:00:02.235527             </p>
+ on 2024-06-25T18:44:28.785954             </p>
           </div>
         </div>
         <br>

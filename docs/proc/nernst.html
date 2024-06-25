@@ -10,7 +10,7 @@
     <meta name="author" content="Milan Skocic" >
     <link rel="icon" href="../favicon.png">
 
-    <title>ecx_kinetics_bv &ndash; ecx</title>
+    <title>nernst &ndash; ecx</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -60,7 +60,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>ecx_kinetics_bv
+    <h1>nernst
       <small>Function</small>
       
     </h1>
@@ -72,7 +72,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 8.6% of total for procedures.">19 statements</a>
+                 title=" 6.5% of total for procedures.">15 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -86,7 +86,7 @@
           <ol class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href='../sourcefile/ecx_kinetics.f90.html'>ecx_kinetics.f90</a></li>
                 <li class="breadcrumb-item"><a href='../module/ecx__kinetics.html'>ecx__kinetics</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ecx_kinetics_bv</li>
+            <li class="breadcrumb-item active" aria-current="page">nernst</li>
           </ol>
         </nav>
       </div>
@@ -131,11 +131,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public pure elemental function ecx_kinetics_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T) result(I)  
+    <h2>public pure function nernst(E0, z, aox, vox, ared, vred, T) result(E)  
 </h2>
     
 
-    <p>Compute Butler Volmer equation with mass transport.</p>
+    <p>Compute the Nernst electrochemical potential in V.</p>
 
 
     <h3>Arguments</h3>
@@ -151,158 +151,98 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-u~4"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-e0"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>U</strong></td>
+            <td><strong>E0</strong></td>
             <td>
-                <p>Electrochemical potential in V.</p>
+                <p>Standard electrochemical potential in V.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ocv~4"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-z"></span>
+              integer(kind=int32),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>OCV</strong></td>
+            <td><strong>z</strong></td>
             <td>
-                <p>Open Circuit Voltage in V.</p>
+                <p>Number of exchanged electrons.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-j0~4"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-aox"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>j0</strong></td>
+            <td><strong>aox</strong>(:)</td>
             <td>
-                <p>Exchange current density in A.cm-2.</p>
+                <p>Activities of the oxidants.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-jdla~2"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-vox"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>jdla</strong></td>
+            <td><strong>vox</strong>(:)</td>
             <td>
-                <p>Anodic diffusion limiting current density in A.cm-2.</p>
+                <p>Coefficients for the oxidants.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-jdlc~2"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-ared"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>jdlc</strong></td>
+            <td><strong>ared</strong>(:)</td>
             <td>
-                <p>Cathodic diffusion limiting current density in A.cm-2.</p>
+                <p>Activities of the reductants</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-aa~4"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-vred"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>aa</strong></td>
+            <td><strong>vred</strong>(:)</td>
             <td>
-                <p>Anodic transfer coefficient.</p>
+                <p>Coefficients for the reductants.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ac~4"></span>
-              real(kind=real64),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>ac</strong></td>
-            <td>
-                <p>Cathodic transfer coefficient.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-za~4"></span>
-              real(kind=real64),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>za</strong></td>
-            <td>
-                <p>Number of exchnaged electrons in the anodic branch.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-zc~5"></span>
-              real(kind=real64),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>zc</strong></td>
-            <td>
-                <p>Number of exchnaged electrons in the cathodic branch.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-a~4"></span>
-              real(kind=real64),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>A</strong></td>
-            <td>
-                <p>Area in cm2.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-t~6"></span>
-              real(kind=real64),
+              <span class="anchor" id="variable-t~3"></span>
+              real(kind=dp),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -319,8 +259,8 @@
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-i~4"></span>
-          real(kind=real64)
+          <span class="anchor" id="variable-e~4"></span>
+          real(kind=dp)
         </small>
       </h3>
       
@@ -335,53 +275,32 @@
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
-<!-- Title: proc~~ecx_kinetics_bv~~CallsGraph Pages: 1 -->
-<svg id="procecx_kinetics_bvCallsGraph" width="329pt" height="52pt"
- viewBox="0.00 0.00 329.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~ecx_kinetics_bv~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
-<title>proc~~ecx_kinetics_bv~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 325,-48 325,4 -4,4"/>
-<!-- proc~ecx_kinetics_bv -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_node1" class="node">
-<title>proc~ecx_kinetics_bv</title>
-<polygon fill="none" stroke="black" points="95,-24 0,-24 0,0 95,0 95,-24"/>
-<text text-anchor="middle" x="47.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">ecx_kinetics_bv</text>
-</g>
-<!-- proc~ecx_kinetics_sbv -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_node2" class="node">
-<title>proc~ecx_kinetics_sbv</title>
-<g id="a_proc~~ecx_kinetics_bv~~CallsGraph_node2"><a xlink:href="../proc/ecx_kinetics_sbv.html" xlink:title="ecx_kinetics_sbv">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="231,-44 131,-44 131,-20 231,-20 231,-44"/>
-<text text-anchor="middle" x="181" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx_kinetics_sbv</text>
-</a>
-</g>
-</g>
-<!-- proc~ecx_kinetics_bv&#45;&gt;proc~ecx_kinetics_sbv -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_edge1" class="edge">
-<title>proc~ecx_kinetics_bv&#45;&gt;proc~ecx_kinetics_sbv</title>
-<path fill="none" stroke="#ff0000" d="M95.23,-19.11C103.51,-20.37 112.23,-21.69 120.79,-23"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="120.34,-26.47 130.75,-24.51 121.39,-19.55 120.34,-26.47"/>
+<!-- Title: proc~~nernst~~CallsGraph Pages: 1 -->
+<svg id="procnernstCallsGraph" width="152pt" height="32pt"
+ viewBox="0.00 0.00 152.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~nernst~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~nernst~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 148,-28 148,4 -4,4"/>
+<!-- proc~nernst -->
+<g id="proc~~nernst~~CallsGraph_node1" class="node">
+<title>proc~nernst</title>
+<polygon fill="none" stroke="black" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">nernst</text>
 </g>
 <!-- proc~kte -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_node3" class="node">
+<g id="proc~~nernst~~CallsGraph_node2" class="node">
 <title>proc~kte</title>
-<g id="a_proc~~ecx_kinetics_bv~~CallsGraph_node3"><a xlink:href="../proc/kte.html" xlink:title="kTe">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="321,-24 267,-24 267,0 321,0 321,-24"/>
-<text text-anchor="middle" x="294" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kTe</text>
+<g id="a_proc~~nernst~~CallsGraph_node2"><a xlink:href="../proc/kte.html" xlink:title="kTe">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kTe</text>
 </a>
 </g>
 </g>
-<!-- proc~ecx_kinetics_bv&#45;&gt;proc~kte -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_edge2" class="edge">
-<title>proc~ecx_kinetics_bv&#45;&gt;proc~kte</title>
-<path fill="none" stroke="#ff0000" d="M95.18,-11.34C106.88,-11.2 119.4,-11.07 131,-11 175.44,-10.73 186.56,-10.64 231,-11 239.25,-11.07 248.12,-11.18 256.49,-11.31"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="256.7,-14.82 266.76,-11.48 256.81,-7.82 256.7,-14.82"/>
-</g>
-<!-- proc~ecx_kinetics_sbv&#45;&gt;proc~kte -->
-<g id="proc~~ecx_kinetics_bv~~CallsGraph_edge3" class="edge">
-<title>proc~ecx_kinetics_sbv&#45;&gt;proc~kte</title>
-<path fill="none" stroke="#ff0000" d="M231.01,-23.17C239.67,-21.61 248.54,-20.01 256.76,-18.53"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="257.55,-21.94 266.77,-16.73 256.31,-15.05 257.55,-21.94"/>
+<!-- proc~nernst&#45;&gt;proc~kte -->
+<g id="proc~~nernst~~CallsGraph_edge1" class="edge">
+<title>proc~nernst&#45;&gt;proc~kte</title>
+<path fill="none" stroke="#ff0000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
 </g>
 </g>
 </svg>
@@ -497,7 +416,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-20T16:00:02.235527             </p>
+ on 2024-06-25T18:44:28.785954             </p>
           </div>
         </div>
         <br>

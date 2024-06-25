@@ -86,7 +86,8 @@
 </ul>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p><code>ecx</code> is a Fortran library providing formulas for electrochemistry.</p>
+<p><code>ecx</code> is a Fortran library providing formulas for electrochemistry.
+C API allows usage from C, or can be used as a basis for other wrappers. Python wrapper allows easy usage from Python.</p>
 <p>To use <code>ecx</code> within your <code>fpm &lt;https://github.com/fortran-lang/fpm&gt;</code>_ project,
 add the following to your <code>fpm.toml</code> file:</p>
 <div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="o">[</span><span class="n">dependencies</span><span class="o">]</span>
@@ -97,7 +98,7 @@ add the following to your <code>fpm.toml</code> file:</p>
 <div class="codehilite"><pre><span></span><code>gcc&gt;=10
 gfortran&gt;=10
 fpm&gt;=0.7
-codata==0.10.0
+codata&gt;=1.0.0
 </code></pre></div>
 
 <h1 id="installation">Installation</h1>
@@ -152,7 +153,7 @@ codata==0.10.0
           <div class="col-xs-6 col-sm-4">
             <div>
               <h3>Source Files</h3>
-              <ul><li><a href='sourcefile/capi.f90.html'>capi.f90</a></li><li><a href='sourcefile/capi_version.f90.html'>capi_version.f90</a></li><li><a href='sourcefile/ecx.f90.html'>ecx.f90</a></li><li><a href='sourcefile/ecx_core.f90.html'>ecx_core.f90</a></li><li><a href='sourcefile/ecx_eis.f90.html'>ecx_eis.f90</a></li><li><a href='sourcefile/ecx_kinetics.f90.html'>ecx_kinetics.f90</a></li><li><a href='sourcefile/ecx_kinetics_capi.f90.html'>ecx_kinetics_capi.f90</a></li><li><a href='sourcefile/ecx_pec.f90.html'>ecx_pec.f90</a></li><li><a href='sourcefile/ecx_version.f90.html'>ecx_version.f90</a></li></ul>
+              <ul><li><a href='sourcefile/capi.f90.html'>capi.f90</a></li><li><a href='sourcefile/capi_core.f90.html'>capi_core.f90</a></li><li><a href='sourcefile/capi_eis.f90.html'>capi_eis.f90</a></li><li><a href='sourcefile/capi_kinetics.f90.html'>capi_kinetics.f90</a></li><li><a href='sourcefile/capi_version.f90.html'>capi_version.f90</a></li><li><a href='sourcefile/ecx.f90.html'>ecx.f90</a></li><li><a href='sourcefile/ecx_core.f90.html'>ecx_core.f90</a></li><li><a href='sourcefile/ecx_eis.f90.html'>ecx_eis.f90</a></li><li><a href='sourcefile/ecx_kinetics.f90.html'>ecx_kinetics.f90</a></li><li><a href='sourcefile/ecx_pec.f90.html'>ecx_pec.f90</a></li></ul>
             </div>
             <div>
               <ul>
@@ -163,7 +164,7 @@ codata==0.10.0
           <div class="col-xs-6 col-sm-4">
             <div>
               <h3>Modules</h3>
-              <ul><li><a href='module/capi.html'>capi</a></li><li><a href='module/capi__version.html'>capi__version</a></li><li><a href='module/ecx.html'>ecx</a></li><li><a href='module/ecx__core.html'>ecx__core</a></li><li><a href='module/ecx__eis.html'>ecx__eis</a></li><li><a href='module/ecx__kinetics.html'>ecx__kinetics</a></li><li><a href='module/ecx__kinetics_capi.html'>ecx__kinetics_capi</a></li><li><a href='module/ecx__pec.html'>ecx__pec</a></li><li><a href='module/ecx__version.html'>ecx__version</a></li></ul>
+              <ul><li><a href='module/capi.html'>capi</a></li><li><a href='module/capi__core.html'>capi__core</a></li><li><a href='module/capi__eis.html'>capi__eis</a></li><li><a href='module/capi__kinetics.html'>capi__kinetics</a></li><li><a href='module/capi__version.html'>capi__version</a></li><li><a href='module/ecx.html'>ecx</a></li><li><a href='module/ecx__core.html'>ecx__core</a></li><li><a href='module/ecx__eis.html'>ecx__eis</a></li><li><a href='module/ecx__kinetics.html'>ecx__kinetics</a></li><li><a href='module/ecx__pec.html'>ecx__pec</a></li></ul>
             </div>
             <div>
               <ul>
@@ -174,7 +175,7 @@ codata==0.10.0
           <div class="col-xs-6 col-sm-4">
             <div>
               <h3>Procedures</h3>
-              <ul><li><a href='proc/alpha.html'>alpha</a></li><li><a href='proc/assertequal.html'>assertEqual</a></li><li><a href='proc/capi_get_version.html'>capi_get_version</a></li><li><a href='proc/capi_z.html'>capi_z</a></li><li><a href='proc/deg2rad.html'>deg2rad</a></li><li><a href='proc/ecx_kinetics_bv.html'>ecx_kinetics_bv</a></li><li><a href='proc/ecx_kinetics_nernst.html'>ecx_kinetics_nernst</a></li><li><a href='proc/ecx_kinetics_sbv.html'>ecx_kinetics_sbv</a></li><li><a href='proc/get_version.html'>get_version</a></li><li><a href='proc/iph.html'>iph</a></li></ul>
+              <ul><li><a href='proc/alpha.html'>alpha</a></li><li><a href='proc/assertequal.html'>assertEqual</a></li><li><a href='proc/bv.html'>bv</a></li><li><a href='proc/capi_get_version.html'>capi_get_version</a></li><li><a href='proc/capi_kte.html'>capi_kTe</a></li><li><a href='proc/capi_nm2ev.html'>capi_nm2eV</a></li><li><a href='proc/capi_z.html'>capi_z</a></li><li><a href='proc/deg2rad.html'>deg2rad</a></li><li><a href='proc/get_version.html'>get_version</a></li><li><a href='proc/iph.html'>iph</a></li></ul>
             </div>
             <div>
               <ul>
@@ -198,7 +199,7 @@ codata==0.10.0
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-20T16:00:02.235527             </p>
+ on 2024-06-25T18:44:28.785954             </p>
           </div>
         </div>
         <br>

@@ -12,11 +12,11 @@ endif
 
 SRC_FYPP=$(wildcard ./src/*.fypp)
 
-.PHONY: build doc docs
+.PHONY: build doc docs clean logo
 
 all: $(LIBNAME)
 
-$(LIBNAME): build copy_a shared
+$(LIBNAME): build copy_a shared 
 
 build: 
 	fpm build --profile=$(btype)
@@ -87,3 +87,6 @@ docs:
 logo:
 	make -C media
 
+py:$(LIBNAME)
+	make install prefix=py/$(PY_SRC)
+	make -C py

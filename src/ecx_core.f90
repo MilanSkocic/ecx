@@ -3,8 +3,7 @@ module ecx__core
     use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_ptr, c_loc, c_double, c_size_t
     use ieee_arithmetic
-    use codata, only: PI_dp &,
-                        PLANCK_CONSTANT_IN_EV_HZ, &
+    use codata, only: PLANCK_CONSTANT_IN_EV_HZ, &
                       SPEED_OF_LIGHT_IN_VACUUM, &
                       BOLTZMANN_CONSTANT_IN_EV_K
     use stdlib_math, only: linspace, logspace

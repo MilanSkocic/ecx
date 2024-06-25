@@ -18,7 +18,7 @@ add the following to your `fpm.toml` file:
 gcc>=10
 gfortran>=10
 fpm>=0.7
-codata==0.10.0
+codata>=1.0.0
 ```
 
 # Installation

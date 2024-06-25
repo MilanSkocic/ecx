@@ -27,10 +27,10 @@ pure elemental function alpha(hv, Eg, n)result(res)
     real(real64) :: d
     d = hv - Eg
 
-    if(d > 0.0d0)then
+    if(d > 0.0_dp)then
         res = (hv - Eg)**n / hv
     else
-        res = 0.0d0
+        res = 0.0_dp
     endif
 end function
 

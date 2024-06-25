@@ -1,10 +1,23 @@
 module capi__eis
+    !! EIS: CAPI.
+    use iso_c_binding, only: c_size_t, &
+                             c_int,    &
+                             c_double, &
+                             c_double_complex, &
+                             c_char,   &
+                             c_ptr,    &
+                             c_null_char, &
+                             c_loc
     use ecx__eis
     implicit none
     
+    character(len=:), allocatable, target :: errmsg_c
+
+contains
+    
 subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
     !! Compute the complex impedance for the given element.
-    implicit none
+
     integer(c_size_t), intent(in), value :: n
         !! Size of w
     integer(c_size_t), intent(in), value :: k

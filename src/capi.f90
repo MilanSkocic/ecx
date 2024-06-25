@@ -3,5 +3,5 @@ module capi
     use capi__version
     use capi__eis
     use capi__kinetics
-
+    use capi__core
 end module

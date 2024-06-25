@@ -10,8 +10,8 @@ module ecx__core
     implicit none
     private
     
-    real(dp), parameter :: PI = 4.0d0*datan(1.0d0) !! PI
-    real(dp), parameter :: T_K=273.15d0 !! 0°C in Kelvin.
+    real(dp), parameter :: PI = 4.0_dp*datan(1.0_dp) !! PI
+    real(dp), parameter :: T_K=273.15_dp !! 0°C in Kelvin.
     real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value
     real(dp), parameter :: h_eV = PLANCK_CONSTANT_IN_EV_HZ%value 
     real(dp), parameter :: c = SPEED_OF_LIGHT_IN_VACUUM%value
@@ -113,18 +113,6 @@ pure elemental function nm2eV(lambda)result(E)
     E = h_eV * c / (lambda*1.0d-9)
 end function
 
-pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
-    !! Convert wavelength to energy
-    implicit none
-    integer(c_size_t), intent(in), value :: n
-        !! Size of lambda and E.
-    real(c_double), intent(in) :: lambda(n)
-        !! Wavelength in nm.
-    real(c_double), intent(out) :: E(n)
-        !! Energy in eV.
-    E = nm2eV(lambda)
-
-end subroutine
 
 pure elemental function eV2nm(E)result(lambda)
     !! Convert wavelength to energy
@@ -144,7 +132,7 @@ pure elemental function deg2rad(theta)result(phase)
         !! Angle in degrees.
     real(dp) :: phase
         !! Angle in rad.
-    phase = theta * PI / 180.0d0
+    phase = theta * PI / 180.0_dp
 end 
 
 pure elemental function rad2deg(phase)result(theta)
@@ -154,7 +142,7 @@ pure elemental function rad2deg(phase)result(theta)
         !! Angle in rad.
     real(dp) :: theta
         !! Angle in degrees.
-    theta = phase * 180.0d0 / PI
+    theta = phase * 180.0_dp / PI
 end 
 
 pure elemental function kTe(T)result(r)
@@ -168,17 +156,5 @@ pure elemental function kTe(T)result(r)
     r = (T+T_K) * kB_eV
 end function
 
-pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe")
-    !! Compute the thermal voltage.
-    integer(c_size_t), intent(in), value :: n
-        !! Size of T and kTe.
-    real(c_double), intent(in) :: T(n)
-        !! Temperature in °C.
-    real(c_double), intent(out) :: kTe_(n)
-        !! Thermal voltage in V.
-
-    kTe_ = kTe(T)
-
-end subroutine
 
 end module

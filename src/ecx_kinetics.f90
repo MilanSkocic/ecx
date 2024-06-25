@@ -1,6 +1,6 @@
 module ecx__kinetics
     !! Module for computing kinetics using the Butler-Volmer equations.
-    use stdlib_kinds only: dp, int32
+    use stdlib_kinds, only: dp, int32
     use ecx__core
     implicit none
     private
@@ -98,7 +98,7 @@ pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I
 
     kTe_ = kTe(T)
     
-    num = sbv(U, OCV, j0, aa, ac, za, zc, 1.0d0, T)
+    num = sbv(U, OCV, j0, aa, ac, za, zc, 1.0_dp, T)
     denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe_) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe_);
 
     I = A * num / denom;

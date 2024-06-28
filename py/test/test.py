@@ -1,7 +1,6 @@
 r"""Tests"""
 import unittest
 import pyecx
-import numpy as np
 
 
 class TestVersion(unittest.TestCase):
@@ -11,5 +10,5 @@ class TestVersion(unittest.TestCase):
         expected = None
         with open("VERSION", "r") as f:
             expected = f.read().strip()
-        value = "0.1.0"
+        value = pyecx.version.__version__
         self.assertEqual(value, expected)

@@ -3,14 +3,15 @@ module ecx__core
     use stdlib_kinds, only: dp, int32
     use iso_c_binding, only: c_ptr, c_loc, c_double, c_size_t
     use ieee_arithmetic
-    use codata, only: PLANCK_CONSTANT_IN_EV_HZ, &
+    use stdlib_codata, only: PLANCK_CONSTANT_IN_EV_HZ, &
                       SPEED_OF_LIGHT_IN_VACUUM, &
                       BOLTZMANN_CONSTANT_IN_EV_K
+    use stdlib_constants, only: PI_dp
     use stdlib_math, only: linspace, logspace
     implicit none
     private
     
-    real(dp), parameter :: PI = 4.0_dp*datan(1.0_dp) !! PI
+    real(dp), parameter :: PI = PI_dp !! PI
     real(dp), parameter :: T_K=273.15_dp !! 0°C in Kelvin.
     real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value
     real(dp), parameter :: h_eV = PLANCK_CONSTANT_IN_EV_HZ%value 

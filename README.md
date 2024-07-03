@@ -3,7 +3,7 @@
 `ecx` is a Fortran library providing formulas for electrochemistry.
 C API allows usage from C, or can be used as a basis for other wrappers. Python wrapper allows easy usage from Python.
 
-To use `ecx` within your `fpm <https://github.com/fortran-lang/fpm>`_ project,
+To use `ecx` within your [fpm](https://github.com/fortran-lang/fpm) project,
 add the following to your `fpm.toml` file:
 
 ```

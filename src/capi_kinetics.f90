@@ -1,4 +1,4 @@
-module capi__kinetics    
+module ecx__capi_kinetics    
     !! Kinetics: C API.
     use stdlib_kinds, only: dp, int32
     use iso_c_binding

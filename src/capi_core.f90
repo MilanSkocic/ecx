@@ -1,4 +1,4 @@
-module capi__core
+module ecx__capi_core
     use iso_c_binding, only: c_double, c_size_t
     use ecx__core, only: nm2eV, kTe
     implicit none

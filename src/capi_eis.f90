@@ -1,4 +1,4 @@
-module capi__eis
+module ecx__capi_eis
     !! EIS: CAPI.
     use iso_c_binding, only: c_size_t, &
                              c_int,    &

@@ -5,6 +5,6 @@ module ecx
     use ecx__eis
     use ecx__pec
     use ecx__version
-    use capi
+    use ecx__capi
 
 end module

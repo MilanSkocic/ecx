@@ -1,4 +1,4 @@
-module capi__version
+module ecx__capi_version
     !! version: C API.
     use iso_c_binding, only: c_loc, c_ptr, c_null_char
     use ecx__version, only: get_version
@@ -31,4 +31,4 @@ function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
     cptr = c_loc(version_c)
 end function
 
-end module capi__version
+end module ecx__capi_version

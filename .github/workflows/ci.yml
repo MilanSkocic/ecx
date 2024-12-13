@@ -36,8 +36,11 @@ jobs:
         with:
           compiler: ${{ matrix.toolchain.compiler }}
           version: ${{ matrix.toolchain.version }}
+      
+      - name: gfortran version
         run: |
           which gfortran-${{ matrix.toolchain.version }}
           which gfortran
+          gfortran --version
 
 

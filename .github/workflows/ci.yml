@@ -5,69 +5,39 @@ on:
     branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main", "dev" ]
+  release:
+    types: [published]
 
 jobs:
-  linux:
-    runs-on: ubuntu-22.04
-    steps:
-    - name: Gfortran  
-      run: |
-        sudo update-alternatives \
-          --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
-          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
-          --slave /usr/bin/gcov gcov /usr/bin/gcov-10
-    - name: Set FPM
-      uses: fortran-lang/setup-fpm@v5
-      with: 
-        fpm-version: "v0.9.0"
-    - name: Gfortran version
-      run : gfortran --version
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Compile
-      run: |
-        . ./configure.sh
-        make
 
-  macos: 
-    runs-on: macos-12
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-13, windows-latest]
+        toolchain:
+          - {compiler: gcc, version: 10}
+        include:
+          - os: ubuntu-22.04
+            os-arch: linux-x86_64
+          - os: macos-13
+            os-arch: macos-x86_64
+          - os: windows-latest
+            os-arch: windows-x86_64
+            exe: .exe
     steps:
-    - name: Gfortran
-      run: |
-        brew reinstall gcc@10 gfortran
-    - name: Set FPM
-      uses: fortran-lang/setup-fpm@v5
-      with: 
-        fpm-version: "v0.9.0"
-    - name: Gfortran version
-      run : gfortran --version
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Compile
-      run: |
-        . ./configure.sh
-        make
-  
-  windows: 
-    runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps: 
-    - name: MSYS2, Gfortran, fpm
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        install: >-
-          mingw-w64-x86_64-gcc-fortran
-          mingw-w64-x86_64-fpm
-          git
-          make
-    - name: Gfortran version
-      run : gfortran --version
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Compile
-      run: |
-        . ./configure.sh
-        make
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Fortran compiler
+        uses: fortran-lang/setup-fortran@v1.6.1
+        id: setup-fortran
+        with:
+          compiler: ${{ matrix.toolchain.compiler }}
+          version: ${{ matrix.toolchain.version }}
+        run: |
+          which gfortran-${{ matrix.toolchain.version }}
+          which gfortran
+
+

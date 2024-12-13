@@ -1,12 +1,14 @@
 #!/bin/bash
 
-LIBNAME="libecx"
 NAME="ecx"
+LIBNAME="lib$NAME"
 PYNAME="py$NAME"
+PY=python
 PY_SRC="./src/$PYNAME"
 
 # environment variables
 FC=gfortran
+CC=gcc
 BUILD_DIR="./build"
 INCLUDE_DIR="./include"
 FPM_FFLAGS="-std=f2008 -pedantic -Wall -Wextra"
@@ -22,6 +24,7 @@ if [[ "$OSTYPE" == "msys" ]]; then
     ROOT=$ROOTWINDOWS
     EXT=".dll"
     LIBS=( "${LIBSWINDOWS[@]}" )
+    PY="py -"
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]];then
@@ -66,4 +69,7 @@ echo "PY_SRC=" $PY_SRC
 
 export FC
 echo "FC=" $FC
+
+export CC
+echo "CC=" $CC
 

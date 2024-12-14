@@ -64,6 +64,7 @@ jobs:
             make
 
       - name: Compile Windows
+        if: contains(matrix.os, 'windows')
         shell: msys2
         run: 
           . ./configure.sh

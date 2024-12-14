@@ -64,10 +64,10 @@ jobs:
             make
 
       - name: Compile Windows
+        shell: msys2
         run: 
-          shell: msys2
-            . ./configure.sh
-            make
+          . ./configure.sh
+          make
 
 
 

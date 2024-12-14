@@ -75,12 +75,16 @@ jobs:
         run: |
           . ./configure.sh
           make
+      
+      - name: Install binaries
+        run: |
+          make install --prefix=./build/install
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: windows-msys2
-          path: ./build/libecx.*
+          path: ./build/install/
 
 
 

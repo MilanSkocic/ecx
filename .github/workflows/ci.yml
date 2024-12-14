@@ -76,5 +76,11 @@ jobs:
           . ./configure.sh
           make
 
+      - name: Upload artifacts
+        uses: actions/upload-artifacts@v4
+        with:
+          name: windows-msys2
+          path: ./build/libecx.*
+
 
 

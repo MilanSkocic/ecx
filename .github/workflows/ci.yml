@@ -10,12 +10,12 @@ on:
 
 jobs:
 
-  build:
+  build_unix:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-13, windows-latest]
+        os: [ubuntu-22.04, macos-13]
         toolchain:
           - {compiler: gcc, version: 10}
         include:
@@ -23,27 +23,9 @@ jobs:
             os-arch: linux-x86_64
           - os: macos-13
             os-arch: macos-x86_64
-          - os: windows-latest
-            os-arch: windows-x86_64
-            exe: .exe
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Set msys2 for Windows 
-        if: contains(matrix.os, 'windows')
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          install: >-
-            git
-            make
-      
-      - name: Test msys2 Windows
-        if: contains(matrix.os, 'windows')
-        shell: msys2 {0}
-        run: |
-          make --version
       
       - name: Setup Fortran compiler
         uses: fortran-lang/setup-fortran@v1.6.1
@@ -56,24 +38,43 @@ jobs:
         uses: fortran-lang/setup-fpm@v5
         with:
           fpm-version: "v0.10.0"
+    
+    - name: Gfortran version
+      run : gfortran --version
 
-      - name: Compile Unix
-        if: contains(matrix.os, 'macos') || contains(matrix.os, 'ubuntu')
+      - name: Compile
         run: |
           which gfortran
           gfortran --version
           . configure.sh
           make
       
-
-      - name: Compile Windows
-        if: contains(matrix.os, 'windows')
+  build_windows:
+    runs-on: windows-latest
+    defaults:
+      run:
         shell: msys2 {0}
-        run: |
-          which gfortran
-          gfortran --version
-          . ./configure.sh
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: MSYS2, Gfortran, fpm
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        install: >-
+          mingw-w64-x86_64-gcc-fortran
+          mingw-w64-x86_64-fpm
+          git
           make
+    
+    - name: Gfortran version
+      run : gfortran --version
+    
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make
 
 
 

@@ -65,7 +65,7 @@ jobs:
 
       - name: Compile Windows
         run: 
-          shell: msys2 {0}
+          shell: msys2
             . ./configure.sh
             make
 

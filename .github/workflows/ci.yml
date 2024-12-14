@@ -43,6 +43,11 @@ jobs:
           which gfortran
           gfortran --version
 
+      - name: Install fpm
+        uses: fortran-lang/setup@v5
+        with:
+          fpm-version: "0.10.0"
+
       - name: Compile
         run: |
           . configure.sh

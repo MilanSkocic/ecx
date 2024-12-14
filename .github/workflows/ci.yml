@@ -46,7 +46,7 @@ jobs:
       - name: Install fpm
         uses: fortran-lang/setup-fpm@v5
         with:
-          fpm-version: "0.10.0"
+          fpm-version: "v0.10.0"
 
       - name: Compile
         run: |

@@ -39,8 +39,8 @@ jobs:
         with:
           fpm-version: "v0.10.0"
     
-    - name: Gfortran version
-      run : gfortran --version
+      - name: Gfortran version
+        run : gfortran --version
 
       - name: Compile
         run: |
@@ -55,26 +55,26 @@ jobs:
       run:
         shell: msys2 {0}
     steps: 
-    - name: Checkout
-      uses: actions/checkout@v4
-    
-    - name: MSYS2, Gfortran, fpm
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        install: >-
-          mingw-w64-x86_64-gcc-fortran
-          mingw-w64-x86_64-fpm
-          git
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: MSYS2, Gfortran, fpm
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          install: >-
+            mingw-w64-x86_64-gcc-fortran
+            mingw-w64-x86_64-fpm
+            git
+            make
+      
+      - name: Gfortran version
+        run : gfortran --version
+      
+      - name: Compile
+        run: |
+          . ./configure.sh
           make
-    
-    - name: Gfortran version
-      run : gfortran --version
-    
-    - name: Compile
-      run: |
-        . ./configure.sh
-        make
 
 
 

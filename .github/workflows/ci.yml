@@ -55,7 +55,7 @@ jobs:
           make
       
       - name: Set msys2 for Windows 
-        if: contains(matrix.os, "windows")
+        if: contains(matrix.os, 'windows')
         uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64

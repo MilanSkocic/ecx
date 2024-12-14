@@ -49,7 +49,7 @@ jobs:
           fpm-version: "v0.10.0"
 
       - name: Compile Unix
-        if: contains(matrix.os, 'macos') && contains(matrix.os, 'ubuntu')
+        if: contains(matrix.os, 'macos') || contains(matrix.os, 'ubuntu')
         run: |
           . configure.sh
           make

@@ -60,11 +60,15 @@ jobs:
         uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
+          install: >-
+            git
+            make
 
       - name: Compile Windows
-        run: |
-          . ./configure.sh
-          make
+        run: 
+          shell: msys2 {0}
+            . ./configure.sh
+            make
 
 
 

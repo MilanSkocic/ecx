@@ -39,6 +39,12 @@ jobs:
             git
             make
       
+      - name: Test msys2 Windows
+        if: contains(matrix.os, 'windows')
+        shell: msys2 {0}
+        run: |
+          make --version
+      
       - name: Setup Fortran compiler
         uses: fortran-lang/setup-fortran@v1.6.1
         id: setup-fortran
@@ -62,8 +68,8 @@ jobs:
 
       - name: Compile Windows
         if: contains(matrix.os, 'windows')
-        shell: msys2
-        run: 
+        shell: msys2 {0}
+        run: |
           which gfortran
           gfortran --version
           . ./configure.sh

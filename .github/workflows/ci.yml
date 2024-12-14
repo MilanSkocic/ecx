@@ -53,6 +53,18 @@ jobs:
         run: |
           . configure.sh
           make
+      
+      - name: Set msys2 for Windows 
+        if: contains(matrix.os, "windows")
+        shell: msys2 {0}
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+
+      - name: Compile Windows
+        run: |
+          . ./configure.sh
+          make
 
 
 

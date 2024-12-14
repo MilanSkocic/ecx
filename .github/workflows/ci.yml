@@ -44,7 +44,7 @@ jobs:
           gfortran --version
 
       - name: Install fpm
-        uses: fortran-lang/setup@v5
+        uses: fortran-lang/setup-fpm@v5
         with:
           fpm-version: "0.10.0"
 

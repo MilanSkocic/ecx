@@ -1,75 +1,53 @@
 #!/bin/bash
 
-NAME="ecx"
-LIBNAME="lib$NAME"
-PYNAME="py$NAME"
-PY=python
-PY_SRC="./src/$PYNAME"
+export FPM_NAME="ecx"
+export FPM_LIBNAME="lib$NAME"
+export FPM_PYNAME="py$NAME"
+export FPM_PY="python"
+export FPM_PY_SRC="./src/$PYNAME"
 
 # environment variables
-FC=gfortran
-CC=gcc
-BUILD_DIR="./build"
-INCLUDE_DIR="./include"
-FPM_FFLAGS="-std=f2008 -pedantic -Wall -Wextra"
-FPM_CFLAGS="-std=c11 -pedantic -Wall -Wextra"
-FPM_LDFLAGS=""
-DEFAULT_INSTALL_DIR="$HOME/.local"
-PLATFORM="linux"
-EXT=".so"
+export FPM_FC=gfortran
+export FPM_CC=gcc
+export FPM_BUILD_DIR="./build"
+export FPM_INCLUDE_DIR="./include"
+export FPM_FFLAGS="-std=f2008 -pedantic -Wall -Wextra"
+export FPM_CFLAGS="-std=c11 -pedantic -Wall -Wextra"
+export FPM_LDFLAGS=""
+export FPM_DEFAULT_INSTALL_DIR="$HOME/.local"
+export FPM_PLATFORM="linux"
+export FPM_EXT=".so"
+export FPM_ARCH="$(uname -m)"
+
+# libs
+LIBSLINUX=""
+LIBSDARWIN=("libgfortran.5" "libquadmath.0" "libgcc_s.1.1")
+LIBSWINDOWS=("libgfortran-5" "libquadmath-0" "libgcc_s_seh-1" "libwinpthread-1")
+
+ROOTLINUX="/usr/lib/"
+ROOTDARWIN="/usr/local/opt/gcc/lib/gcc/current/"
+ROOTWINDOWS="C:/msys64/mingw64/bin/"
+
+export FPM_LIBS="$LIBSLINUX"
+export FPM_ROOT="$ROOTLINUX"
 
 if [[ "$OSTYPE" == "msys" ]]; then
-    DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
-    PLATFORM="windows"
-    ROOT=$ROOTWINDOWS
-    EXT=".dll"
-    LIBS=( "${LIBSWINDOWS[@]}" )
+    FPM_DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
+    FPM_PLATFORM="windows"
+    FPM_ROOT=$ROOTWINDOWS
+    FPM_EXT=".dll"
+    FPM_LIBS=( "${LIBSWINDOWS[@]}" )
     PY="py -"
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]];then
-    PLATFORM="darwin"
-    ROOT=$ROOTDARWIN
-    EXT=".dylib"
-    LIBS=( "${LIBSDARWIN[@]}" )
+    FPM_PLATFORM="darwin"
+    FPM_ROOT=$ROOTDARWIN
+    FPM_EXT=".dylib"
+    FPM_LIBS=( "${LIBSDARWIN[@]}" )
 fi
 
 cp -f VERSION ./py/VERSION
 cp -f LICENSE ./py/LICENSE
 
-export LIBNAME
-echo "LIBNAME=" $LIBNAME
-
-export NAME
-echo "NAME=" $NAME
-
-export PLATFORM
-echo "PLATFORM=" $PLATFORM
-
-export FPM_FFLAGS
-echo "FPM_FFLAGS=" $FPM_FFLAGS
-
-export FPM_CFLAGS
-echo "FPM_CFLAGS=" $FPM_CFLAGS
-
-export FPM_LDFLAGS
-echo "FPM_LDFLAGS=" $FPM_LDFLAGS
-
-export DEFAULT_INSTALL_DIR
-echo "DEFAULT INSTALL DIR=" $DEFAULT_INSTALL_DIR
-
-export BUILD_DIR
-echo "BUILD DIR=" $BUILD_DIR
-
-export INCLUDE_DIR
-echo "INCLUDE_DIR=" $INCLUDE_DIR
-
-export PY_SRC
-echo "PY_SRC=" $PY_SRC
-
-export FC
-echo "FC=" $FC
-
-export CC
-echo "CC=" $CC
-
+echo "$(printenv | grep "FPM_")"

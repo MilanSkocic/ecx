@@ -1,69 +1,97 @@
-ifeq ($(FPM_PLATFORM), windows)
+# ---------------------------------------------------------------------
+# CONFIGURATION
+ifeq ($(PLATFORM), windows)
 	PY=py -
 endif
-ifeq ($(FPM_PLATFORM), linux)
+ifeq ($(PLATFORM), linux)
 	PY=python
 	AW=auditwheel repair --plat manylinux_2_31_x86_64 ./dist/*.whl
 endif
-ifeq ($(FPM_PLATFORM), darwin)
+ifeq ($(PLATFORM), darwin)
 	PY=python
 endif
 
 SETUP=setup.py pyproject.toml
+# ---------------------------------------------------------------------
 
-all: python3.8 python3.9 python3.10 python3.11 python3.12
+
+# ---------------------------------------------------------------------
+# TARGETS
+.PHONY: package test clean
+
+all: package test
+# ---------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------
+# COMPILATION
+package: python3.9 python3.10 python3.11 python3.12 python3.13
+
+python3.13: $(SETUP)
+	@echo "########### PYTHON 3.13 ##########"
+	$(PY)3.13 setup.py build_ext --inplace
+	$(PY)3.13 -m build --no-isolation --sdist
+	$(PY)3.13 -m build --no-isolation --wheel
+	$(AW)
+	@echo "#################################"
 
 python3.12: $(SETUP)
 	@echo "########### PYTHON 3.12 ##########"
 	$(PY)3.12 setup.py build_ext --inplace
-	$(PY)3.12 -m build --no-isolation --sdist
 	$(PY)3.12 -m build --no-isolation --wheel
-	$(PY)3.12 -m unittest -v
-	$(AW)
 	@echo "#################################"
 
 python3.11: $(SETUP)
 	@echo "########### PYTHON 3.11 ##########"
 	$(PY)3.11 setup.py build_ext --inplace
 	$(PY)3.11 -m build --no-isolation --wheel
-	$(PY)3.11 -m unittest -v
 	@echo "#################################"
 
 python3.10: $(SETUP)
 	@echo "########### PYTHON 3.10 ##########"
 	$(PY)3.10 setup.py build_ext --inplace
 	$(PY)3.10 -m build --no-isolation --wheel
-	$(PY)3.10 -m unittest -v
 	@echo "#################################"
 
 python3.9: $(SETUP)
 	@echo "########### PYTHON 3.9 ##########"
 	$(PY)3.9 setup.py build_ext --inplace
 	$(PY)3.9 -m build --no-isolation --wheel
-	$(PY)3.9 -m unittest -v
 	@echo "#################################"
 
-python3.8: $(SETUP)
-	@echo "########### PYTHON 3.8 ##########"
-	$(PY)3.8 setup.py build_ext --inplace
-	$(PY)3.8 -m build --no-isolation --wheel
-	$(PY)3.8 -m unittest -v
-	@echo "#################################"
+test: test3.9 test3.10 test3.11 test3.12 test3.13
 
+test3.13: 
+	$(PY)3.13 -m pytest -v
+
+test3.12: 
+	$(PY)3.12 -m pytest -v
+
+test3.11: 
+	$(PY)3.11 -m pytest -v
+
+test3.10: 
+	$(PY)3.10 -m pytest -v
+
+test3.9: 
+	$(PY)3.9 -m pytest -v
+# ---------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------
+# OTHERS 
 clean: 
 	rm -rf build 
 	rm -rf dist 
 	rm -rf *.egg-info 
 	rm -rf __pycache__ 
 	rm -rf wheelhouse 
-	rm -rf $(FPM_PY_SRC)/__pycache__
-	rm -f $(FPM_PY_SRC)/$(FPM_NAME)*.h 
-	rm -f $(FPM_PY_SRC)/*.a 
-	rm -f $(FPM_PY_SRC)/*.so 
-	rm -f $(FPM_PY_SRC)/*.dylib 
-	rm -f $(FPM_PY_SRC)/*.dll 
-	rm -f $(FPM_PY_SRC)/*.dll.a 
-	rm -f $(FPM_PY_SRC)/*.pyd
-	rm -rf $(FPM_PY_SRC)/bin
-	rm -rf $(FPM_PY_SRC)/include
-	rm -rf $(FPM_PY_SRC)/lib
+	rm -rf $(PY_SRC)/__pycache__
+	rm -f $(PY_SRC)/$(NAME)*.h 
+	rm -f $(PY_SRC)/*.a 
+	rm -f $(PY_SRC)/*.so 
+	rm -f $(PY_SRC)/*.dylib 
+	rm -f $(PY_SRC)/*.dll 
+	rm -f $(PY_SRC)/*.dll.a 
+	rm -f $(PY_SRC)/*.pyd
+# ---------------------------------------------------------------------

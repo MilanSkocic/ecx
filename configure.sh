@@ -16,6 +16,7 @@ export FPM_CFLAGS="-std=c11 -pedantic -Wall -Wextra"
 export FPM_LDFLAGS=""
 export DEFAULT_INSTALL_DIR="$HOME/.local"
 export PLATFORM="linux"
+export ARCH=$(uname -m)
 export EXT=".so"
 
 # libs
@@ -51,6 +52,7 @@ echo "LIBNAME=" $LIBNAME
 echo "NAME=" $NAME
 
 echo "PLATFORM=" $PLATFORM
+echo "ARCH=" $ARCH
 echo "FPM_FFLAGS=" $FPM_FFLAGS
 echo "FPM_CFLAGS=" $FPM_CFLAGS
 echo "FPM_LDFLAGS=" $FPM_LDFLAGS

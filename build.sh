@@ -21,4 +21,8 @@ echo "DEPLOY LIBS TO PYTHON"
 cp -vf $d/bin/* py/src/$PYNAME/
 cp -vf $d/include/$NAME*.h py/src/$PYNAME/
 cp -vf $d/lib/* py/src/$PYNAME/
+
 echo ""
+echo "ZIP"
+cd $d/
+zip -r $NAME-$PLATFORM-$ARCH.zip .

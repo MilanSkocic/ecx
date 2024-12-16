@@ -1,10 +1,10 @@
 #!/bin/bash
 
 export FPM_NAME="ecx"
-export FPM_LIBNAME="lib$NAME"
-export FPM_PYNAME="py$NAME"
+export FPM_LIBNAME="lib$FPM_NAME"
+export FPM_PYNAME="py$FPM_NAME"
 export FPM_PY="python"
-export FPM_PY_SRC="./src/$PYNAME"
+export FPM_PY_SRC="./src/$FPM_PYNAME"
 
 # environment variables
 export FPM_FC=gfortran
@@ -16,19 +16,19 @@ export FPM_CFLAGS="-std=c11 -pedantic -Wall -Wextra"
 export FPM_LDFLAGS=""
 export FPM_DEFAULT_INSTALL_DIR="$HOME/.local"
 export FPM_PLATFORM="linux"
-export FPM_EXT=".so"
+export FPM_EXT=""
 export FPM_ARCH="$(uname -m)"
 
 # libs
-LIBSLINUX=""
+LIBSLINUX=("libgfortran.so.5" "libquadmath.so.0")
 LIBSDARWIN=("libgfortran.5" "libquadmath.0" "libgcc_s.1.1")
 LIBSWINDOWS=("libgfortran-5" "libquadmath-0" "libgcc_s_seh-1" "libwinpthread-1")
 
-ROOTLINUX="/usr/lib/"
+ROOTLINUX="/usr/lib/x86_64-linux-gnu/"
 ROOTDARWIN="/usr/local/opt/gcc/lib/gcc/current/"
 ROOTWINDOWS="C:/msys64/mingw64/bin/"
 
-export FPM_LIBS="$LIBSLINUX"
+export FPM_LIBS="${LIBSLINUX[@]}"
 export FPM_ROOT="$ROOTLINUX"
 
 if [[ "$OSTYPE" == "msys" ]]; then

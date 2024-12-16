@@ -5,15 +5,23 @@ echo "# BUILD"
 make
 
 echo  "# INSTALL"
-make install prefix=./build/install/
+d=./build/install/
+make install prefix=$d
 
-d=build/install/
-mkdir -p $d/bin
-mkdir -p $d/include
-mkdir -p $d/lib
+if [ "$FPM_PLATFORM" == "linux" ]; then
+    echo "-> Setting rpath for $FPM_LIBNAME$FPM_EXT."
+    patchelf --set-rpath $ORIGIN/$FPM_LIBNAME.so build/install/lib/$FPM_LIBNAME.so
+    patchelf --print-rpath build/install/lib/$FPM_LIBNAME.so
+fi
+
 for lib in ${FPM_LIBS[@]}; do
     if [ -f $FPM_ROOT$lib$FPM_EXT ]; then
         cp -v $FPM_ROOT$lib$FPM_EXT $d/lib/
+        if [ $FPM_PLATFORM == "linux" ]; then
+            echo "-> Setting rpath for $lib"
+            patchelf --set-rpath $ORIGIN/$lib $d/lib/$lib$FPM_EXT
+            patchelf --print-rpath $d/lib/$lib$FPM_EXT
+        fi
     else
         echo -n $lib$EXT" -> "
         echo "Not found."

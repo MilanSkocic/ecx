@@ -31,7 +31,6 @@ export ROOTWINDOWS="C:/msys64/mingw64/bin/"
 export LIBS="${LIBSLINUX[@]}"
 export ROOT="$ROOTLINUX"
 
-echo -n "Detecting platform..."
 if [[ "$OSTYPE" == "msys" ]]; then
     DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
     PLATFORM="windows"
@@ -47,41 +46,28 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     EXT=".dylib"
     LIBS=( "${LIBSDARWIN[@]}" )
 fi
-echo "OK"
 
+echo "LIBNAME=" $LIBNAME
+echo "NAME=" $NAME
 
-echo "##### COMMON SETTINGS #####"
-echo "* LIBNAME=" $LIBNAME
-echo "* NAME=" $NAME
+echo "PLATFORM=" $PLATFORM
+echo "FPM_FFLAGS=" $FPM_FFLAGS
+echo "FPM_CFLAGS=" $FPM_CFLAGS
+echo "FPM_LDFLAGS=" $FPM_LDFLAGS
 
-echo "##### FPM SETTINGS #####"
-echo "* PLATFORM=" $PLATFORM
-echo "* FPM_FFLAGS=" $FPM_FFLAGS
-echo "* FPM_CFLAGS=" $FPM_CFLAGS
-echo "* FPM_LDFLAGS=" $FPM_LDFLAGS
+echo "DEFAULT INSTALL DIR=" $DEFAULT_INSTALL_DIR
+echo "BUILD DIR=" $BUILD_DIR
+echo "INCLUDE_DIR=" $INCLUDE_DIR
 
-echo "##### INSTALLATION SETTINGS #####"
-echo "* DEFAULT INSTALL DIR=" $DEFAULT_INSTALL_DIR
-echo "* BUILD DIR=" $BUILD_DIR
-echo "* INCLUDE_DIR=" $INCLUDE_DIR
+echo "PYTHON SRC=" $PY_SRC
+echo "PYNAME=" $PYNAME
 
-echo "##### PYTHON SETTINGS #####"
-echo "* PYTHON SRC=" $PY_SRC
-echo "* PYNAME=" $PYNAME
+echo "FC=" $FC
+echo "CC=" $CC
+echo "PY=" $PY
 
-echo "##### COMPILERS #####"
-echo "* FC=" $FC
-echo "* CC=" $CC
-echo "* PY=" $PY
-
-echo "##### LIBS #####"
-echo "LIBS=" $LIBS
+echo "LIBS=" ${LIBS[@]}
 echo "ROOT=" $ROOT
-echo ""
 
-
-echo -n "Copying VERSION and LICENSE to py..."
-cp -f VERSION ./py/VERSION
-cp -f LICENSE ./py/LICENSE
-echo "OK"
-echo ""
+cp -vf VERSION ./py/VERSION
+cp -vf LICENSE ./py/LICENSE

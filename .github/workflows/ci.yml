@@ -72,8 +72,8 @@ jobs:
         . ./configure.sh
         make
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.NAME }}-windows-${{ env.ARCH }}-gcc-msys2
-          path: ./build/install/
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.NAME }}-windows-${{ env.ARCH }}-gcc-msys2
+        path: ./build/install/

@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../py/src/")
 import numpy as np
 from pyecx import eis
 import matplotlib.pyplot as plt
@@ -6,8 +8,10 @@ R = 100
 C = 1e-6
 w = np.logspace(6, -3, 100)
 
-zr = np.asarray(eis.zr(w, R))
-zc = np.asarray(eis.zc(w, C))
+p = np.asarray([R, 0.0, 0.0])
+zr = np.asarray(eis.z("R", w, p))
+p = np.asarray([C, 0.0, 0.0])
+zc = np.asarray(eis.z("C", w, p))
 zrc = zr*zc / (zr+zc)
 print("finish")
 

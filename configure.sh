@@ -36,6 +36,7 @@ if [[ "$OSTYPE" == "msys" ]]; then
     EXT=".dll"
     LIBS=( "${LIBSWINDOWS[@]}" )
     PY="py -"
+    FPM_LDFLAGS="-static"
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]];then
@@ -43,7 +44,7 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     ROOT="/usr/local/opt/gcc/lib/gcc/current/"
     EXT=".dylib"
     LIBS=( "${LIBSDARWIN[@]}" )
-    FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
+    FPM_LDFLAGS=""
 fi
 
 echo "LIBNAME=" $LIBNAME

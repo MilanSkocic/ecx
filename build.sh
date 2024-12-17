@@ -30,10 +30,19 @@ if [[ $PLATFORM == "darwin" ]]; then
     for lib in ${LIBS[@]}; do
         install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
         install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
+    done
+    otool -L $d/lib/$LIBNAME$EXT
+    for lib in ${LIBS[@]}; do
+        for lib in ${LIBS[@]}; do
+            install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT $d/lib/$lib$EXT
+            install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$lib$EXT
+        done
+    done
+    for lib in ${LIBS[@]}; do
         otool -L $d/lib/$lib$EXT
         otool -L py/$PY_SRC/$lib$EXT
     done
-    otool -L $d/lib/$LIBNAME$EXT
+    
 fi
 
 echo ""

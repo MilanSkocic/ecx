@@ -76,11 +76,13 @@ jobs:
           . ./configure.sh
           make
           make install prefix=./build/install
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "ARCH=$ARCH" >> $GITHUB_ENV
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: windows-msys2
+          name: {{ env.NAME }}-windows-{{ env.ARCH }}-msys2
           path: ./build/install/
 
 

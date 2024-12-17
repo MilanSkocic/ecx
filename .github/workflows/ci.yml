@@ -78,6 +78,7 @@ jobs:
             mingw-w64-x86_64-fpm
             git
             make
+            zip
       
       - name: Gfortran version
         run : gfortran --version

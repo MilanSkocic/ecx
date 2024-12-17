@@ -5,102 +5,75 @@ on:
     branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main", "dev" ]
-  release:
-    types: [published]
 
 jobs:
-
-  build_unix:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04, macos-13]
-        toolchain:
-          - {compiler: gcc, version: 14}
-        include:
-          - os: ubuntu-22.04
-            os-arch: linux-x86_64
-          - os: macos-13
-            os-arch: macos-x86_64
-    
+  linux:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Fortran compiler
-        uses: fortran-lang/setup-fortran@v1.6.1
-        id: setup-fortran
-        with:
-          compiler: ${{ matrix.toolchain.compiler }}
-          version: ${{ matrix.toolchain.version }}
+    - name: Gfortran  
+      run: |
+        sudo update-alternatives \
+          --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
+          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
+          --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+    - name: Set FPM
+      uses: fortran-lang/setup-fpm@v5
+      with: 
+        fpm-version: "v0.10.0"
+    - name: Gfortran version
+      run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make
 
-      - name: GCC 10 for MACOS
-        if: contains(matrix.os, 'macos')
-        run: |
-          brew reinstall gcc@10
-
-      - name: Install fpm
-        uses: fortran-lang/setup-fpm@v5
-        with:
-          fpm-version: "v0.10.0"
-    
-      - name: Gfortran version
-        run : gfortran --version
-
-      - name: Compile
-        run: |
-          which gfortran
-          gfortran --version
-          . configure.sh
-          chmod u+x build.sh
-          ./build.sh
-          echo "NAME=$NAME" >> $GITHUB_ENV
-          echo "ARCH=$ARCH" >> $GITHUB_ENV
-          echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
-      
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ matrix.toolchain.compiler }}
-          path: ./build/install/
-      
-  build_windows:
+  macos: 
+    runs-on: macos-13
+    steps:
+    - name: Gfortran
+      run: |
+        brew reinstall gcc@10 gfortran
+    - name: Set FPM
+      uses: fortran-lang/setup-fpm@v5
+      with: 
+        fpm-version: "v0.10.0"
+    - name: Gfortran version
+      run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make
+  
+  windows: 
     runs-on: windows-latest
     defaults:
       run:
         shell: msys2 {0}
     steps: 
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: MSYS2, Gfortran, fpm
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          install: >-
-            mingw-w64-x86_64-gcc-fortran
-            mingw-w64-x86_64-fpm
-            git
-            make
-            zip
-      
-      - name: Gfortran version
-        run : gfortran --version
-      
-      - name: Compile
-        run: |
-          . ./configure.sh
-          ./build.sh
-          echo "NAME=$NAME" >> $GITHUB_ENV
-          echo "ARCH=$ARCH" >> $GITHUB_ENV
-          echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
-      
+    - name: MSYS2, Gfortran, fpm
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        install: >-
+          mingw-w64-x86_64-gcc-fortran
+          mingw-w64-x86_64-fpm
+          git
+          make
+    - name: Gfortran version
+      run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Compile
+      run: |
+        . ./configure.sh
+        make
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.NAME }}-windows-${{ env.ARCH }}-gcc-msys2
           path: ./build/install/
-
-
-

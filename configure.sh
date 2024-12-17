@@ -27,7 +27,7 @@ export LIBSWINDOWS=("libgfortran-5" "libquadmath-0" "libgcc_s_seh-1" "libwinpthr
 
 export ROOTLINUX="/usr/lib/x86_64-linux-gnu/"
 export ROOTDARWIN="/usr/local/opt/gcc/lib/gcc/current/"
-export ROOTWINDOWS=$(dirname $(where gfortran))"/"
+export ROOTWINDOWS=$(dirname $(where gfortran))"\"
 
 export LIBS="${LIBSLINUX[@]}"
 export ROOT="$ROOTLINUX"

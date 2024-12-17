@@ -25,17 +25,13 @@ export LIBSLINUX=""
 export LIBSDARWIN=("libgfortran.5" "libquadmath.0" "libgcc_s.1.1")
 export LIBSWINDOWS=("libgfortran-5" "libquadmath-0" "libgcc_s_seh-1" "libwinpthread-1")
 
-export ROOTLINUX="/usr/lib/x86_64-linux-gnu/"
-export ROOTDARWIN="/usr/local/opt/gcc/lib/gcc/current/"
-export ROOTWINDOWS=$(dirname $(where gfortran))"\\"
-
+export ROOT="/usr/lib/x86_64-linux-gnu/"
 export LIBS="${LIBSLINUX[@]}"
-export ROOT="$ROOTLINUX"
 
 if [[ "$OSTYPE" == "msys" ]]; then
     DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
     PLATFORM="windows"
-    ROOT=$ROOTWINDOWS
+    ROOT=$(dirname $(where gfortran))"\\"
     EXT=".dll"
     LIBS=( "${LIBSWINDOWS[@]}" )
     PY="py -"
@@ -43,7 +39,7 @@ fi
 
 if [[ "$OSTYPE" == "darwin"* ]];then
     PLATFORM="darwin"
-    ROOT=$ROOTDARWIN
+    ROOT="/usr/local/opt/gcc/lib/gcc/current/"
     EXT=".dylib"
     LIBS=( "${LIBSDARWIN[@]}" )
 fi

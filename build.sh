@@ -22,12 +22,6 @@ cp -vf $d/bin/* py/$PY_SRC/
 cp -vf $d/include/$NAME*.h py/$PY_SRC/
 cp -vf $d/lib/* py/$PY_SRC/
 
-echo ""
-echo "ZIP"
-cd $d/
-zip -r $NAME-$PLATFORM-$ARCH.zip .
-cd ../../
-mv $d/$NAME-$PLATFORM-$ARCH.zip ./build/
 
 if [[ $PLATFORM == "darwin" ]]; then
     echo ""
@@ -37,7 +31,15 @@ if [[ $PLATFORM == "darwin" ]]; then
         install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$lib$EXT
         otool -L $d/lib/$lib$EXT
         otool -L py/$PY_SRC/$lib$EXT
-done
-
+    done
+    otool -L $d/lib/$LIBNAME$EXT
 fi
+
+echo ""
+echo "ZIP"
+cd $d/
+zip -r $NAME-$PLATFORM-$ARCH.zip .
+cd ../../
+mv $d/$NAME-$PLATFORM-$ARCH.zip ./build/
+
 

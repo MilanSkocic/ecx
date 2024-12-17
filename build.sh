@@ -16,6 +16,7 @@ for lib in ${LIBS[@]}; do
     fi
 done
 
+
 echo ""
 echo "DEPLOY LIBS TO PYTHON"
 cp -vf $d/bin/* py/$PY_SRC/
@@ -27,8 +28,8 @@ if [[ $PLATFORM == "darwin" ]]; then
     echo ""
     echo "CHECK RPATHS FOR DARWIN"
     for lib in ${LIBS[@]}; do
-        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT $d/lib/$lib$EXT
-        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$lib$EXT
+        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
+        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
         otool -L $d/lib/$lib$EXT
         otool -L py/$PY_SRC/$lib$EXT
     done

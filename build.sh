@@ -5,16 +5,16 @@ d=./build/install
 make
 make install prefix=$d
 
-echo ""
-echo "DEPLOY GFORTRAN LIBS"
-for lib in ${LIBS[@]}; do
-    if [ -f $ROOT$lib$EXT ]; then
-        cp -v $ROOT$lib$EXT $d/lib/
-    else
-        echo -n $lib$EXT" -> "
-        echo "Not found."
-    fi
-done
+# echo ""
+# echo "DEPLOY GFORTRAN LIBS"
+# for lib in ${LIBS[@]}; do
+#     if [ -f $ROOT$lib$EXT ]; then
+#         cp -v $ROOT$lib$EXT $d/lib/
+#     else
+#         echo -n $lib$EXT" -> "
+#         echo "Not found."
+#     fi
+# done
 
 
 echo ""

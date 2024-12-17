@@ -35,6 +35,11 @@ jobs:
           compiler: ${{ matrix.toolchain.compiler }}
           version: ${{ matrix.toolchain.version }}
 
+      - name: GCC 10 for MACOS
+        if: contains(matrix.os, 'macos')
+        run: |
+          brew reinstall gcc@10
+
       - name: Install fpm
         uses: fortran-lang/setup-fpm@v5
         with:

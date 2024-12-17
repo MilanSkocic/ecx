@@ -27,7 +27,8 @@ jobs:
     - name: Compile
       run: |
         . ./configure.sh
-        make
+        chmod u+x build.sh
+        ./build.sh
 
   macos: 
     runs-on: macos-13
@@ -46,7 +47,8 @@ jobs:
     - name: Compile
       run: |
         . ./configure.sh
-        make
+        chmod u+x build.sh
+        ./build.sh
   
   windows: 
     runs-on: windows-latest
@@ -70,7 +72,7 @@ jobs:
     - name: Compile
       run: |
         . ./configure.sh
-        make
+        ./build.sh
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

@@ -5,6 +5,7 @@ d=./build/install
 make
 make install prefix=$d
 
+echo ""
 echo "DEPLOY GFORTRAN LIBS"
 for lib in ${LIBS[@]}; do
     if [ -f $ROOT$lib$EXT ]; then

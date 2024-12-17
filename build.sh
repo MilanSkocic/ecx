@@ -28,8 +28,8 @@ if [[ $PLATFORM == "darwin" ]]; then
     echo ""
     echo "CHECK RPATHS FOR DARWIN"
     for lib in ${LIBS[@]}; do
-        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
-        install_name_tool -change $ROOT$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
+        install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
+        install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
         otool -L $d/lib/$lib$EXT
         otool -L py/$PY_SRC/$lib$EXT
     done

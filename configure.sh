@@ -31,6 +31,7 @@ export LIBS="${LIBSLINUX[@]}"
 if [[ "$OSTYPE" == "msys" ]]; then
     DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
     PLATFORM="windows"
+    ARCH=$MSYSTEM_CARCH
     ROOT=$(dirname $(where gfortran))"\\"
     EXT=".dll"
     LIBS=( "${LIBSWINDOWS[@]}" )

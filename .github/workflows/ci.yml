@@ -82,7 +82,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: {{ env.NAME }}-windows-{{ env.ARCH }}-msys2
+          name: ${{ env.NAME }}-windows-${{ env.ARCH }}-msys2
           path: ./build/install/
 
 

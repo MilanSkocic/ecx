@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [ubuntu-22.04, macos-13]
         toolchain:
-          - {compiler: gcc, version: 12}
+          - {compiler: gcc, version: 14}
         include:
           - os: ubuntu-22.04
             os-arch: linux-x86_64

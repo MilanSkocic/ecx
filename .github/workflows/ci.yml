@@ -47,6 +47,7 @@ jobs:
           which gfortran
           gfortran --version
           . configure.sh
+          chmod u+x build.sh
           ./build.sh
           echo "NAME=$NAME" >> $GITHUB_ENV
           echo "ARCH=$ARCH" >> $GITHUB_ENV

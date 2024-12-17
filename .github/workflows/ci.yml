@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.NAME }}-${{ PLATFORM }}-${{ env.ARCH }}-${{ os.compiler }}
+          name: ${{ env.NAME }}-${{ PLATFORM }}-${{ env.ARCH }}-${{ matrix.os.compiler }}
           path: ./build/install/
       
   build_windows:

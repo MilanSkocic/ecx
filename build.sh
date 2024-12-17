@@ -27,10 +27,10 @@ cp -vf $d/lib/* py/$PY_SRC/
 if [[ $PLATFORM == "darwin" ]]; then
     echo ""
     echo "CHECK RPATHS FOR DARWIN"
-    for lib in ${LIBS[@]}; do
-        install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
-        install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
-    done
+    # for lib in ${LIBS[@]}; do
+    #     install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT $d/lib/$LIBNAME$EXT
+    #     install_name_tool -change /usr/local/opt/gcc@10/lib/gcc/10/$lib$EXT @loader_path/$lib$EXT py/$PY_SRC/$LIBNAME$EXT
+    # done
     otool -L $d/lib/$LIBNAME$EXT
 fi
 

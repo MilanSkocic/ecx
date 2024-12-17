@@ -23,11 +23,7 @@ jobs:
             os-arch: linux-x86_64
           - os: macos-13
             os-arch: macos-x86_64
-        exclude:
-          - os: ubuntu-22.04
-            toolchain: {compiler: gcc, version: 12}
-          - os: macos-13
-            toolchain: {compiler: gcc, version: 10}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,10 +34,6 @@ jobs:
         with:
           compiler: ${{ matrix.toolchain.compiler }}
           version: ${{ matrix.toolchain.version }}
-      - name: GCC 10 for MACOS
-        if: contains(matrix.os, 'macos')
-        run: |
-          brew reinstall gcc@10
 
       - name: Install fpm
         uses: fortran-lang/setup-fpm@v5

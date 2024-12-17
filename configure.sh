@@ -44,7 +44,7 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     ROOT="/usr/local/opt/gcc/lib/gcc/current/"
     EXT=".dylib"
     LIBS=( "${LIBSDARWIN[@]}" )
-    FPM_LDFLAGS=""
+    FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
 fi
 
 echo "LIBNAME=" $LIBNAME

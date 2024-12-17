@@ -26,4 +26,6 @@ echo ""
 echo "ZIP"
 cd $d/
 zip -r $NAME-$PLATFORM-$ARCH.zip .
+cd ../../
+mv $d/$NAME-$PLATFORM-$ARCH.zip ./build/
 

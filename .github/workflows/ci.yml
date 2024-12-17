@@ -85,8 +85,7 @@ jobs:
       - name: Compile
         run: |
           . ./configure.sh
-          make
-          make install prefix=./build/install
+          ./build.sh
           echo "NAME=$NAME" >> $GITHUB_ENV
           echo "ARCH=$ARCH" >> $GITHUB_ENV
           echo "ARCPLATFORM=$PLATFORM" >> $GITHUB_ENV

@@ -52,12 +52,12 @@ jobs:
           make install prefix=./build/install
           echo "NAME=$NAME" >> $GITHUB_ENV
           echo "ARCH=$ARCH" >> $GITHUB_ENV
-          echo "ARCPLATFORM=$PLATFORM" >> $GITHUB_ENV
+          echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.NAME }}-${{ PLATFORM }}-${{ env.ARCH }}-${{ matrix.toolchain.compiler }}
+          name: ${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ matrix.toolchain.compiler }}
           path: ./build/install/
       
   build_windows:

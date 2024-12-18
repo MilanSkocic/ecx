@@ -37,7 +37,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}-gcc-msys2
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}
         path: ./build/install/
 
 
@@ -68,7 +68,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}-gcc-msys2
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}
         path: ./build/install/
 
 

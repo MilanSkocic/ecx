@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export VERSION=$(cat VERSION)
 export NAME="ecx"
 export LIBNAME="lib$NAME"
 export PYNAME="py$NAME"
@@ -47,8 +48,9 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
 fi
 
-echo "LIBNAME=" $LIBNAME
 echo "NAME=" $NAME
+echo "LIBNAME=" $LIBNAME
+echo "VERSION=" $VERSION
 
 echo "PLATFORM=" $PLATFORM
 echo "ARCH=" $ARCH

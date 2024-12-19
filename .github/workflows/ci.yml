@@ -120,6 +120,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: artifacts
+    - name: List artifacts
       run: |
         ls -al artifacts
     - name: Move/Create continuous tag.

@@ -112,7 +112,8 @@ jobs:
       - unix
       - macos
       - windows
-    if: ${{ github.event_name == 'push' }}
-    run: |
-      git tag --force 'current'
-      git push --tags --force
+    - name: Move/Create continuous tag.
+      if: ${{ github.event_name == 'push' }}
+      run: |
+        git tag --force 'current'
+        git push --tags --force

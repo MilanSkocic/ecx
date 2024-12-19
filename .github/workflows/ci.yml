@@ -108,6 +108,7 @@ jobs:
         path: ./build/install/
 
   release:
+    runs-on: ubuntu-latest
     needs: 
       - unix
       - macos

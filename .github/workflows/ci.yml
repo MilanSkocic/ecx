@@ -128,3 +128,9 @@ jobs:
       run: |
         git tag --force 'current'
         git push --tags --force
+    - name: Release
+      if: ${{ github.event_name == 'release' }}
+      uses: softprops/action-gh-release@v2
+      with:
+        files: artifacts/*
+        generate_release_notes: true

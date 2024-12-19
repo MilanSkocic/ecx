@@ -29,6 +29,17 @@ jobs:
         . ./configure.sh
         chmod u+x build.sh
         ./build.sh
+        echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
+        echo "ARCH=$ARCH" >> $GITHUB_ENV
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}
+        path: ./build/install/
+
 
   macos: 
     runs-on: macos-13
@@ -49,7 +60,18 @@ jobs:
         . ./configure.sh
         chmod u+x build.sh
         ./build.sh
-  
+        echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
+        echo "ARCH=$ARCH" >> $GITHUB_ENV
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}
+        path: ./build/install/
+
+
   windows: 
     runs-on: windows-latest
     defaults:
@@ -74,11 +96,15 @@ jobs:
       run: |
         . ./configure.sh
         ./build.sh
+        echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
+        echo "ARCH=$ARCH" >> $GITHUB_ENV
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.NAME }}-windows-${{ env.ARCH }}-gcc-msys2
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}-gcc-msys2
         path: ./build/install/
 
   release:

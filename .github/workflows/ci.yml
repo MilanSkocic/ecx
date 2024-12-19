@@ -112,6 +112,7 @@ jobs:
       - unix
       - macos
       - windows
+    steps:
     - name: Move/Create continuous tag.
       if: ${{ github.event_name == 'push' }}
       run: |

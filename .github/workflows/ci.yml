@@ -110,7 +110,6 @@ jobs:
         path: ./build/install/
 
   release:
-    if: ${{ github.event_name == 'release' && contains(github.ref, 'v') || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: 
       - linux

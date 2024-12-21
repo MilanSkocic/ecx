@@ -130,14 +130,13 @@ jobs:
         ls -al *.zip
         cd ..
     - name: Rename if current
+      if: ${{ contains(github.ref, 'current') }}
       run: |
-        echo $GITHUB_REF
-        # cd artifacts
-        # ZIPFILES=$(ls *.zip)
-        # for f in $ZIPFILES; mv $f $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; done
-        # ls -al *.zip
-        # cd ..
-
+        cd artifacts
+        ZIPFILES=$(ls *.zip)
+        for f in $ZIPFILES; mv $f $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; done
+        ls -al *.zip
+        cd ..
     - name: Release
       if: ${{ github.event_name == 'release' }}
       uses: svenstaro/upload-release-action@v2

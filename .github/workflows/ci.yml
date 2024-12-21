@@ -106,7 +106,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}-gcc-msys2
+        name: ${{ env.NAME }}-${{ env.VERSION }}-${{ env.PLATFORM }}-${{ env.ARCH }}
         path: ./build/install/
 
   release:
@@ -127,7 +127,7 @@ jobs:
         ls -al artifacts
         cd artifacts
         FOLDERS=$(ls -d */)
-        for f in $FOLDERS;do cd $f; zip -r $(basename $f).zip .; cd ..; mv $f/*.zip .;done
+        for f in $FOLDERS;do cd $f; zip -r $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; mv $f/*.zip; done
         ls -al *.zip
     - name: Move/Create continuous tag.
       if: ${{ github.event_name == 'push' }}

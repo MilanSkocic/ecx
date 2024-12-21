@@ -122,10 +122,13 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: artifacts
-        merge-multiple: true
     - name: List artifacts
       run: |
         ls -al artifacts
+        cd artifacts
+        FOLDERS=$(ls -d */)
+        for f in $FOLDERS; cd $f; zip -r $f.zip .; cd ..; mv $f/*.zip .;
+        ls -al artifacts/*.zip
     - name: Move/Create continuous tag.
       if: ${{ github.event_name == 'push' }}
       run: |
@@ -133,7 +136,10 @@ jobs:
         git push --tags --force
     - name: Release
       if: ${{ github.event_name == 'release' }}
-      uses: softprops/action-gh-release@v2
+      uses: svenstaro/upload-release-action@v2
       with:
-        files: artifacts/**
-        generate_release_notes: true
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: artifacts/*.zip
+        file_glob: true
+        tag: ${{ github.event_name == 'release' && github.ref || 'current'}}
+        overwrite: true

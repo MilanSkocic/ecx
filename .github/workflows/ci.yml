@@ -110,6 +110,7 @@ jobs:
         path: ./build/install/
 
   release:
+    if: ${{ github.event_name == 'release' && contains(github.ref, 'v') || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: 
       - linux
@@ -122,18 +123,22 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: artifacts
-    - name: List artifacts
+    - name: Zip artifacts
       run: |
-        ls -al artifacts
         cd artifacts
         FOLDERS=$(ls -d */)
-        for f in $FOLDERS;do cd $f; zip -r $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; mv $f/*.zip .; done
+        for f in $FOLDERS;do cd $f; zip -r $(basename $f).zip .; cd ..; mv $f/*.zip .; done
         ls -al *.zip
-    - name: Move/Create continuous tag.
-      if: ${{ github.event_name == 'push' }}
+        cd ..
+    - name: Rename if current
       run: |
-        git tag --force 'current'
-        git push --tags --force
+        echo $GITHUB_REF
+        # cd artifacts
+        # ZIPFILES=$(ls *.zip)
+        # for f in $ZIPFILES; mv $f $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; done
+        # ls -al *.zip
+        # cd ..
+
     - name: Release
       if: ${{ github.event_name == 'release' }}
       uses: svenstaro/upload-release-action@v2
@@ -143,3 +148,8 @@ jobs:
         file_glob: true
         tag: ${{ github.event_name == 'release' && github.ref || 'current'}}
         overwrite: true
+    - name: Move/Create continuous tag.
+      if: ${{ github.event_name == 'push' }}
+      run: |
+        git tag --force 'current'
+        git push --tags --force

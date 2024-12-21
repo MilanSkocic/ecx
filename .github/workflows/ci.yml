@@ -128,7 +128,7 @@ jobs:
         cd artifacts
         FOLDERS=$(ls -d */)
         for f in $FOLDERS;do cd $f; zip -r $(basename $f).zip .; cd ..; mv $f/*.zip .;done
-        ls -al artifacts/*.zip
+        ls -al *.zip
     - name: Move/Create continuous tag.
       if: ${{ github.event_name == 'push' }}
       run: |

@@ -37,8 +37,8 @@ cp -vf $d/lib/* py/$PY_SRC/
 echo ""
 echo "ZIP"
 cd $d/
-zip -r $NAME-$PLATFORM-$ARCH-$TAGNAME.zip .
+zip -r $NAME-$PLATFORM-$ARCH-$VERSION.zip .
 cd ../../
-mv $d/$NAME-$PLATFORM-$ARCH-$TAGNAME.zip ./build/
+mv $d/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./build/
 
 

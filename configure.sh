@@ -1,7 +1,7 @@
 #!/bin/bash
 
+export NAME=$(cat fpm.toml | grep "name =" | awk -F '=' '{print $2}' | sed -E 's/[ "]//g')
 export VERSION=$(cat VERSION)
-export NAME="ecx"
 export LIBNAME="lib$NAME"
 export PYNAME="py$NAME"
 export PY_SRC="./src/$PYNAME"

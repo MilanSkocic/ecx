@@ -26,16 +26,23 @@ jobs:
       run : gfortran --version
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Compile
+    - name: Configure
       run: |
         . ./configure.sh
-        chmod u+x build.sh
-        ./build.sh
         echo "NAME=$NAME" >> $GITHUB_ENV
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
         echo "ARCH=$ARCH" >> $GITHUB_ENV
-
+    - name: Get version (current build)
+      if: github.event_name != 'release'
+      shell: bash
+      run: |
+        VERSION=$(git rev-parse --short HEAD)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Compile
+      run: |
+        chmod u+x build.sh
+        ./build.sh
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -57,16 +64,23 @@ jobs:
       run : gfortran --version
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Compile
+    - name: Configure
       run: |
         . ./configure.sh
-        chmod u+x build.sh
-        ./build.sh
         echo "NAME=$NAME" >> $GITHUB_ENV
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
         echo "ARCH=$ARCH" >> $GITHUB_ENV
-
+    - name: Get version (current build)
+      if: github.event_name != 'release'
+      shell: bash
+      run: |
+        VERSION=$(git rev-parse --short HEAD)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Compile
+      run: |
+        chmod u+x build.sh
+        ./build.sh
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -94,15 +108,23 @@ jobs:
       run : gfortran --version
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Compile
+    - name: Configure
       run: |
         . ./configure.sh
-        ./build.sh
         echo "NAME=$NAME" >> $GITHUB_ENV
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
         echo "ARCH=$ARCH" >> $GITHUB_ENV
-
+    - name: Get version (current build)
+      if: github.event_name != 'release'
+      shell: bash
+      run: |
+        VERSION=$(git rev-parse --short HEAD)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Compile
+      run: |
+        chmod u+x build.sh
+        ./build.sh
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -127,14 +149,6 @@ jobs:
         cd artifacts
         FOLDERS=$(ls -d */)
         for f in $FOLDERS;do cd $f; zip -r $(basename $f).zip .; cd ..; mv $f/*.zip .; done
-        ls -al *.zip
-        cd ..
-    - name: Rename if current
-      if: ${{ contains(github.ref, 'current') }}
-      run: |
-        cd artifacts
-        ZIPFILES=$(ls *.zip)
-        for f in $ZIPFILES; mv $f $(echo $(basename $f) | sed 's/[0-9]\+.[0-9]\+.[0-9]\+/current/g').zip .; cd ..; done
         ls -al *.zip
         cd ..
     - name: Release

@@ -48,9 +48,15 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
 fi
 
+export TAGNAME=$VERSION
+if [[ "$VERSION" == *"dev" ]]; then
+    TAGNAME=$(git rev-parse --short HEAD)
+fi
+
 echo "NAME=" $NAME
 echo "LIBNAME=" $LIBNAME
 echo "VERSION=" $VERSION
+echo "TAGNAME" $TAGNAME
 
 echo "PLATFORM=" $PLATFORM
 echo "ARCH=" $ARCH

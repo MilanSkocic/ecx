@@ -140,5 +140,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: artifacts/*.zip
         file_glob: true
-        tag: ${{ github.event_name == 'release' && github.ref || 'current'}}
+        tag: ${{ github.ref }}
         overwrite: true

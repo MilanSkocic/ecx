@@ -112,7 +112,7 @@ jobs:
         python-version: '3.9'
     - name: Python wheel
       run: |
-        python -m pip install -U --user setuptools build wheel
+        py -m pip install -U --user setuptools build wheel
         make -C py python3.9
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

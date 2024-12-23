@@ -1,8 +1,5 @@
 #!/bin/bash
 
-cat VERSION | sed -z 's/\n//g' > ./py/VERSION
-cp -f LICENSE ./py/LICENSE
-
 export NAME=$(cat fpm.toml | grep "name =" | awk -F '=' '{print $2}' | sed -E 's/[ "]//g')
 export VERSION=$(cat VERSION)
 export LIBNAME="lib$NAME"
@@ -51,10 +48,10 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
 fi
 
-
 if [[ "$VERSION" == *"dev" ]]; then
     export VERSION=$(git rev-parse --short HEAD)
 fi
+
 
 echo "NAME=" $NAME
 echo "LIBNAME=" $LIBNAME
@@ -79,3 +76,6 @@ echo "PY=" $PY
 
 echo "LIBS=" ${LIBS[@]}
 echo "ROOT=" $ROOT
+
+tr -d '\r' < VERSION | tr -d '\n' > py/VERSION
+cp -vf LICENSE ./py/LICENSE

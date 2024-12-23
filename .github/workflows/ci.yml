@@ -109,11 +109,11 @@ jobs:
         ./build.sh
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+        python-version: '3.13'
     - name: Python wheel
       run: |
         py -m pip install -U --user setuptools build wheel
-        make -C py python3.9
+        make -C py python3.13
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:

@@ -40,5 +40,3 @@ cd $d/
 zip -r $NAME-$PLATFORM-$ARCH-$VERSION.zip .
 cd ../../
 mv $d/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./build/
-
-rm -rf $d

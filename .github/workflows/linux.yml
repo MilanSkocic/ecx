@@ -47,11 +47,12 @@ jobs:
           3.13
     - name: Python wheel
       run: |
-        python3.9 -m pip install --user setuptools wheel build
-        python3.10 -m pip install --user setuptools wheel build
-        python3.11 -m pip install --user setuptools wheel build
-        python3.12 -m pip install --user setuptools wheel build
-        python3.13 -m pip install --user setuptools wheel build
+        sudo apt install patchelf
+        python3.9  -m pip install --user pip setuptools wheel build auditwheel
+        python3.10 -m pip install --user pip setuptools wheel build auditwheel
+        python3.11 -m pip install --user pip setuptools wheel build auditwheel
+        python3.12 -m pip install --user pip setuptools wheel build auditwheel
+        python3.13 -m pip install --user pip setuptools wheel build auditwheel
         make -C py package
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

@@ -1,0 +1,44 @@
+name: linux
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+  release:
+    types: [published]
+
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Gfortran  
+      run: |
+        sudo update-alternatives \
+          --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
+          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
+          --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+    - name: Set FPM
+      uses: fortran-lang/setup-fpm@v5
+      with: 
+        fpm-version: "v0.10.0"
+    - name: Gfortran version
+      run : gfortran --version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Configure
+      run: |
+        . ./configure.sh
+        echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
+        echo "ARCH=$ARCH" >> $GITHUB_ENV
+    - name: Compile
+      run: |
+        chmod u+x build.sh
+        ./build.sh
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
+        path: ./build/install/

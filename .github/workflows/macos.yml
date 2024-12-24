@@ -15,6 +15,9 @@ jobs:
     - name: Gfortran
       run: |
         brew reinstall gcc@10 gfortran
+
+
+
     - name: Set FPM
       uses: fortran-lang/setup-fpm@v5
       with: 
@@ -34,17 +37,48 @@ jobs:
       run: |
         chmod u+x build.sh
         ./build.sh
+    - uses: actions/setup-python@v5
+      with:
+        python-version: |
+          3.9
+          3.10
+          3.11
+          3.12
+          3.13
+    - name: Python wheel
+      run: |
+        sudo apt install patchelf
+        python3.9  -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.10 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.11 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.12 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.13 -m pip install -U --user pip setuptools wheel build auditwheel
+        make -C py package
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
         path: ./build/install/
-    - name: Release
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: py${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
+        path: ./py/wheelhouse/
+    - name: Release libs
       if: ${{ github.event_name == 'release' }}
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./build/*.zip
+        file_glob: true
+        tag: ${{ github.ref }}
+        overwrite: true
+    - name: Release pywrapper
+      if: ${{ github.event_name == 'release' }}
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./py/wheelhouse/*
         file_glob: true
         tag: ${{ github.ref }}
         overwrite: true

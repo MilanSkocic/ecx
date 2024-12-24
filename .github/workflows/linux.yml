@@ -48,11 +48,11 @@ jobs:
     - name: Python wheel
       run: |
         sudo apt install patchelf
-        python3.9  -m pip install --user pip setuptools wheel build auditwheel
-        python3.10 -m pip install --user pip setuptools wheel build auditwheel
-        python3.11 -m pip install --user pip setuptools wheel build auditwheel
-        python3.12 -m pip install --user pip setuptools wheel build auditwheel
-        python3.13 -m pip install --user pip setuptools wheel build auditwheel
+        python3.9  -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.10 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.11 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.12 -m pip install -U --user pip setuptools wheel build auditwheel
+        python3.13 -m pip install -U --user pip setuptools wheel build auditwheel
         make -C py package
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

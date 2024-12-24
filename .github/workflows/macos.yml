@@ -62,7 +62,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: py${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
-        path: ./py/wheelhouse/
+        path: ./py/dist/
     - name: Release libs
       if: ${{ github.event_name == 'release' }}
       uses: svenstaro/upload-release-action@v2

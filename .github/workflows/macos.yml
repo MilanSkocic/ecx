@@ -61,7 +61,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-      name: py${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
+        name: py${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
         path: ./py/dist/
     - name: Release libs
       if: ${{ github.event_name == 'release' }}

@@ -56,7 +56,9 @@ jobs:
         py -3.12 -m pip install -U --user pip setuptools wheel build
         py -3.13 -m pip install -U --user pip setuptools wheel build
         make -C py package
+        cd py
         zip ./dist/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./dist/*.*
+        cd ..
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:

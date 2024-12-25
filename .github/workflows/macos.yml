@@ -53,7 +53,9 @@ jobs:
         python3.12 -m pip install -U --user pip setuptools wheel build auditwheel
         python3.13 -m pip install -U --user pip setuptools wheel build auditwheel
         make -C py package
+        cd py
         zip ./dist/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./dist/*.*
+        cd ..
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:

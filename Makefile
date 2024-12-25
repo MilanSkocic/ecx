@@ -104,7 +104,4 @@ docs:
 clean:
 	fpm clean --all
 	rm -rf API-doc/*
-
-py: $(LIBNAME)
-	make -C py
 # ---------------------------------------------------------------------

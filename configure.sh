@@ -48,7 +48,7 @@ if [[ "$OSTYPE" == "darwin"* ]];then
     FPM_LDFLAGS="-static-libgfortran -static-libquadmath -static-libgcc"
 fi
 
-if [[ "$VERSION" == *"dev" ]]; then
+if [[ "$VERSION" == *"dev"* ]]; then
     export VERSION=$(git rev-parse --short HEAD)
 fi
 

@@ -30,6 +30,7 @@ jobs:
       run: |
         . ./configure.sh
         echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "PYNAME=$PYNAME" >> $GITHUB_ENV
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
         echo "ARCH=$ARCH" >> $GITHUB_ENV
@@ -53,8 +54,8 @@ jobs:
         python3.12 -m pip install -U --user pip setuptools wheel build auditwheel
         python3.13 -m pip install -U --user pip setuptools wheel build auditwheel
         make -C py package
-        cd  py
-        zip ./wheelhouse/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./wheelhouse/*.*
+        cd  py/wheelhouse
+        zip $PYNAME-$PLATFORM-$ARCH-$VERSION.zip *.*
         cd ..
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
@@ -64,7 +65,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: py${{ env.NAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
+        name: ${{ env.PYNAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
         path: ./py/wheelhouse/
     - name: Release libs
       if: ${{ github.event_name == 'release' }}

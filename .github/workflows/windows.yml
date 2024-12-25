@@ -42,13 +42,21 @@ jobs:
         ./build.sh
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+        python-version: |
+          3.9
+          3.10
+          3.11
+          3.12
+          3.13
     - name: Python wheel
       run: |
-        py -0
-        py -m pip install -U --user setuptools build wheel
-        cd py
-        py -m build -n --wheel
+        py -3.9  -m pip install -U --user pip setuptools wheel build
+        py -3.10 -m pip install -U --user pip setuptools wheel build
+        py -3.11 -m pip install -U --user pip setuptools wheel build
+        py -3.12 -m pip install -U --user pip setuptools wheel build
+        py -3.13 -m pip install -U --user pip setuptools wheel build
+        make -C py package
+        zip ./dist/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./dist/*.*
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:

@@ -27,6 +27,21 @@ jobs:
           zip
     - name: Gfortran version
       run : gfortran --version
+    - uses: actions/setup-python@v5
+      with:
+        python-version: |
+          3.9
+          3.10
+          3.11
+          3.12
+          3.13
+    - name: Update python packages 
+      run: |
+        python3.9  -m pip install -U --user pip setuptools wheel build
+        python3.10 -m pip install -U --user pip setuptools wheel build 
+        python3.11 -m pip install -U --user pip setuptools wheel build
+        python3.12 -m pip install -U --user pip setuptools wheel build
+        python3.13 -m pip install -U --user pip setuptools wheel build
     - name: Checkout
       uses: actions/checkout@v4
     - name: Configure
@@ -41,25 +56,6 @@ jobs:
       run: |
         chmod u+x build.sh
         ./build.sh
-    - uses: actions/setup-python@v5
-      with:
-        python-version: |
-          3.9
-          3.10
-          3.11
-          3.12
-          3.13
-    - name: Python wheel
-      run: |
-        py -3.9  -m pip install -U --user pip setuptools wheel build
-        py -3.10 -m pip install -U --user pip setuptools wheel build
-        py -3.11 -m pip install -U --user pip setuptools wheel build
-        py -3.12 -m pip install -U --user pip setuptools wheel build
-        py -3.13 -m pip install -U --user pip setuptools wheel build
-        make -C py package
-        cd ./py/dist
-        zip $PYNAME-$PLATFORM-$ARCH-$VERSION.zip *.*
-        cd ../..
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:

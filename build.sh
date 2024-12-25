@@ -1,6 +1,7 @@
 . configure.sh
 
 echo ""
+echo "BUILD LIBS"
 d=./build/install
 make
 make install prefix=$d
@@ -35,8 +36,20 @@ cp -vf $d/lib/* py/$PY_SRC/
 # fi
 
 echo ""
-echo "ZIP"
+echo "ZIP LIBS"
 cd $d/
 zip -r $NAME-$PLATFORM-$ARCH-$VERSION.zip .
 cd ../../
 mv $d/$NAME-$PLATFORM-$ARCH-$VERSION.zip ./build/
+
+echo ""
+echo "BUILD PYTHON WRAPPER"
+make -C py
+cd ./py
+if [[ $PLATFORM == "linux" ]]; then
+    cp ./wheelhouse/*.whl ./dist/
+fi
+cd ./dist
+zip $PYNAME-$PLATFORM-$ARCH-$VERSION.zip *.*
+cd ..
+cd ..

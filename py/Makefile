@@ -19,7 +19,7 @@ SETUP=setup.py pyproject.toml
 # TARGETS
 .PHONY: package test clean
 
-all: package test
+all: package
 # ---------------------------------------------------------------------
 
 

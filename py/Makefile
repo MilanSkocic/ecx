@@ -1,16 +1,5 @@
 # ---------------------------------------------------------------------
 # CONFIGURATION
-ifeq ($(PLATFORM), windows)
-	PY=py -
-endif
-ifeq ($(PLATFORM), linux)
-	PY=python
-	AW=auditwheel repair --plat manylinux_2_35_x86_64 ./dist/*.whl
-endif
-ifeq ($(PLATFORM), darwin)
-	PY=python
-endif
-
 SETUP=setup.py pyproject.toml
 # ---------------------------------------------------------------------
 

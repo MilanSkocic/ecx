@@ -65,7 +65,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.PYNAME }}-${{ env.PLATFORM }}-${{ env.ARCH }}-${{ env.VERSION }}
-        path: ./py/dist/
+        path: ./py/dist/*.whl
     - name: Release libs
       if: ${{ github.event_name == 'release' }}
       uses: svenstaro/upload-release-action@v2

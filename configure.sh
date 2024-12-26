@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NAME=$(cat fpm.toml | grep "name =" | awk -F '=' '{print $2}' | sed -E 's/[ "]//g')
+export NAME=$(cat fpm.toml | grep -m 1 "name =" | awk -F '=' '{print $2}' | sed -E 's/[ "]//g')
 export VERSION=$(tr -d '\r' < VERSION | tr -d '\n')
 export LIBNAME="lib$NAME"
 export PYNAME="py$NAME"

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 . configure.sh
 
 echo ""

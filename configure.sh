@@ -1,10 +1,21 @@
 #!/bin/bash
 
 export NAME=$(cat fpm.toml | grep "name =" | awk -F '=' '{print $2}' | sed -E 's/[ "]//g')
-export VERSION=$(cat VERSION)
+export VERSION=$(tr -d '\r' < VERSION | tr -d '\n')
 export LIBNAME="lib$NAME"
 export PYNAME="py$NAME"
 export PY_SRC="./src/$PYNAME"
+
+echo -n $VERSION > ./py/VERSION
+
+mod=$NAME
+f="./src/"$mod"_version.f90"
+echo "module "$mod"__version"           > $f
+echo "    !! Version"                   >> $f
+echo "    implicit none"                >> $f
+echo "    private"                      >> $f
+echo "    character(len=*), parameter, public :: version = \"$VERSION\"" >> $f
+echo "end module "$mod"__version" >> $f
 
 # environment variables
 export FC=gfortran
@@ -52,7 +63,6 @@ if [[ "$VERSION" == *"dev"* ]]; then
     export VERSION=$(git rev-parse --short HEAD)
 fi
 
-
 echo "NAME=" $NAME
 echo "LIBNAME=" $LIBNAME
 echo "VERSION=" $VERSION
@@ -77,5 +87,4 @@ echo "PY=" $PY
 echo "LIBS=" ${LIBS[@]}
 echo "ROOT=" $ROOT
 
-tr -d '\r' < VERSION | tr -d '\n' > py/VERSION
 cp -vf LICENSE ./py/LICENSE

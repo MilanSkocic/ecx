@@ -1,7 +1,7 @@
 module ecx__capi_version
     !! version: C API.
     use iso_c_binding, only: c_loc, c_ptr, c_null_char
-    use ecx__version, only: get_version
+    use ecx__api, only: get_version
     implicit none
     private
 

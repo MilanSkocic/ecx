@@ -4,7 +4,7 @@ module ecx
     use ecx__kinetics
     use ecx__eis
     use ecx__pec
-    use ecx__version
+    use ecx__api
     use ecx__capi
 
 end module

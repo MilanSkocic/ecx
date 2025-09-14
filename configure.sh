@@ -24,8 +24,8 @@ export CC=gcc
 export PY=python
 export BUILD_DIR="./build"
 export INCLUDE_DIR="./include"
-export FPM_FFLAGS="-std=f2008 -pedantic -Wall -Wextra"
-export FPM_CFLAGS="-std=c11 -pedantic -Wall -Wextra"
+export FPM_FFLAGS="-fPIC -pedantic -Wall -Wextra"
+export FPM_CFLAGS="-fPIC -pedantic -Wall -Wextra"
 export FPM_LDFLAGS=""
 export DEFAULT_INSTALL_DIR="$HOME/.local"
 export PLATFORM="linux"
@@ -41,7 +41,7 @@ export LIBSWINDOWS=("libgfortran-5" "libquadmath-0" "libgcc_s_seh-1" "libwinpthr
 export ROOT="/usr/lib/x86_64-linux-gnu/"
 export LIBS="${LIBSLINUX[@]}"
 
-if [[ "$OSTYPE" == "msys" ]]; thenif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
     DEFAULT_INSTALL_DIR="${APPDATA//\\//}/local"
     PLATFORM="windows"
     ARCH=$MSYSTEM_CARCH

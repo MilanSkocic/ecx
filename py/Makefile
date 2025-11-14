@@ -1,3 +1,4 @@
+include make.in
 # ---------------------------------------------------------------------
 # CONFIGURATION
 SETUP=setup.py pyproject.toml
@@ -6,7 +7,7 @@ SETUP=setup.py pyproject.toml
 
 # ---------------------------------------------------------------------
 # TARGETS
-.PHONY: package clean
+.PHONY: package clean auditwheel
 
 all: package
 # ---------------------------------------------------------------------
@@ -14,14 +15,16 @@ all: package
 
 # ---------------------------------------------------------------------
 # COMPILATION
-package: python3.10 python3.11 python3.12 python3.13 python3.14t python3.14
+package: python3.10 python3.11 python3.12 python3.13 python3.14 auditwheel
+
+auditwheel: $(SETUP)
+	$(FPM_AW)
 
 python3.14: $(SETUP)
 	@echo "########### PYTHON 3.14 ##########"
 	$(FPM_PY)3.14 setup.py build_ext --inplace
 	$(FPM_PY)3.14 -m build --no-isolation --sdist
 	$(FPM_PY)3.14 -m build --no-isolation --wheel
-	$(FPM_AW)
 	@echo "#################################"
 
 python3.14t: $(SETUP)

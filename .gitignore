@@ -40,3 +40,5 @@ py/wheelhouse/
 py/src/pyecx/bin/
 py/src/pyecx/include/
 py/src/pyecx/lib/
+
+make.in

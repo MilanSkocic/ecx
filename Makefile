@@ -97,11 +97,11 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
-	ford API-doc-FORD-file.md
+	make -C doc/doxygen
 
 docs:
 	rm -rf docs/*
-	cp -rf API-doc/* docs/
+	cp -rf doc/doxygen/build/html/* docs/
 
 clean:
 	fpm clean --all

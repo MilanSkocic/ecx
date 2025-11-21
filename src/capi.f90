@@ -1,3 +1,4 @@
+!> @brief C API module.
 module ecx__capi
     !! Main module for ECX library: C API.
     use ecx__capi_version

@@ -1,3 +1,4 @@
+!> @brief API module
 module ecx__api
     !! API
     !! See [specs](../page/specs/api.html)
@@ -11,6 +12,8 @@ module ecx__api
 
 contains
 
+!> @brief Get version
+!! @return fptr
 function get_version()result(fptr)
     !! Get the version. 
     implicit none

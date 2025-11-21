@@ -1,3 +1,7 @@
+!> @brief Core module.
+!!
+!! The core module contains all the base functions
+!! needed for computing electrochemical parameters.
 module ecx__core
     !! Core.
     use stdlib_kinds, only: dp, int32
@@ -11,9 +15,9 @@ module ecx__core
     implicit none
     private
     
-    real(dp), parameter :: PI = PI_dp !! PI
-    real(dp), parameter :: T_K=273.15_dp !! 0°C in Kelvin.
-    real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value
+    real(dp), parameter :: PI = PI_dp !< PI
+    real(dp), parameter :: T_K=273.15_dp !< 0°C in Kelvin.
+    real(dp), parameter :: kB_eV = BOLTZMANN_CONSTANT_IN_EV_K%value !< kB
     real(dp), parameter :: h_eV = PLANCK_CONSTANT_IN_EV_HZ%value 
     real(dp), parameter :: c = SPEED_OF_LIGHT_IN_VACUUM%value
     
@@ -29,6 +33,9 @@ public :: roundn, assertEqual, kTe, nm2eV, deg2rad, rad2deg
 
 contains
 
+!> @brief Round values to the nth digit.
+!! @param[in] x Value
+!! @param[in] n Digits
 pure elemental function roundn(x, n)result(r)
     !! Round x to n digits.
     implicit none
@@ -126,6 +133,9 @@ pure elemental function eV2nm(E)result(lambda)
     lambda = h_eV * c / (E * 1.0d-9)
 end function
 
+!> @brief Converts degrees to radians.
+!! @param[in] theta Angle in degrees.
+!! @return Angle in radians.
 pure elemental function deg2rad(theta)result(phase)
     !! Converts degrees to rad.
     implicit none

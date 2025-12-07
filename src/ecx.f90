@@ -1,5 +1,26 @@
+! NAME
+!     ecx - Main module for the ECX library.
+! 
+! SYNOPSIS
+!     Available modules:
+!     o ecx__api
+!     o ecx__capi
+! 
+! DESCRIPTION
+!     The ECX library allows to compute:
+!     o kinetics     Nernst, Tafel
+!     o impedance    EIS, DIA
+! 
+! EXAMPLE
+!     Minimal program:
+! 
+!         program example
+!             use ecx
+!         end program
+! 
+! SEE ALSO
+!     complex(7)
 module ecx
-    !! Main module for the ECX library.
     use ecx__core
     use ecx__kinetics
     use ecx__eis

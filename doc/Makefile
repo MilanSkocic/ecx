@@ -1,7 +1,7 @@
+include ../make.in
 
+all: 
+	./build.sh
 
-all: doxygen
-
-.PHONY: doxygen
-doxygen:
-	make -C doxygen
+clean:
+	rm -rf build/*

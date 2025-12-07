@@ -21,6 +21,7 @@ module-naming = false
 
 [dependencies]
 stdlib = "*"
+codata = { git="https://github.com/MilanSkocic/codata.git" }
 
 [install]
 library = true
@@ -48,8 +49,4 @@ main="test_eis_capi.c"
 [[test]]
 name="test_kinetics"
 main="test_kinetics.f90"
-
-
-
-
 

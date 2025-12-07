@@ -13,7 +13,6 @@ else
 endif
 
 install_dir=$(DESTDIR)/$(PREFIX)
-
 # ---------------------------------------------------------------------
 
 
@@ -29,8 +28,17 @@ $(FPM_LIBNAME): build copy_a shared
 
 
 # ---------------------------------------------------------------------
+# SOURCES
+.PHONY: sources
+sources:
+	make -C prep
+# ---------------------------------------------------------------------
+
+
+
+# ---------------------------------------------------------------------
 # COMPILATION
-build: 
+build: sources
 	fpm build --profile=$(btype)
 
 test: build
@@ -97,7 +105,7 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
-	make -C doc/doxygen
+	make -C doc
 
 docs:
 	rm -rf docs/*
@@ -105,5 +113,5 @@ docs:
 
 clean:
 	fpm clean --all
-	rm -rf API-doc/*
+	make -C doc clean
 # ---------------------------------------------------------------------

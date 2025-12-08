@@ -3,6 +3,7 @@
 DOC_MAIN=main
 DOC_SRC_DIR=src
 DOC_BUILD_DIR=build
+DOC_DEP_DIR=build/dependencies
 DOC_FORMATS="man txt latex pdf html"
 DOC_TEX=pdflatex
 DOC_BIB=biber
@@ -11,134 +12,148 @@ DOC_MK4CFG=make4ht.cfg
 DOC_MK4BUILD=make4ht.mk4
 PREP_DOC_DIR=../prep/doc
 
+GIT="bibfiles drawings"
+
 FLAGS_RM=-rfv
 FLAGS_MV=-fv
 
-echo "[INFO]: Generating folders."
-for format in $DOC_FORMATS; do
-    mkdir -p $DOC_BUILD_DIR/$format
-done
-echo "[INFO]: Folders created."
-
-
-echo "[INFO]: Generating man pages."
-files=$(ls $PREP_DOC_DIR/*.prepdoc)
-for file in $files; do
-    man_name=$(basename -s .prepdoc $file)
-    man_section=$(echo $man_name | cut -d "." -f 2)
-    man_name_nosec=$(echo $man_name | cut -d "." -f 1)
-    man_number=${man_section:0:1}
-    
-    fp_man=$( echo $file | sed "s/.prepdoc//g")
-    fp_man=$( echo $fp_man | sed "s:$PREP_DOC_DIR:$DOC_BUILD_DIR/man:g")
-    
-    fp_mantxt="$fp_man.txt"
-    fp_mantxt=$( echo $fp_mantxt | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/txt:g")
-    
-    fp_manhtml="$fp_man.html"
-    fp_manhtml=$( echo $fp_manhtml | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/html:g")
-    
-    fp_mantex="$fp_man.tex"
-    fp_mantex=$( echo $fp_mantex | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/latex:g")
-    
-    fp_mantexpdf="$fp_man-pdf.tex"
-    fp_mantexpdf=$( echo $fp_mantexpdf | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/latex:g")
-    
-    fp_manpdf="$fp_man.pdf"
-    fp_manpdf=$( echo $fp_manpdf | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/latex:g")
-   
-    # man
-    if [[ $VERBOSE == 1 ]]; then echo "   $file -> $fp_man"; fi
-	txt2man -s $man_section -t $man_name_nosec -r $FPM_NAME -v "Library Functions Manual"  $file > $fp_man
-    rm $FLAGS_RM "$fp_man.gz"
-    gzip -k $fp_man
-    
-    # txt
-    if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantxt"; fi
-    man $fp_man > $fp_mantxt
-    
-    # html 
-    if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_manhtml"; fi
-    man2html -r $fp_man > $fp_manhtml
-    
-    # tex
-    if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
-    echo "" > $fp_mantex
-    echo "\\begin{Verbatim}[frame=lines,label=$man_name]" >> $fp_mantex
-    man -l $fp_man >> $fp_mantex
-    echo "\\end{Verbatim}" >> $fp_mantex
-    echo "" >> $fp_mantex
-    echo "" >> $fp_mantex
-    echo "" >> $fp_mantex
-    
-    # pdf
-    if [[ $VERBOSE == 1 ]]; then  echo "   $fp_man -> $fp_mantexpdf";fi
-    title="$FPM_NAME $FPM_VERSION --- $man_name"
-    
-    echo "\\documentclass[11pt, a4paper]{article}" > $fp_mantexpdf
-    echo "\\usepackage[margin=2cm]{geometry}" >> $fp_mantexpdf
-    echo "\\usepackage[exscale]{ccfonts}" >> $fp_mantexpdf
-    echo "\\usepackage{fancyvrb}" >> $fp_mantexpdf
-
-    echo  "\\title{$title}" >> $fp_mantexpdf
-    echo "\\author{$DOC_AUTHOR}" >> $fp_mantexpdf
-    
-    echo "\\begin{document}" >> $fp_mantexpdf
-    echo "\\maketitle" >> $fp_mantexpdf
-    echo "\\input{$fp_mantex}" >> $fp_mantexpdf
-    echo "\\end{document}" >> $fp_mantexpdf
-    
-    tmp_dir="$DOC_BUILD_DIR/latex/build_$man_name"
-    mkdir -p $tmp_dir
-    $DOC_TEX -synctex=1 -output-directory=$tmp_dir $fp_mantexpdf
-    mv $FLAGS_MV $tmp_dir/"$man_name-pdf.pdf" $fp_manpdf
-    rm $FLAGS_RM $tmp_dir
-    rm $FLAGS_RM $fp_mantexpdf
-done
-echo "[INFO]: Man pages created."
-
-
-echo "[INFO]: Generating text documentation."
-DOC="$DOC_BUILD_DIR/txt/$FPM_NAME.txt"
-rm $FLAGS_RM $DOC
-files=$(ls $DOC_BUILD_DIR/txt/*.txt)
-    echo "$FPM_NAME - $FPM_VERSION                              " > $DOC
-    echo "" >> $DOC
-
-    for i in $files; do
-    echo "--------------------------------------------------------------------------------" >> $DOC
-    cat $i >> $DOC
-    echo "--------------------------------------------------------------------------------" >> $DOC
-    echo "" >> $DOC
-    echo "" >> $DOC
+make_dirs (){
+    echo "[INFO]: Generating folders."
+    for format in $DOC_FORMATS; do
+        mkdir -p $DOC_BUILD_DIR/$format
+        mkdir -p $DOC_DEP_DIR
     done
-echo "[INFO]: Text documentation created."
+    echo "[INFO]: Folders created."
+}
 
 
+dowload_dependencies () {
+    echo "[INFO]: Downloading dependencies."
+    for i in $GIT;do
+        url="https://github.com/MilanSkocic/$i.git"
+        if [[ ! -d $DOC_DEP_DIR/$i/ ]]; then 
+            git clone $url $DOC_DEP_DIR/$i; 
+            if [[ $?>0 ]]; then 
+                echo "The repo $i could not be retrieved."; 
+            fi
+        fi
+    done
+    url=$DOC_DEP_DIR/drawings/figures/png
+    target=PEC-*.png
+    cp -fv $url/$target ./src/figures/
 
-echo "[INFO]: Generating latex documentation."
-DOC="$DOC_BUILD_DIR/latex/$FPM_NAME.tex"
-rm $FLAGS_RM $DOC
-files=$(ls $DOC_BUILD_DIR/latex/*.tex)
-echo "" > $DOC
-for file in $files; do
-    man_name=$(basename -s .tex $file)
-    man_section=$(echo $man_name | cut -d "." -f 2)
-    man_number=${man_section:0:1}
-    echo "\\section{$man_name\\index{$man_name}}\\label{sec_$man_name}" >> $DOC
-    echo "\\input{build/latex/$(basename $file)}" >> $DOC
-    echo "" >> $DOC
-done
-echo "[INFO]: Latex documentation created."
+    url=$DOC_DEP_DIR/drawings/figures/png
+    target=EIS-*.png
+    cp -fv $url/$target ./src/figures/
 
+    url=$DOC_DEP_DIR/bibfiles
+    target=references.bib
+    cp -fv $url/$target ./src/references.bib
+    echo "[INFO]: Dependencies downloaded."
+}
 
-echo "[INFO]: Writing LaTeX variable to $fp"
-fp=src/make.in.tex
-echo "% Autogenerated" > $fp
-echo "\\def\\NAME{$FPM_NAME}" >> $fp
-echo "\\def\\VERSION{$FPM_VERSION}" >> $fp
-echo "\\def\\AUTHOR{$FPM_AUTHOR}" >> $fp
-echo "[INFO]: LaTeX variables written."
+make_man () {
+    echo "[INFO]: Generating man pages."
+    files=$(ls $PREP_DOC_DIR/*.prepdoc)
+    for file in $files; do
+        man_name=$(basename -s .prepdoc $file)
+        man_section=$(echo $man_name | cut -d "." -f 2)
+        man_name_nosec=$(echo $man_name | cut -d "." -f 1)
+        man_number=${man_section:0:1}
+        
+        fp_man=$( echo $file | sed "s/.prepdoc//g")
+        fp_man=$( echo $fp_man | sed "s:$PREP_DOC_DIR:$DOC_BUILD_DIR/man:g")
+        
+        fp_mantxt="$fp_man.txt"
+        fp_mantxt=$( echo $fp_mantxt | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/txt:g")
+        
+        fp_manhtml="$fp_man.html"
+        fp_manhtml=$( echo $fp_manhtml | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/html:g")
+        
+        fp_mantex="$fp_man.tex"
+        fp_mantex=$( echo $fp_mantex | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/latex:g")
+        
+        fp_manpdf="$fp_man.pdf"
+        fp_manpdf=$( echo $fp_manpdf | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/pdf:g")
+       
+        # man
+        if [[ $VERBOSE == 1 ]]; then echo "   $file -> $fp_man"; fi
+        txt2man -s $man_section -t $man_name_nosec -r $FPM_NAME -v "Library Functions Manual"  $file > $fp_man
+        rm $FLAGS_RM "$fp_man.gz"
+        gzip -k $fp_man
+        
+        # txt
+        if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantxt"; fi
+        man $fp_man > $fp_mantxt
+        
+        # html 
+        if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_manhtml"; fi
+        man2html -r $fp_man > $fp_manhtml
+        
+        # tex
+        if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
+        echo "" > $fp_mantex
+        echo "\\begin{Verbatim}[frame=lines,label=$man_name]" >> $fp_mantex
+        man -l $fp_man >> $fp_mantex
+        echo "\\end{Verbatim}" >> $fp_mantex
+        echo "" >> $fp_mantex
+        echo "" >> $fp_mantex
+        echo "" >> $fp_mantex
+        
+        # pdf
+        man -Tpdf -l $fp_man > $fp_manpdf
+    done
+    echo "[INFO]: Man pages created."
+}
+
+make_txt () {
+    echo "[INFO]: Generating text documentation."
+    DOC="$DOC_BUILD_DIR/txt/$FPM_NAME.txt"
+    rm $FLAGS_RM $DOC
+    files=$(ls $DOC_BUILD_DIR/txt/*.txt)
+        echo "$FPM_NAME - $FPM_VERSION                              " > $DOC
+        echo "" >> $DOC
+
+        for i in $files; do
+        echo "--------------------------------------------------------------------------------" >> $DOC
+        cat $i >> $DOC
+        echo "--------------------------------------------------------------------------------" >> $DOC
+        echo "" >> $DOC
+        echo "" >> $DOC
+        done
+    echo "[INFO]: Text documentation created."
+}
+
+make_latex () {
+    echo "[INFO]: Generating latex documentation."
+    DOC="$DOC_BUILD_DIR/latex/$FPM_NAME.tex"
+    rm $FLAGS_RM $DOC
+    files=$(ls $DOC_BUILD_DIR/latex/*.tex)
+    echo "" > $DOC
+    for file in $files; do
+        man_name=$(basename -s .tex $file)
+        man_section=$(echo $man_name | cut -d "." -f 2)
+        man_number=${man_section:0:1}
+        echo "\\section{$man_name\\index{$man_name}}\\label{sec_$man_name}" >> $DOC
+        echo "\\input{build/latex/$(basename $file)}" >> $DOC
+        echo "" >> $DOC
+    done
+    echo "[INFO]: Latex documentation created."
+    echo "[INFO]: Writing LaTeX variable to $fp"
+    fp=src/make.in.tex
+    echo "% Autogenerated" > $fp
+    echo "\\def\\NAME{$FPM_NAME}" >> $fp
+    echo "\\def\\VERSION{$FPM_VERSION}" >> $fp
+    echo "\\def\\AUTHOR{$FPM_AUTHOR}" >> $fp
+    echo "[INFO]: LaTeX variables written."
+}
+
+make_dirs
+dowload_dependencies
+make_man
+exit 0
+make_txt
+make_latex
 
 
 $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex

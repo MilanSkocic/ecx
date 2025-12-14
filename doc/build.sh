@@ -151,7 +151,6 @@ make_latex () {
 make_dirs
 dowload_dependencies
 make_man
-exit 0
 make_txt
 make_latex
 

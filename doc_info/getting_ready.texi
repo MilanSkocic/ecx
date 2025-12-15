@@ -1,0 +1,22 @@
+@node Getting Ready
+@chapter Getting Ready
+
+@node Examples
+@section Examples
+
+@node Fortran
+@subsection Fortran
+Here is an example of how to use @code{@value{LIBNAME}} in @code{Fortran}. 
+@cindex Fortran
+@verbatiminclude ../example/example.f90
+
+@node C
+@subsection C
+Here is an example of how to use @code{@value{LIBNAME}} in @code{C}. 
+@cindex C
+@verbatiminclude ../example/example.c
+
+@node Python
+@subsection Python
+Here is an example of how to use @code{@value{LIBNAME}} in @code{Python}. 
+@verbatiminclude ../example/example.py

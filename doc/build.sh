@@ -88,7 +88,7 @@ make_man () {
         
         # html 
         if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_manhtml"; fi
-        man2html -r $fp_man > $fp_manhtml
+        man -Thtml -l $fp_man > $fp_manhtml
         
         # tex
         if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
@@ -115,9 +115,9 @@ make_txt () {
         echo "" >> $DOC
 
         for i in $files; do
-        echo "--------------------------------------------------------------------------------" >> $DOC
+        echo "------------------------------------------------------------------------" >> $DOC
         cat $i >> $DOC
-        echo "--------------------------------------------------------------------------------" >> $DOC
+        echo "------------------------------------------------------------------------" >> $DOC
         echo "" >> $DOC
         echo "" >> $DOC
         done

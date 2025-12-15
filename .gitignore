@@ -30,6 +30,12 @@ API-doc/
 *.so
 *.dylib
 
+*.aux
+*.cp
+*.cps
+*.log
+*.toc
+
 *.egg-info
 __pycache__
 *.so
@@ -42,3 +48,5 @@ py/src/pyecx/include/
 py/src/pyecx/lib/
 
 make.in
+
+main_html/

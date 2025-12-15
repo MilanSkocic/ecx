@@ -1,0 +1,14 @@
+@node Man Pages
+@chapter Man Pages
+
+@ifinfo
+Man pages are available.
+@end ifinfo
+
+@ifhtml
+@url{./ecx.3f.html}
+@end ifhtml
+
+@iftex
+@verbatiminclude ../doc/build/txt/ecx.txt
+@end iftex

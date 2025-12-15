@@ -8,7 +8,9 @@ int main(void){
     int errstat, i;
     double w[3] = {1.0, 1.0, 1.0};
     double p[3] = {100.00, 0.0, 0.0};
-    ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), ecx_cbuild(0.0, 0.0), ecx_cbuild(0.0, 0.0)};
+    ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), 
+                        ecx_cbuild(0.0, 0.0), 
+                        ecx_cbuild(0.0, 0.0)};
     char *errmsg;
 
     ecx_eis_z(p, w, z, 'R', 3, 3, &errstat, &errmsg);

@@ -1,4 +1,3 @@
-$BLOCK comment --file ecx.3.prepdoc
 NAME
     ecx - Electrochemistry Library.
 
@@ -8,7 +7,7 @@ SYNOPSIS
     import pyecx in Python
 
 DESCRIPTION
-    
+
     The ecx library is a collection of routines for electrochemistry.
     A C API allows usage from C, or can be used as a basis for other wrappers.
     A Python wrapper allows easy usage from Python.
@@ -20,7 +19,7 @@ DESCRIPTION
 
 EXAMPLE
     Minimal program:
-       
+
         program example
             use ecx
         end program
@@ -31,12 +30,3 @@ REPORTING BUGS
 
 SEE ALSO
     complex(7)
-$ENDBLOCK
-module ecx
-    use ecx__core
-    use ecx__kinetics
-    use ecx__eis
-    use ecx__pec
-    use ecx__api
-    use ecx__capi
-end module

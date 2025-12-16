@@ -1,0 +1,26 @@
+! NAME
+!     ecx_api - C API for the libray.
+! 
+! SYNOPSIS
+!     #include "ecx.h"
+! 
+! DESCRIPTION
+!     C API for the library.
+!     The C API is including the library header.
+! 
+! EXAMPLE
+!     Minimal program:
+! 
+!         #include "ecx.h"
+!         int main{
+!             ...
+!         }
+! 
+! SEE ALSO
+!     complex(7), ecx(3)
+module ecx__capi
+    use ecx__capi_version
+    use ecx__capi_eis
+    use ecx__capi_kinetics
+    use ecx__capi_core
+end module ecx__capi

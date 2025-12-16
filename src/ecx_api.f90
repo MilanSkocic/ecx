@@ -1,16 +1,12 @@
 ! NAME
-!     ecx - API module the ECX library.
+!     ecx_api - API for the libray.
 ! 
 ! SYNOPSIS
-!     Available modules:
-!     o ecx__api
-!     o ecx__capi
+!     use ecx
 ! 
 ! DESCRIPTION
-!     The ECX library allows to compute:
-!     o kinetics        Nernst, Tafel
-!     o impedance       EIS, DIA
-!     o photocurrent    Iph
+!     Fortran API for the library.
+!     The API is accessed by importing the library.
 ! 
 ! EXAMPLE
 !     Minimal program:
@@ -20,7 +16,7 @@
 !         end program
 ! 
 ! SEE ALSO
-!     complex(7)
+!     complex(7), ecx(3)
 module ecx__api
     use ecx__version, only: version
     implicit none

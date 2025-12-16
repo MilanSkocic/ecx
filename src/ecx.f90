@@ -1,16 +1,18 @@
 ! NAME
-!     ecx - Main module for the ECX library.
+!     ecx - Electrochemistry Library.
 ! 
 ! SYNOPSIS
-!     use ecx
+!     use ecx in Fortran
+!     #include "ecx.h" in C
+!     import pyecx in Python
 ! 
 ! DESCRIPTION
 ! 
-!     Available modules:
-!     o ecx__api        API
-!     o ecx__capi       C API
+!     The ecx library is a collection of routines for electrochemistry.
+!     A C API allows usage from C, or can be used as a basis for other wrappers.
+!     A Python wrapper allows easy usage from Python.
 ! 
-!     The ECX library allows to compute:
+!     The library covers the following areas:
 !     o kinetics        Nernst, Tafel
 !     o impedance       EIS, DIA
 !     o photocurrent    Iph
@@ -21,6 +23,10 @@
 !         program example
 !             use ecx
 !         end program
+! 
+! REPORTING BUGS
+! 
+!     Please report any bugs at http://github.com/ecx/issues
 ! 
 ! SEE ALSO
 !     complex(7)

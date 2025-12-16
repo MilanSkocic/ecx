@@ -10,5 +10,5 @@ Man pages are available.
 @end ifhtml
 
 @iftex
-@verbatiminclude ../doc/build/txt/ecx.txt
+@verbatiminclude build/txt/ecx.txt
 @end iftex

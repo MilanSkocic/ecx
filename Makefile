@@ -105,7 +105,7 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
-	make -C doc_info
+	make -C doc
 
 docs:
 	rm -rf docs/*

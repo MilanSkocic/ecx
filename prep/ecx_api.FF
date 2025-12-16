@@ -1,31 +1,33 @@
-! NAME
-!     ecx - API module the ECX library.
-! 
-! SYNOPSIS
-!     Available modules:
-!     o ecx__api
-!     o ecx__capi
-! 
-! DESCRIPTION
-!     The ECX library allows to compute:
-!     o kinetics        Nernst, Tafel
-!     o impedance       EIS, DIA
-!     o photocurrent    Iph
-! 
-! EXAMPLE
-!     Minimal program:
-! 
-!         program example
-!             use ecx
-!         end program
-! 
-! SEE ALSO
-!     complex(7)
+$BLOCK comment --file ecx_api.3f.prepdoc
+NAME
+    ecx - API module the ECX library.
+
+SYNOPSIS
+    Available modules:
+    o ecx__api
+    o ecx__capi
+
+DESCRIPTION
+    The ECX library allows to compute:
+    o kinetics        Nernst, Tafel
+    o impedance       EIS, DIA
+    o photocurrent    Iph
+
+EXAMPLE
+    Minimal program:
+       
+        program example
+            use ecx
+        end program
+
+SEE ALSO
+    complex(7)
+$ENDBLOCK
 module ecx__api
     use ecx__version, only: version
     implicit none
     private
-
+    
     character(len=:), allocatable, target :: version_f
 
     public :: get_version
@@ -35,7 +37,7 @@ contains
 !> @brief Get version
 !! @return fptr
 function get_version()result(fptr)
-    !! Get the version.
+    !! Get the version. 
     implicit none
 
     !! Returns
@@ -47,7 +49,7 @@ function get_version()result(fptr)
     endif
     allocate(character(len=len(version)) :: version_f)
     version_f = version
-    fptr => version_f
+    fptr => version_f    
 end function
 
 end module ecx__api

@@ -3,14 +3,18 @@ NAME
     ecx - Main module for the ECX library.
 
 SYNOPSIS
-    Available modules:
-    o ecx__api
-    o ecx__capi
+    use ecx
 
 DESCRIPTION
+    
+    Available modules:
+    o ecx__api        API
+    o ecx__capi       C API
+    
     The ECX library allows to compute:
-    o kinetics     Nernst, Tafel
-    o impedance    EIS, DIA
+    o kinetics        Nernst, Tafel
+    o impedance       EIS, DIA
+    o photocurrent    Iph
 
 EXAMPLE
     Minimal program:
@@ -29,5 +33,4 @@ module ecx
     use ecx__pec
     use ecx__api
     use ecx__capi
-
 end module

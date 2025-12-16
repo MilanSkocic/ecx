@@ -23,7 +23,7 @@ FLAG_PDF=0
 FLAG_HTML=0
 
 args=($*)
-for arg in $args; do
+for arg in ${args[@]}; do
     case $arg in
         "info")
             FLAG_INFO=1

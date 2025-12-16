@@ -1,6 +1,7 @@
 include ../make.in
 
-all: pdf info html
+all: 
+	./build.sh info pdf html
 
 none:
 	./build.sh

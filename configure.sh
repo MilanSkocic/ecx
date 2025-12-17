@@ -113,11 +113,6 @@ cp -f make.in ./py/make.in
 cp -f LICENSE ./py/LICENSE
 echo "done."
 
-echo -n "Converting README to latex format..."
-pandoc --from markdown --to latex README.md -o doc/src/README.tex
-echo "done."
-
-
 echo -n "Chmod +x for doc/build.sh..."
 chmod +x doc/build.sh
 echo "done."

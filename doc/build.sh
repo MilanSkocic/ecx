@@ -170,6 +170,10 @@ make_man
 make_txt
 make_latex
 
+echo -n "Converting README to latex format..."
+pandoc --from markdown --to latex ../README.md -o src/README.tex
+echo "done."
+
 if [[ $FLAG_INFO == 1 ]]; then
     echo "[INFO]: Generating Texinfo."
     $DOC_TEXINFO $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/info/$FPM_NAME.info

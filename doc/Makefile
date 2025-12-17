@@ -1,13 +1,10 @@
 include ../make.in
 
 all: 
-	./build.sh info pdf html
+	./build.sh pdf html
 
 none:
 	./build.sh
-
-info:
-	./build.sh info
 
 pdf:
 	./build.sh pdf
@@ -17,4 +14,4 @@ html:
 
 clean:
 	rm -rf build/*
-	rm -f *.aux *.cp main.cps *.info *.log *.toc *.out *.synctex* *.idx *.ilg *.ind *.cps
+	rm -f *.ilg 

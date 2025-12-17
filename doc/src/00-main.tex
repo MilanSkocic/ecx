@@ -1,14 +1,14 @@
 \documentclass[a4paper,11pt,titlepage]{book}
 
-\input{src/packages.tex}
+\input{src/00-packages.tex}
 \input{src/make.in.tex}
-\input{src/commands.tex}
+\input{src/00-commands.tex}
 
-\title{LIBNAME}
-\author{AUTHOR}
+\title{\LIBNAME}
+\author{\AUTHOR}
 
 \begin{document}
-\input{./src/titlepage.tex}
+\input{./src/00-titlepage.tex}
 
 
 
@@ -17,17 +17,17 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\input{src/frontmatter.tex}
+\input{src/01-frontmatter.tex}
 
 
 
 \mainmatter
 \pagestyle{fancy}
-\input{src/mainmatter.tex}
+\input{src/02-mainmatter.tex}
 
 
 \backmatter
-\input{src/backmatter}
+\input{src/03-backmatter}
 
 
 \end{document}

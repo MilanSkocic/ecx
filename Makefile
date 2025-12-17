@@ -109,7 +109,8 @@ doc:
 
 docs:
 	rm -rf docs/*
-	cp -rf doc/doxygen/build/html/* docs/
+	cp -rf doc/build/html/* docs/
+	cp docs/00-main.html docs/index.html
 
 clean:
 	fpm clean --all

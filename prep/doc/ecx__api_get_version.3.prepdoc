@@ -1,0 +1,18 @@
+NAME
+    get_version - Get the version.
+
+LIBRARY
+    Electrochemistry (libecx, -libecx)
+
+SYNOPSIS
+    get_version()
+
+DESCRIPTION
+    Get the version of library as Fortran pointer.
+
+RETURN VALUE
+    The version as a character(len=:), pointer.
+
+EXAMPLE
+
+

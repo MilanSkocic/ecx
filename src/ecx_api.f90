@@ -5,7 +5,7 @@
 !     use ecx
 ! 
 ! DESCRIPTION
-!     Fortran API for the library.
+!     Fortran API.
 !     The API is accessed by importing the library.
 ! 
 ! EXAMPLE
@@ -26,17 +26,31 @@ module ecx__api
 
     public :: get_version
 
+
 contains
 
-!> @brief Get version
-!! @return fptr
+!-------------------------------------------------------------------------------
+! NAME
+!     get_version - Get the version.
+! 
+! LIBRARY
+!     Electrochemistry (libecx, -libecx)
+! 
+! SYNOPSIS
+!     get_version()
+! 
+! DESCRIPTION
+!     Get the version of library as Fortran pointer.
+! 
+! RETURN VALUE
+!     The version as a character(len=:), pointer.
+! 
+! EXAMPLE
+! 
+!
 function get_version()result(fptr)
-    !! Get the version.
     implicit none
-
-    !! Returns
     character(len=:), pointer :: fptr
-        !! Pointer to the version string.
 
     if(allocated(version_f))then
         deallocate(version_f)
@@ -45,5 +59,6 @@ function get_version()result(fptr)
     version_f = version
     fptr => version_f
 end function
+!-------------------------------------------------------------------------------
 
 end module ecx__api

@@ -5,7 +5,7 @@ SYNOPSIS
     use ecx
 
 DESCRIPTION
-    Fortran API for the library.
+    Fortran API.
     The API is accessed by importing the library.
 
 EXAMPLE

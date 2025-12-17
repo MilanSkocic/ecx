@@ -1,8 +1,0 @@
-<map id="ecx__kinetics::bv" name="ecx__kinetics::bv">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,140,31"/>
-<area shape="rect" id="Node000002" href="$namespaceecx____core.html#a3c976ca38c27b8c39d1a5bcb7653b725" title=" " alt="" coords="377,5,493,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,15,364,15,364,21,140,21"/>
-<area shape="rect" id="Node000003" href="$namespaceecx____kinetics.html#a66f6bb19c2c71d11c4ea6fa66fb860a7" title=" " alt="" coords="188,31,329,56"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,25,175,29,174,34,140,30"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="329,31,363,26,364,31,330,36"/>
-</map>

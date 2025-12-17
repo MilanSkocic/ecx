@@ -1,7 +1,0 @@
-<map id="ecx__pec::iph" name="ecx__pec::iph">
-<area shape="rect" id="Node000001" title="Complex Photocurrent." alt="" coords="5,31,116,56"/>
-<area shape="rect" id="Node000002" href="$namespaceecx____pec.html#a7aed42164b56e73dc29cc7b2023e0357" title=" " alt="" coords="175,5,301,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,33,160,26,161,32,117,38"/>
-<area shape="rect" id="Node000003" href="$namespaceecx____core.html#a00ff4231a7bef88c3ada8fd335d76bb2" title="Converts degrees to radians." alt="" coords="164,55,312,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,48,151,53,150,58,116,53"/>
-</map>

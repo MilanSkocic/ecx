@@ -1,22 +1,3 @@
-! NAME
-!     ecx_api - API for the libray.
-! 
-! SYNOPSIS
-!     use ecx
-! 
-! DESCRIPTION
-!     Fortran API.
-!     The API is accessed by importing the library.
-! 
-! EXAMPLE
-!     Minimal program:
-! 
-!         program example
-!             use ecx
-!         end program
-! 
-! SEE ALSO
-!     complex(7), ecx(3)
 module ecx__api
     use ecx__version, only: version
     implicit none

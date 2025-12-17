@@ -12,6 +12,7 @@ DOC_MK4CFG=make4ht.cfg
 DOC_MK4BUILD=make4ht.mk4
 DOC_TEXINFO=makeinfo
 PREP_DOC_DIR=../prep/doc
+DOC_NAME=$FPM_NAME
 
 GIT="bibfiles drawings"
 
@@ -81,6 +82,7 @@ make_man () {
         man_name=$(basename -s .prepdoc $file)
         man_section=$(echo $man_name | cut -d "." -f 2)
         man_name_nosec=$(echo $man_name | cut -d "." -f 1)
+        man_title=$(echo $man_name_nosec | sed "s/$DOC_NAME\_//g")
         man_number=${man_section:0:1}
         
         fp_man=$( echo $file | sed "s/.prepdoc//g")
@@ -100,7 +102,7 @@ make_man () {
        
         # man
         if [[ $VERBOSE == 1 ]]; then echo "   $file -> $fp_man"; fi
-        txt2man -s $man_section -t $man_name_nosec -r $FPM_NAME -v "Library Functions Manual"  $file > $fp_man
+        txt2man -s $man_section -t $man_title -r $DOC_NAME -v "Library Functions Manual"  $file > $fp_man
         rm $FLAGS_RM "$fp_man.gz"
         gzip -k $fp_man
         
@@ -115,7 +117,6 @@ make_man () {
         # tex
         if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
         echo "" > $fp_mantex
-        man_name=$(echo $man_name | sed -E 's/_/\\_/g')
         echo "\\begin{verbatim}" >> $fp_mantex
         man -l $fp_man >> $fp_mantex
         echo "\\end{verbatim}" >> $fp_mantex
@@ -131,10 +132,10 @@ make_man () {
 
 make_txt () {
     echo "[INFO]: Generating text documentation."
-    DOC="$DOC_BUILD_DIR/txt/$FPM_NAME.txt"
+    DOC="$DOC_BUILD_DIR/txt/$DOC_NAME.txt"
     rm $FLAGS_RM $DOC
     files=$(ls $DOC_BUILD_DIR/txt/*.txt)
-        echo "$FPM_NAME - $FPM_VERSION                              " > $DOC
+        echo "$DOC_NAME - $FPM_VERSION                              " > $DOC
         echo "" >> $DOC
 
         for i in $files; do
@@ -149,18 +150,21 @@ make_txt () {
 
 make_latex () {
     echo "[INFO]: Generating latex documentation."
-    DOC="$DOC_BUILD_DIR/latex/$FPM_NAME.tex"
+    DOC="$DOC_BUILD_DIR/latex/$DOC_NAME.tex"
     rm $FLAGS_RM $DOC
     files=$(ls $DOC_BUILD_DIR/latex/*.tex)
     echo "" > $DOC
     for file in $files; do
-        man_name=$(basename -s .tex $file)
-        man_name2=$(echo $man_name | sed -E 's/_/\\_/g')
-        man_section=$(echo $man_name | cut -d "." -f 2)
-        man_number=${man_section:0:1}
-        echo "\\section{$man_name2\\index{$man_name2}}\\label{sec_$man_name}" >> $DOC
-        echo "\\input{build/latex/$(basename $file)}" >> $DOC
-        echo "" >> $DOC
+        if [[ "$file" == *"ecx_"* ]]; then
+            man_name=$(basename -s .tex $file)
+            man_name2=$(echo $man_name | sed -E 's/_/\\_/g')
+            man_name_nosec=$(echo $man_name | cut -d "." -f 1)
+            man_title=$(echo $man_name_nosec | sed "s/$DOC_NAME\_//g")
+            man_title2=$(echo $man_title | sed -E 's/_/\\_/g')
+            echo "\\subsection{$man_title2}\\index{$man_title2}\\label{subsec_$man_title}" >> $DOC
+            echo "\\input{build/latex/$(basename $file)}" >> $DOC
+            echo "" >> $DOC
+        fi
     done
 }
 
@@ -174,9 +178,13 @@ echo -n "Converting README to latex format..."
 pandoc --from markdown --to latex ../README.md -o src/README.tex
 echo "done."
 
+echo -n "Converting CHANGELOG to latex format..."
+pandoc --from markdown --to latex ../CHANGELOG.md -o src/CHANGELOG.tex
+echo "done."
+
 if [[ $FLAG_INFO == 1 ]]; then
     echo "[INFO]: Generating Texinfo."
-    $DOC_TEXINFO $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/info/$FPM_NAME.info
+    $DOC_TEXINFO $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/info/$DOC_NAME.info
     echo "[INFO]: Texinfo done."
 fi
 
@@ -198,10 +206,10 @@ if [[ $FLAG_PDF == 1 ]]; then
     $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
 
     # copy
-    cp -rf $DOC_BUILD_DIR/$DOC_MAIN.pdf $DOC_BUILD_DIR/pdf/$FPM_NAME.pdf
+    cp -rf $DOC_BUILD_DIR/$DOC_MAIN.pdf $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
     cp ./$DOC_BUILD_DIR/$DOC_MAIN.idx ./$DOC_BUILD_DIR/$DOC_MAIN.4idx
 
-    # $DOC_TEXINFO --pdf $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/pdf/$FPM_NAME.pdf
+    # $DOC_TEXINFO --pdf $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
 fi
 
 if [[ $FLAG_HTML == 1 ]]; then

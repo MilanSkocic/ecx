@@ -114,5 +114,6 @@ docs:
 
 clean:
 	fpm clean --all
+	make -C prep clean
 	make -C doc clean
 # ---------------------------------------------------------------------

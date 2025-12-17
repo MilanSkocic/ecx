@@ -1,9 +1,32 @@
 \chapter{Theory}
 test \citep{orazem2008}
 
-\chapter{TEST}
+
+\chapter{Getting Starter}
 \input{src/README.tex}
 
 
-\chapter{Man Pages}
+
+\chapter{API}
+\section{Fortran}\label{sec_api_fortran}
 \input{build/latex/\NAME.tex}
+
+\section{C}
+The C API strictly defines the same the functions, subroutines and constants
+defined in the Fortran API (see \$\ref{sec_api_fortran}). 
+A prefix \code{\NAME \_} is added due to the lack of 
+namespaces in the C language.
+
+The arguments have the same names as those defined in the Fortran API and
+have the same meaning. 
+Additional arguments of type \code{size\_t} are necessary when passing arrays
+as pointer. The additional arguments providing the size of pointers is 
+named as following \code{n<POINTER\_ARGUMENT\_NAME>}. 
+\inputminted{C}{../include/\NAME .h}
+
+\section{Python}
+
+
+
+\chapter{Changelog}
+\input{src/CHANGELOG.tex}

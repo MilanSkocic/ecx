@@ -23,6 +23,8 @@ FLAG_INFO=0
 FLAG_PDF=0
 FLAG_HTML=0
 
+VERBOSE=0
+
 args=($*)
 for arg in ${args[@]}; do
     case $arg in
@@ -35,23 +37,26 @@ for arg in ${args[@]}; do
         "html")
             FLAG_HTML=1
             ;;
+        "--verbose")
+            VERBOSE=1
+            ;;
         *)
             ;;
     esac
 done
 
 make_dirs (){
-    echo "[INFO]: Generating folders."
+    echo -n "Generating folders..."
     for format in $DOC_FORMATS; do
         mkdir -p $DOC_BUILD_DIR/$format
         mkdir -p $DOC_DEP_DIR
     done
-    echo "[INFO]: Folders created."
+    echo "done."
 }
 
 
 dowload_dependencies () {
-    echo "[INFO]: Downloading dependencies."
+    echo -n "Downloading dependencies..."
     for i in $GIT;do
         url="https://github.com/MilanSkocic/$i.git"
         if [[ ! -d $DOC_DEP_DIR/$i/ ]]; then 
@@ -72,11 +77,11 @@ dowload_dependencies () {
     url=$DOC_DEP_DIR/bibfiles
     target=references.bib
     cp -fv $url/$target ./src/references.bib
-    echo "[INFO]: Dependencies downloaded."
+    echo "done."
 }
 
 make_man () {
-    echo "[INFO]: Generating man pages."
+    echo -n "Generating man pages..."
     files=$(ls $PREP_DOC_DIR/*.prepdoc)
     for file in $files; do
         man_name=$(basename -s .prepdoc $file)
@@ -101,9 +106,9 @@ make_man () {
         fp_manpdf=$( echo $fp_manpdf | sed "s:$DOC_BUILD_DIR/man:$DOC_BUILD_DIR/pdf:g")
        
         # man
-        if [[ $VERBOSE == 1 ]]; then echo "   $file -> $fp_man"; fi
+        if [[ $VERBOSE == 1 ]]; then echo ""; echo "   $file -> $fp_man"; fi
         txt2man -s $man_section -t $man_title -r $DOC_NAME -v "Library Functions Manual"  $file > $fp_man
-        rm $FLAGS_RM "$fp_man.gz"
+        rm $FLAGS_RM "$fp_man.gz" >/dev/null 2>&1
         gzip -k $fp_man
         
         # txt
@@ -127,11 +132,11 @@ make_man () {
         # pdf
         man -Tpdf -l $fp_man > $fp_manpdf
     done
-    echo "[INFO]: Man pages created."
+    echo "done."
 }
 
 make_txt () {
-    echo "[INFO]: Generating text documentation."
+    echo -n "Generating text documentation..."
     DOC="$DOC_BUILD_DIR/txt/$DOC_NAME.txt"
     rm $FLAGS_RM $DOC
     files=$(ls $DOC_BUILD_DIR/txt/*.txt)
@@ -145,13 +150,13 @@ make_txt () {
         echo "" >> $DOC
         echo "" >> $DOC
         done
-    echo "[INFO]: Text documentation created."
+    echo "done."
 }
 
 make_latex () {
-    echo "[INFO]: Generating latex documentation."
+    echo -n "Generating latex documentation..."
     DOC="$DOC_BUILD_DIR/latex/$DOC_NAME.tex"
-    rm $FLAGS_RM $DOC
+    rm $FLAGS_RM $DOC  >/dev/null 2>&1
     files=$(ls $DOC_BUILD_DIR/latex/*.tex)
     echo "" > $DOC
     for file in $files; do
@@ -166,6 +171,7 @@ make_latex () {
             echo "" >> $DOC
         fi
     done
+    echo "done."
 }
 
 make_dirs

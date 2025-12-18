@@ -29,7 +29,7 @@ REPORTING BUGS
     Please report any bugs at http://github.com/ecx/issues
 
 SEE ALSO
-    complex(7)
+    complex(7), ecx_get_version(3)
 $ENDBLOCK
 module ecx
     use ecx__core

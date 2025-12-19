@@ -1,0 +1,24 @@
+NAME
+    kTe - Compute the thermal voltage.
+
+LIBRARY
+    Electrochemistry (libecx, -libecx)
+
+SYNOPSIS
+    function kTe(T)result(r)
+
+DESCRIPTION
+    Compute the thermal voltage at temperature T.
+
+        o T  Temperature in °C
+
+RETURN VALUE
+    Returns a fortran double precision scalar r.
+
+    real(dp) :: r
+
+EXAMPLE
+    Minimal example
+
+        print *, kTe(25.0_dp)
+

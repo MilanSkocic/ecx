@@ -13,12 +13,11 @@ DESCRIPTION
     Parameters: None
 
 RETURN VALUE
-    Returns a fortran pointer to deferred-length string.
+    Returns a fortran pointer to a deferred-length string.
 
     character(len=:), pointer :: fptr
 
 EXAMPLE
-
     Minimal example
 
         print *, get_version()

@@ -1,19 +1,20 @@
-\section{Introduction}\label{introduction}
+\section{Introduction}
 
-\texttt{ecx} is a Fortran library providing formulas for
-electrochemistry. C API allows usage from C, or can be used as a basis
-for other wrappers. Python wrapper allows easy usage from Python.
+    The \code{ecx} library is a collection of routines for electrochemistry.
+    A C API allows usage from C, or can be used as a basis for other wrappers.
+    A Python wrapper allows easy usage from Python.
 
-To use \texttt{ecx} within your
-\href{https://github.com/fortran-lang/fpm}{fpm} project, add the
-following to your \texttt{fpm.toml} file:
+    To use \code{ecx} within your
+    \href{https://github.com/fortran-lang/fpm}{fpm} project, add the
+    following to your \code{fpm.toml} file:
 
 \begin{verbatim}
     [dependencies]
     ecx = { git="https://github.com/MilanSkocic/ecx.git" }
 \end{verbatim}
 
-\section{Dependencies}\label{dependencies}
+
+\section{Dependencies}
 
 \begin{verbatim}
 gcc>=10
@@ -22,13 +23,12 @@ fpm>=0.7
 stdlib>=0.7
 \end{verbatim}
 
-\section{Installation}\label{installation}
+\section{Installation}
 
 A Makefile is provided, which uses
 \href{https://fpm.fortran-lang.org}{fpm}, for building the library.
 
 \begin{itemize}
-\tightlist
 \item
   On windows, \href{https://www.msys2.org}{msys2} needs to be installed.
   Add the msys2 binary (usually
@@ -44,28 +44,14 @@ necessary for the compilation
 
 \begin{verbatim}
     chmod +x configure.sh
-    . ./configure.sh
+    ./configure.sh
     make
-\end{verbatim}
-
-Run tests
-
-\begin{verbatim}
     make test
-\end{verbatim}
-
-Install
-
-\begin{verbatim}
     make install
-\end{verbatim}
-
-Uninstall
-
-\begin{verbatim}
     make uninstall
 \end{verbatim}
 
-\section{License}\label{license}
+
+\section{License}
 
 MIT

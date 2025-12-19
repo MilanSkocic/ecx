@@ -29,7 +29,7 @@ module ecx__core
 public :: PI, T_K
 public :: capi_PI, capi_T_K
 
-public :: roundn, assertEqual, kTe, nm2eV, deg2rad, rad2deg
+public :: roundn, assertEqual, nm2eV, deg2rad, rad2deg
 
 contains
 
@@ -156,16 +156,6 @@ pure elemental function rad2deg(phase)result(theta)
     theta = phase * 180.0_dp / PI
 end 
 
-pure elemental function kTe(T)result(r)
-    !! Compute the thermal voltage.
-    implicit none
-    real(dp), intent(in) :: T
-        !! Temperature in °C.
-    real(dp) :: r
-        !! Thermal voltage in V.
-    
-    r = (T+T_K) * kB_eV
-end function
 
 
 end module

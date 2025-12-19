@@ -1,11 +1,12 @@
 module ecx__api
     use ecx__version, only: version
+    use ecx__common
     implicit none
     private
 
     character(len=:), allocatable, target :: version_f
 
-    public :: get_version
+    public :: get_version, kTe
 
 
 contains
@@ -25,12 +26,11 @@ contains
 !     Parameters: None
 ! 
 ! RETURN VALUE
-!     Returns a fortran pointer to deferred-length string.
+!     Returns a fortran pointer to a deferred-length string.
 ! 
 !     character(len=:), pointer :: fptr
 ! 
 ! EXAMPLE
-! 
 !     Minimal example
 ! 
 !         print *, get_version()
@@ -47,5 +47,40 @@ function get_version()result(fptr)
     fptr => version_f
 end function
 
+
+! NAME
+!     kTe - Compute the thermal voltage.
+! 
+! LIBRARY
+!     Electrochemistry (libecx, -libecx)
+! 
+! SYNOPSIS
+!     function kTe(T)result(r)
+! 
+! DESCRIPTION
+!     Compute the thermal voltage at temperature T.
+! 
+!         o T  Temperature in °C
+! 
+! RETURN VALUE
+!     Returns a fortran double precision scalar r.
+! 
+!     real(dp) :: r
+! 
+! EXAMPLE
+!     Minimal example
+! 
+!         print *, kTe(25.0_dp)
+!
+pure elemental function kTe(T)result(r)
+    !! Compute the thermal voltage.
+    implicit none
+    real(dp), intent(in) :: T
+        !! Temperature in °C.
+    real(dp) :: r
+        !! Thermal voltage in V.
+
+    r = (T+T_K) * kB_eV
+end function
 
 end module ecx__api

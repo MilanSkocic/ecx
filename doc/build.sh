@@ -121,14 +121,14 @@ make_man () {
         
         # tex
         if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
-#        echo "" > $fp_mantex
-#        echo "\\begin{verbatim}" >> $fp_mantex
-#        man -l $fp_man >> $fp_mantex
-#        echo "\\end{verbatim}" >> $fp_mantex
-#        echo "" >> $fp_mantex
-#        echo "" >> $fp_mantex
-#        echo "" >> $fp_mantex
-        pandoc --shift-heading-level=2 --from man --to latex $fp_man -o $fp_mantex
+        echo "" > $fp_mantex
+        echo "\\begin{Verbatim}[frame=single]" >> $fp_mantex
+        man -l $fp_man >> $fp_mantex
+        echo "\\end{Verbatim}" >> $fp_mantex
+        echo "" >> $fp_mantex
+        echo "" >> $fp_mantex
+        echo "" >> $fp_mantex
+        #pandoc --shift-heading-level=2 --from man --to latex $fp_man -o $fp_mantex
         
         # pdf
         man -Tpdf -l $fp_man > $fp_manpdf

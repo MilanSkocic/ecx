@@ -121,13 +121,14 @@ make_man () {
         
         # tex
         if [[ $VERBOSE == 1 ]]; then echo "   $fp_man -> $fp_mantex";fi
-        echo "" > $fp_mantex
-        echo "\\begin{verbatim}" >> $fp_mantex
-        man -l $fp_man >> $fp_mantex
-        echo "\\end{verbatim}" >> $fp_mantex
-        echo "" >> $fp_mantex
-        echo "" >> $fp_mantex
-        echo "" >> $fp_mantex
+#        echo "" > $fp_mantex
+#        echo "\\begin{verbatim}" >> $fp_mantex
+#        man -l $fp_man >> $fp_mantex
+#        echo "\\end{verbatim}" >> $fp_mantex
+#        echo "" >> $fp_mantex
+#        echo "" >> $fp_mantex
+#        echo "" >> $fp_mantex
+        pandoc --shift-heading-level=2 --from man --to latex $fp_man -o $fp_mantex
         
         # pdf
         man -Tpdf -l $fp_man > $fp_manpdf
@@ -174,19 +175,23 @@ make_latex () {
     echo "done."
 }
 
+make_markdown () {
+    echo -n "Converting README to markdown format..."
+    pandoc --from latex --to markdown src/readme.tex -o ../README.md
+    echo "done."
+
+    echo -n "Converting CHANGELOG to markdown format..."
+    pandoc --from latex --to markdown src/changelog.tex -o ../CHANGELOG.md
+    echo "done."
+}
+
 make_dirs
 dowload_dependencies
 make_man
 make_txt
 make_latex
+make_markdown
 
-echo -n "Converting README to latex format..."
-pandoc --from markdown --to latex ../README.md -o src/README.tex
-echo "done."
-
-echo -n "Converting CHANGELOG to latex format..."
-pandoc --from markdown --to latex ../CHANGELOG.md -o src/CHANGELOG.tex
-echo "done."
 
 if [[ $FLAG_INFO == 1 ]]; then
     echo "[INFO]: Generating Texinfo."

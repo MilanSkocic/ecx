@@ -1,62 +1,43 @@
 # Introduction
 
-`ecx` is a Fortran library providing formulas for electrochemistry.
-C API allows usage from C, or can be used as a basis for other wrappers. 
+The library is a collection of routines for electrochemistry. A C API
+allows usage from C, or can be used as a basis for other wrappers. A
 Python wrapper allows easy usage from Python.
 
-To use `ecx` within your [fpm](https://github.com/fortran-lang/fpm) project,
-add the following to your `fpm.toml` file:
+To use within your [fpm](https://github.com/fortran-lang/fpm) project,
+add the following to your file:
 
-```
-    [dependencies]
-    ecx = { git="https://github.com/MilanSkocic/ecx.git" }
-```
-    
+        [dependencies]
+        ecx = { git="https://github.com/MilanSkocic/ecx.git" }
 
 # Dependencies
 
-```
-gcc>=10
-gfortran>=10
-fpm>=0.7
-stdlib>=0.7
-```
+    gcc>=10
+    gfortran>=10
+    fpm>=0.7
+    stdlib>=0.7
 
 # Installation
 
-A Makefile is provided, which uses [fpm](https://fpm.fortran-lang.org), for building the library.
+A Makefile is provided, which uses [fpm](https://fpm.fortran-lang.org),
+for building the library.
 
-* On windows, [msys2](https://www.msys2.org) needs to be installed. 
-  Add the msys2 binary (usually C:\\msys64\\usr\\bin) to the path in order to be able to use make.
-* On Darwin, the [gcc](https://formulae.brew.sh/formula/gcc) toolchain needs to be installed.
+-   On windows, [msys2](https://www.msys2.org) needs to be installed.
+    Add the msys2 binary (usually C:\\msys64\\usr\\bin) to the path in
+    order to be able to use make.
 
-Build: the configuration file will set all the environment variables necessary for the compilation
+-   On Darwin, the [gcc](https://formulae.brew.sh/formula/gcc) toolchain
+    needs to be installed.
 
-```
-    chmod +x configure.sh
-    . ./configure.sh
-    make
-```
+Build: the configuration file will set all the environment variables
+necessary for the compilation
 
-Run tests
-
-```
-    make test
-```
-
-
-Install
-
-```
-    make install
-```
-
-Uninstall
-
-```
-    make uninstall
-```
-
+        chmod +x configure.sh
+        ./configure.sh
+        make
+        make test
+        make install
+        make uninstall
 
 # License
 

@@ -48,6 +48,7 @@ py/src/pyecx/include/
 py/src/pyecx/lib/
 
 make.in.texi
+make.in.tex
 make.in
 
 main_html/

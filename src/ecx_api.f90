@@ -15,7 +15,7 @@ contains
 !     get_version - Get the version.
 ! 
 ! LIBRARY
-!     Electrochemistry (libecx, -libecx)
+!     Electrochemistry (libecx, -lecx)
 ! 
 ! SYNOPSIS
 !     function get_version()result(fptr)
@@ -23,21 +23,16 @@ contains
 ! DESCRIPTION
 !     Get the version of library.
 ! 
-!     Parameters: None
-! 
 ! RETURN VALUE
-!     Returns a fortran pointer to a deferred-length string.
-! 
-!     character(len=:), pointer :: fptr
+!     o character(len=:), pointer :: fptr    Version as a deferred-length pointer.
 ! 
 ! EXAMPLE
 !     Minimal example
 ! 
 !         print *, get_version()
-!
 function get_version()result(fptr)
     implicit none
-    character(len=:), pointer :: fptr
+    character(len=:), pointer :: fptr    !! Version as a deferred-length pointer.
 
     if(allocated(version_f))then
         deallocate(version_f)
@@ -59,13 +54,10 @@ end function
 ! 
 ! DESCRIPTION
 !     Compute the thermal voltage at temperature T.
-! 
-!         o T  Temperature in °C
+!     o real(dp), intent(in) :: T  Temperature in °C.
 ! 
 ! RETURN VALUE
-!     Returns a fortran double precision scalar r.
-! 
-!     real(dp) :: r
+!     o real(dp) :: r              Thermal voltage in V.
 ! 
 ! EXAMPLE
 !     Minimal example
@@ -75,10 +67,8 @@ end function
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none
-    real(dp), intent(in) :: T
-        !! Temperature in °C.
-    real(dp) :: r
-        !! Thermal voltage in V.
+    real(dp), intent(in) :: T        !! Temperature in °C.
+    real(dp) :: r                    !! Thermal voltage in V.
 
     r = (T+T_K) * kB_eV
 end function

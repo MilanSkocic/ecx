@@ -9,13 +9,10 @@ SYNOPSIS
 
 DESCRIPTION
     Compute the thermal voltage at temperature T.
-
-        o T  Temperature in °C
+    o real(dp), intent(in) :: T  Temperature in °C.
 
 RETURN VALUE
-    Returns a fortran double precision scalar r.
-
-    real(dp) :: r
+    o real(dp) :: r              Thermal voltage in V.
 
 EXAMPLE
     Minimal example

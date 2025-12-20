@@ -28,7 +28,7 @@
 !     Please report any bugs at http://github.com/ecx/issues
 ! 
 ! SEE ALSO
-!     complex(7), ecx_get_version(3)
+!     complex(7), ecx_get_version(3), ecx_kTe(3)
 module ecx
     use ecx__core
     use ecx__kinetics

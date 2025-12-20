@@ -2,7 +2,7 @@ NAME
     get_version - Get the version.
 
 LIBRARY
-    Electrochemistry (libecx, -libecx)
+    Electrochemistry (libecx, -lecx)
 
 SYNOPSIS
     function get_version()result(fptr)
@@ -10,15 +10,10 @@ SYNOPSIS
 DESCRIPTION
     Get the version of library.
 
-    Parameters: None
-
 RETURN VALUE
-    Returns a fortran pointer to a deferred-length string.
-
-    character(len=:), pointer :: fptr
+    o character(len=:), pointer :: fptr    Version as a deferred-length pointer.
 
 EXAMPLE
     Minimal example
 
         print *, get_version()
-

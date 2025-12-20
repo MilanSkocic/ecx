@@ -7,15 +7,15 @@ Python wrapper allows easy usage from Python.
 To use within your [fpm](https://github.com/fortran-lang/fpm) project,
 add the following to your file:
 
-        [dependencies]
-        ecx = { git="https://github.com/MilanSkocic/ecx.git" }
+            [dependencies]
+            ecx = { git="https://github.com/MilanSkocic/ecx.git" }
 
 # Dependencies
 
-    gcc>=10
-    gfortran>=10
-    fpm>=0.7
-    stdlib>=0.7
+            gcc>=10
+            gfortran>=10
+            fpm>=0.7
+            stdlib>=0.7
 
 # Installation
 
@@ -29,15 +29,18 @@ for building the library.
 -   On Darwin, the [gcc](https://formulae.brew.sh/formula/gcc) toolchain
     needs to be installed.
 
-Build: the configuration file will set all the environment variables
-necessary for the compilation
+```{=html}
+<!-- -->
+```
+            chmod +x configure.sh
+            ./configure.sh
+            make
+            make test
+            make install
+            make uninstall
 
-        chmod +x configure.sh
-        ./configure.sh
-        make
-        make test
-        make install
-        make uninstall
+You need a compiler that can compile the
+[stdlib](https://github.com/fortran-lang/stdlib).
 
 # License
 

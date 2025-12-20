@@ -10,6 +10,10 @@ test \citep{orazem2008}
 
 
 \chapter{API}
+Functions, subroutines and parameters, that
+are exposed in the API, are documented through man pages.
+The latter are available for use on \emph{unix}-like systems.
+
 \section{Fortran}\label{sec_api_fortran}
 \input{build/latex/\NAME.tex}
 
@@ -21,8 +25,8 @@ namespaces in the C language.
 
 The arguments have the same names as those defined in the Fortran API and
 have the same meaning. 
-Additional arguments of type \code{size\_t} are necessary when passing arrays
-as pointer. The additional arguments providing the size of pointers is 
+Additional arguments of type \code{size\_t} are necessary when passing pointers. 
+The additional arguments providing the size of pointers (arrays) is 
 named as following \code{n<POINTER\_ARGUMENT\_NAME>}. 
 \fvset{frame=single}
 \VerbatimInput{../include/\NAME .h}

@@ -57,6 +57,7 @@ SYNOPSIS
 
 DESCRIPTION
     Compute the thermal voltage at temperature T.
+
     o real(dp), intent(in) :: T  Temperature in °C.
 
 RETURN VALUE

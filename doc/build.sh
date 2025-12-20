@@ -12,7 +12,7 @@ DOC_MK4CFG=make4ht.cfg
 DOC_MK4BUILD=make4ht.mk4
 DOC_TEXINFO=makeinfo
 PREP_DOC_DIR=../prep/doc
-DOC_NAME=$FPM_NAME
+DOC_NAME="${FOM_NAME:-ecx}"
 
 GIT="bibfiles drawings"
 
@@ -22,6 +22,8 @@ FLAGS_MV=-fv
 FLAG_INFO=0
 FLAG_PDF=0
 FLAG_HTML=0
+FLAG_DEPS=1
+FLAG_FAST=0
 
 VERBOSE=0
 
@@ -36,6 +38,12 @@ for arg in ${args[@]}; do
             ;;
         "html")
             FLAG_HTML=1
+            ;;
+        "--nodeps")
+            FLAG_DEPS=0
+            ;;
+        "--fast")
+            FLAG_FAST=1
             ;;
         "--verbose")
             VERBOSE=1
@@ -56,28 +64,30 @@ make_dirs (){
 
 
 dowload_dependencies () {
-    echo -n "Downloading dependencies..."
-    for i in $GIT;do
-        url="https://github.com/MilanSkocic/$i.git"
-        if [[ ! -d $DOC_DEP_DIR/$i/ ]]; then 
-            git clone $url $DOC_DEP_DIR/$i; 
-            if [[ $?>0 ]]; then 
-                echo "The repo $i could not be retrieved."; 
+    if [[ $FLAG_DEPS == 1 ]]; then
+        echo -n "Downloading dependencies..."
+        for i in $GIT;do
+            url="https://github.com/MilanSkocic/$i.git"
+            if [[ ! -d $DOC_DEP_DIR/$i/ ]]; then 
+                git clone $url $DOC_DEP_DIR/$i; 
+                if [[ $?>0 ]]; then 
+                    echo "The repo $i could not be retrieved."; 
+                fi
             fi
-        fi
-    done
-    url=$DOC_DEP_DIR/drawings/figures/png
-    target=PEC-*.png
-    cp -fv $url/$target ./src/figures/
+        done
+        url=$DOC_DEP_DIR/drawings/figures/png
+        target=PEC-*.png
+        cp -fv $url/$target ./src/figures/
 
-    url=$DOC_DEP_DIR/drawings/figures/png
-    target=EIS-*.png
-    cp -fv $url/$target ./src/figures/
+        url=$DOC_DEP_DIR/drawings/figures/png
+        target=EIS-*.png
+        cp -fv $url/$target ./src/figures/
 
-    url=$DOC_DEP_DIR/bibfiles
-    target=references.bib
-    cp -fv $url/$target ./src/references.bib
-    echo "done."
+        url=$DOC_DEP_DIR/bibfiles
+        target=references.bib
+        cp -fv $url/$target ./src/references.bib
+        echo "done."
+    fi
 }
 
 make_man () {
@@ -158,19 +168,17 @@ make_latex () {
     echo -n "Generating latex documentation..."
     DOC="$DOC_BUILD_DIR/latex/$DOC_NAME.tex"
     rm $FLAGS_RM $DOC  >/dev/null 2>&1
-    files=$(ls $DOC_BUILD_DIR/latex/*.tex)
+    files=$(ls "$DOC_BUILD_DIR/latex/$DOC_NAME""_"*.tex)
     echo "" > $DOC
     for file in $files; do
-        if [[ "$file" == *"ecx_"* ]]; then
-            man_name=$(basename -s .tex $file)
-            man_name2=$(echo $man_name | sed -E 's/_/\\_/g')
-            man_name_nosec=$(echo $man_name | cut -d "." -f 1)
-            man_title=$(echo $man_name_nosec | sed "s/$DOC_NAME\_//g")
-            man_title2=$(echo $man_title | sed -E 's/_/\\_/g')
-            echo "\\subsection{$man_title2}\\index{$man_title2}\\label{subsec_$man_title}" >> $DOC
-            echo "\\input{build/latex/$(basename $file)}" >> $DOC
-            echo "" >> $DOC
-        fi
+        man_name=$(basename -s .tex $file)
+        man_name2=$(echo $man_name | sed -E 's/_/\\_/g')
+        man_name_nosec=$(echo $man_name | cut -d "." -f 1)
+        man_title=$(echo $man_name_nosec | sed "s/$DOC_NAME\_//g")
+        man_title2=$(echo $man_title | sed -E 's/_/\\_/g')
+        echo "\\subsection{$man_title2}\\index{$man_title2}\\label{subsec_$man_title}" >> $DOC
+        echo "\\input{build/latex/$(basename $file)}" >> $DOC
+        echo "" >> $DOC
     done
     echo "done."
 }
@@ -200,27 +208,32 @@ if [[ $FLAG_INFO == 1 ]]; then
 fi
 
 if [[ $FLAG_PDF == 1 ]]; then 
-    $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
-    $DOC_BIB ./$DOC_BUILD_DIR/$DOC_MAIN.bcf --output-file ./$DOC_BUILD_DIR/$DOC_MAIN.bbl
-    cp $DOC_SRC_DIR/references.bib $DOC_BUILD_DIR/
-    cd $DOC_BUILD_DIR
-    $DOC_BIB $DOC_MAIN.aux 
-    cd ..
 
-    # index
-    # $DOC_NCL ./$DOC_BUILD_DIR/$DOC_MAIN.nlo -s nomencl.ist -o ./$DOC_BUILD_DIR/$DOC_MAIN.nls
-    $DOC_NCL ./$DOC_BUILD_DIR/$DOC_MAIN.idx
-    cp $DOC_BUILD_DIR/$DOC_MAIN.idx $DOC_BUILD_DIR/$DOC_MAIN.4idx
+    if [[ $FLAG_FAST == 1 ]];then
+        $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
+    else
+        $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
+        $DOC_BIB ./$DOC_BUILD_DIR/$DOC_MAIN.bcf --output-file ./$DOC_BUILD_DIR/$DOC_MAIN.bbl
+        cp $DOC_SRC_DIR/references.bib $DOC_BUILD_DIR/
+        cd $DOC_BUILD_DIR
+        $DOC_BIB $DOC_MAIN.aux 
+        cd ..
 
-    # link
-    $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
-    $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
+        # index
+        # $DOC_NCL ./$DOC_BUILD_DIR/$DOC_MAIN.nlo -s nomencl.ist -o ./$DOC_BUILD_DIR/$DOC_MAIN.nls
+        $DOC_NCL ./$DOC_BUILD_DIR/$DOC_MAIN.idx
+        cp $DOC_BUILD_DIR/$DOC_MAIN.idx $DOC_BUILD_DIR/$DOC_MAIN.4idx
 
-    # copy
-    cp -rf $DOC_BUILD_DIR/$DOC_MAIN.pdf $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
-    cp ./$DOC_BUILD_DIR/$DOC_MAIN.idx ./$DOC_BUILD_DIR/$DOC_MAIN.4idx
+        # link
+        $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
+        $DOC_TEX -output-directory=./$DOC_BUILD_DIR -synctex=1 $DOC_SRC_DIR/$DOC_MAIN.tex
 
-    # $DOC_TEXINFO --pdf $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
+        # copy
+        cp -rf $DOC_BUILD_DIR/$DOC_MAIN.pdf $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
+        cp ./$DOC_BUILD_DIR/$DOC_MAIN.idx ./$DOC_BUILD_DIR/$DOC_MAIN.4idx
+
+        # $DOC_TEXINFO --pdf $DOC_SRC_DIR/$DOC_MAIN.texi -o $DOC_BUILD_DIR/pdf/$DOC_NAME.pdf
+    fi
 fi
 
 if [[ $FLAG_HTML == 1 ]]; then

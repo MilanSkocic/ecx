@@ -16,6 +16,10 @@
 !     o impedance       EIS, DIA
 !     o photocurrent    Iph
 ! 
+!     Defined constants:
+!     o PI       Pi number.
+!     o T_K      Kelvin conversion value.
+! 
 ! EXAMPLE
 !     Minimal program:
 ! 
@@ -30,10 +34,6 @@
 ! SEE ALSO
 !     complex(7), ecx_get_version(3), ecx_kTe(3)
 module ecx
-    use ecx__core
-    use ecx__kinetics
-    use ecx__eis
-    use ecx__pec
     use ecx__api
     use ecx__capi
 end module

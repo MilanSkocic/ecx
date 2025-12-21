@@ -16,6 +16,10 @@ DESCRIPTION
     o impedance       EIS, DIA
     o photocurrent    Iph
 
+    Defined constants:
+    o PI       Pi number.
+    o T_K      Kelvin conversion value.
+
 EXAMPLE
     Minimal program:
 

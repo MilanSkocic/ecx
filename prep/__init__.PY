@@ -1,11 +1,9 @@
-$BLOCK comment --file ecx.3.prepdoc
+$BLOCK comment --prefix # --file pyecx.3.prepdoc
 NAME
-    ecx - Electrochemistry Library.
+    pyecx - Python wrapper for the electrochemistry Library.
 
 SYNOPSIS
-    use ecx in Fortran
-    #include "ecx.h" in C
-    import pyecx in Python
+    import pyecx 
 
 DESCRIPTION
     The ecx library is a collection of routines for electrochemistry.
@@ -24,18 +22,17 @@ DESCRIPTION
 EXAMPLE
     Minimal program:
        
-        program example
-            use ecx
-        end program
+        import pyecx
+        print *, pyecx.__version__
 
 REPORTING BUGS
 
     Please report any bugs at http://github.com/ecx/issues
 
 SEE ALSO
-    complex(7), ecx_get_version(3), ecx_kTe(3)
+    python(1), complex(7), ecx(3)
 $ENDBLOCK
-module ecx
-    use ecx__api
-    use ecx__capi
-end module
+"""Python wrapper of the (Modern Fortran) ecx library."""
+from .version import __version__
+from . import eis
+from . import core

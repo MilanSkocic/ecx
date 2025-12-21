@@ -16,27 +16,27 @@ module ecx__api
 
 contains
 
-$BLOCK comment --file ecx_get_version.3.prepdoc
-NAME
-    get_version - Get the version.
+    $BLOCK comment --file ecx_get_version.3.prepdoc
+    NAME
+        get_version - Get the version.
 
-LIBRARY
-    Electrochemistry (libecx, -lecx)
+    LIBRARY
+        Electrochemistry (libecx, -lecx)
 
-SYNOPSIS
-    function get_version()result(fptr)
+    SYNOPSIS
+        function get_version()result(fptr)
 
-DESCRIPTION
-    Get the version of library.
+    DESCRIPTION
+        Get the version of library.
 
-RETURN VALUE
-    o character(len=:), pointer :: fptr    Version as a deferred-length pointer.
+    RETURN VALUE
+        o character(len=:), pointer :: fptr    Version as a deferred-length pointer.
 
-EXAMPLE
-    Minimal example
+    EXAMPLE
+        Minimal example
 
-        print *, get_version()
-$ENDBLOCK
+            print *, get_version()
+    $ENDBLOCK
 function get_version()result(fptr)
     implicit none
     character(len=:), pointer :: fptr    !! Version as a deferred-length pointer.
@@ -50,30 +50,30 @@ function get_version()result(fptr)
 end function
 
 
-$BLOCK comment --file ecx_kTe.3.prepdoc
-NAME
-    kTe - Compute the thermal voltage.
+    $BLOCK comment --file ecx_kTe.3.prepdoc
+    NAME
+        kTe - Compute the thermal voltage.
 
-LIBRARY
-    Electrochemistry (libecx, -libecx)
+    LIBRARY
+        Electrochemistry (libecx, -libecx)
 
-SYNOPSIS
-    function kTe(T)result(r)
+    SYNOPSIS
+        function kTe(T)result(r)
 
-DESCRIPTION
-    Compute the thermal voltage at temperature T.
+    DESCRIPTION
+        Compute the thermal voltage at temperature T.
 
-    o real(dp), intent(in) :: T  Temperature in °C.
+        o real(dp), intent(in) :: T  Temperature in °C.
 
-RETURN VALUE
-    o real(dp) :: r              Thermal voltage in V.
+    RETURN VALUE
+        o real(dp) :: r              Thermal voltage in V.
 
-EXAMPLE
-    Minimal example
+    EXAMPLE
+        Minimal example
 
-        print *, kTe(25.0_dp)
+            print *, kTe(25.0_dp)
 
-$ENDBLOCK
+    $ENDBLOCK
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none
@@ -84,35 +84,35 @@ pure elemental function kTe(T)result(r)
 end function
 
 
-$BLOCK comment --file ecx_z.3.prepdoc
-NAME
-    z - Compute the complex impedance.
+    $BLOCK comment --file ecx_z.3.prepdoc
+    NAME
+        z - Compute the complex impedance.
 
-LIBRARY
-    Electrochemistry (libecx, -libecx)
+    LIBRARY
+        Electrochemistry (libecx, -libecx)
 
-SYNOPSIS
-    subroutine z(p, w, zout, e, errstat, errmsg)
+    SYNOPSIS
+        subroutine z(p, w, zout, e, errstat, errmsg)
 
-DESCRIPTION
-    Compute the complex impedance.
+    DESCRIPTION
+        Compute the complex impedance.
 
-    o real(dp), intent(in) :: p(:)                       Parameters
-    o real(dp), intent(in) :: w(:)                       Angular frequencies in rad.s-1
-    o character(len=1), intent(in) :: e                  Electrochemical element: R, C, L, Q, O, T, G
-    o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
-    o integer(int32), intent(out) :: errstat             Error status
-    o character(len=:), intent(out), pointer :: errmsg   Error message
+        o real(dp), intent(in) :: p(:)                       Parameters
+        o real(dp), intent(in) :: w(:)                       Angular frequencies in rad.s-1
+        o character(len=1), intent(in) :: e                  Electrochemical element: R, C, L, Q, O, T, G
+        o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
+        o integer(int32), intent(out) :: errstat             Error status
+        o character(len=:), intent(out), pointer :: errmsg   Error message
 
-RETURN VALUE
-    o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
+    RETURN VALUE
+        o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
 
-EXAMPLE
-    Minimal example
+    EXAMPLE
+        Minimal example
 
-        call z(p, w, zout, e, errstat, errmsg)
+            call z(p, w, zout, e, errstat, errmsg)
 
-$ENDBLOCK
+    $ENDBLOCK
 subroutine z(p, w, zout, e, errstat, errmsg)
     implicit none
     real(dp), intent(in) :: p(:)
@@ -204,8 +204,6 @@ subroutine mm(p, w, zout, n)
             zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
         endif
     endif
-
-
 end subroutine
 
 
@@ -234,7 +232,6 @@ pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
     red = product(ared**vred)
 
     E = E0 + kTe_/z * log(ox/red)
-
 end function
 
 pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)

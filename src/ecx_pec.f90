@@ -29,20 +29,15 @@ pure elemental function alpha(hv, Eg, n)result(res) !> Compute the not scaled ab
     endif
 end function
 
-!> @brief Complex Photocurrent
-!! @param[in] hv Light energy in eV.
-!! @param[in] K Scaling factor for absorbance in .
-!! @param[in] Bandgap in eV.
-!! @param[in] Transition type: n=1/2 for direct transition and n=2 for indirect transition
-!! @return Complex photocurrent.
 pure elemental function iph(hv, K, Eg, theta, n)result(res) !! Compute the complex photocurrent
+    !! Compute the complex photocurrent.
     implicit none
-    real(real64), intent(in) :: hv
-    real(real64), intent(in) :: K
-    real(real64), intent(in) :: Eg
-    real(real64), intent(in) :: theta
-    real(real64), intent(in) :: n 
-    complex(real64) :: res
+    real(real64), intent(in) :: hv !! Light energy in eV.
+    real(real64), intent(in) :: K !! Scaling factor for absorbance in .
+    real(real64), intent(in) :: Eg !! Bandgap in eV.
+    real(real64), intent(in) :: theta !! Phase in degree.
+    real(real64), intent(in) :: n  !! Transition type: n=1/2 for direct transition and n=2 for indirect transition
+    complex(real64) :: res !! Complex photocurrent Iph
 
     real(real64) :: re, im, mod, phase
     

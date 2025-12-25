@@ -9,7 +9,7 @@ module ecx__capi
 contains
 
 function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
-    !! Get the version.
+    !! C API - Get the version.
     implicit none
     
     ! Returns   
@@ -30,14 +30,16 @@ end function
 
 
 ! CORE -------------------------------------------------------------------------
-pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV") !! Convert wavelength to energy
+pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV") 
+    !! C API - Convert wavelength to energy
     integer(c_size_t), intent(in), value :: n !! Size of lambda and E.
     real(c_double), intent(in) :: lambda(n) !! Wavelength in nm.
     real(c_double), intent(out) :: E(n) !! Energy in eV.
     E = nm2eV(lambda)
 end subroutine
 
-pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe") !! Compute the thermal voltage.
+pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe") 
+    !! Compute the thermal voltage.
     integer(c_size_t), intent(in), value :: n !! Size of T and kTe.
     real(c_double), intent(in) :: T(n)        !! Temperature in °C.
     real(c_double), intent(out) :: kTe_(n)    !! Thermal voltage in V.
@@ -48,7 +50,8 @@ end subroutine
 
 
 ! EIS -------------------------------------------------------------------------
-subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z") !! Compute the complex impedance for the given element.
+subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z") 
+    !! Compute the complex impedance for the given element.
     integer(c_size_t), intent(in), value :: n            !! Size of w
     integer(c_size_t), intent(in), value :: k            !! Size of p
     character(len=1,kind=c_char), intent(in), value :: e !! Electrochemical element: R, C, L, Q, O, T, G

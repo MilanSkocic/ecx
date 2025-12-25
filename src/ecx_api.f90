@@ -1,4 +1,5 @@
 module ecx__api
+    !! API
     use ecx__version, only: version
     use ecx__common
     use ecx__core
@@ -16,28 +17,10 @@ module ecx__api
 
 contains
 
-! NAME
-!     get_version - Get the version.
-! 
-! LIBRARY
-!     Electrochemistry (libecx, -lecx)
-! 
-! SYNOPSIS
-!     function get_version()result(fptr)
-! 
-! DESCRIPTION
-!     Get the version of library.
-! 
-! RETURN VALUE
-!     o character(len=:), pointer :: fptr    Version as a deferred-length pointer.
-! 
-! EXAMPLE
-!     Minimal example
-! 
-!         print *, get_version()
 function get_version()result(fptr)
+    !! Get the version.
     implicit none
-    character(len=:), pointer :: fptr    !! Version as a deferred-length pointer.
+    character(len=:), pointer :: fptr    !! Version of the library.
 
     if(allocated(version_f))then
         deallocate(version_f)
@@ -48,28 +31,6 @@ function get_version()result(fptr)
 end function
 
 
-! NAME
-!     kTe - Compute the thermal voltage.
-! 
-! LIBRARY
-!     Electrochemistry (libecx, -libecx)
-! 
-! SYNOPSIS
-!     function kTe(T)result(r)
-! 
-! DESCRIPTION
-!     Compute the thermal voltage at temperature T.
-! 
-!     o real(dp), intent(in) :: T  Temperature in °C.
-! 
-! RETURN VALUE
-!     o real(dp) :: r              Thermal voltage in V.
-! 
-! EXAMPLE
-!     Minimal example
-! 
-!         print *, kTe(25.0_dp)
-!
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none
@@ -80,33 +41,6 @@ pure elemental function kTe(T)result(r)
 end function
 
 
-! NAME
-!     z - Compute the complex impedance.
-! 
-! LIBRARY
-!     Electrochemistry (libecx, -libecx)
-! 
-! SYNOPSIS
-!     subroutine z(p, w, zout, e, errstat, errmsg)
-! 
-! DESCRIPTION
-!     Compute the complex impedance.
-! 
-!     o real(dp), intent(in) :: p(:)                       Parameters
-!     o real(dp), intent(in) :: w(:)                       Angular frequencies in rad.s-1
-!     o character(len=1), intent(in) :: e                  Electrochemical element: R, C, L, Q, O, T, G
-!     o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
-!     o integer(int32), intent(out) :: errstat             Error status
-!     o character(len=:), intent(out), pointer :: errmsg   Error message
-! 
-! RETURN VALUE
-!     o complex(dp), intent(out) :: zout(:)                Complex impedance in Ohms.
-! 
-! EXAMPLE
-!     Minimal example
-! 
-!         call z(p, w, zout, e, errstat, errmsg)
-!
 subroutine z(p, w, zout, e, errstat, errmsg)
     implicit none
     real(dp), intent(in) :: p(:)

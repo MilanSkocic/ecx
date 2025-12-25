@@ -1,7 +1,3 @@
-!> @brief Core module.
-!!
-!! The core module contains all the base functions
-!! needed for computing electrochemical parameters.
 module ecx__core
     !! Core.
     use ecx__common
@@ -10,18 +6,12 @@ module ecx__core
 
 contains
 
-!> @brief Round values to the nth digit.
-!! @param[in] x Value
-!! @param[in] n Digits
 pure elemental function roundn(x, n)result(r)
     !! Round x to n digits.
     implicit none
-    real(dp), intent(in) :: x
-        !! Number to be rounded.
-    integer(int32), intent(in) :: n
-        !! Number of digits.s
-    real(dp) :: r
-        !! Rounded number
+    real(dp), intent(in) :: x !! Number to be rounded.
+    integer(int32), intent(in) :: n !! Number of digits.s
+    real(dp) :: r !! Rounded number
     real(dp) :: fac
 
     fac = 10**n
@@ -110,26 +100,19 @@ pure elemental function eV2nm(E)result(lambda)
     lambda = h_eV * c / (E * 1.0d-9)
 end function
 
-!> @brief Converts degrees to radians.
-!! @param[in] theta Angle in degrees.
-!! @return Angle in radians.
 pure elemental function deg2rad(theta)result(phase)
     !! Converts degrees to rad.
     implicit none
-    real(dp), intent(in) :: theta
-        !! Angle in degrees.
-    real(dp) :: phase
-        !! Angle in rad.
+    real(dp), intent(in) :: theta !! Angle in degrees.
+    real(dp) :: phase !! Angle in rad.
     phase = theta * PI / 180.0_dp
 end 
 
 pure elemental function rad2deg(phase)result(theta)
     !! Converts degrees to rad.
     implicit none
-    real(dp), intent(in) :: phase
-        !! Angle in rad.
-    real(dp) :: theta
-        !! Angle in degrees.
+    real(dp), intent(in) :: phase !! Angle in rad.
+    real(dp) :: theta !! Angle in degrees.
     theta = phase * 180.0_dp / PI
 end 
 

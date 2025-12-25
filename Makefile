@@ -109,11 +109,9 @@ doc:
 
 docs:
 	rm -rf docs/*
-	cp -rf doc/build/html/* docs/
-	cp docs/00-main.html docs/index.html
+	cp -rf doc/sphinx/build/html/* ./docs/
 
 clean:
 	fpm clean --all
-	make -C prep clean
 	make -C doc clean
 # ---------------------------------------------------------------------

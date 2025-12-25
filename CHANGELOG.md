@@ -1,4 +1,4 @@
-# Version 0.1.0-dev {#version-0.1.0-dev .unnumbered}
+# Version 0.1.0-dev
 
 -   Implementation of eis + C API
 

@@ -1,4 +1,5 @@
 module ecx__common
+    !! Common module for ecx.
     use ieee_arithmetic
     use iso_c_binding, only: c_size_t, &
                              c_int,    &

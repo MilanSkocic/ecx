@@ -1,47 +1,25 @@
-# Introduction
+<h1 align="center">
+<img src="./media/logo.png" width="300">
+</h1><br>
 
-The library is a collection of routines for electrochemistry. A C API
-allows usage from C, or can be used as a basis for other wrappers. A
-Python wrapper allows easy usage from Python.
+
+`ecx` a Fortran library for provinding a collection of routines for electrochemistry. A C API
+
+- **Documentation:** https://milanskocic.github.io/ecx/
+- **Source code:** https://github.com/MilanSKocic/ecx
+- **Python wrapper:** https://pypi.org/project/pyecx
+
+It covers:
+
+- kinetics
+- electrochemical impedance
+- photoelectrochemistry
 
 To use within your [fpm](https://github.com/fortran-lang/fpm) project,
 add the following to your file:
 
-            [dependencies]
-            ecx = { git="https://github.com/MilanSkocic/ecx.git" }
-
-# Dependencies
-
-            gcc>=10
-            gfortran>=10
-            fpm>=0.7
-            stdlib>=0.7
-
-# Installation
-
-A Makefile is provided, which uses [fpm](https://fpm.fortran-lang.org),
-for building the library.
-
--   On windows, [msys2](https://www.msys2.org) needs to be installed.
-    Add the msys2 binary (usually C:\\msys64\\usr\\bin) to the path in
-    order to be able to use make.
-
--   On Darwin, the [gcc](https://formulae.brew.sh/formula/gcc) toolchain
-    needs to be installed.
-
-```{=html}
-<!-- -->
 ```
-            chmod +x configure.sh
-            ./configure.sh
-            make
-            make test
-            make install
-            make uninstall
 
-You need a compiler that can compile the
-[stdlib](https://github.com/fortran-lang/stdlib).
-
-# License
-
-MIT
+[dependencies]
+ecx = { git="https://github.com/MilanSkocic/ecx.git" }
+```

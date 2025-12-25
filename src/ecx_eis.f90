@@ -14,13 +14,10 @@ contains
 pure elemental function zr(w, R) result(Z)
     !! Compute the complex impedance for a resistor. 
     implicit none
-    real(dp), intent(in) :: R
-        !! Resistance in Ohms.
-    real(dp), intent(in) :: w
-        !! Angular frequencies in rad.s^-1.
+    real(dp), intent(in) :: R !! Resistance in Ohms.
+    real(dp), intent(in) :: w !! Angular frequencies in rad.s^-1.
 
-    complex(dp) :: Z
-        !! Complex impedance in Ohms.
+    complex(dp) :: Z !! Complex impedance in Ohms.
 
     Z = cmplx(R, 0.0_dp, kind=dp)
 end function
@@ -29,12 +26,9 @@ pure elemental function zc(w, C) result(Z)
     !! Compute the complex impedance for a capacitor. 
     implicit none
 
-    real(dp), intent(in) :: C
-        !! Capacitance in Farad.
-    real(dp), intent(in) :: w
-        !! Angular frequencies in rad.s^-1.
-    complex(dp) :: Z
-        !! Complex impedance in Ohms.
+    real(dp), intent(in) :: C !! Capacitance in Farad.
+    real(dp), intent(in) :: w !! Angular frequencies in rad.s^-1.
+    complex(dp) :: Z !! Complex impedance in Ohms.
     Z = cmplx(0.0_dp, -1.0_dp/(C*w), kind=dp)
 end function
 

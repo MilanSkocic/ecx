@@ -29,16 +29,13 @@ $(FPM_LIBNAME): build copy_a shared
 
 # ---------------------------------------------------------------------
 # SOURCES
-.PHONY: sources
-sources:
-	make -C prep
 # ---------------------------------------------------------------------
 
 
 
 # ---------------------------------------------------------------------
 # COMPILATION
-build: sources
+build: 
 	fpm build --profile=$(btype)
 
 test: build

@@ -6,7 +6,7 @@ import os
 import sys
 import tomllib
 sys.path.insert(0, os.path.abspath('../../../py/src/'))
-import pycodata
+import pyecx
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -18,7 +18,7 @@ f.close()
 project = 'ecx'
 copyright = fpm["copyright"].replace("Copyright ","")
 author = fpm["author"]
-release = pycodata.__version__
+release = pyecx.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -38,9 +38,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # fspx_docstring_character = ""
 
-fortran_src=["../../src/*.f90"]
-fortran_ext=['f90', 'f95']
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -51,7 +48,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub", 
-            "url": "https://github.com/MilanSkocic/codata",
+            "url": "https://github.com/MilanSkocic/ecx",
             "icon": "fa-brands fa-square-github",
             "type": "fontawesome",
         },

@@ -6,12 +6,12 @@ Getting Started
 Introduction
 ============
 
-The library is a collection of routines for electrochemistry. A C API
-allows usage from C, or can be used as a basis for other wrappers. A
-Python wrapper allows easy usage from Python.
+`ecx` a Fortran library for providing a collection of routines for electrochemistry.
+A C API allows usage from C, or can be used as a basis for other wrappers. 
+A Python wrapper allows easy usage from Python.
 
-To use within your `fpm <https://github.com/fortran-lang/fpm>`__
-project, add the following to your file:
+To use `ecx` within your `fpm <https://github.com/fortran-lang/fpm>`__
+project, add the following lines to your file:
 
 ::
 

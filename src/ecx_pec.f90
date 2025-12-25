@@ -11,7 +11,8 @@ public :: alpha, iph
 contains
 
 
-pure elemental function alpha(hv, Eg, n)result(res) !> Compute the not scaled absorbance coefficient.
+pure elemental function alpha(hv, Eg, n)result(res) 
+    !! Compute the not scaled absorbance coefficient.
     implicit none
     real(real64), intent(in) :: hv !! Light energy in eV.
     real(real64), intent(in) :: Eg !! Bandgap in eV.

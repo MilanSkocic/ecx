@@ -1,0 +1,265 @@
+.\" Man page generated from reStructuredText.
+.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.TH "ECX" "3" "Dec 25, 2025" "" "ecx"
+.SH NAME
+ecx \- Electrochemistry for Fortran
+[image: Alternative text]
+[image]
+.sp
+Electrochemistry for Fortran.
+.SH GETTING STARTED
+.SS Introduction
+.sp
+\fIecx\fP a Fortran library for providing a collection of routines for electrochemistry.
+A C API allows usage from C, or can be used as a basis for other wrappers.
+A Python wrapper allows easy usage from Python.
+.sp
+To use \fIecx\fP within your \X'tty: link https://github.com/fortran-lang/fpm'\fI\%fpm\fP\X'tty: link'
+project, add the following lines to your file:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+[dependencies]
+ecx = { git=\(dqhttps://github.com/MilanSkocic/ecx.git\(dq }
+.EE
+.UNINDENT
+.UNINDENT
+.SS Dependencies
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+gcc>=10
+gfortran>=10
+fpm>=0.7
+stdlib>=0.7
+.EE
+.UNINDENT
+.UNINDENT
+.SS Installation
+.sp
+A Makefile is provided, which uses
+\X'tty: link https://fpm.fortran-lang.org'\fI\%fpm\fP\X'tty: link', for building the library.
+.INDENT 0.0
+.IP \(bu 2
+On windows, \X'tty: link https://www.msys2.org'\fI\%msys2\fP\X'tty: link' needs to be installed.
+Add the msys2 binary (usually C:\emsys64\eusr\ebin) to the path in
+order to be able to use make.
+.IP \(bu 2
+On Darwin, the \X'tty: link https://formulae.brew.sh/formula/gcc'\fI\%gcc\fP\X'tty: link'
+toolchain needs to be installed.
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+chmod +x configure.sh
+\&./configure.sh
+make
+make test
+make install
+make uninstall
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+You need a compiler that can compile the
+\X'tty: link https://github.com/fortran-lang/stdlib'\fI\%stdlib\fP\X'tty: link'\&.
+.SS License
+.sp
+MIT
+.SH EXAMPLES
+.SS Fortran
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+program example_in_f
+    use iso_fortran_env
+    use ecx
+    implicit none
+
+    real(real64) :: w(3) = [1.0d0, 1.0d0, 100.0d0]
+    real(real64) :: r = 100.0d0
+    real(real64) :: p(3) = 0.0d0
+    character(len=1) :: e 
+    integer :: errstat
+    complex(real64) :: zout(3)
+    character(len=:), pointer :: errmsg
+
+    p(1) = r
+    e = \(dqR\(dq
+    call z(p, w, zout, e, errstat, errmsg)
+    print *, zout
+    print *, errstat, errmsg
+    
+
+end program
+
+.EE
+.UNINDENT
+.UNINDENT
+.SS C
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+#include <stdio.h>
+#include <stdlib.h>
+#include \(dqecx.h\(dq
+
+
+int main(void){
+
+    int errstat, i;
+    double w[3] = {1.0, 1.0, 1.0};
+    double p[3] = {100.00, 0.0, 0.0};
+    ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), 
+                        ecx_cbuild(0.0, 0.0), 
+                        ecx_cbuild(0.0, 0.0)};
+    char *errmsg;
+
+    ecx_eis_z(p, w, z, \(aqR\(aq, 3, 3, &errstat, &errmsg);
+    
+    for(i=0; i<3;i++){
+        printf(\(dq%f %f \en\(dq, creal(z[i]), cimag(z[i]));
+    }
+    printf(\(dq%d %s\en\(dq, errstat, errmsg); 
+    return EXIT_SUCCESS;
+}
+
+.EE
+.UNINDENT
+.UNINDENT
+.SS Python
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+from pyecx import eis
+import matplotlib.pyplot as plt
+
+R = 100
+C = 1e\-6
+w = np.logspace(6, \-3, 100)
+
+p = np.asarray([R, 0.0, 0.0])
+zr = np.asarray(eis.z(\(dqR\(dq, w, p))
+p = np.asarray([C, 0.0, 0.0])
+zc = np.asarray(eis.z(\(dqC\(dq, w, p))
+zrc = zr*zc / (zr+zc)
+print(\(dqfinish\(dq)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+ax.set_aspect(\(dqequal\(dq)
+ax.plot(zrc.real, zrc.imag, \(dqg.\(dq, label=\(dqR/C\(dq)
+
+ax.invert_yaxis()
+
+plt.show()
+.EE
+.UNINDENT
+.UNINDENT
+.SH APIS
+.SS Fortran
+.sp
+\X'tty: link https://milanskocic.github.io/ecx/ford/index.html'\fI\%https://milanskocic.github.io/ecx/ford/index.html\fP\X'tty: link'
+.SS C
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+#ifndef ECX_H
+#define ECX_H
+#include <complex.h>
+#if _MSC_VER
+    #define ADD_IMPORT __declspec(dllimport)
+    typedef _Dcomplex ecx_cdouble; 
+    #define ecx_cbuild(real, imag) (_Cbuild(real, imag))
+#else
+    #define ADD_IMPORT
+    typedef double _Complex ecx_cdouble; 
+    #define ecx_cbuild(real, imag) (real+I*imag) 
+#endif
+
+extern char* ecx_get_version(void);
+
+
+ADD_IMPORT extern const double ecx_core_PI; 
+ADD_IMPORT extern const double ecx_core_T_K; 
+void ecx_core_nm2eV(double *lambda, double *E, size_t n); 
+void ecx_core_kTe(double *U, double *kTE, size_t n); 
+
+
+extern double ecx_kinetics_nernst(double E0, int z, 
+                                       double *aox, double *vox, size_t nox, 
+                                       double *ared, double *vred, size_t nred, 
+                                       double T);
+
+extern void ecx_kinetics_sbv(double *U, double OCV, double j0, 
+                                  double aa, double ac, double za, double zc,
+                                  double A, double T, double *i, size_t n);
+
+extern void ecx_kinetics_bv(double *U, double OCV, double j0, double jdla, double jdlc,
+                        double aa, double ac, double za, double zc,
+                        double A, double T, double *i, size_t n);
+
+
+extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, 
+                      char e, size_t k, size_t n, 
+                      int *errstat, char *(*errmsg)); 
+
+#endif
+
+
+
+.EE
+.UNINDENT
+.UNINDENT
+.SS Python
+.sp
+Python wrapper of the (Modern Fortran) ecx library.
+.SH CHANGELOG
+.SS Version 0.1.0\-dev
+.INDENT 0.0
+.IP \(bu 2
+Implementation of eis + C API
+.IP \(bu 2
+Python wrappers for eis.
+.UNINDENT
+.SH AUTHOR
+Milan Skocic
+.SH COPYRIGHT
+Copyright, Milan Skocic
+.\" Generated by docutils manpage writer.
+.

@@ -10,7 +10,7 @@ Introduction
 A C API allows usage from C, or can be used as a basis for other wrappers. 
 A Python wrapper allows easy usage from Python.
 
-To use `ecx` within your `fpm <https://github.com/fortran-lang/fpm>`__
+To use `ecx` within your `fpm <https://github.com/fortran-lang/fpm>`_
 project, add the following lines to your file:
 
 ::

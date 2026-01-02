@@ -10,3 +10,7 @@ Fortran
     
     https://milanskocic.github.io/ecx/ford/index.html
 
+
+.. f:module:: ecx
+
+.. f:module:: ecx__api

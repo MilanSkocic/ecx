@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "ECX" "3" "Dec 25, 2025" "" "ecx"
+.TH "ECX" "3" "Jan 03, 2026" "" "ecx"
 .SH NAME
 ecx \- Electrochemistry for Fortran
 [image: Alternative text]
@@ -194,6 +194,476 @@ plt.show()
 .SS Fortran
 .sp
 \X'tty: link https://milanskocic.github.io/ecx/ford/index.html'\fI\%https://milanskocic.github.io/ecx/ford/index.html\fP\X'tty: link'
+.SS Module ecx
+Main module for ecx.
+.SS Module ecx__api
+API
+\fBProcedures\fP
+.PP
+.SS Function get_version
+.INDENT 0.0
+.TP
+.B \fBfunction get_version() \-> fptr\fP
+Get the version.
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBfptr\fP (character(len=:), pointer)
+Version of the library.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Function kTe
+.INDENT 0.0
+.TP
+.B \fBpure elemental function kTe(T) \-> r\fP
+Compute the thermal voltage.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBT\fP (real(dp), intent(in))
+Temperature in °C.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBr\fP (real(dp))
+Thermal voltage in V.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine z
+.INDENT 0.0
+.TP
+.B \fBsubroutine z(p, w, zout, e, errstat, errmsg)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBp\fP (real(dp), intent(in), dimension(:))
+.TP
+\fBw\fP (real(dp), intent(in), dimension(:))
+Angular frequencies in rad.s\-1
+.TP
+\fBzout\fP (complex(dp), intent(out), dimension(:))
+Complex impedance in Ohms.
+.TP
+\fBe\fP (character(len=1), intent(in))
+Electrochemical element: R, C, L, Q, O, T, G
+.TP
+\fBerrstat\fP (integer(int32), intent(out))
+Error status
+.TP
+\fBerrmsg\fP (character(len=:), intent(out), pointer)
+Error message
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine mm
+.INDENT 0.0
+.TP
+.B \fBsubroutine mm(p, w, zout, n)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBp\fP (real(dp), intent(in), dimension(:))
+Compute the measurement model.
+.TP
+\fBw\fP (real(dp), intent(in), dimension(:))
+Parameters.
+.TP
+\fBzout\fP (complex(dp), intent(out), dimension(:))
+Angular frequencies in rad.s\-1
+.TP
+\fBn\fP (integer(int32), intent(in))
+Complex impedance in Ohms.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Function nernst
+.INDENT 0.0
+.TP
+.B \fBpure function nernst(E0, z, aox, vox, ared, vred, T) \-> E\fP
+Compute the Nernst electrochemical potential in V.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBE0\fP (real(dp), intent(in))
+.TP
+\fBz\fP (integer(int32), intent(in))
+Standard electrochemical potential in V.
+.TP
+\fBaox\fP (real(dp), intent(in), dimension(:))
+Number of exchanged electrons.
+.TP
+\fBvox\fP (real(dp), intent(in), dimension(:))
+Activities of the oxidants.
+.TP
+\fBared\fP (real(dp), intent(in), dimension(:))
+Coefficients for the oxidants.
+.TP
+\fBvred\fP (real(dp), intent(in), dimension(:))
+Activities of the reductants
+.TP
+\fBT\fP (real(dp), intent(in))
+Coefficients for the reductants.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBE\fP (real(dp))
+Temperature in °C.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Function sbv
+.INDENT 0.0
+.TP
+.B \fBpure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T) \-> I\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBU\fP (real(dp), intent(in))
+Open Circuit Voltage in V.
+.TP
+\fBOCV\fP (real(dp), intent(in))
+Compute Butler Volmer equation without mass transport.
+.TP
+\fBj0\fP (real(dp), intent(in))
+Electrochemical potential in V.
+.TP
+\fBaa\fP (real(dp), intent(in))
+Exchange current density in A.cm\-2.
+.TP
+\fBac\fP (real(dp), intent(in))
+Anodic transfer coefficient.
+.TP
+\fBza\fP (real(dp), intent(in))
+Cathodic transfer coefficient.
+.TP
+\fBzc\fP (real(dp), intent(in))
+Number of exchnaged electrons in the anodic branch.
+.TP
+\fBA\fP (real(dp), intent(in))
+Number of exchnaged electrons in the cathodic branch.
+.TP
+\fBT\fP (real(dp), intent(in))
+Area in cm2.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBI\fP (real(dp))
+Temperature in °C.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Function bv
+.INDENT 0.0
+.TP
+.B \fBpure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T) \-> I\fP
+Compute Butler Volmer equation with mass transport.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBU\fP (real(dp), intent(in))
+Open Circuit Voltage in V.
+.TP
+\fBOCV\fP (real(dp), intent(in))
+.TP
+\fBj0\fP (real(dp), intent(in))
+Electrochemical potential in V.
+.TP
+\fBjdla\fP (real(dp), intent(in))
+Exchange current density in A.cm\-2.
+.TP
+\fBjdlc\fP (real(dp), intent(in))
+Anodic diffusion limiting current density in A.cm\-2.
+.TP
+\fBaa\fP (real(dp), intent(in))
+Cathodic diffusion limiting current density in A.cm\-2.
+.TP
+\fBac\fP (real(dp), intent(in))
+Anodic transfer coefficient.
+.TP
+\fBza\fP (real(dp), intent(in))
+Cathodic transfer coefficient.
+.TP
+\fBzc\fP (real(dp), intent(in))
+Number of exchnaged electrons in the anodic branch.
+.TP
+\fBA\fP (real(dp), intent(in))
+Number of exchnaged electrons in the cathodic branch.
+.TP
+\fBT\fP (real(dp), intent(in))
+Area in cm2.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBI\fP (real(dp))
+Temperature in °C.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Module ecx__capi
+\fBProcedures\fP
+.PP
+.SS Function capi_get_version
+.INDENT 0.0
+.TP
+.B \fBfunction capi_get_version()bind(c, name=\(dqecx_get_version\(dq) \-> cptr\fP
+C API \- Get the version.
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBcptr\fP (type(c_ptr))
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine capi_nm2eV
+.INDENT 0.0
+.TP
+.B \fBpure subroutine capi_nm2eV(lambda, E, n)bind(C, name=\(dqecx_core_nm2eV\(dq)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBlambda\fP (real(c_double), intent(in), dimension(n))
+Wavelength in nm.
+.TP
+\fBE\fP (real(c_double), intent(out), dimension(n))
+Energy in eV.
+.TP
+\fBn\fP (integer(c_size_t), intent(in), value)
+Size of lambda and E.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine capi_kTe
+.INDENT 0.0
+.TP
+.B \fBpure subroutine capi_kTe(T, kTe_, n)bind(C, name=\(dqecx_core_kTe\(dq)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBT\fP (real(c_double), intent(in), dimension(n))
+Temperature in °C.
+.TP
+\fBkTe_\fP (real(c_double), intent(out), dimension(n))
+Thermal voltage in V.
+.TP
+\fBn\fP (integer(c_size_t), intent(in), value)
+Size of T and kTe.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine capi_z
+.INDENT 0.0
+.TP
+.B \fBsubroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name=\(dqecx_eis_z\(dq)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBp\fP (real(c_double), intent(in), dimension(k))
+Parameters.
+.TP
+\fBw\fP (real(c_double), intent(in), dimension(n))
+Angular frequencies in rad.s\-1
+.TP
+\fBzout\fP (complex(c_double_complex), intent(out), dimension(n))
+Complex impedance in Ohms.
+.TP
+\fBe\fP (character(len=1,kind=c_char), intent(in), value)
+Electrochemical element: R, C, L, Q, O, T, G
+.TP
+\fBk\fP (integer(c_size_t), intent(in), value)
+Size of p
+.TP
+\fBn\fP (integer(c_size_t), intent(in), value)
+Size of w
+.TP
+\fBerrstat\fP (integer(c_int), intent(out))
+Error status
+.TP
+\fBerrmsg\fP (type(c_ptr), intent(out))
+errmsg Error message
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Function capi_nernst
+.INDENT 0.0
+.TP
+.B \fBpure function capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T)bind(C, name=\(dqecx_kinetics_nernst\(dq) \-> E\fP
+Compute the Nernst electrochemical potential in V.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBE0\fP (real(c_double), intent(in), value)
+.TP
+\fBz\fP (integer(c_int), intent(in), value)
+Standard electrochemical potential in V.
+.TP
+\fBaox\fP (real(c_double), intent(in), dimension(nox))
+Number of reductants.
+.TP
+\fBvox\fP (real(c_double), intent(in), dimension(nox))
+Activities of the oxidants.
+.TP
+\fBnox\fP (integer(c_size_t), intent(in), value)
+Number of exchanged electrons.
+.TP
+\fBared\fP (real(c_double), intent(in), dimension(nred))
+Coefficients for the oxidants.
+.TP
+\fBvred\fP (real(c_double), intent(in), dimension(nred))
+Activities of the reductants
+.TP
+\fBnred\fP (integer(c_size_t), intent(in), value)
+Number of oxidants.
+.TP
+\fBT\fP (real(c_double), intent(in), value)
+Coefficients for the reductants.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBE\fP (real(c_double))
+Temperature in °C.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine capi_sbv
+.INDENT 0.0
+.TP
+.B \fBpure subroutine capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bind(c, name=\(dqecx_kinetics_sbv\(dq)\fP
+Compute Butler Volmer equation without mass transport.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBU\fP (real(c_double), intent(in), dimension(n))
+Open circuit potential in volts.
+.TP
+\fBOCV\fP (real(c_double), intent(in), value)
+Size of U and I.
+.TP
+\fBj0\fP (real(c_double), intent(in), value)
+Potential in volts.
+.TP
+\fBaa\fP (real(c_double), intent(in), value)
+Exchange current density in A.cm\-2.
+.TP
+\fBac\fP (real(c_double), intent(in), value)
+Anodic transfert coefficient.
+.TP
+\fBza\fP (real(c_double), intent(in), value)
+Cathodic transfert coefficient.
+.TP
+\fBzc\fP (real(c_double), intent(in), value)
+Number of exchanged electrons in anodic branch.
+.TP
+\fBA\fP (real(c_double), intent(in), value)
+Number of exchanged electrons in cathodic branch.
+.TP
+\fBT\fP (real(c_double), intent(in), value)
+Area in cm2.
+.TP
+\fBI\fP (real(c_double), intent(out), dimension(n))
+Temperature in °C.
+.TP
+\fBn\fP (integer(c_size_t), intent(in), value)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Subroutine capi_bv
+.INDENT 0.0
+.TP
+.B \fBpure subroutine capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T, I, n)bind(c, name=\(dqecx_kinetics_bv\(dq)\fP
+Compute Butler Volmer equation without mass transport.
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBU\fP (real(c_double), intent(in), dimension(n))
+Open circuit potential in volts.
+.TP
+\fBOCV\fP (real(c_double), intent(in), value)
+Size of U and I.
+.TP
+\fBj0\fP (real(c_double), intent(in), value)
+Potential in volts.
+.TP
+\fBjdla\fP (real(c_double), intent(in), value)
+Exchange current density in A.cm\-2
+.TP
+\fBjdlc\fP (real(c_double), intent(in), value)
+Anodic diffusion limiting current density in A.cm\-2.
+.TP
+\fBaa\fP (real(c_double), intent(in), value)
+Cathodic diffusion limiting current density in A.cm\-2.
+.TP
+\fBac\fP (real(c_double), intent(in), value)
+Anodic transfert coefficient.
+.TP
+\fBza\fP (real(c_double), intent(in), value)
+Cathodic transfert coefficient.
+.TP
+\fBzc\fP (real(c_double), intent(in), value)
+Number of exchanged electrons in anodic branch.
+.TP
+\fBA\fP (real(c_double), intent(in), value)
+Number of exchanged electrons in cathodic branch.
+.TP
+\fBT\fP (real(c_double), intent(in), value)
+Area in cm2.
+.TP
+\fBI\fP (real(c_double), intent(out), dimension(n))
+Temperature in °C.
+.TP
+\fBn\fP (integer(c_size_t), intent(in), value)
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .SS C
 .INDENT 0.0
 .INDENT 3.5

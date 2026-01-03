@@ -411,6 +411,450 @@ document.write(`
   <section id="fortran">
 <h1>Fortran<a class="headerlink" href="#fortran" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="../ford/index.html">FORD documentation</a></p>
+<section id="f-module-ecx">
+<h2>Module ecx<a class="headerlink" href="#f-module-ecx" title="Link to this heading">#</a></h2>
+<div class="docutils container">
+<p>Main module for ecx.</p>
+</div>
+</section>
+<section id="f-module-ecx-api">
+<h2>Module ecx__api<a class="headerlink" href="#f-module-ecx-api" title="Link to this heading">#</a></h2>
+<div class="docutils container">
+<p>API</p>
+</div>
+<p class="section-subtitle">Procedures</p>
+<section id="f-function-ecx-api-get-version">
+<h3>Function get_version<a class="headerlink" href="#f-function-ecx-api-get-version" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">get_version()</span> <span class="pre">-&gt;</span> <span class="pre">fptr</span></code></dt>
+<dd><div class="docutils container">
+<p>Get the version.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fptr</strong><span class="classifier">character(len=:), pointer</span></dt><dd><p>Version of the library.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-function-ecx-api-kte">
+<h3>Function kTe<a class="headerlink" href="#f-function-ecx-api-kte" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">kTe(T)</span> <span class="pre">-&gt;</span> <span class="pre">r</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute the thermal voltage.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>r</strong><span class="classifier">real(dp)</span></dt><dd><p>Thermal voltage in V.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-api-z">
+<h3>Subroutine z<a class="headerlink" href="#f-subroutine-ecx-api-z" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">z(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">e,</span> <span class="pre">errstat,</span> <span class="pre">errmsg)</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Angular frequencies in rad.s-1</p>
+</dd>
+<dt><strong>zout</strong><span class="classifier">complex(dp), intent(out), dimension(:)</span></dt><dd><p>Complex impedance in Ohms.</p>
+</dd>
+<dt><strong>e</strong><span class="classifier">character(len=1), intent(in)</span></dt><dd><p>Electrochemical element: R, C, L, Q, O, T, G</p>
+</dd>
+<dt><strong>errstat</strong><span class="classifier">integer(int32), intent(out)</span></dt><dd><p>Error status</p>
+</dd>
+<dt><strong>errmsg</strong><span class="classifier">character(len=:), intent(out), pointer</span></dt><dd><p>Error message</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-api-mm">
+<h3>Subroutine mm<a class="headerlink" href="#f-subroutine-ecx-api-mm" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">mm(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">n)</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Compute the measurement model.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Parameters.</p>
+</dd>
+<dt><strong>zout</strong><span class="classifier">complex(dp), intent(out), dimension(:)</span></dt><dd><p>Angular frequencies in rad.s-1</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(int32), intent(in)</span></dt><dd><p>Complex impedance in Ohms.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-function-ecx-api-nernst">
+<h3>Function nernst<a class="headerlink" href="#f-function-ecx-api-nernst" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">function</span> <span class="pre">nernst(E0,</span> <span class="pre">z,</span> <span class="pre">aox,</span> <span class="pre">vox,</span> <span class="pre">ared,</span> <span class="pre">vred,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">E</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute the Nernst electrochemical potential in V.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>E0</strong><span class="classifier">real(dp), intent(in)</span></dt><dd></dd>
+<dt><strong>z</strong><span class="classifier">integer(int32), intent(in)</span></dt><dd><p>Standard electrochemical potential in V.</p>
+</dd>
+<dt><strong>aox</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Number of exchanged electrons.</p>
+</dd>
+<dt><strong>vox</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Activities of the oxidants.</p>
+</dd>
+<dt><strong>ared</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Coefficients for the oxidants.</p>
+</dd>
+<dt><strong>vred</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Activities of the reductants</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Coefficients for the reductants.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>E</strong><span class="classifier">real(dp)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-function-ecx-api-sbv">
+<h3>Function sbv<a class="headerlink" href="#f-function-ecx-api-sbv" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">sbv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">I</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>U</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Open Circuit Voltage in V.</p>
+</dd>
+<dt><strong>OCV</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Compute Butler Volmer equation without mass transport.</p>
+</dd>
+<dt><strong>j0</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Electrochemical potential in V.</p>
+</dd>
+<dt><strong>aa</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Exchange current density in A.cm-2.</p>
+</dd>
+<dt><strong>ac</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Anodic transfer coefficient.</p>
+</dd>
+<dt><strong>za</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Cathodic transfer coefficient.</p>
+</dd>
+<dt><strong>zc</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Number of exchnaged electrons in the anodic branch.</p>
+</dd>
+<dt><strong>A</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Number of exchnaged electrons in the cathodic branch.</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Area in cm2.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>I</strong><span class="classifier">real(dp)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-function-ecx-api-bv">
+<h3>Function bv<a class="headerlink" href="#f-function-ecx-api-bv" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">bv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">jdla,</span> <span class="pre">jdlc,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">I</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute Butler Volmer equation with mass transport.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>U</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Open Circuit Voltage in V.</p>
+</dd>
+<dt><strong>OCV</strong><span class="classifier">real(dp), intent(in)</span></dt><dd></dd>
+<dt><strong>j0</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Electrochemical potential in V.</p>
+</dd>
+<dt><strong>jdla</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Exchange current density in A.cm-2.</p>
+</dd>
+<dt><strong>jdlc</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Anodic diffusion limiting current density in A.cm-2.</p>
+</dd>
+<dt><strong>aa</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Cathodic diffusion limiting current density in A.cm-2.</p>
+</dd>
+<dt><strong>ac</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Anodic transfer coefficient.</p>
+</dd>
+<dt><strong>za</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Cathodic transfer coefficient.</p>
+</dd>
+<dt><strong>zc</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Number of exchnaged electrons in the anodic branch.</p>
+</dd>
+<dt><strong>A</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Number of exchnaged electrons in the cathodic branch.</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(dp), intent(in)</span></dt><dd><p>Area in cm2.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>I</strong><span class="classifier">real(dp)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="f-module-ecx-capi">
+<h2>Module ecx__capi<a class="headerlink" href="#f-module-ecx-capi" title="Link to this heading">#</a></h2>
+<p class="section-subtitle">Procedures</p>
+<section id="f-function-ecx-capi-capi-get-version">
+<h3>Function capi_get_version<a class="headerlink" href="#f-function-ecx-capi-capi-get-version" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">capi_get_version()bind(c,</span> <span class="pre">name=&quot;ecx_get_version&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">cptr</span></code></dt>
+<dd><div class="docutils container">
+<p>C API - Get the version.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cptr</strong><span class="classifier">type(c_ptr)</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-capi-capi-nm2ev">
+<h3>Subroutine capi_nm2eV<a class="headerlink" href="#f-subroutine-ecx-capi-capi-nm2ev" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_nm2eV(lambda,</span> <span class="pre">E,</span> <span class="pre">n)bind(C,</span> <span class="pre">name=&quot;ecx_core_nm2eV&quot;)</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lambda</strong><span class="classifier">real(c_double), intent(in), dimension(n)</span></dt><dd><p>Wavelength in nm.</p>
+</dd>
+<dt><strong>E</strong><span class="classifier">real(c_double), intent(out), dimension(n)</span></dt><dd><p>Energy in eV.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Size of lambda and E.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-capi-capi-kte">
+<h3>Subroutine capi_kTe<a class="headerlink" href="#f-subroutine-ecx-capi-capi-kte" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_kTe(T,</span> <span class="pre">kTe_,</span> <span class="pre">n)bind(C,</span> <span class="pre">name=&quot;ecx_core_kTe&quot;)</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">real(c_double), intent(in), dimension(n)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+<dt><strong>kTe_</strong><span class="classifier">real(c_double), intent(out), dimension(n)</span></dt><dd><p>Thermal voltage in V.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Size of T and kTe.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-capi-capi-z">
+<h3>Subroutine capi_z<a class="headerlink" href="#f-subroutine-ecx-capi-capi-z" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">capi_z(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">e,</span> <span class="pre">k,</span> <span class="pre">n,</span> <span class="pre">errstat,</span> <span class="pre">errmsg)bind(C,</span> <span class="pre">name=&quot;ecx_eis_z&quot;)</span></code></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">real(c_double), intent(in), dimension(k)</span></dt><dd><p>Parameters.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">real(c_double), intent(in), dimension(n)</span></dt><dd><p>Angular frequencies in rad.s-1</p>
+</dd>
+<dt><strong>zout</strong><span class="classifier">complex(c_double_complex), intent(out), dimension(n)</span></dt><dd><p>Complex impedance in Ohms.</p>
+</dd>
+<dt><strong>e</strong><span class="classifier">character(len=1,kind=c_char), intent(in), value</span></dt><dd><p>Electrochemical element: R, C, L, Q, O, T, G</p>
+</dd>
+<dt><strong>k</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Size of p</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Size of w</p>
+</dd>
+<dt><strong>errstat</strong><span class="classifier">integer(c_int), intent(out)</span></dt><dd><p>Error status</p>
+</dd>
+<dt><strong>errmsg</strong><span class="classifier">type(c_ptr), intent(out)</span></dt><dd><p>errmsg Error message</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-function-ecx-capi-capi-nernst">
+<h3>Function capi_nernst<a class="headerlink" href="#f-function-ecx-capi-capi-nernst" title="Link to this heading">#</a></h3>
+<dl class="f function">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">function</span> <span class="pre">capi_nernst(E0,</span> <span class="pre">z,</span> <span class="pre">aox,</span> <span class="pre">vox,</span> <span class="pre">nox,</span> <span class="pre">ared,</span> <span class="pre">vred,</span> <span class="pre">nred,</span> <span class="pre">T)bind(C,</span> <span class="pre">name=&quot;ecx_kinetics_nernst&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">E</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute the Nernst electrochemical potential in V.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>E0</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd></dd>
+<dt><strong>z</strong><span class="classifier">integer(c_int), intent(in), value</span></dt><dd><p>Standard electrochemical potential in V.</p>
+</dd>
+<dt><strong>aox</strong><span class="classifier">real(c_double), intent(in), dimension(nox)</span></dt><dd><p>Number of reductants.</p>
+</dd>
+<dt><strong>vox</strong><span class="classifier">real(c_double), intent(in), dimension(nox)</span></dt><dd><p>Activities of the oxidants.</p>
+</dd>
+<dt><strong>nox</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Number of exchanged electrons.</p>
+</dd>
+<dt><strong>ared</strong><span class="classifier">real(c_double), intent(in), dimension(nred)</span></dt><dd><p>Coefficients for the oxidants.</p>
+</dd>
+<dt><strong>vred</strong><span class="classifier">real(c_double), intent(in), dimension(nred)</span></dt><dd><p>Activities of the reductants</p>
+</dd>
+<dt><strong>nred</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd><p>Number of oxidants.</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Coefficients for the reductants.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>E</strong><span class="classifier">real(c_double)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-capi-capi-sbv">
+<h3>Subroutine capi_sbv<a class="headerlink" href="#f-subroutine-ecx-capi-capi-sbv" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_sbv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T,</span> <span class="pre">I,</span> <span class="pre">n)bind(c,</span> <span class="pre">name=&quot;ecx_kinetics_sbv&quot;)</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute Butler Volmer equation without mass transport.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>U</strong><span class="classifier">real(c_double), intent(in), dimension(n)</span></dt><dd><p>Open circuit potential in volts.</p>
+</dd>
+<dt><strong>OCV</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Size of U and I.</p>
+</dd>
+<dt><strong>j0</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Potential in volts.</p>
+</dd>
+<dt><strong>aa</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Exchange current density in A.cm-2.</p>
+</dd>
+<dt><strong>ac</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Anodic transfert coefficient.</p>
+</dd>
+<dt><strong>za</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Cathodic transfert coefficient.</p>
+</dd>
+<dt><strong>zc</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Number of exchanged electrons in anodic branch.</p>
+</dd>
+<dt><strong>A</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Number of exchanged electrons in cathodic branch.</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Area in cm2.</p>
+</dd>
+<dt><strong>I</strong><span class="classifier">real(c_double), intent(out), dimension(n)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="f-subroutine-ecx-capi-capi-bv">
+<h3>Subroutine capi_bv<a class="headerlink" href="#f-subroutine-ecx-capi-capi-bv" title="Link to this heading">#</a></h3>
+<dl class="f subroutine">
+<dt class="sig sig-object f">
+<code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_bv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">jdla,</span> <span class="pre">jdlc,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T,</span> <span class="pre">I,</span> <span class="pre">n)bind(c,</span> <span class="pre">name=&quot;ecx_kinetics_bv&quot;)</span></code></dt>
+<dd><div class="docutils container">
+<p>Compute Butler Volmer equation without mass transport.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>U</strong><span class="classifier">real(c_double), intent(in), dimension(n)</span></dt><dd><p>Open circuit potential in volts.</p>
+</dd>
+<dt><strong>OCV</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Size of U and I.</p>
+</dd>
+<dt><strong>j0</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Potential in volts.</p>
+</dd>
+<dt><strong>jdla</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Exchange current density in A.cm-2</p>
+</dd>
+<dt><strong>jdlc</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Anodic diffusion limiting current density in A.cm-2.</p>
+</dd>
+<dt><strong>aa</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Cathodic diffusion limiting current density in A.cm-2.</p>
+</dd>
+<dt><strong>ac</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Anodic transfert coefficient.</p>
+</dd>
+<dt><strong>za</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Cathodic transfert coefficient.</p>
+</dd>
+<dt><strong>zc</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Number of exchanged electrons in anodic branch.</p>
+</dd>
+<dt><strong>A</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Number of exchanged electrons in cathodic branch.</p>
+</dd>
+<dt><strong>T</strong><span class="classifier">real(c_double), intent(in), value</span></dt><dd><p>Area in cm2.</p>
+</dd>
+<dt><strong>I</strong><span class="classifier">real(c_double), intent(out), dimension(n)</span></dt><dd><p>Temperature in °C.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer(c_size_t), intent(in), value</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
 </section>
 
 
@@ -450,6 +894,38 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx">Module ecx</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-api">Module ecx__api</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-get-version">Function get_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-kte">Function kTe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-z">Subroutine z</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-mm">Subroutine mm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-nernst">Function nernst</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-sbv">Function sbv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-bv">Function bv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-capi">Module ecx__capi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-get-version">Function capi_get_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-nm2ev">Subroutine capi_nm2eV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-kte">Subroutine capi_kTe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-z">Subroutine capi_z</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-nernst">Function capi_nernst</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-sbv">Subroutine capi_sbv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-bv">Subroutine capi_bv</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

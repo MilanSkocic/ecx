@@ -1,6 +1,6 @@
 .PHONY: man info html pdf ford clean
 
-all: man info pdf html ford
+all: man info pdf html
 
 man:
 	make -C sphinx man

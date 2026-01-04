@@ -23,7 +23,7 @@ module-naming = false
 stdlib = "*"
 codata = { git="https://github.com/MilanSkocic/codata.git" }
 ciaaw = { git="https://github.com/MilanSkocic/ciaaw.git" }
-FLAP = {git="https://github.com/szaghi/FLAP.git", tag="v1.2.5"}
+M_CLI2 = {git="https://github.com/urbanjost/M_CLI2.git"}
 
 [install]
 library = true

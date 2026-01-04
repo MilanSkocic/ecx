@@ -1,49 +1,111 @@
-program ecxbin
+program ecxcli
     use ieee_arithmetic, only: ieee_is_nan
-    use iso_fortran_env, only: real64
+    use iso_fortran_env, only: real64, output_unit
     use ecx
-    use ciaaw, only: ciaaw_version => get_version, get_saw
-    use FLAP
+    use ciaaw, only: ciaaw_version => get_version, get_saw, print_periodic_table
+    use M_CLI2
     implicit none
-    
-    type(command_line_interface) :: cli
-    integer :: error
-    logical :: flag_man = .false.
-    logical :: flag_abridged = .true.
+
+    integer :: i
+    real(real64) :: r, dr
+    character(len=32) :: cmd
+    character(len=:),allocatable  :: help_text(:), version_text(:)
+    logical :: flag_abridged
     character(len=3) :: elmt
-    real(real64) :: m
 
-    call cli%init(progname = "ecxcli",                                         &
-                 description = "Command line for ecx.",                        &
-                 version = ciaaw_version())
-    call cli%add(switch='--man', switch_ab="-m", help='man page file name',    &
-                 required=.false., act="store_true", def="F", hidden=.true.)
 
-    call cli%add_group(group="saw", description="Standard Atomic Weights")
-    call cli%add(group="saw", positional=.true., position=1, required=.true., help="Get the standard atomic weight.")
-    call cli%add(group="saw", switch="--abridged", switch_ab="-a", required=.false., act="store_false", def="T", help="Get the abridged standard atomic weight.")
+    help_text=[character(len=80) :: &
+        'NAME                                                            ', &
+        '  ecxcli(1) - Command line for ecx                              ', &
+        '                                                                ', &
+        'SYNOPSIS                                                        ', &
+        '  ecxcli SUBCOMMAND [OPTIONS ...] ARGS ...                      ', &
+        '                                                                ', &
+        'DESCRIPTION                                                     ', &
+        '  ecxcli is command line interface for computing electro-       ', &
+        '  chemical properties:                                          ', &
+        '    o EIS         Electrochemical Impedance Z=f(w)              ', &
+        '    o Kinetics    j=f(U)                                        ', &
+        '    o PEC         Iph=f(hv, U)                                  ', &
+        '                                                                ', &
+        '  It can also provide the molar masses, isotope compositions and', &
+        '  nuclide compositions.', &
+        '                                                                ', &
+        'SUBCOMMANDS                                                     ', &
+        '  o all  Get the whole periodic table.                          ', &
+        '  o saw  Get the standard atomic weight.                        ', &
+        !'  o ice  Get the isotopic composition of the element.           ', &
+        !'  o naw  Get the nuclide atomic weight.                         ', &
+        '                                                                ', &
+        'OPTIONS                                                         ', &
+        '  o --not-abridged  Do not use the abridged value.              ', &
+        '                                                                ', &
+        'VALID FOR ALL SUBCOMMANDS                                       ', &
+        '  o --help     Show help text and exit                          ', & 
+        '  o --verbose  Display additional information when available.   ', &
+        '  o --version  Show version information and exit.               ', &
+        '                                                                ', &
+        '' ]
 
-    call cli%parse(error=error)
-    
-    if(error /= 0) then; stop error; end if
+    version_text=[character(len=80) :: &
+        'PROGRAM:      ecxcli                ', &
+        'DESCRIPTION:  Command line for ecx  ', &
+        'VERSION:      '//get_version()//'   ', &
+        'AUTHOR:       M. Skocic             ', &
+        'LICENSE:      MIT                   ', &
+        '' ]
 
-    call cli%get(switch="--man", val=flag_man, error=error)
-    if(error /= 0)then; stop error; end if
-    
-    if(flag_man) then; call cli%save_man_page(man_file="./ecx.1"); end if 
 
-    call cli%get(group="saw", position=1, val=elmt, error=error)
-    call cli%get(group="saw", switch="--abridged", val=flag_abridged)
-    if(error /= 0)then; stop error; end if
-    
-    m = get_saw(elmt, abridged=flag_abridged)
+    cmd = get_subcommand()
+    call set_mode('strict')
 
-    if(ieee_is_nan(m))then
-        print *, "Invalid element: "//elmt
-    end if
+    select case (cmd)
+        case ("saw")
+            call set_args("--abridged:a", help_saw(), version_text)
+            flag_abridged = lget('a')
+            do i=2, size(unnamed)
+                elmt = unnamed(i)
+                r = get_saw(elmt,abridged=flag_abridged)
+                dr = get_saw(elmt,abridged=flag_abridged, uncertainty=.true.)
+                write(output_unit, '(A4, A3, A3, SP, G14.6, A3, ES14.2)') &
+                     'SAW_', elmt, " = ", r, "+/-", dr
+            end do
+        case ("all")
+            call set_args(" ", help_text, version_text)
+            call  print_periodic_table()
+        case default
+            call set_args(" ", help_text, version_text)
+            do i=1, size(help_text), 1
+                write (OUTPUT_UNIT, '(A)') help_text(i)
+            end do
+    end select
 
-    if(m == -1.0_real64)then
-        print *, "Element "//elmt//" does not have a SAW."
-    end if
+contains
+
+function help_saw()result(res)
+    !! Get the help text for the subcommand saw.
+    character(len=80), allocatable :: res(:)
+    res = [character(len=80) :: &
+        'NAME                                                            ', &
+        '  saw - th ecxcli subcommand to get the standard atomic weight. ', &
+        '                                                                ', &
+        'SYNOPSIS                                                        ', &
+        '  ecxcli saw [--not-abridged] ELEMENTS ...                      ', &
+        '                                                                ', &
+        'DESCRIPTION                                                     ', &
+        '  Provide the saw either abridged or not.                       ', &
+        '  The uncertainty of the saw can be retrieved too.              ', &
+        '                                                                ', &
+        'OPTIONS                                                         ', &
+        '  o --not-abridged  Do not use the abridged value.              ', &
+        '                                                                ', &
+        'VALID FOR ALL SUBCOMMANDS                                       ', &
+        '  o --help     Show help text and exit                          ', & 
+        '  o --verbose  Display additional information when available.   ', &
+        '  o --version  Show version information and exit.               ', &
+        '                                                                ', &
+        '' ]
+
+end function
 
 end program

@@ -50,6 +50,7 @@ fortran_doc_chars = ["!", ">"]
 
 fortran_sources = [
 	"../../../src",
+    "../../../app"
 ]
 
 html_theme = 'pydata_sphinx_theme'

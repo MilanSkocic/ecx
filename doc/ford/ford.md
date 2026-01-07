@@ -5,6 +5,7 @@ author: M. Skocic
 email: milan.skocic@gmail.com
 github: https://github.com/MilanSkocic/ecx
 src_dir: ../../src
+         ../../app
 output_dir: ../sphinx/build/html/ford
 display: public
          protected

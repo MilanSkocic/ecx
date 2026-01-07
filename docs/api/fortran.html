@@ -154,18 +154,33 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../changelog/index.html">
-    Changelog
+  <a class="nav-link nav-internal" href="../app/index.html">
+    Programs
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../references/index.html">
+  <a class="nav-link nav-internal" href="../changelog/index.html">
+    Changelog
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references/index.html">
     References
   </a>
 </li>
 
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -283,6 +298,13 @@ document.write(`
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="index.html">
     APIs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../app/index.html">
+    Programs
   </a>
 </li>
 
@@ -412,19 +434,19 @@ document.write(`
 <h1>Fortran<a class="headerlink" href="#fortran" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="../ford/index.html">FORD documentation</a></p>
 <section id="f-module-ecx">
-<h2>Module ecx<a class="headerlink" href="#f-module-ecx" title="Link to this heading">#</a></h2>
+<h2>ecx (module)<a class="headerlink" href="#f-module-ecx" title="Link to this heading">#</a></h2>
 <div class="docutils container">
 <p>Main module for ecx.</p>
 </div>
 </section>
 <section id="f-module-ecx-api">
-<h2>Module ecx__api<a class="headerlink" href="#f-module-ecx-api" title="Link to this heading">#</a></h2>
+<h2>ecx__api (module)<a class="headerlink" href="#f-module-ecx-api" title="Link to this heading">#</a></h2>
 <div class="docutils container">
 <p>API</p>
 </div>
 <p class="section-subtitle">Procedures</p>
 <section id="f-function-ecx-api-get-version">
-<h3>Function get_version<a class="headerlink" href="#f-function-ecx-api-get-version" title="Link to this heading">#</a></h3>
+<h3>get_version (function)<a class="headerlink" href="#f-function-ecx-api-get-version" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">get_version()</span> <span class="pre">-&gt;</span> <span class="pre">fptr</span></code></dt>
@@ -443,7 +465,7 @@ document.write(`
 
 </section>
 <section id="f-function-ecx-api-kte">
-<h3>Function kTe<a class="headerlink" href="#f-function-ecx-api-kte" title="Link to this heading">#</a></h3>
+<h3>kTe (function)<a class="headerlink" href="#f-function-ecx-api-kte" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">kTe(T)</span> <span class="pre">-&gt;</span> <span class="pre">r</span></code></dt>
@@ -470,7 +492,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-api-z">
-<h3>Subroutine z<a class="headerlink" href="#f-subroutine-ecx-api-z" title="Link to this heading">#</a></h3>
+<h3>z (subroutine)<a class="headerlink" href="#f-subroutine-ecx-api-z" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">z(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">e,</span> <span class="pre">errstat,</span> <span class="pre">errmsg)</span></code></dt>
@@ -495,7 +517,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-api-mm">
-<h3>Subroutine mm<a class="headerlink" href="#f-subroutine-ecx-api-mm" title="Link to this heading">#</a></h3>
+<h3>mm (subroutine)<a class="headerlink" href="#f-subroutine-ecx-api-mm" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">mm(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">n)</span></code></dt>
@@ -517,7 +539,7 @@ document.write(`
 
 </section>
 <section id="f-function-ecx-api-nernst">
-<h3>Function nernst<a class="headerlink" href="#f-function-ecx-api-nernst" title="Link to this heading">#</a></h3>
+<h3>nernst (function)<a class="headerlink" href="#f-function-ecx-api-nernst" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">function</span> <span class="pre">nernst(E0,</span> <span class="pre">z,</span> <span class="pre">aox,</span> <span class="pre">vox,</span> <span class="pre">ared,</span> <span class="pre">vred,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">E</span></code></dt>
@@ -555,7 +577,7 @@ document.write(`
 
 </section>
 <section id="f-function-ecx-api-sbv">
-<h3>Function sbv<a class="headerlink" href="#f-function-ecx-api-sbv" title="Link to this heading">#</a></h3>
+<h3>sbv (function)<a class="headerlink" href="#f-function-ecx-api-sbv" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">sbv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">I</span></code></dt>
@@ -595,7 +617,7 @@ document.write(`
 
 </section>
 <section id="f-function-ecx-api-bv">
-<h3>Function bv<a class="headerlink" href="#f-function-ecx-api-bv" title="Link to this heading">#</a></h3>
+<h3>bv (function)<a class="headerlink" href="#f-function-ecx-api-bv" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">elemental</span> <span class="pre">function</span> <span class="pre">bv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">jdla,</span> <span class="pre">jdlc,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">I</span></code></dt>
@@ -642,10 +664,10 @@ document.write(`
 </section>
 </section>
 <section id="f-module-ecx-capi">
-<h2>Module ecx__capi<a class="headerlink" href="#f-module-ecx-capi" title="Link to this heading">#</a></h2>
+<h2>ecx__capi (module)<a class="headerlink" href="#f-module-ecx-capi" title="Link to this heading">#</a></h2>
 <p class="section-subtitle">Procedures</p>
 <section id="f-function-ecx-capi-capi-get-version">
-<h3>Function capi_get_version<a class="headerlink" href="#f-function-ecx-capi-capi-get-version" title="Link to this heading">#</a></h3>
+<h3>capi_get_version (function)<a class="headerlink" href="#f-function-ecx-capi-capi-get-version" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">capi_get_version()bind(c,</span> <span class="pre">name=&quot;ecx_get_version&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">cptr</span></code></dt>
@@ -663,7 +685,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-capi-capi-nm2ev">
-<h3>Subroutine capi_nm2eV<a class="headerlink" href="#f-subroutine-ecx-capi-capi-nm2ev" title="Link to this heading">#</a></h3>
+<h3>capi_nm2eV (subroutine)<a class="headerlink" href="#f-subroutine-ecx-capi-capi-nm2ev" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_nm2eV(lambda,</span> <span class="pre">E,</span> <span class="pre">n)bind(C,</span> <span class="pre">name=&quot;ecx_core_nm2eV&quot;)</span></code></dt>
@@ -683,7 +705,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-capi-capi-kte">
-<h3>Subroutine capi_kTe<a class="headerlink" href="#f-subroutine-ecx-capi-capi-kte" title="Link to this heading">#</a></h3>
+<h3>capi_kTe (subroutine)<a class="headerlink" href="#f-subroutine-ecx-capi-capi-kte" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_kTe(T,</span> <span class="pre">kTe_,</span> <span class="pre">n)bind(C,</span> <span class="pre">name=&quot;ecx_core_kTe&quot;)</span></code></dt>
@@ -703,7 +725,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-capi-capi-z">
-<h3>Subroutine capi_z<a class="headerlink" href="#f-subroutine-ecx-capi-capi-z" title="Link to this heading">#</a></h3>
+<h3>capi_z (subroutine)<a class="headerlink" href="#f-subroutine-ecx-capi-capi-z" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">capi_z(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">e,</span> <span class="pre">k,</span> <span class="pre">n,</span> <span class="pre">errstat,</span> <span class="pre">errmsg)bind(C,</span> <span class="pre">name=&quot;ecx_eis_z&quot;)</span></code></dt>
@@ -733,7 +755,7 @@ document.write(`
 
 </section>
 <section id="f-function-ecx-capi-capi-nernst">
-<h3>Function capi_nernst<a class="headerlink" href="#f-function-ecx-capi-capi-nernst" title="Link to this heading">#</a></h3>
+<h3>capi_nernst (function)<a class="headerlink" href="#f-function-ecx-capi-capi-nernst" title="Link to this heading">#</a></h3>
 <dl class="f function">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">function</span> <span class="pre">capi_nernst(E0,</span> <span class="pre">z,</span> <span class="pre">aox,</span> <span class="pre">vox,</span> <span class="pre">nox,</span> <span class="pre">ared,</span> <span class="pre">vred,</span> <span class="pre">nred,</span> <span class="pre">T)bind(C,</span> <span class="pre">name=&quot;ecx_kinetics_nernst&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">E</span></code></dt>
@@ -775,7 +797,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-capi-capi-sbv">
-<h3>Subroutine capi_sbv<a class="headerlink" href="#f-subroutine-ecx-capi-capi-sbv" title="Link to this heading">#</a></h3>
+<h3>capi_sbv (subroutine)<a class="headerlink" href="#f-subroutine-ecx-capi-capi-sbv" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_sbv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T,</span> <span class="pre">I,</span> <span class="pre">n)bind(c,</span> <span class="pre">name=&quot;ecx_kinetics_sbv&quot;)</span></code></dt>
@@ -813,7 +835,7 @@ document.write(`
 
 </section>
 <section id="f-subroutine-ecx-capi-capi-bv">
-<h3>Subroutine capi_bv<a class="headerlink" href="#f-subroutine-ecx-capi-capi-bv" title="Link to this heading">#</a></h3>
+<h3>capi_bv (subroutine)<a class="headerlink" href="#f-subroutine-ecx-capi-capi-bv" title="Link to this heading">#</a></h3>
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">pure</span> <span class="pre">subroutine</span> <span class="pre">capi_bv(U,</span> <span class="pre">OCV,</span> <span class="pre">j0,</span> <span class="pre">jdla,</span> <span class="pre">jdlc,</span> <span class="pre">aa,</span> <span class="pre">ac,</span> <span class="pre">za,</span> <span class="pre">zc,</span> <span class="pre">A,</span> <span class="pre">T,</span> <span class="pre">I,</span> <span class="pre">n)bind(c,</span> <span class="pre">name=&quot;ecx_kinetics_bv&quot;)</span></code></dt>
@@ -903,25 +925,25 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx">Module ecx</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-api">Module ecx__api</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-get-version">Function get_version</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-kte">Function kTe</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-z">Subroutine z</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-mm">Subroutine mm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-nernst">Function nernst</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-sbv">Function sbv</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-bv">Function bv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx">ecx (module)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-api">ecx__api (module)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-get-version">get_version (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-kte">kTe (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-z">z (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-api-mm">mm (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-nernst">nernst (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-sbv">sbv (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-api-bv">bv (function)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-capi">Module ecx__capi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-get-version">Function capi_get_version</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-nm2ev">Subroutine capi_nm2eV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-kte">Subroutine capi_kTe</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-z">Subroutine capi_z</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-nernst">Function capi_nernst</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-sbv">Subroutine capi_sbv</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-bv">Subroutine capi_bv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-module-ecx-capi">ecx__capi (module)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-get-version">capi_get_version (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-nm2ev">capi_nm2eV (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-kte">capi_kTe (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-z">capi_z (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-function-ecx-capi-capi-nernst">capi_nernst (function)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-sbv">capi_sbv (subroutine)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-subroutine-ecx-capi-capi-bv">capi_bv (subroutine)</a></li>
 </ul>
 </li>
 </ul>

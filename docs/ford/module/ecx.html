@@ -1,0 +1,631 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Electrochemistry for Fortran">
+    <meta name="author" content="M. Skocic" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ecx &ndash; ecx</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">ecx </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/ecxcli.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ecx
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.8% of total for modules and submodules.">4 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ecx.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ecx.f90.html'>ecx.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ecx</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+    <em>None</em>
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Main module for ecx.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='ecx__api.html'>ecx__api</a></li>
+                  <li class="list-inline-item"><a href='ecx__capi.html'>ecx__capi</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.42.4 (0)
+ -->
+<!-- Title: module~~ecx~~UsesGraph Pages: 1 -->
+<svg id="moduleecxUsesGraph" width="641pt" height="249pt"
+ viewBox="0.00 0.00 641.00 248.69" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ecx~~UsesGraph" class="graph" transform="scale(0.88 0.88) rotate(0) translate(4 280)">
+<title>module~~ecx~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 728,-280 728,4 -4,4"/>
+<!-- module~ecx -->
+<g id="module~~ecx~~UsesGraph_node1" class="node">
+<title>module~ecx</title>
+<polygon fill="none" stroke="black" points="724,-170 670,-170 670,-146 724,-146 724,-170"/>
+<text text-anchor="middle" x="697" y="-155.6" font-family="Helvetica,sans-Serif" font-size="10.50">ecx</text>
+</g>
+<!-- module~ecx__api -->
+<g id="module~~ecx~~UsesGraph_node2" class="node">
+<title>module~ecx__api</title>
+<g id="a_module~~ecx~~UsesGraph_node2"><a xlink:href="../module/ecx__api.html" xlink:title="ecx__api">
+<polygon fill="#337ab7" stroke="#337ab7" points="534,-190 476,-190 476,-166 534,-166 534,-190"/>
+<text text-anchor="middle" x="505" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__api</text>
+</a>
+</g>
+</g>
+<!-- module~ecx&#45;&gt;module~ecx__api -->
+<g id="module~~ecx~~UsesGraph_edge1" class="edge">
+<title>module~ecx&#45;&gt;module~ecx__api</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.98,-160.74C637.46,-164.16 581.56,-170.05 544.19,-173.98"/>
+<polygon fill="#000000" stroke="#000000" points="543.76,-170.51 534.18,-175.03 544.49,-177.47 543.76,-170.51"/>
+</g>
+<!-- module~ecx__capi -->
+<g id="module~~ecx~~UsesGraph_node3" class="node">
+<title>module~ecx__capi</title>
+<g id="a_module~~ecx~~UsesGraph_node3"><a xlink:href="../module/ecx__capi.html" xlink:title="ecx__capi">
+<polygon fill="#337ab7" stroke="#337ab7" points="634,-150 570,-150 570,-126 634,-126 634,-150"/>
+<text text-anchor="middle" x="602" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__capi</text>
+</a>
+</g>
+</g>
+<!-- module~ecx&#45;&gt;module~ecx__capi -->
+<g id="module~~ecx~~UsesGraph_edge2" class="edge">
+<title>module~ecx&#45;&gt;module~ecx__capi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.6,-152.32C661.65,-150.61 652.73,-148.69 644.06,-146.83"/>
+<polygon fill="#000000" stroke="#000000" points="644.59,-143.36 634.08,-144.68 643.12,-150.21 644.59,-143.36"/>
+</g>
+<!-- module~ecx__common -->
+<g id="module~~ecx~~UsesGraph_node4" class="node">
+<title>module~ecx__common</title>
+<g id="a_module~~ecx~~UsesGraph_node4"><a xlink:href="../module/ecx__common.html" xlink:title="ecx__common">
+<polygon fill="#337ab7" stroke="#337ab7" points="222,-150 133,-150 133,-126 222,-126 222,-150"/>
+<text text-anchor="middle" x="177.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__common</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__api&#45;&gt;module~ecx__common -->
+<g id="module~~ecx~~UsesGraph_edge3" class="edge">
+<title>module~ecx__api&#45;&gt;module~ecx__common</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M477.05,-190.06C436.6,-206.59 357.85,-232.65 291.5,-218"/>
+</g>
+<!-- module~ecx__core -->
+<g id="module~~ecx~~UsesGraph_node5" class="node">
+<title>module~ecx__core</title>
+<g id="a_module~~ecx~~UsesGraph_node5"><a xlink:href="../module/ecx__core.html" xlink:title="ecx__core">
+<polygon fill="#337ab7" stroke="#337ab7" points="323,-150 258,-150 258,-126 323,-126 323,-150"/>
+<text text-anchor="middle" x="290.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__core</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__api&#45;&gt;module~ecx__core -->
+<g id="module~~ecx~~UsesGraph_edge4" class="edge">
+<title>module~ecx__api&#45;&gt;module~ecx__core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M475.97,-167.52C464.9,-163.72 451.98,-159.71 440,-157 404.39,-148.96 363.16,-144.02 333.19,-141.2"/>
+<polygon fill="#000000" stroke="#000000" points="333.36,-137.7 323.09,-140.29 332.74,-144.68 333.36,-137.7"/>
+</g>
+<!-- module~ecx__eis -->
+<g id="module~~ecx~~UsesGraph_node6" class="node">
+<title>module~ecx__eis</title>
+<g id="a_module~~ecx~~UsesGraph_node6"><a xlink:href="../module/ecx__eis.html" xlink:title="ecx__eis">
+<polygon fill="#337ab7" stroke="#337ab7" points="428,-190 371,-190 371,-166 428,-166 428,-190"/>
+<text text-anchor="middle" x="399.5" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__eis</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__api&#45;&gt;module~ecx__eis -->
+<g id="module~~ecx~~UsesGraph_edge5" class="edge">
+<title>module~ecx__api&#45;&gt;module~ecx__eis</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M475.99,-178C464.39,-178 450.76,-178 438.3,-178"/>
+<polygon fill="#000000" stroke="#000000" points="438.17,-174.5 428.17,-178 438.17,-181.5 438.17,-174.5"/>
+</g>
+<!-- module~ecx__version -->
+<g id="module~~ecx~~UsesGraph_node7" class="node">
+<title>module~ecx__version</title>
+<g id="a_module~~ecx~~UsesGraph_node7"><a xlink:href="../module/ecx__version.html" xlink:title="ecx__version">
+<polygon fill="#337ab7" stroke="#337ab7" points="440,-270 359,-270 359,-246 440,-246 440,-270"/>
+<text text-anchor="middle" x="399.5" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecx__version</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__api&#45;&gt;module~ecx__version -->
+<g id="module~~ecx~~UsesGraph_edge6" class="edge">
+<title>module~ecx__api&#45;&gt;module~ecx__version</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M490.65,-190.07C477.96,-201.35 458.17,-218.43 440,-232 436.35,-234.73 432.43,-237.49 428.52,-240.15"/>
+<polygon fill="#000000" stroke="#000000" points="426.49,-237.3 420.1,-245.75 430.37,-243.13 426.49,-237.3"/>
+</g>
+<!-- module~ecx__capi&#45;&gt;module~ecx__api -->
+<g id="module~~ecx~~UsesGraph_edge7" class="edge">
+<title>module~ecx__capi&#45;&gt;module~ecx__api</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M572.5,-150C563.4,-153.83 553.18,-158.13 543.54,-162.19"/>
+<polygon fill="#000000" stroke="#000000" points="542.01,-159.04 534.16,-166.14 544.73,-165.49 542.01,-159.04"/>
+</g>
+<!-- module~ecx__capi&#45;&gt;module~ecx__common -->
+<g id="module~~ecx~~UsesGraph_edge8" class="edge">
+<title>module~ecx__capi&#45;&gt;module~ecx__common</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M569.68,-126.69C530.46,-113.78 461.06,-95.03 400.5,-100"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M398.5,-100C335.64,-102.17 319.78,-105.16 258,-117 248.84,-118.76 239.17,-120.98 229.85,-123.33"/>
+<polygon fill="#000000" stroke="#000000" points="228.73,-120.01 219.92,-125.9 230.48,-126.78 228.73,-120.01"/>
+</g>
+<!-- module~ecx__capi&#45;&gt;module~ecx__core -->
+<g id="module~~ecx~~UsesGraph_edge9" class="edge">
+<title>module~ecx__capi&#45;&gt;module~ecx__core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M398.5,-100C372.38,-102.14 344.53,-112.31 323.8,-121.59"/>
+<polygon fill="#000000" stroke="#000000" points="322.11,-118.51 314.51,-125.89 325.06,-124.86 322.11,-118.51"/>
+</g>
+<!-- ieee_arithmetic -->
+<g id="module~~ecx~~UsesGraph_node8" class="node">
+<title>ieee_arithmetic</title>
+<g id="a_module~~ecx~~UsesGraph_node8"><a xlink:href="http://fortranwiki.org/fortran/show/ieee_arithmetic" xlink:title="ieee_arithmetic">
+<polygon fill="#337ab7" stroke="#337ab7" points="96.5,-276 0.5,-276 0.5,-252 96.5,-252 96.5,-276"/>
+<text text-anchor="middle" x="48.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__common&#45;&gt;ieee_arithmetic -->
+<g id="module~~ecx~~UsesGraph_edge10" class="edge">
+<title>module~ecx__common&#45;&gt;ieee_arithmetic</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M169.98,-150.3C158.07,-171.73 130.89,-216.18 97,-243 95.41,-244.26 93.73,-245.46 91.99,-246.6"/>
+<polygon fill="#000000" stroke="#000000" points="89.85,-243.8 82.94,-251.82 93.35,-249.86 89.85,-243.8"/>
+</g>
+<!-- iso_c_binding -->
+<g id="module~~ecx~~UsesGraph_node9" class="node">
+<title>iso_c_binding</title>
+<g id="a_module~~ecx~~UsesGraph_node9"><a xlink:href="http://fortranwiki.org/fortran/show/iso_c_binding" xlink:title="iso_c_binding">
+<polygon fill="#337ab7" stroke="#337ab7" points="90.5,-234 6.5,-234 6.5,-210 90.5,-210 90.5,-234"/>
+<text text-anchor="middle" x="48.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_c_binding</text>
+</a>
+</g>
+</g>
+<!-- module~ecx__common&#45;&gt;iso_c_binding -->
+<g id="module~~ecx~~UsesGraph_edge11" class="edge">
+<title>module~ecx__common&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M163.48,-150.04C148.34,-163.62 122.18,-185.8 97,-201 94.5,-202.51 91.88,-203.97 89.2,-205.37"/>
+<polygon fill="#000000" stroke="#000000" points="87.41,-202.35 79.98,-209.9 90.5,-208.63 87.41,-202.35"/>
+</g>
+<!-- stdlib_codata -->
+<g id="module~~ecx~~UsesGraph_node10" class="node">
+<title>stdlib_codata</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="90,-192 7,-192 7,-168 90,-168 90,-192"/>
+<text text-anchor="middle" x="48.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">stdlib_codata</text>
+</g>
+<!-- module~ecx__common&#45;&gt;stdlib_codata -->
+<g id="module~~ecx~~UsesGraph_edge12" class="edge">
+<title>module~ecx__common&#45;&gt;stdlib_codata</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M140.11,-150.04C126.29,-154.6 110.37,-159.87 95.76,-164.7"/>
+<polygon fill="#000000" stroke="#000000" points="94.29,-161.5 85.9,-167.96 96.49,-168.15 94.29,-161.5"/>
+</g>
+<!-- stdlib_constants -->
+<g id="module~~ecx~~UsesGraph_node11" class="node">
+<title>stdlib_constants</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="97,-150 0,-150 0,-126 97,-126 97,-150"/>
+<text text-anchor="middle" x="48.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">stdlib_constants</text>
+</g>
+<!-- module~ecx__common&#45;&gt;stdlib_constants -->
+<g id="module~~ecx~~UsesGraph_edge13" class="edge">
+<title>module~ecx__common&#45;&gt;stdlib_constants</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M132.79,-138C124.63,-138 115.99,-138 107.47,-138"/>
+<polygon fill="#000000" stroke="#000000" points="107.2,-134.5 97.2,-138 107.2,-141.5 107.2,-134.5"/>
+</g>
+<!-- stdlib_kinds -->
+<g id="module~~ecx~~UsesGraph_node12" class="node">
+<title>stdlib_kinds</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="85.5,-108 11.5,-108 11.5,-84 85.5,-84 85.5,-108"/>
+<text text-anchor="middle" x="48.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">stdlib_kinds</text>
+</g>
+<!-- module~ecx__common&#45;&gt;stdlib_kinds -->
+<g id="module~~ecx~~UsesGraph_edge14" class="edge">
+<title>module~ecx__common&#45;&gt;stdlib_kinds</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M140.11,-125.96C126.29,-121.4 110.37,-116.13 95.76,-111.3"/>
+<polygon fill="#000000" stroke="#000000" points="96.49,-107.85 85.9,-108.04 94.29,-114.5 96.49,-107.85"/>
+</g>
+<!-- stdlib_math -->
+<g id="module~~ecx~~UsesGraph_node13" class="node">
+<title>stdlib_math</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="85.5,-66 11.5,-66 11.5,-42 85.5,-42 85.5,-66"/>
+<text text-anchor="middle" x="48.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">stdlib_math</text>
+</g>
+<!-- module~ecx__common&#45;&gt;stdlib_math -->
+<g id="module~~ecx~~UsesGraph_edge15" class="edge">
+<title>module~ecx__common&#45;&gt;stdlib_math</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M163.48,-125.96C148.34,-112.38 122.18,-90.2 97,-75 94.5,-73.49 91.88,-72.03 89.2,-70.63"/>
+<polygon fill="#000000" stroke="#000000" points="90.5,-67.37 79.98,-66.1 87.41,-73.65 90.5,-67.37"/>
+</g>
+<!-- stdlib_optval -->
+<g id="module~~ecx~~UsesGraph_node14" class="node">
+<title>stdlib_optval</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="88,-24 9,-24 9,0 88,0 88,-24"/>
+<text text-anchor="middle" x="48.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">stdlib_optval</text>
+</g>
+<!-- module~ecx__common&#45;&gt;stdlib_optval -->
+<g id="module~~ecx~~UsesGraph_edge16" class="edge">
+<title>module~ecx__common&#45;&gt;stdlib_optval</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M169.98,-125.7C158.07,-104.27 130.89,-59.82 97,-33 95.41,-31.74 93.73,-30.54 91.99,-29.4"/>
+<polygon fill="#000000" stroke="#000000" points="93.35,-26.14 82.94,-24.18 89.85,-32.2 93.35,-26.14"/>
+</g>
+<!-- module~ecx__core&#45;&gt;module~ecx__common -->
+<g id="module~~ecx~~UsesGraph_edge17" class="edge">
+<title>module~ecx__core&#45;&gt;module~ecx__common</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M257.99,-138C249.97,-138 241.13,-138 232.34,-138"/>
+<polygon fill="#000000" stroke="#000000" points="232.11,-134.5 222.11,-138 232.11,-141.5 232.11,-134.5"/>
+</g>
+<!-- module~ecx__eis&#45;&gt;module~ecx__common -->
+<g id="module~~ecx~~UsesGraph_edge18" class="edge">
+<title>module~ecx__eis&#45;&gt;module~ecx__common</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M375.03,-190.2C348.76,-203.24 307.77,-221.59 291.5,-218"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M289.5,-218C251.04,-209.51 215.83,-178.45 195.8,-157.63"/>
+<polygon fill="#000000" stroke="#000000" points="198.27,-155.14 188.89,-150.22 193.15,-159.92 198.27,-155.14"/>
+</g>
+<!-- module~ecx__eis&#45;&gt;module~ecx__core -->
+<g id="module~~ecx~~UsesGraph_edge19" class="edge">
+<title>module~ecx__eis&#45;&gt;module~ecx__core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M370.94,-167.7C359.3,-163.35 345.49,-158.18 332.68,-153.39"/>
+<polygon fill="#000000" stroke="#000000" points="333.72,-150.05 323.13,-149.82 331.27,-156.6 333.72,-150.05"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleecxUsesGraph = svgPanZoom('#moduleecxUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.42.4 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="516pt" height="32pt"
+ viewBox="0.00 0.00 516.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 512,-28 512,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="385.5,-24 328.5,-24 328.5,0 385.5,0 385.5,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="508,-24 404,-24 404,0 508,0 508,-24"/>
+<text text-anchor="middle" x="456" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.42.4 (0)
+ -->
+<!-- Title: module~~ecx~~UsedByGraph Pages: 1 -->
+<svg id="moduleecxUsedByGraph" width="152pt" height="32pt"
+ viewBox="0.00 0.00 152.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ecx~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~ecx~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 148,-28 148,4 -4,4"/>
+<!-- module~ecx -->
+<g id="module~~ecx~~UsedByGraph_node1" class="node">
+<title>module~ecx</title>
+<polygon fill="none" stroke="black" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">ecx</text>
+</g>
+<!-- program~ecxcli -->
+<g id="module~~ecx~~UsedByGraph_node2" class="node">
+<title>program~ecxcli</title>
+<g id="a_module~~ecx~~UsedByGraph_node2"><a xlink:href="../program/ecxcli.html" xlink:title="ecxcli">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ecxcli</text>
+</a>
+</g>
+</g>
+<!-- program~ecxcli&#45;&gt;module~ecx -->
+<g id="module~~ecx~~UsedByGraph_edge1" class="edge">
+<title>program~ecxcli&#45;&gt;module~ecx</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M89.6,-12C81.61,-12 72.69,-12 64.18,-12"/>
+<polygon fill="#000000" stroke="#000000" points="64.08,-8.5 54.08,-12 64.08,-15.5 64.08,-8.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.42.4 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="516pt" height="32pt"
+ viewBox="0.00 0.00 516.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 512,-28 512,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="385.5,-24 328.5,-24 328.5,0 385.5,0 385.5,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="508,-24 404,-24 404,0 508,0 508,-24"/>
+<text text-anchor="middle" x="456" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              ecx
+ was developed by M. Skocic<br>              &copy; 2026 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

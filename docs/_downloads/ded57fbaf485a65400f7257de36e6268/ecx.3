@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "ECX" "3" "Jan 03, 2026" "" "ecx"
+.TH "ECX" "3" "Jan 07, 2026" "" "ecx"
 .SH NAME
 ecx \- Electrochemistry for Fortran
 [image: Alternative text]
@@ -194,13 +194,13 @@ plt.show()
 .SS Fortran
 .sp
 \X'tty: link https://milanskocic.github.io/ecx/ford/index.html'\fI\%https://milanskocic.github.io/ecx/ford/index.html\fP\X'tty: link'
-.SS Module ecx
+.SS ecx (module)
 Main module for ecx.
-.SS Module ecx__api
+.SS ecx__api (module)
 API
 \fBProcedures\fP
 .PP
-.SS Function get_version
+.SS get_version (function)
 .INDENT 0.0
 .TP
 .B \fBfunction get_version() \-> fptr\fP
@@ -215,7 +215,7 @@ Version of the library.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Function kTe
+.SS kTe (function)
 .INDENT 0.0
 .TP
 .B \fBpure elemental function kTe(T) \-> r\fP
@@ -239,7 +239,7 @@ Thermal voltage in V.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine z
+.SS z (subroutine)
 .INDENT 0.0
 .TP
 .B \fBsubroutine z(p, w, zout, e, errstat, errmsg)\fP
@@ -267,7 +267,7 @@ Error message
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine mm
+.SS mm (subroutine)
 .INDENT 0.0
 .TP
 .B \fBsubroutine mm(p, w, zout, n)\fP
@@ -290,7 +290,7 @@ Complex impedance in Ohms.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Function nernst
+.SS nernst (function)
 .INDENT 0.0
 .TP
 .B \fBpure function nernst(E0, z, aox, vox, ared, vred, T) \-> E\fP
@@ -331,7 +331,7 @@ Temperature in °C.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Function sbv
+.SS sbv (function)
 .INDENT 0.0
 .TP
 .B \fBpure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T) \-> I\fP
@@ -378,7 +378,7 @@ Temperature in °C.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Function bv
+.SS bv (function)
 .INDENT 0.0
 .TP
 .B \fBpure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T) \-> I\fP
@@ -431,10 +431,10 @@ Temperature in °C.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Module ecx__capi
+.SS ecx__capi (module)
 \fBProcedures\fP
 .PP
-.SS Function capi_get_version
+.SS capi_get_version (function)
 .INDENT 0.0
 .TP
 .B \fBfunction capi_get_version()bind(c, name=\(dqecx_get_version\(dq) \-> cptr\fP
@@ -448,7 +448,7 @@ C API \- Get the version.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine capi_nm2eV
+.SS capi_nm2eV (subroutine)
 .INDENT 0.0
 .TP
 .B \fBpure subroutine capi_nm2eV(lambda, E, n)bind(C, name=\(dqecx_core_nm2eV\(dq)\fP
@@ -468,7 +468,7 @@ Size of lambda and E.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine capi_kTe
+.SS capi_kTe (subroutine)
 .INDENT 0.0
 .TP
 .B \fBpure subroutine capi_kTe(T, kTe_, n)bind(C, name=\(dqecx_core_kTe\(dq)\fP
@@ -488,7 +488,7 @@ Size of T and kTe.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine capi_z
+.SS capi_z (subroutine)
 .INDENT 0.0
 .TP
 .B \fBsubroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name=\(dqecx_eis_z\(dq)\fP
@@ -523,7 +523,7 @@ errmsg Error message
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Function capi_nernst
+.SS capi_nernst (function)
 .INDENT 0.0
 .TP
 .B \fBpure function capi_nernst(E0, z, aox, vox, nox, ared, vred, nred, T)bind(C, name=\(dqecx_kinetics_nernst\(dq) \-> E\fP
@@ -570,7 +570,7 @@ Temperature in °C.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine capi_sbv
+.SS capi_sbv (subroutine)
 .INDENT 0.0
 .TP
 .B \fBpure subroutine capi_sbv(U, OCV, j0, aa, ac, za, zc, A, T, I, n)bind(c, name=\(dqecx_kinetics_sbv\(dq)\fP
@@ -614,7 +614,7 @@ Temperature in °C.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Subroutine capi_bv
+.SS capi_bv (subroutine)
 .INDENT 0.0
 .TP
 .B \fBpure subroutine capi_bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T, I, n)bind(c, name=\(dqecx_kinetics_bv\(dq)\fP
@@ -719,6 +719,219 @@ extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z,
 .SS Python
 .sp
 Python wrapper of the (Modern Fortran) ecx library.
+.SH PROGRAMS
+.SS ecxcli (program)
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+program ecxcli
+    !! CLI interface for electrochemistry.
+    use ieee_arithmetic, only: ieee_is_nan
+    use iso_fortran_env, only: real64, int32, output_unit
+    use ecx
+    use ciaaw, only: ciaaw_version => get_version, get_saw, print_periodic_table,&
+                     get_z_by_symbol
+    use M_CLI2
+    implicit none
+
+    integer :: i
+    integer(int32) :: zmass
+    real(real64) :: r, dr
+    character(len=32) :: cmd
+    character(len=:),allocatable, target  :: help_text(:), version_text(:), usage_text(:)
+    character(len=:), pointer :: char_fp(:)
+    character(len=3) :: elmt
+    
+    nullify(char_fp)
+
+    help_text=[character(len=80) :: &
+        \(aqNAME                                                            \(aq, &
+        \(aq  ecxcli(1) \- Command line for ecx                              \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqSYNOPSIS                                                        \(aq, &
+        \(aq  ecxcli SUBCOMMAND [OPTIONS ...] ARGS ...                      \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqDESCRIPTION                                                     \(aq, &
+        \(aq  ecxcli is command line interface for computing electro\-       \(aq, &
+        \(aq  chemical properties:                                          \(aq, &
+        \(aq    o EIS         Electrochemical Impedance Z=f(w)              \(aq, &
+        \(aq    o Kinetics    j=f(U)                                        \(aq, &
+        \(aq    o PEC         Iph=f(hv, U)                                  \(aq, &
+        \(aq                                                                \(aq, &
+        \(aq  It can also provide the molar masses, isotope compositions and\(aq, &
+        \(aq  nuclide compositions.\(aq, &
+        \(aq                                                                \(aq, &
+        \(aqSUBCOMMANDS                                                     \(aq, &
+        \(aq  o all  Get the whole periodic table.                          \(aq, &
+        \(aq  o saw  Get the standard atomic weight.                        \(aq, &
+        !\(aq  o ice  Get the isotopic composition of the element.           \(aq, &
+        !\(aq  o naw  Get the nuclide atomic weight.                         \(aq, &
+        \(aq                                                                \(aq, &
+        \(aq  Enter ecxcli SUBCOMMAND \-\-help for detailed descriptions.     \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqOPTIONS                                                         \(aq, &
+        \(aq  o \-\-abridged, \-a     Use the abridged value.                  \(aq, &
+        \(aq  o \-\-uncertainty, \-u  Use the uncertainty.                     \(aq, &
+        \(aq  o \-\-pprint           Nice formatting.                         \(aq, &
+        \(aq  o \-\-mass, \-z         Get the mass number.                     \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqVALID FOR ALL SUBCOMMANDS                                       \(aq, &
+        \(aq  o \-\-help     Show help text and exit                          \(aq, & 
+        \(aq  o \-\-verbose  Display additional information when available.   \(aq, &
+        \(aq  o \-\-version  Show version information and exit.               \(aq, &
+        \(aq                                                                \(aq, &
+        \(aq\(aq ]
+
+    version_text=[character(len=80) :: &
+        \(aqPROGRAM:      ecxcli                \(aq, &
+        \(aqDESCRIPTION:  Command line for ecx  \(aq, &
+        \(aqVERSION:      \(aq//get_version()//\(aq   \(aq, &
+        \(aqAUTHOR:       M. Skocic             \(aq, &
+        \(aqLICENSE:      MIT                   \(aq, &
+        \(aq\(aq ]
+
+    usage_text=[character(len=80) :: &
+        \(aqUsage: ecxcli SUBCOMMAND [OPTIONS...]|[\-\-help|\-\-version] ELEMENTS...\(aq, &
+        \(aq\(aq ]
+
+    cmd = get_subcommand()
+    call set_mode(\(aqstrict\(aq)
+
+    select case (cmd)
+        case (\(dqsaw\(dq)
+            call set_args(\(dq\-\-abridged:a \-\-uncertainty:u \-\-mass:z \-\-pprint\(dq, get_help_saw(), version_text)
+            if(size(unnamed) == 1) then
+                write(output_unit, \(dq(A)\(dq) \(dqEnter at least one element.\(dq
+                char_fp => usage_text
+                call print_text(char_fp)
+                stop
+            end if
+            do i=2, size(unnamed)
+                elmt = unnamed(i)
+                zmass = get_z_by_symbol(elmt)
+                if(lget(\(dqpprint\(dq))then
+                    r = get_saw(elmt,abridged=lget(\(dqa\(dq))
+                    dr = get_saw(elmt, abridged=lget(\(dqa\(dq), uncertainty=.true.)
+                    if(lget(\(dqmass\(dq))then
+                        write(output_unit, \(aq(A4, A3, A3, SP, G14.6, A3, ES14.2, S, A5, I3, A1)\(aq) &
+                              \(aqSAW_\(aq, elmt, \(dq = \(dq, r, \(dq+/\-\(dq, dr, \(aq (Z=\(aq, zmass, \(aq)\(aq
+                    else
+                        write(output_unit, \(aq(A4, A3, A3, SP, G14.6, A3, ES14.2)\(aq) &
+                              \(aqSAW_\(aq, elmt, \(dq = \(dq, r, \(dq+/\-\(dq, dr
+                    end if
+                else
+                    r = get_saw(elmt,abridged=lget(\(dqa\(dq), uncertainty=lget(\(dqu\(dq))
+                    if(lget(\(dqmass\(dq))then
+                        write(output_unit, \(aq(I4, 4X, G0.16)\(aq) zmass, r
+                    else
+                        write(output_unit, \(aq(G0.16)\(aq) r
+                    end if
+                end if
+            end do
+        case (\(dqall\(dq)
+            call set_args(\(dq \(dq, help_text, version_text)
+            call  print_periodic_table()
+        case default
+            call set_args(\(dq \(dq, help_text, version_text)
+            char_fp => usage_text
+            call print_text(char_fp)
+    end select
+
+contains
+
+function get_help_saw()result(res)
+    !! Get the help text for the subcommand saw.
+    character(len=80), allocatable :: res(:)
+    res = [character(len=80) :: &
+        \(aqNAME                                                            \(aq, &
+        \(aq  saw \- th ecxcli subcommand to get the standard atomic weight. \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqSYNOPSIS                                                        \(aq, &
+        \(aq  ecxcli saw [OPTIONS ...] ELEMENTS ...                      \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqDESCRIPTION                                                     \(aq, &
+        \(aq  Provide the saw either abridged or not.                       \(aq, &
+        \(aq  The uncertainty of the saw can be retrieved too.              \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqOPTIONS                                                         \(aq, &
+        \(aq  o \-\-abridged, \-a     Use the abridged value.                  \(aq, &
+        \(aq  o \-\-uncertainty, \-u  Use the uncertainty.                     \(aq, &
+        \(aq  o \-\-pprint           Nice formatting.                         \(aq, &
+        \(aq  o \-\-mass, \-z         Get the mass number.                     \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqVALID FOR ALL SUBCOMMANDS                                       \(aq, &
+        \(aq  o \-\-help     Show help text and exit                          \(aq, & 
+        \(aq  o \-\-verbose  Display additional information when available.   \(aq, &
+        \(aq  o \-\-version  Show version information and exit.               \(aq, &
+        \(aq                                                                \(aq, &
+        \(aqEXAMPLE                                                         \(aq, &
+        \(aq  Minimal example                                               \(aq, &
+        \(aq      ecxcli saw H                                              \(aq, &
+        \(aq      ecxcli saw \-a \-u O                                        \(aq, &
+        \(aq      ecxcli saw H C B O Zr Nb \-\-pprint                         \(aq, &
+        \(aq      ecxcli saw \-a H C B O Zr Nb \-\-pprint                      \(aq, &
+        \(aq                                                                \(aq, &
+        \(aq\(aq ]
+end function
+
+subroutine print_text(char_fp)
+    character(len=:), pointer, intent(in) :: char_fp(:)
+    integer :: i
+    do i=1, size(char_fp), 1
+        write (OUTPUT_UNIT, \(aq(A)\(aq) char_fp(i)
+    end do
+end subroutine
+
+
+end program
+
+.EE
+.UNINDENT
+.UNINDENT
+\fBDependencies\fP
+.PP
+.INDENT 0.0
+.IP \(bu 2
+\fBM_CLI2\fP
+.IP \(bu 2
+\fBciaaw\fP
+.IP \(bu 2
+\fI\%ecx\fP
+.IP \(bu 2
+\fBieee_arithmetic\fP
+.IP \(bu 2
+\fBiso_fortran_env\fP
+.UNINDENT
+\fBProcedures\fP
+.PP
+.SS get_help_saw (function)
+.INDENT 0.0
+.TP
+.B \fBfunction get_help_saw() \-> res\fP
+Get the help text for the subcommand saw.
+.INDENT 7.0
+.TP
+.B Returns
+.INDENT 7.0
+.TP
+\fBres\fP (character(len=80), allocatable, dimension(:))
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS print_text (subroutine)
+.INDENT 0.0
+.TP
+.B \fBsubroutine print_text(char_fp)\fP
+.INDENT 7.0
+.TP
+.B Arguments
+.INDENT 7.0
+.TP
+\fBchar_fp\fP (character(len=:), pointer, intent(in), dimension(:))
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .SH CHANGELOG
 .SS Version 0.1.0\-dev
 .INDENT 0.0

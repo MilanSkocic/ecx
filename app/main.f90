@@ -1,12 +1,14 @@
 program ecxcli
     use ieee_arithmetic, only: ieee_is_nan
-    use iso_fortran_env, only: real64, output_unit
+    use iso_fortran_env, only: real64, int32, output_unit
     use ecx
-    use ciaaw, only: ciaaw_version => get_version, get_saw, print_periodic_table
+    use ciaaw, only: ciaaw_version => get_version, get_saw, print_periodic_table,&
+                     get_z_by_symbol
     use M_CLI2
     implicit none
 
     integer :: i
+    integer(int32) :: zmass
     real(real64) :: r, dr
     character(len=32) :: cmd
     character(len=:),allocatable, target  :: help_text(:), version_text(:), usage_text(:)
@@ -44,6 +46,7 @@ program ecxcli
         '  o --abridged, -a     Use the abridged value.                  ', &
         '  o --uncertainty, -u  Use the uncertainty.                     ', &
         '  o --pprint           Nice formatting.                         ', &
+        '  o --mass, -z         Get the mass number.                     ', &
         '                                                                ', &
         'VALID FOR ALL SUBCOMMANDS                                       ', &
         '  o --help     Show help text and exit                          ', & 
@@ -69,7 +72,7 @@ program ecxcli
 
     select case (cmd)
         case ("saw")
-            call set_args("--abridged:a --uncertainty:u --pprint", get_help_saw(), version_text)
+            call set_args("--abridged:a --uncertainty:u --mass:z --pprint", get_help_saw(), version_text)
             if(size(unnamed) == 1) then
                 write(output_unit, "(A)") "Enter at least one element."
                 char_fp => usage_text
@@ -78,14 +81,24 @@ program ecxcli
             end if
             do i=2, size(unnamed)
                 elmt = unnamed(i)
+                zmass = get_z_by_symbol(elmt)
                 if(lget("pprint"))then
                     r = get_saw(elmt,abridged=lget("a"))
                     dr = get_saw(elmt, abridged=lget("a"), uncertainty=.true.)
-                    write(output_unit, '(A4, A3, A3, SP, G14.6, A3, ES14.2)') &
-                     'SAW_', elmt, " = ", r, "+/-", dr
+                    if(lget("mass"))then
+                        write(output_unit, '(A4, A3, A3, SP, G14.6, A3, ES14.2, S, A5, I3, A1)') &
+                              'SAW_', elmt, " = ", r, "+/-", dr, ' (Z=', zmass, ')'
+                    else
+                        write(output_unit, '(A4, A3, A3, SP, G14.6, A3, ES14.2)') &
+                              'SAW_', elmt, " = ", r, "+/-", dr
+                    end if
                 else
                     r = get_saw(elmt,abridged=lget("a"), uncertainty=lget("u"))
-                    write(output_unit, '(G0.16)') r
+                    if(lget("mass"))then
+                        write(output_unit, '(I4, 4X, G0.16)') zmass, r
+                    else
+                        write(output_unit, '(G0.16)') r
+                    end if
                 end if
             end do
         case ("all")
@@ -117,6 +130,7 @@ function get_help_saw()result(res)
         '  o --abridged, -a     Use the abridged value.                  ', &
         '  o --uncertainty, -u  Use the uncertainty.                     ', &
         '  o --pprint           Nice formatting.                         ', &
+        '  o --mass, -z         Get the mass number.                     ', &
         '                                                                ', &
         'VALID FOR ALL SUBCOMMANDS                                       ', &
         '  o --help     Show help text and exit                          ', & 

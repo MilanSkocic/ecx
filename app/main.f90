@@ -1,4 +1,5 @@
 program ecxcli
+    !! CLI interface for electrochemistry.
     use ieee_arithmetic, only: ieee_is_nan
     use iso_fortran_env, only: real64, int32, output_unit
     use ecx

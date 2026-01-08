@@ -114,7 +114,7 @@ if __name__ == "__main__":
                          library_dirs=library_dirs,
                          runtime_library_dirs=runtime_library_dirs,
                          extra_objects=extra_objects)
-    mod_eis = Extension(name="pyecx.eis",
+    mod_eis = Extension(name="pyecx._eis",
                         sources=["./src/pyecx/cpy_eis.c", "./src/pyecx/cpy_common.c"],
                         libraries=libraries,
                         library_dirs=library_dirs,
@@ -122,6 +122,13 @@ if __name__ == "__main__":
                         extra_objects=extra_objects)
     mod_core = Extension(name="pyecx.core",
                          sources=["./src/pyecx/cpy_core.c", "./src/pyecx/cpy_common.c"],
+                         libraries=libraries,
+                         library_dirs=library_dirs,
+                         runtime_library_dirs=runtime_library_dirs,
+                         extra_objects=extra_objects)
+    _ecx = Extension(name="pyecx._ecx",
+                         sources=["./src/pyecx/_ecx.pyx"],
+                         include_dirs=[numpy.get_include()],
                          libraries=libraries,
                          library_dirs=library_dirs,
                          runtime_library_dirs=runtime_library_dirs,

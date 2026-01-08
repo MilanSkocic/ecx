@@ -3,7 +3,7 @@ from typing import Union
 import numpy as np
 import array
 from .version import __version__
-from . import eis
+from . import _eis
 from . import core
 
 # utilities
@@ -47,7 +47,7 @@ def z(e:str, w:Union[np.ndarray,array.array,int,float],
     _w, w_scalar = _cast_ndarray(w)
     _p, p_scalar = _cast_ndarray(p)
     
-    res = eis.z(_e, _w, _p)
+    res = _eis.z(_e, _w, _p)
 
     return res
 

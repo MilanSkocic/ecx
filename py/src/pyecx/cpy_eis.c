@@ -10,7 +10,6 @@ PyDoc_STRVAR(z_doc,
 "Compute the complex impedance of the element e.");
 
 static PyObject *z(PyObject *self, PyObject *args){
-
     char * element;
     PyObject *w_obj;
     PyObject *p_obj;
@@ -58,18 +57,18 @@ static PyMethodDef myMethods[] = {
 };
 
 // Our Module Definition struct
-static struct PyModuleDef eis = {
+static struct PyModuleDef _eis = {
     PyModuleDef_HEAD_INIT,
-    "eis",
+    "_eis",
     module_docstring,
     -1,
     myMethods
 };
 
 // Initializes our module using our above struct
-PyMODINIT_FUNC PyInit_eis(void)
+PyMODINIT_FUNC PyInit__eis(void)
 {
-    return PyModule_Create(&eis);
+    return PyModule_Create(&_eis);
 }
 
 

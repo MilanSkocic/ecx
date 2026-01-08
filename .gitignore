@@ -29,6 +29,8 @@ API-doc/
 *.dll
 *.so
 *.dylib
+*.exe
+ecxcli
 
 *.aux
 *.cp

@@ -7,7 +7,7 @@
 
 - **Documentation:** 
     - html: https://milanskocic.github.io/ecx/
-    - man pages: https://github.com/MilanSkocic/ecx/doc
+    - man pages: ./doc
     - pdf: https://github.com/MilanSkocic/ecx/doc/ecx.pdf
 - **Source code:** https://github.com/MilanSkocic/ecx
 - **Python wrapper:** https://pypi.org/project/pyecx

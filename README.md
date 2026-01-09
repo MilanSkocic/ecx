@@ -5,11 +5,8 @@
 
 `ecx` a Fortran library for providing a collection of routines for electrochemistry.
 
-- **Documentation:** 
-    - html: https://milanskocic.github.io/ecx/
-    - man pages: ./doc
-    - pdf: https://github.com/MilanSkocic/ecx/doc/ecx.pdf
-- **Source code:** https://github.com/MilanSkocic/ecx
+- **Documentation:** https://milanskocic.github.io/ecx/
+- **Source code:** https://github.com/MilanSKocic/ecx
 - **Python wrapper:** https://pypi.org/project/pyecx
 
 It covers:

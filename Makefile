@@ -18,17 +18,19 @@ install_dir=$(DESTDIR)/$(PREFIX)
 
 # ---------------------------------------------------------------------
 # TARGETS
-.PHONY: build data doc docs clean logo
+.PHONY: prep build data doc docs clean logo
 
 all: $(FPM_LIBNAME)
 
-$(FPM_LIBNAME): build copy_a shared
+$(FPM_LIBNAME): prep build copy_a shared
 # ---------------------------------------------------------------------
 
 
 
 # ---------------------------------------------------------------------
 # SOURCES
+prep:
+	make -C srcprep
 # ---------------------------------------------------------------------
 
 
@@ -102,6 +104,7 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
+	fpm run --profile release --target ecxcli -- --help > doc/ecxcli.1.txt
 	make -C doc
 
 docs:
@@ -110,5 +113,6 @@ docs:
 
 clean:
 	fpm clean --all
+	make -C srcprep clean
 	make -C doc clean
 # ---------------------------------------------------------------------

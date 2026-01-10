@@ -3,7 +3,7 @@
 </h1><br>
 
 
-`ecx` a Fortran library for providing a collection of routines for electrochemistry.
+`ecx` is a Fortran library for providing a collection of routines for electrochemistry.
 
 - **Documentation:** https://milanskocic.github.io/ecx/
 - **Source code:** https://github.com/MilanSKocic/ecx

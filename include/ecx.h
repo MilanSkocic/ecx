@@ -16,8 +16,8 @@ extern char* ecx_get_version(void);
 
 ADD_IMPORT extern const double ecx_core_PI; 
 ADD_IMPORT extern const double ecx_core_T_K; 
-void ecx_core_nm2eV(double *lambda, double *E, size_t n); 
-void ecx_core_kTe(double *U, double *kTE, size_t n); 
+extern void ecx_core_nm2eV(double *lambda, double *E, size_t n); 
+extern void ecx_core_kTe(double *U, double *kTE, size_t n); 
 
 
 extern double ecx_kinetics_nernst(double E0, int z, 

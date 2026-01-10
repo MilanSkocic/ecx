@@ -17,19 +17,21 @@ module ecx__api
 
 contains
 
-! NAME
-!     get_version - version getter for the library
-! 
-! LIBRARY
-!     Electrochemistry library - (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     get_version()
-! 
-! DESCRIPTION
-!     This function returns the version of the ecx library.
-! RETURN VALUE
-!     character(len=:), pointer :: fptr
+$BLOCK comment --file ecx_get_version.3.txt
+NAME
+    get_version - version getter for the library
+
+LIBRARY
+    Electrochemistry library - (-libecx, -lecx) 
+
+SYNOPSIS
+    get_version()
+    
+DESCRIPTION
+    This function returns the version of the ecx library.
+RETURN VALUE
+    character(len=:), pointer :: fptr
+$ENDBLOCK
 function get_version()result(fptr)
     !! Get the version.
     implicit none
@@ -44,21 +46,23 @@ function get_version()result(fptr)
 end function
 
 
-! NAME
-!     kTe - thermal voltage
-! 
-! SYNOPSIS
-!     kTe(T)
-! 
-! DESCRIPTION
-!     Compute the thermal voltage.
-! 
-!     Parameters:
-! 
-!     o T  Temperature in °C
-! 
-! RETURN VALUE
-!     real(dp) :: r   Thermal voltage in Volts.
+$BLOCK comment --file ecx_kTe.3.txt
+NAME
+    kTe - thermal voltage
+
+SYNOPSIS
+    kTe(T)
+
+DESCRIPTION
+    Compute the thermal voltage.
+
+    Parameters:
+
+    o T  Temperature in °C
+
+RETURN VALUE
+    real(dp) :: r   Thermal voltage in Volts.
+$ENDBLOCK
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
     implicit none

@@ -9,14 +9,12 @@ ecx - Documentation
 
 Electrochemistry for Fortran.
 
-.. only:: html
-    
-    - PDF: :download:`ecx.pdf <../../ecx.pdf>`.
+- PDF: :download:`ecx.pdf <../../ecx.pdf>`.
 
-    - MAN PAGES: 
-      - :download:`ecx.3 <../../ecx.3>`
-      - :download:`ecx.3 <../../ecx.3>`
-      - :download:`ecxcli.1 <../../ecxcli.1>`
+- MAN PAGES: 
+    - :download:`ecx.3 <../../ecx.3>`
+    - :download:`ecx.3 <../../ecx.3>`
+    - :download:`ecxcli.1 <../../ecxcli.1>`
 
 .. toctree::
    :maxdepth: 1

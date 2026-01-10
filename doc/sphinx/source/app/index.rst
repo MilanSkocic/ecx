@@ -1,5 +1,0 @@
-########
-Programs
-########
-
-.. f:program:: ecxcli

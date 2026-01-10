@@ -11,11 +11,12 @@ Electrochemistry for Fortran.
 
 .. only:: html
     
-    - MAN PAGE: :download:`ecx.3 <../build/man/ecx.3>`.
-    
-    - INFO: :download:`ecx.info <../build/texinfo/ecx.info>`.
-    
-    - PDF: :download:`ecx.pdf <../build/latex/ecx.pdf>`.
+    - PDF: :download:`ecx.pdf <../../ecx.pdf>`.
+
+    - MAN PAGES: 
+      - :download:`ecx.3 <../../ecx.3>`
+      - :download:`ecx.3 <../../ecx.3>`
+      - :download:`ecxcli.1 <../../ecxcli.1>`
 
 .. toctree::
    :maxdepth: 1
@@ -24,6 +25,5 @@ Electrochemistry for Fortran.
    getting_started/index.rst
    examples/index.rst
    api/index.rst
-   app/index.rst
    changelog/index.rst
    references/index.rst

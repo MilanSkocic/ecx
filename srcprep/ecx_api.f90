@@ -29,6 +29,7 @@ SYNOPSIS
     
 DESCRIPTION
     This function returns the version of the ecx library.
+
 RETURN VALUE
     character(len=:), pointer :: fptr
 $ENDBLOCK
@@ -50,6 +51,9 @@ $BLOCK comment --file ecx_kTe.3.txt
 NAME
     kTe - thermal voltage
 
+LIBRARY
+    Electrochemistry library - (-libecx, -lecx) 
+
 SYNOPSIS
     kTe(T)
 
@@ -58,7 +62,7 @@ DESCRIPTION
 
     Parameters:
 
-    o T  Temperature in °C
+    o T  Temperature in degC
 
 RETURN VALUE
     real(dp) :: r   Thermal voltage in Volts.

@@ -3,7 +3,9 @@ NAME
     ecx - library for electrochemistry
 
 SYNOPSIS
-    use ecx
+    ecx (Fortran): use ecx
+    ecx (C): include "ecx.h"
+    ecx (python): import pyecx
 
 DESCRIPTION
     ecx a Fortran library for providing a collection of routines for electrochemistry.
@@ -30,6 +32,12 @@ DESCRIPTION
         o (ecx_kinetics_)bv
         o (ecx_eis_)z
 
+NOTES
+    To use ecx within your fpm <https://github.com/fortran-lang/fpm>
+    project, add the following lines to your file:
+
+        [dependencies]
+        ecx = { git="https://github.com/MilanSkocic/ecx.git" }
 
 EXAMPLE
     Minimal example in Fortran:
@@ -45,7 +53,8 @@ EXAMPLE
         import pyecx
 
 SEE ALSO
-    complex(7), gsl(3), catanh(3), gnuplot(1)
+    complex(7), gsl(3), catanh(3), gnuplot(1),
+    ecx_get_version(3)
 
 $ENDBLOCK
 module ecx

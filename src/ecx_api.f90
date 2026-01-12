@@ -28,6 +28,7 @@ contains
 ! 
 ! DESCRIPTION
 !     This function returns the version of the ecx library.
+! 
 ! RETURN VALUE
 !     character(len=:), pointer :: fptr
 function get_version()result(fptr)
@@ -47,6 +48,9 @@ end function
 ! NAME
 !     kTe - thermal voltage
 ! 
+! LIBRARY
+!     Electrochemistry library - (-libecx, -lecx)
+! 
 ! SYNOPSIS
 !     kTe(T)
 ! 
@@ -55,7 +59,7 @@ end function
 ! 
 !     Parameters:
 ! 
-!     o T  Temperature in °C
+!     o T  Temperature in degC
 ! 
 ! RETURN VALUE
 !     real(dp) :: r   Thermal voltage in Volts.

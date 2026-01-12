@@ -15,3 +15,4 @@ Programs
 ========
 
 .. f:program:: ecxcli
+   :no-show-code:

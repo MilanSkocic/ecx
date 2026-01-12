@@ -13,8 +13,9 @@ Electrochemistry for Fortran.
 
 - MAN PAGES: 
     - :download:`ecx.3 <../../ecx.3>`
-    - :download:`ecx.3 <../../ecx.3>`
     - :download:`ecxcli.1 <../../ecxcli.1>`
+    - :download:`ecx_get_version.3 <../../ecx_get_version.3>`
+    - :download:`ecx_kTe.3 <../../ecx_kTe.3>`
 
 .. toctree::
    :maxdepth: 1

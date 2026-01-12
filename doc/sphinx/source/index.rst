@@ -25,4 +25,3 @@ Electrochemistry for Fortran.
    examples/index.rst
    api/index.rst
    changelog/index.rst
-   references/index.rst

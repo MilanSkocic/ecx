@@ -25,13 +25,16 @@ LIBRARY
     Electrochemistry library - (-libecx, -lecx) 
 
 SYNOPSIS
-    get_version()
+    function get_version()result(fptr)
     
 DESCRIPTION
     This function returns the version of the ecx library.
 
 RETURN VALUE
     character(len=:), pointer :: fptr
+
+SEE ALSO
+    ecx(3)
 $ENDBLOCK
 function get_version()result(fptr)
     !! Get the version.
@@ -55,10 +58,10 @@ LIBRARY
     Electrochemistry library - (-libecx, -lecx) 
 
 SYNOPSIS
-    kTe(T)
+    pure elemental function kTe(T)result(r)
 
 DESCRIPTION
-    Compute the thermal voltage.
+    Compute the thermal voltage: kTe[V] = kB[eV] * (T[degC]+273.15)
 
     Parameters:
 
@@ -66,6 +69,14 @@ DESCRIPTION
 
 RETURN VALUE
     real(dp) :: r   Thermal voltage in Volts.
+
+EXAMPLE
+    Calling:
+        
+        value = kTe(T)
+
+SEE ALSO
+    ecx(3)
 $ENDBLOCK
 pure elemental function kTe(T)result(r)
     !! Compute the thermal voltage.
@@ -76,10 +87,48 @@ pure elemental function kTe(T)result(r)
     r = (T+T_K) * kB_eV
 end function
 
+$BLOCK comment --file ecx_z.3.txt
+NAME
+    z - complex impedance
+LIBRARY
+    Electrochemistry (-libecx, -lecx)
 
+SYNOPSIS
+    subroutine z(p, w, zout, e, errstat, errmsg)
+
+DESCRIPTION
+    Compute the complex impedance for the element e.
+
+    Parameters:
+
+       o real(dp), intent(in) :: p(:)             Parameters defining the element e
+       o real(dp), intent(in) :: w(:)             Angular frequencies in rad.s-1
+       o character(len=1), intent(in) :: e        Electrochemical element: R, C, L, Q, O, T, G
+       o complex(dp), intent(out) :: zout(:)      Complex impedance in Ohms.
+       o integer(int32), intent(out) :: errstat   Error status
+       o character(len=:), intent(out), pointer :: errmsg  Error message
+
+    Z_R(w) = R = p(1)
+
+    Z_C(w) = -j/(Cw) = -j/(p(1)*w)
+
+    Z_L(w) = jLw = j*p(1)*w
+
+RETURN VALUE
+    None
+
+EXAMPLE
+    Calling:
+
+        call z(p, w, zout, e, errstat, errmsg)
+
+SEE ALSO
+    ecx(3)
+$ENDBLOCK
 subroutine z(p, w, zout, e, errstat, errmsg)
+    !! Compute the complex impedance.
     implicit none
-    real(dp), intent(in) :: p(:)
+    real(dp), intent(in) :: p(:)            !! Parameters defining the element e
     real(dp), intent(in) :: w(:)            !! Angular frequencies in rad.s-1
     character(len=1), intent(in) :: e       !! Electrochemical element: R, C, L, Q, O, T, G
     complex(dp), intent(out) :: zout(:)     !! Complex impedance in Ohms.

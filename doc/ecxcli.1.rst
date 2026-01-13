@@ -1,3 +1,57 @@
+   **[**
+      0%] ecx_api.f90
+
+   **[ 11%]**
+      ecx_api.f90 done.
+
+   **[ 11%]**
+      ecx_capi.f90
+
+   **[ 22%]**
+      ecx_capi.f90 done.
+
+   **[ 22%]**
+      ecx.f90
+
+   **[ 33%]**
+      ecx.f90 done.
+
+   **[ 33%]**
+      libecx.a
+
+   **[ 44%]**
+      libecx.a done.
+
+   **[ 44%]**
+      main.f90
+
+   **[ 55%]**
+      main.f90 done.
+
+   **[ 55%]**
+      example.f90
+
+   **[ 66%]**
+      example.f90 done.
+
+   **[ 66%]**
+      ecxcli
+
+   **[ 77%]**
+      ecxcli done.
+
+   **[ 77%]**
+      example_in_c
+
+   **[ 88%]**
+      example_in_c done.
+
+   **[ 88%]**
+      example_in_f
+
+   **[100%]**
+      example_in_f done. [100%] Project compiled successfully.
+
 NAME
 ----
 

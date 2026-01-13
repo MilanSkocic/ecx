@@ -13,7 +13,7 @@ SYNOPSIS
 
 ::
 
-     get_version()
+     function get_version()result(fptr)
 
 DESCRIPTION
 -----------
@@ -23,4 +23,9 @@ This function returns the version of the ecx library.
 RETURN VALUE
 ------------
 
-**character(len=:), pointer :: fptr**
+**character(len=:), pointer ::** *fptr*
+
+SEE ALSO
+--------
+
+**ecx(3)**

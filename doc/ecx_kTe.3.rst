@@ -13,12 +13,12 @@ SYNOPSIS
 
 ::
 
-     kTe(T)
+     pure elemental function kTe(T)result(r)
 
 DESCRIPTION
 -----------
 
-Compute the thermal voltage.
+Compute the thermal voltage: kTe[V] = kB[eV] \* (T[degC]+273.15)
 
 Parameters:
 
@@ -30,3 +30,17 @@ RETURN VALUE
 
 **real(dp) :: r**
    Thermal voltage in Volts.
+
+EXAMPLE
+-------
+
+Calling:
+
+::
+
+           value = kTe(T)
+
+SEE ALSO
+--------
+
+**ecx(3)**

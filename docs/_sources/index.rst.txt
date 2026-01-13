@@ -7,14 +7,6 @@ ecx - Documentation
         :align: center
         :alt: Alternative text
 
-ecxcli.3
-========
-.. include:: ../../ecxcli.1.rst
-
-ecx.3
-=====
-.. include:: ../../ecx.3.rst
-
 
 .. toctree::
    :maxdepth: 1

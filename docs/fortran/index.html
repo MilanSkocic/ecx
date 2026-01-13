@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -439,10 +439,14 @@ document.write(`
 <dl class="f subroutine">
 <dt class="sig sig-object f">
 <code class="docutils literal notranslate"><span class="pre">subroutine</span> <span class="pre">z(p,</span> <span class="pre">w,</span> <span class="pre">zout,</span> <span class="pre">e,</span> <span class="pre">errstat,</span> <span class="pre">errmsg)</span></code></dt>
-<dd><dl class="field-list simple">
+<dd><div class="docutils container">
+<p>Compute the complex impedance.</p>
+</div>
+<dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>p</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd></dd>
+<dt><strong>p</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Parameters defining the element e</p>
+</dd>
 <dt><strong>w</strong><span class="classifier">real(dp), intent(in), dimension(:)</span></dt><dd><p>Angular frequencies in rad.s-1</p>
 </dd>
 <dt><strong>zout</strong><span class="classifier">complex(dp), intent(out), dimension(:)</span></dt><dd><p>Complex impedance in Ohms.</p>

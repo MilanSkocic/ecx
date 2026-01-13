@@ -15,14 +15,6 @@ ecx.3
 =====
 .. include:: ../../ecx.3.rst
 
-ecx_get_version.3
-=================
-.. include:: ../../ecx_get_version.3.rst
-
-ecx_kTe.3
-=================
-.. include:: ../../ecx_kTe.3.rst
-
 
 .. toctree::
    :maxdepth: 1

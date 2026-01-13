@@ -4,6 +4,7 @@ import shutil
 import pathlib
 import subprocess
 from setuptools import setup, Extension
+import numpy
 
 LIBSDARWIN = ("libgfortran.5", "libquadmath.0", "libgcc_s.1.1")
 LIBSWINDOWS = ("libgfortran-5", "libquadmath-0", "libgcc_s_seh-1", "libwinpthread-1")

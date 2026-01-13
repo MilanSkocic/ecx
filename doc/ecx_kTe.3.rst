@@ -1,0 +1,32 @@
+NAME
+----
+
+**kTe** - thermal voltage
+
+LIBRARY
+-------
+
+Electrochemistry library - (**-libecx, -lecx)**
+
+SYNOPSIS
+--------
+
+::
+
+     kTe(T)
+
+DESCRIPTION
+-----------
+
+Compute the thermal voltage.
+
+Parameters:
+
+**o T**
+   Temperature in degC
+
+RETURN VALUE
+------------
+
+**real(dp) :: r**
+   Thermal voltage in Volts.

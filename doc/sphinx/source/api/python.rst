@@ -1,6 +1,0 @@
-******
-Python
-******
-
-.. automodule:: pyecx
-   :members:

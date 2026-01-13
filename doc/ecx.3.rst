@@ -1,0 +1,146 @@
+NAME
+----
+
+**ecx** - library for electrochemistry
+
+SYNOPSIS
+--------
+
+::
+
+     ecx (Fortran): use ecx
+     ecx (C): include "ecx.h"
+     ecx (python): import pyecx
+
+DESCRIPTION
+-----------
+
+ecx a Fortran library for providing a collection of routines for
+electrochemistry. A C API allows usage from C, or can be used as a basis
+for other wrappers. A Python wrapper allows easy usage from Python.
+
+It covers:
+
+   **o kinetics**
+      Nernst, Butler-Volmer
+
+   **o electrochemical**
+      Impedance, Admittance, Circuit Elements, Equivalent Circuits
+
+   **o photoelectrochemistry**
+      Photocurrent, Band-gap, space charge.
+
+The C API is defined by adding a prefix to the functions from the
+Fortran API due to the lack of module/namespace feature in the C
+language. The functions are therefore following this template:
+(c_prefix)fortran_func.
+
+   -  (ecx\_)get_version
+
+   -  (ecx_core\_)kTe
+
+   -  (ecx_eis\_)z
+
+   -  mm
+
+   -  (ecx_kinetics\_)nernst
+
+   -  (ecx_kinetics\_)sbv
+
+   -  (ecx_kinetics\_)bv
+
+   -  (ecx_eis\_)z
+
+NOTES
+-----
+
+To use ecx within your fpm <https://github.com/fortran-lang/fpm>
+project, add the following lines to your file:
+
+::
+
+           [dependencies]
+           ecx = { git="https://github.com/MilanSkocic/ecx.git" }
+
+EXAMPLE
+-------
+
+Example in Fortran:
+
+::
+
+           program example_in_f
+               use iso_fortran_env
+               use ecx
+               implicit none
+
+               real(real64) :: w(3) = [1.0d0, 1.0d0, 100.0d0]
+               real(real64) :: r = 100.0d0
+               real(real64) :: p(3) = 0.0d0
+               character(len=1) :: e
+               integer :: errstat
+               complex(real64) :: zout(3)
+               character(len=:), pointer :: errmsg
+
+               p(1) = r
+               e = "R"
+               call z(p, w, zout, e, errstat, errmsg)
+               print *, zout
+               print *, errstat, errmsg
+           end program
+
+Example in C:
+
+::
+
+           int main(void){
+               int errstat, i;
+               double w[3] = {1.0, 1.0, 1.0};
+               double p[3] = {100.00, 0.0, 0.0};
+               ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0),
+                                   ecx_cbuild(0.0, 0.0),
+                                   ecx_cbuild(0.0, 0.0)};
+               char *errmsg;
+
+               ecx_eis_z(p, w, z, 'R', 3, 3, &errstat, &errmsg);
+
+               for(i=0; i<3;i++){
+                   printf("%f %f , creal(z[i]), cimag(z[i]));
+               }
+               printf("%d %s, errstat, errmsg);
+               return EXIT_SUCCESS;
+           }
+
+Example in Python:
+
+::
+
+           import numpy as np
+           import pyecx
+           import matplotlib.pyplot as plt
+
+           R = 100
+           C = 1e-6
+           w = np.logspace(6, -3, 100)
+
+           p = np.asarray([R, 0.0, 0.0])
+           zr = np.asarray(pyecx.z("R", w, p))
+           p = np.asarray([C, 0.0, 0.0])
+           zc = np.asarray(pyecx.z("C", w, p))
+           zrc = zr*zc / (zr+zc)
+           print("finish")
+
+           fig = plt.figure()
+           ax = fig.add_subplot(111)
+
+           ax.set_aspect("equal")
+           ax.plot(zrc.real, zrc.imag, "g.", label="R/C")
+
+           ax.invert_yaxis()
+
+           plt.show()
+
+SEE ALSO
+--------
+
+**complex(7), gsl(3), catanh(3), gnuplot(1),** **ecx_get_version(3)**

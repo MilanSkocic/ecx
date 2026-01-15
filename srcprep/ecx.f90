@@ -2,6 +2,9 @@ $BLOCK comment --file ecx.3.txt
 NAME
     ecx - library for electrochemistry
 
+LIBRARY
+    ecx (-libecx, -lecx)
+
 SYNOPSIS
     ecx (Fortran): use ecx
     ecx (C): include "ecx.h"

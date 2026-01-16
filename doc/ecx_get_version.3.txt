@@ -7,11 +7,15 @@ LIBRARY
 SYNOPSIS
     function get_version()result(fptr)
 
+    extern char* ecx_get_version(void) (C API)
+
 DESCRIPTION
     This function returns the version of the ecx library.
 
 RETURN VALUE
     character(len=:), pointer :: fptr
+
+    char * (C API)
 
 SEE ALSO
     ecx(3)

@@ -8,33 +8,35 @@ module ecx__capi
 
 contains
 
-! NAME
-!     ecx_get_version - version getter for the library (C API)
-! 
-! LIBRARY
-!     Electrochemistry library - (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     char* ecx_get_version(void);
-! 
-! DESCRIPTION
-!     This function returns the version of the ecx library.
-! 
-! RETURN VALUE
-!     char *
-! 
-! SEE ALSO
-!     ecx(3), ecx_get_version(3)
+$BLOCK comment --file ecx_capi_get_version.3.txt
+NAME
+    ecx_get_version - version getter for the library (C API)
+
+LIBRARY
+    Electrochemistry library - (-libecx, -lecx) 
+
+SYNOPSIS
+    char* ecx_get_version(void);
+    
+DESCRIPTION
+    This function returns the version of the ecx library.
+
+RETURN VALUE
+    char *
+
+SEE ALSO
+    ecx(3), ecx_get_version(3)
+$ENDBLOCK
 function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
     !! C API - Get the version.
     implicit none
-
-    ! Returns
+    
+    ! Returns   
     type(c_ptr) :: cptr
         !! Pointer to version string.
 
     character(len=:), pointer :: fptr
-    fptr => get_version()
+    fptr => get_version() 
 
     if(allocated(version_c))then
         deallocate(version_c)
@@ -47,7 +49,7 @@ end function
 
 
 ! CORE -------------------------------------------------------------------------
-pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
+pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV") 
     !! C API - Convert wavelength to energy
     integer(c_size_t), intent(in), value :: n !! Size of lambda and E.
     real(c_double), intent(in) :: lambda(n) !! Wavelength in nm.
@@ -55,7 +57,7 @@ pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
     E = nm2eV(lambda)
 end subroutine
 
-pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe")
+pure subroutine capi_kTe(T, kTe_, n)bind(C, name="ecx_core_kTe") 
     !! Compute the thermal voltage.
     integer(c_size_t), intent(in), value :: n !! Size of T and kTe.
     real(c_double), intent(in) :: T(n)        !! Temperature in °C.
@@ -67,7 +69,7 @@ end subroutine
 
 
 ! EIS -------------------------------------------------------------------------
-subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
+subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z") 
     !! Compute the complex impedance for the given element.
     integer(c_size_t), intent(in), value :: n            !! Size of w
     integer(c_size_t), intent(in), value :: k            !! Size of p
@@ -77,7 +79,7 @@ subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
     complex(c_double_complex), intent(out) :: zout(n)    !! Complex impedance in Ohms.
     integer(c_int), intent(out) :: errstat               !! Error status
     type(c_ptr), intent(out) :: errmsg                   !! errmsg Error message
-
+    
     character(len=:), pointer :: fptr
 
     call z(p, w, zout, e, errstat, fptr)

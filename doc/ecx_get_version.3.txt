@@ -7,15 +7,32 @@ LIBRARY
 SYNOPSIS
     function get_version()result(fptr)
 
-    extern char* ecx_get_version(void) (C API)
-
 DESCRIPTION
     This function returns the version of the ecx library.
 
 RETURN VALUE
     character(len=:), pointer :: fptr
 
-    char * (C API)
+NOTES
+    The C API is defined by the following prototype:
+
+    char* codata_get_version(void)
+
+    The python wrappers embeds the version of the version in the top level
+    variable __version__.
+
+EXAMPLE
+    Fortran
+
+        print *, "version = ", get_version()
+
+    C
+
+        printf("version = %s\n", codata_get_version());
+
+    Python
+
+        print(f"version = {pycodata.__version__}")
 
 SEE ALSO
     ecx(3)

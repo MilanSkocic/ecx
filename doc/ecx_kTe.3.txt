@@ -17,10 +17,32 @@ DESCRIPTION
 RETURN VALUE
     real(dp) :: r   Thermal voltage in Volts.
 
-EXAMPLE
-    Calling:
+NOTES
+    The C API is defined by the following prototype:
 
+    ecx_core_kTe(double *T, double *kTE, size_t n)
+        o T     Temperature in degC
+        o kTe   Output values for the thermal voltage in Volts
+        o n     Size of T and kTe
+
+    No python wrapper.
+
+EXAMPLE
+    Fortran scalar:
+
+        real(real64) :: T, value
         value = kTe(T)
+
+    Fortran array
+
+        real(real64) :: T(:), value(:)
+        value = kTe(T)
+
+    C
+
+        size_t n;
+        double * T, *kTe;
+        ecx_core_kTe(T, kTe, n);
 
 SEE ALSO
     ecx(3)

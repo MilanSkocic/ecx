@@ -17,6 +17,9 @@ module ecx__api
 
 contains
 
+
+
+!###############################################################################
 ! NAME
 !     get_version - version getter for the library
 ! 
@@ -31,6 +34,27 @@ contains
 ! 
 ! RETURN VALUE
 !     character(len=:), pointer :: fptr
+! 
+! NOTES
+!     The C API is defined by the following prototype:
+! 
+!     char* codata_get_version(void)
+! 
+!     The python wrappers embeds the version of the version in the top level
+!     variable __version__.
+! 
+! EXAMPLE
+!     Fortran
+! 
+!         print *, "version = ", get_version()
+! 
+!     C
+! 
+!         printf("version = %s\n", codata_get_version());
+! 
+!     Python
+! 
+!         print(f"version = {pycodata.__version__}")
 ! 
 ! SEE ALSO
 !     ecx(3)
@@ -48,6 +72,9 @@ function get_version()result(fptr)
 end function
 
 
+
+
+!###############################################################################
 ! NAME
 !     kTe - thermal voltage
 ! 
@@ -67,10 +94,32 @@ end function
 ! RETURN VALUE
 !     real(dp) :: r   Thermal voltage in Volts.
 ! 
-! EXAMPLE
-!     Calling:
+! NOTES
+!     The C API is defined by the following prototype:
 ! 
+!     ecx_core_kTe(double *T, double *kTE, size_t n)
+!         o T     Temperature in degC
+!         o kTe   Output values for the thermal voltage in Volts
+!         o n     Size of T and kTe
+! 
+!     No python wrapper.
+! 
+! EXAMPLE
+!     Fortran scalar:
+! 
+!         real(real64) :: T, value
 !         value = kTe(T)
+! 
+!     Fortran array
+! 
+!         real(real64) :: T(:), value(:)
+!         value = kTe(T)
+! 
+!     C
+! 
+!         size_t n;
+!         double * T, *kTe;
+!         ecx_core_kTe(T, kTe, n);
 ! 
 ! SEE ALSO
 !     ecx(3)
@@ -83,6 +132,8 @@ pure elemental function kTe(T)result(r)
     r = (T+T_K) * kB_eV
 end function
 
+
+!###############################################################################
 ! NAME
 !     z - complex impedance
 ! LIBRARY
@@ -178,6 +229,10 @@ subroutine z(p, w, zout, e, errstat, errmsg)
     errmsg => errmsg_f
 end subroutine
 
+
+
+
+
 subroutine mm(p, w, zout, n)
     !! Compute the measurement model.
     real(dp), intent(in) :: p(:)
@@ -211,9 +266,10 @@ subroutine mm(p, w, zout, n)
             zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
         endif
     endif
-
-
 end subroutine
+
+
+
 
 
 pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
@@ -241,8 +297,11 @@ pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
     red = product(ared**vred)
 
     E = E0 + kTe_/z * log(ox/red)
-
 end function
+
+
+
+
 
 pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation without mass transport.
@@ -273,6 +332,10 @@ pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
 
     I = A * j0 * (exp(aa * za * (U - OCV) / kTe_) - exp(-ac * zc * (U - OCV) / kTe_));
 end function
+
+
+
+
 
 pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation with mass transport.
@@ -308,7 +371,6 @@ pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I
     denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe_) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe_);
 
     I = A * num / denom;
-
 end function
 
 end module ecx__api

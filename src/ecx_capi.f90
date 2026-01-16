@@ -8,23 +8,6 @@ module ecx__capi
 
 contains
 
-! NAME
-!     ecx_get_version - version getter for the library (C API)
-! 
-! LIBRARY
-!     Electrochemistry library - (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     char* ecx_get_version(void);
-! 
-! DESCRIPTION
-!     This function returns the version of the ecx library.
-! 
-! RETURN VALUE
-!     char *
-! 
-! SEE ALSO
-!     ecx(3), ecx_get_version(3)
 function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
     !! C API - Get the version.
     implicit none

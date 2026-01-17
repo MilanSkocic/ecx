@@ -108,7 +108,7 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
-	fpm run --profile release --target ecxcli -- --help > doc/ecxcli.1.txt
+	fpm run --profile release --target ecxcli -- --help > doc/ecxcli.1.prep
 	make -C doc
 
 docs:

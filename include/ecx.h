@@ -20,24 +20,14 @@ extern void ecx_core_nm2eV(double *lambda, double *E, size_t n);
 extern void ecx_core_kTe(double *T, double *kTE, size_t n); 
 
 
-extern double ecx_kinetics_nernst(double E0, int z, 
-                                       double *aox, double *vox, size_t nox, 
-                                       double *ared, double *vred, size_t nred, 
-                                       double T);
+extern double ecx_kinetics_nernst(double E0, int z, double *aox, double *vox, size_t nox, double *ared, double *vred, size_t nred, double T);
 
-extern void ecx_kinetics_sbv(double *U, double OCV, double j0, 
-                                  double aa, double ac, double za, double zc,
-                                  double A, double T, double *i, size_t n);
+extern void ecx_kinetics_sbv(double *U, double OCV, double j0, double aa, double ac, double za, double zc, double A, double T, double *i, size_t n);
 
-extern void ecx_kinetics_bv(double *U, double OCV, double j0, double jdla, double jdlc,
-                        double aa, double ac, double za, double zc,
-                        double A, double T, double *i, size_t n);
+extern void ecx_kinetics_bv(double *U, double OCV, double j0, double jdla, double jdlc, double aa, double ac, double za, double zc, double A, double T, double *i, size_t n);
 
 
-extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, 
-                      char e, size_t k, size_t n, 
-                      int *errstat, char *(*errmsg)); 
-
+extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat, char *(*errmsg)); 
 #endif
 
 

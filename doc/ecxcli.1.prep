@@ -1,3 +1,18 @@
+[  0%]                        ecx.f90
+[ 14%]                        ecx.f90  done.
+[ 14%]                       libecx.a
+[ 28%]                       libecx.a  done.
+[ 28%]                       main.f90
+[ 42%]                       main.f90  done.
+[ 42%]                    example.f90
+[ 57%]                    example.f90  done.
+[ 57%]                         ecxcli
+[ 71%]                         ecxcli  done.
+[ 71%]                   example_in_c
+[ 85%]                   example_in_c  done.
+[ 85%]                   example_in_f
+[100%]                   example_in_f  done.
+[100%] Project compiled successfully.
 NAME
   ecxcli(1) - Command line for ecx
 

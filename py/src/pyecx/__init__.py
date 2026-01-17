@@ -38,8 +38,7 @@ def _cast_ndarray(X):
 
 
 
-def z(e:str, w:Union[np.ndarray,array.array,int,float], 
-      p:Union[np.ndarray,array.array])->np.ndarray:
+def z(e:str, w:Union[np.ndarray,array.array,int,float], p:Union[np.ndarray,array.array])->np.ndarray:   
     """
     Compute the complex impedance of the element e.
     """

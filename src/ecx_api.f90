@@ -19,49 +19,12 @@ contains
 
 
 
-!###############################################################################
-! NAME
-!     get_version - version getter for the library
-! 
-! LIBRARY
-!     Electrochemistry library - (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     function get_version()result(fptr)
-! 
-! DESCRIPTION
-!     This function returns the version of the ecx library.
-! 
-! RETURN VALUE
-!     character(len=:), pointer :: fptr
-! 
-! NOTES
-!     The C API is defined by the following prototype:
-! 
-!     char* codata_get_version(void)
-! 
-!     The python wrappers embeds the version of the version in the top level
-!     variable __version__.
-! 
-! EXAMPLE
-!     Fortran
-! 
-!         print *, "version = ", get_version()
-! 
-!     C
-! 
-!         printf("version = %s\n", codata_get_version());
-! 
-!     Python
-! 
-!         print(f"version = {pycodata.__version__}")
-! 
-! SEE ALSO
-!     ecx(3)
-function get_version()result(fptr)
+function get_version()result(fptr) 
     !! Get the version.
     implicit none
-    character(len=:), pointer :: fptr    !! Version of the library.
+
+    ! Return
+    character(len=:), pointer :: fptr      !! Version of the library.
 
     if(allocated(version_f))then
         deallocate(version_f)
@@ -74,56 +37,7 @@ end function
 
 
 
-!###############################################################################
-! NAME
-!     kTe - thermal voltage
-! 
-! LIBRARY
-!     Electrochemistry library - (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     pure elemental function kTe(T)result(r)
-! 
-! DESCRIPTION
-!     Compute the thermal voltage: kTe[V] = kB[eV] * (T[degC]+273.15)
-! 
-!     Parameters:
-! 
-!     o T  Temperature in degC
-! 
-! RETURN VALUE
-!     real(dp) :: r   Thermal voltage in Volts.
-! 
-! NOTES
-!     The C API is defined by the following prototype:
-! 
-!     ecx_core_kTe(double *T, double *kTE, size_t n)
-!         o T     Temperature in degC
-!         o kTe   Output values for the thermal voltage in Volts
-!         o n     Size of T and kTe
-! 
-!     No python wrapper.
-! 
-! EXAMPLE
-!     Fortran scalar:
-! 
-!         real(real64) :: T, value
-!         value = kTe(T)
-! 
-!     Fortran array
-! 
-!         real(real64) :: T(:), value(:)
-!         value = kTe(T)
-! 
-!     C
-! 
-!         size_t n;
-!         double * T, *kTe;
-!         ecx_core_kTe(T, kTe, n);
-! 
-! SEE ALSO
-!     ecx(3)
-pure elemental function kTe(T)result(r)
+pure elemental function kTe(T)result(r) 
     !! Compute the thermal voltage.
     implicit none
     real(dp), intent(in) :: T        !! Temperature in °C.
@@ -133,52 +47,15 @@ pure elemental function kTe(T)result(r)
 end function
 
 
-!###############################################################################
-! NAME
-!     z - complex impedance
-! LIBRARY
-!     Electrochemistry (-libecx, -lecx)
-! 
-! SYNOPSIS
-!     subroutine z(p, w, zout, e, errstat, errmsg)
-! 
-! DESCRIPTION
-!     Compute the complex impedance for the element e.
-! 
-!     Parameters:
-! 
-!        o real(dp), intent(in) :: p(:)             Parameters defining the element e
-!        o real(dp), intent(in) :: w(:)             Angular frequencies in rad.s-1
-!        o character(len=1), intent(in) :: e        Electrochemical element: R, C, L, Q, O, T, G
-!        o complex(dp), intent(out) :: zout(:)      Complex impedance in Ohms.
-!        o integer(int32), intent(out) :: errstat   Error status
-!        o character(len=:), intent(out), pointer :: errmsg  Error message
-! 
-!     Z_R(w) = R = p(1)
-! 
-!     Z_C(w) = -j/(Cw) = -j/(p(1)*w)
-! 
-!     Z_L(w) = jLw = j*p(1)*w
-! 
-! RETURN VALUE
-!     None
-! 
-! EXAMPLE
-!     Calling:
-! 
-!         call z(p, w, zout, e, errstat, errmsg)
-! 
-! SEE ALSO
-!     ecx(3)
-subroutine z(p, w, zout, e, errstat, errmsg)
-    !! Compute the complex impedance.
+subroutine z(p, w, zout, e, errstat, errmsg) 
+     !! Compute the complex impedance.
     implicit none
     real(dp), intent(in) :: p(:)            !! Parameters defining the element e
     real(dp), intent(in) :: w(:)            !! Angular frequencies in rad.s-1
     character(len=1), intent(in) :: e       !! Electrochemical element: R, C, L, Q, O, T, G
     complex(dp), intent(out) :: zout(:)     !! Complex impedance in Ohms.
     integer(int32), intent(out) :: errstat  !! Error status
-    character(len=:), intent(out), pointer :: errmsg  !! Error message
+    character(len=:), intent(out), pointer :: errmsg   !! Error message
 
 
     if(allocated(errmsg_f))then

@@ -1,4 +1,4 @@
-$BLOCK comment --file ecx.3.txt
+$BLOCK comment --file ecx.3.prep
 NAME
     ecx - library for electrochemistry
 
@@ -25,15 +25,53 @@ DESCRIPTION
     API due to the lack of module/namespace feature in the C language.
     The functions are therefore following this template:
     (c_prefix)fortran_func.
-
-        o (ecx_)get_version
-        o (ecx_core_)kTe
-        o (ecx_eis_)z
-        o mm
-        o (ecx_kinetics_)nernst
-        o (ecx_kinetics_)sbv
-        o (ecx_kinetics_)bv
-        o (ecx_eis_)z
+    
+    Fortran API
+        o function get_version() -> fptr     Get the version.
+        o pure elemental function kTe(T) -> r     Compute the thermal voltage.
+            o real(dp), intent(in)::T     Temperature in °C.
+        o subroutine z(p, w, zout, e, errstat, errmsg)     Compute the complex impedance.
+            o real(dp), intent(in), dimension(:)::p     Parameters defining the element e
+            o real(dp), intent(in), dimension(:)::w     Angular frequencies in rad.s-1
+            o complex(dp), intent(out), dimension(:)::zout     Complex impedance in Ohms.
+            o character(len=1), intent(in)::e     Electrochemical element: R, C, L, Q, O, T, G
+            o integer(int32), intent(out)::errstat     Error status
+            o character(len=:), intent(out), pointer::errmsg     Error message
+        o subroutine mm(p, w, zout, n)    ---
+            o real(dp), intent(in), dimension(:)::p     Compute the measurement model.
+            o real(dp), intent(in), dimension(:)::w     Parameters.
+            o complex(dp), intent(out), dimension(:)::zout     Angular frequencies in rad.s-1
+            o integer(int32), intent(in)::n     Complex impedance in Ohms.
+        o pure function nernst(E0, z, aox, vox, ared, vred, T) -> E     Compute the Nernst electrochemical potential in V.
+            o real(dp), intent(in)::E0    ---
+            o integer(int32), intent(in)::z     Standard electrochemical potential in V.
+            o real(dp), intent(in), dimension(:)::aox     Number of exchanged electrons.
+            o real(dp), intent(in), dimension(:)::vox     Activities of the oxidants.
+            o real(dp), intent(in), dimension(:)::ared     Coefficients for the oxidants.
+            o real(dp), intent(in), dimension(:)::vred     Activities of the reductants
+            o real(dp), intent(in)::T     Coefficients for the reductants.
+        o pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T) -> I    ---
+            o real(dp), intent(in)::U     Open Circuit Voltage in V.
+            o real(dp), intent(in)::OCV     Compute Butler Volmer equation without mass transport.
+            o real(dp), intent(in)::j0     Electrochemical potential in V.
+            o real(dp), intent(in)::aa     Exchange current density in A.cm-2.
+            o real(dp), intent(in)::ac     Anodic transfer coefficient.
+            o real(dp), intent(in)::za     Cathodic transfer coefficient.
+            o real(dp), intent(in)::zc     Number of exchnaged electrons in the anodic branch.
+            o real(dp), intent(in)::A     Number of exchnaged electrons in the cathodic branch.
+            o real(dp), intent(in)::T     Area in cm2.
+        o pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T) -> I     Compute Butler Volmer equation with mass transport.
+            o real(dp), intent(in)::U     Open Circuit Voltage in V.
+            o real(dp), intent(in)::OCV    ---
+            o real(dp), intent(in)::j0     Electrochemical potential in V.
+            o real(dp), intent(in)::jdla     Exchange current density in A.cm-2.
+            o real(dp), intent(in)::jdlc     Anodic diffusion limiting current density in A.cm-2.
+            o real(dp), intent(in)::aa     Cathodic diffusion limiting current density in A.cm-2.
+            o real(dp), intent(in)::ac     Anodic transfer coefficient.
+            o real(dp), intent(in)::za     Cathodic transfer coefficient.
+            o real(dp), intent(in)::zc     Number of exchnaged electrons in the anodic branch.
+            o real(dp), intent(in)::A     Number of exchnaged electrons in the cathodic branch.
+            o real(dp), intent(in)::T     Area in cm2.
 
 NOTES
     To use ecx within your fpm <https://github.com/fortran-lang/fpm>

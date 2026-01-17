@@ -26,51 +26,70 @@
 !     (c_prefix)fortran_func.
 ! 
 !     Fortran API
-!         o function get_version() -> fptr     Get the version.
-!         o pure elemental function kTe(T) -> r     Compute the thermal voltage.
-!             o real(dp), intent(in)::T     Temperature in °C.
-!         o subroutine z(p, w, zout, e, errstat, errmsg)     Compute the complex impedance.
-!             o real(dp), intent(in), dimension(:)::p     Parameters defining the element e
-!             o real(dp), intent(in), dimension(:)::w     Angular frequencies in rad.s-1
-!             o complex(dp), intent(out), dimension(:)::zout     Complex impedance in Ohms.
-!             o character(len=1), intent(in)::e     Electrochemical element: R, C, L, Q, O, T, G
-!             o integer(int32), intent(out)::errstat     Error status
-!             o character(len=:), intent(out), pointer::errmsg     Error message
-!         o subroutine mm(p, w, zout, n)    ---
-!             o real(dp), intent(in), dimension(:)::p     Compute the measurement model.
-!             o real(dp), intent(in), dimension(:)::w     Parameters.
-!             o complex(dp), intent(out), dimension(:)::zout     Angular frequencies in rad.s-1
-!             o integer(int32), intent(in)::n     Complex impedance in Ohms.
-!         o pure function nernst(E0, z, aox, vox, ared, vred, T) -> E     Compute the Nernst electrochemical potential in V.
-!             o real(dp), intent(in)::E0    ---
-!             o integer(int32), intent(in)::z     Standard electrochemical potential in V.
-!             o real(dp), intent(in), dimension(:)::aox     Number of exchanged electrons.
-!             o real(dp), intent(in), dimension(:)::vox     Activities of the oxidants.
-!             o real(dp), intent(in), dimension(:)::ared     Coefficients for the oxidants.
-!             o real(dp), intent(in), dimension(:)::vred     Activities of the reductants
-!             o real(dp), intent(in)::T     Coefficients for the reductants.
-!         o pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T) -> I    ---
-!             o real(dp), intent(in)::U     Open Circuit Voltage in V.
-!             o real(dp), intent(in)::OCV     Compute Butler Volmer equation without mass transport.
-!             o real(dp), intent(in)::j0     Electrochemical potential in V.
-!             o real(dp), intent(in)::aa     Exchange current density in A.cm-2.
-!             o real(dp), intent(in)::ac     Anodic transfer coefficient.
-!             o real(dp), intent(in)::za     Cathodic transfer coefficient.
-!             o real(dp), intent(in)::zc     Number of exchnaged electrons in the anodic branch.
-!             o real(dp), intent(in)::A     Number of exchnaged electrons in the cathodic branch.
-!             o real(dp), intent(in)::T     Area in cm2.
-!         o pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T) -> I     Compute Butler Volmer equation with mass transport.
-!             o real(dp), intent(in)::U     Open Circuit Voltage in V.
-!             o real(dp), intent(in)::OCV    ---
-!             o real(dp), intent(in)::j0     Electrochemical potential in V.
-!             o real(dp), intent(in)::jdla     Exchange current density in A.cm-2.
-!             o real(dp), intent(in)::jdlc     Anodic diffusion limiting current density in A.cm-2.
-!             o real(dp), intent(in)::aa     Cathodic diffusion limiting current density in A.cm-2.
-!             o real(dp), intent(in)::ac     Anodic transfer coefficient.
-!             o real(dp), intent(in)::za     Cathodic transfer coefficient.
-!             o real(dp), intent(in)::zc     Number of exchnaged electrons in the anodic branch.
-!             o real(dp), intent(in)::A     Number of exchnaged electrons in the cathodic branch.
-!             o real(dp), intent(in)::T     Area in cm2.
+!         o function get_version()result(fptr)              Get the version.
+!             o character(len=:), pointer :: fptr    Version of the library.
+!         o pure elemental function kTe(T)result(r)              Compute the thermal voltage.
+!             o real(dp), intent(in) :: T    Temperature in °C.
+!             o real(dp) :: r    Thermal voltage in V.
+!         o subroutine z(p, w, zout, e, errstat, errmsg)              Compute the complex impedance.
+!             o real(dp), intent(in) :: p(:)    Parameters defining the element e
+!             o real(dp), intent(in) :: w(:)    Angular frequencies in rad.s-1
+!             o character(len=1), intent(in) :: e    Electrochemical element: R, C, L, Q, O, T, G
+!             o complex(dp), intent(out) :: zout(:)    Complex impedance in Ohms.
+!             o integer(int32), intent(out) :: errstat    Error status
+!             o character(len=:), intent(out), pointer :: errmsg    Error message
+!         o subroutine mm(p, w, zout, n)              Compute the measurement model.
+!             o real(dp), intent(in) :: p(:)    Parameters.
+!             o real(dp), intent(in) :: w(:)    Angular frequencies in rad.s-1
+!             o complex(dp), intent(out) :: zout(:)    Complex impedance in Ohms.
+!             o integer(int32), intent(in) :: n    Number of voigt elements.
+!         o pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)              Compute the Nernst electrochemical potential in V.
+!             o real(dp), intent(in) :: E0    Standard electrochemical potential in V.
+!             o integer(int32), intent(in) :: z    Number of exchanged electrons.
+!             o real(dp), intent(in) :: aox(:)    Activities of the oxidants.
+!             o real(dp), intent(in) :: vox(:)    Coefficients for the oxidants.
+!             o real(dp), intent(in) :: ared(:)    Activities of the reductants
+!             o real(dp), intent(in) :: vred(:)    Coefficients for the reductants.
+!             o real(dp), intent(in) :: T    Temperature in °C.
+!             o real(dp) :: E    Nernst potential in V.
+!         o pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)              Compute Butler Volmer equation without mass transport.
+!             o real(dp), intent(in) :: OCV    Open Circuit Voltage in V.
+!             o real(dp), intent(in) :: U    Electrochemical potential in V.
+!             o real(dp), intent(in) :: j0    Exchange current density in A.cm-2.
+!             o real(dp), intent(in) :: aa    Anodic transfer coefficient.
+!             o real(dp), intent(in) :: ac    Cathodic transfer coefficient.
+!             o real(dp), intent(in) :: za    Number of exchnaged electrons in the anodic branch.
+!             o real(dp), intent(in) :: zc    Number of exchnaged electrons in the cathodic branch.
+!             o real(dp), intent(in) :: A    Area in cm2.
+!             o real(dp), intent(in) :: T    Temperature in °C.
+!             o real(dp) :: I    Current in A.
+!         o pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I)              Compute Butler Volmer equation with mass transport.
+!             o real(dp), intent(in) :: OCV    Open Circuit Voltage in V.
+!             o real(dp), intent(in) :: U    Electrochemical potential in V.
+!             o real(dp), intent(in) :: j0    Exchange current density in A.cm-2.
+!             o real(dp), intent(in) :: jdla    Anodic diffusion limiting current density in A.cm-2.
+!             o real(dp), intent(in) :: jdlc    Cathodic diffusion limiting current density in A.cm-2.
+!             o real(dp), intent(in) :: aa    Anodic transfer coefficient.
+!             o real(dp), intent(in) :: ac    Cathodic transfer coefficient.
+!             o real(dp), intent(in) :: za    Number of exchnaged electrons in the anodic branch.
+!             o real(dp), intent(in) :: zc    Number of exchnaged electrons in the cathodic branch.
+!             o real(dp), intent(in) :: A    Area in cm2.
+!             o real(dp), intent(in) :: T    Temperature in °C.
+!             o real(dp) :: I    Current in A.
+! 
+!     C API
+!         o char* ecx_get_version(void)
+!         o const double ecx_core_PI
+!         o const double ecx_core_T_K
+!         o void ecx_core_nm2eV(double *lambda, double *E, size_t n)
+!         o void ecx_core_kTe(double *T, double *kTE, size_t n)
+!         o double ecx_kinetics_nernst(double E0, int z, double *aox, double *vox, size_t nox, double *ared, double *vred, size_t nred, double T)
+!         o void ecx_kinetics_sbv(double *U, double OCV, double j0, double aa, double ac, double za, double zc, double A, double T, double *i, size_t n)
+!         o void ecx_kinetics_bv(double *U, double OCV, double j0, double jdla, double jdlc, double aa, double ac, double za, double zc, double A, double T, double *i, size_t n)
+!         o void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat, char *(*errmsg))
+! 
+!     Python wrappers
+!         o z(e:str, w:Union[np.ndarray,array.array,int,float], p:Union[np.ndarray,array.array])->np.ndarray
 ! 
 ! NOTES
 !     To use ecx within your fpm <https://github.com/fortran-lang/fpm>

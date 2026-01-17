@@ -112,14 +112,10 @@ end subroutine
 
 subroutine mm(p, w, zout, n)
     !! Compute the measurement model.
-    real(dp), intent(in) :: p(:)
-        !! Parameters.
-    real(dp), intent(in) :: w(:)
-        !! Angular frequencies in rad.s-1
-    complex(dp), intent(out) :: zout(:)
-        !! Complex impedance in Ohms.
-    integer(int32), intent(in) :: n
-        !! Number of voigt elements.
+    real(dp), intent(in) :: p(:) !! Parameters.
+    real(dp), intent(in) :: w(:) !! Angular frequencies in rad.s-1
+    complex(dp), intent(out) :: zout(:) !! Complex impedance in Ohms.
+    integer(int32), intent(in) :: n !! Number of voigt elements.
 
     integer(int32) :: i
     integer(int32) :: errstat
@@ -152,22 +148,16 @@ end subroutine
 pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
     !! Compute the Nernst electrochemical potential in V.
     implicit none
-    real(dp), intent(in) :: E0
-        !! Standard electrochemical potential in V.
-    integer(int32), intent(in) :: z
-        !! Number of exchanged electrons.
-    real(dp), intent(in) :: aox(:)
-        !! Activities of the oxidants.
-    real(dp), intent(in) :: vox(:)
-        !! Coefficients for the oxidants.
-    real(dp), intent(in) :: ared(:)
-        !! Activities of the reductants
-    real(dp), intent(in) :: vred(:)
-        !! Coefficients for the reductants.
-    real(dp), intent(in) :: T
-        !! Temperature in °C.
+    real(dp), intent(in) :: E0 !! Standard electrochemical potential in V.
+    integer(int32), intent(in) :: z !! Number of exchanged electrons.
+    real(dp), intent(in) :: aox(:) !! Activities of the oxidants.
+    real(dp), intent(in) :: vox(:) !! Coefficients for the oxidants.
+    real(dp), intent(in) :: ared(:) !! Activities of the reductants
+    real(dp), intent(in) :: vred(:) !! Coefficients for the reductants.
+    real(dp), intent(in) :: T !! Temperature in °C.
+    real(dp) :: E             !! Nernst potential in V. 
 
-    real(dp) :: E, ox, red, kTe_
+    real(dp)ox, red, kTe_
 
     kTe_ = kTe(T)
     ox = product(aox**vox)
@@ -182,26 +172,16 @@ end function
 
 pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation without mass transport.
-    real(dp), intent(in) :: OCV
-        !! Open Circuit Voltage in V.
-    real(dp), intent(in) :: U
-        !! Electrochemical potential in V.
-    real(dp), intent(in) :: j0
-        !! Exchange current density in A.cm-2.
-    real(dp), intent(in) :: aa
-        !! Anodic transfer coefficient.
-    real(dp), intent(in) :: ac
-        !! Cathodic transfer coefficient.
-    real(dp), intent(in) :: za
-        !! Number of exchnaged electrons in the anodic branch.
-    real(dp), intent(in) :: zc
-        !! Number of exchnaged electrons in the cathodic branch.
-    real(dp), intent(in) :: A
-        !! Area in cm2.
-    real(dp), intent(in) :: T
-        !! Temperature in °C.
-
-    real(dp) :: I
+    real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
+    real(dp), intent(in) :: U !! Electrochemical potential in V.
+    real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
+    real(dp), intent(in) :: aa !! Anodic transfer coefficient.
+    real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
+    real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
+    real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
+    real(dp), intent(in) :: A !! Area in cm2.
+    real(dp), intent(in) :: T !! Temperature in °C.
+    real(dp) :: I             !! Current in A.
 
     real(dp) :: kTe_
 
@@ -217,30 +197,20 @@ end function
 pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I)
     !! Compute Butler Volmer equation with mass transport.
     implicit none
-    real(dp), intent(in) :: OCV
-        !! Open Circuit Voltage in V.
-    real(dp), intent(in) :: U
-        !! Electrochemical potential in V.
-    real(dp), intent(in) :: j0
-        !! Exchange current density in A.cm-2.
-    real(dp), intent(in) :: jdla
-        !! Anodic diffusion limiting current density in A.cm-2.
-    real(dp), intent(in) :: jdlc
-        !! Cathodic diffusion limiting current density in A.cm-2.
-    real(dp), intent(in) :: aa
-        !! Anodic transfer coefficient.
-    real(dp), intent(in) :: ac
-        !! Cathodic transfer coefficient.
-    real(dp), intent(in) :: za
-        !! Number of exchnaged electrons in the anodic branch.
-    real(dp), intent(in) :: zc
-        !! Number of exchnaged electrons in the cathodic branch.
-    real(dp), intent(in) :: A
-        !! Area in cm2.
-    real(dp), intent(in) :: T
-        !! Temperature in °C.
+    real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
+    real(dp), intent(in) :: U !! Electrochemical potential in V.
+    real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
+    real(dp), intent(in) :: jdla !! Anodic diffusion limiting current density in A.cm-2.
+    real(dp), intent(in) :: jdlc !! Cathodic diffusion limiting current density in A.cm-2.
+    real(dp), intent(in) :: aa !! Anodic transfer coefficient.
+    real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
+    real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
+    real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
+    real(dp), intent(in) :: A !! Area in cm2.
+    real(dp), intent(in) :: T !! Temperature in °C.
+    real(dp) :: I             !! Current in A.
 
-    real(dp) :: I, kTe_, num, denom
+    real(dp) :: kTe_, num, denom
 
     kTe_ = kTe(T)
 

@@ -3,8 +3,6 @@ program ecxcli
     use ieee_arithmetic, only: ieee_is_nan
     use iso_fortran_env, only: real64, int32, output_unit
     use ecx
-    use ciaaw, only: ciaaw_version => get_version, get_saw, print_periodic_table,&
-                     get_z_by_symbol
     use M_CLI2, only: set_args, iget, lget, get_args, dgets
     use M_CLI2, only: args=>unnamed, get_subcommand, set_mode
     implicit none
@@ -61,6 +59,8 @@ program ecxcli
 
     cmd = get_subcommand()
     call set_mode('strict')
+    call set_mode('response_file')
+    call set_args('', help_text, version_text)
 
 
 contains

@@ -38,7 +38,6 @@ prep:
 # ---------------------------------------------------------------------
 # COMPILATION
 build: 
-	make -C doc man
 	fpm build --profile=$(btype)
 
 test: build
@@ -108,7 +107,7 @@ uninstall:
 # ---------------------------------------------------------------------
 # OTHERS
 doc:
-	fpm run --profile release --target ecxcli -- --help > doc/ecxcli.1.prep
+	fpm run --profile release --target ecxcli -- --help > doc/ecx.1.prep
 	make -C doc
 
 docs:

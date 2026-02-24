@@ -35,4 +35,4 @@ OPTIONS
               --version, -v
                      Show version information and exit.
 
-0.1.0dev0+4f80e2e           24 February 2026                     ecx(1)
+0.1.0                       24 February 2026                     ecx(1)

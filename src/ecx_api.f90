@@ -157,7 +157,7 @@ pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
     real(dp), intent(in) :: T !! Temperature in °C.
     real(dp) :: E             !! Nernst potential in V. 
 
-    real(dp)ox, red, kTe_
+    real(dp) :: ox, red, kTe_
 
     kTe_ = kTe(T)
     ox = product(aox**vox)

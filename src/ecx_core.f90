@@ -2,7 +2,7 @@ module ecx__core
     !! Core.
     use ecx__common
     private
-    public :: roundn, assertEqual, nm2eV, deg2rad, rad2deg
+    public :: roundn, assertEqual, nm2eV, eV2nm, deg2rad, rad2deg
 
 contains
 

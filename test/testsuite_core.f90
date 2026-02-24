@@ -1,5 +1,4 @@
 module testsuite__core
-    use stdlib_kinds, only: dp
     use testdrive, only : new_unittest, unittest_type, error_type, check
     use ecx__common
     use ecx__core

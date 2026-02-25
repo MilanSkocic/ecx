@@ -108,6 +108,14 @@ with open("./VERSION", "r") as f:
 
 if __name__ == "__main__":
     
+
+    mod = Extension(name=f"py{name:s}._{name:s}",
+                    sources=[f"./src/py{name:s}/_{name:s}.c"],
+                         libraries=libraries,
+                         library_dirs=library_dirs,
+                         runtime_library_dirs=runtime_library_dirs,
+                         extra_objects=extra_objects)
+    
     mod_version = Extension(name="pyecx.version",
                          sources=["./src/pyecx/cpy_version.c"],
                          libraries=libraries,
@@ -128,5 +136,5 @@ if __name__ == "__main__":
                          extra_objects=extra_objects)
 
     setup(version=version,
-          ext_modules=[mod_version, mod_core, mod_eis])
+          ext_modules=[mod])
 

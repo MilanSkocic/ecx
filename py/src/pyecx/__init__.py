@@ -2,9 +2,10 @@
 from typing import Union
 import numpy as np
 import array
-from .version import __version__
-from . import _eis
-from . import core
+from . import _ecx
+
+__version__ = _ecx.__version__
+
 
 # utilities
 def _cast_ndarray(X):
@@ -45,9 +46,15 @@ def z(e:str, w:Union[np.ndarray,array.array,int,float], p:Union[np.ndarray,array
     _e = str(e)
     _w, w_scalar = _cast_ndarray(w)
     _p, p_scalar = _cast_ndarray(p)
+
+    if p_scalar:
+        raise TypeError("p must an array-like object with 3 elements.")
     
     res = _eis.z(_e, _w, _p)
 
-    return res
+    if w_scalar:
+        return res[0]
+    else:
+        return res
 
 

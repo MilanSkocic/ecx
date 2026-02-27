@@ -1,19 +1,19 @@
 NAME
 ----
 
-**ecxcli(1)** - Command line for ecx
+**ecx(1)** - Command line for ecx
 
 SYNOPSIS
 --------
 
 ::
 
-   ecxcli SUBCOMMAND [OPTION...] ARG...
+   ecx SUBCOMMAND [OPTION...] ARG...
 
 DESCRIPTION
 -----------
 
-**ecxcli is command line interface for computing electro-** chemical
+**ecx is command line interface for computing electro-** chemical
 properties:
 
    **o EIS**

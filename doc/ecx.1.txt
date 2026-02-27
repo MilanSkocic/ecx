@@ -1,13 +1,13 @@
 ecx(1)                       Library calls                       ecx(1)
 
 NAME
-       ecxcli(1) - Command line for ecx
+       ecx(1) - Command line for ecx
 
 SYNOPSIS
-       ecxcli SUBCOMMAND [OPTION...] ARG...
+       ecx SUBCOMMAND [OPTION...] ARG...
 
 DESCRIPTION
-       ecxcli is command line interface for computing electro- chemical
+       ecx  is  command  line interface for computing electro- chemical
        properties:
 
               o EIS  Electrochemical Impedance Z=f(w)
@@ -17,7 +17,7 @@ DESCRIPTION
 
               o PEC  Iph=f(hv, U)
 
-       It  can  also provide the molar masses, isotope compositions and
+       It can also provide the molar masses, isotope  compositions  and
        nuclide compositions.
 
 OPTIONS
@@ -35,4 +35,4 @@ OPTIONS
               --version, -v
                      Show version information and exit.
 
-0.1.0                       24 February 2026                     ecx(1)
+0.1.0                       26 February 2026                     ecx(1)

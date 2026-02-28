@@ -1,0 +1,8 @@
+@dv
+options build --profil=debug --verbose
+
+@d
+options build --profil=debug
+
+@t
+options test --profil=debug

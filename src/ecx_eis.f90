@@ -1,13 +1,14 @@
 module ecx__eis
-    use ecx__common
-    use ecx__core
-    implicit none
-    private
+!! EIS module.
+use ecx__common
+use ecx__core
+implicit none(type,external)
+private
 
-    character(len=:), allocatable, target :: errmsg_f
-    character(len=:), allocatable, target :: errmsg_c
-    
-    public :: zr, zc, zl, zq, zw, zo, zt, zg
+character(len=:), allocatable, target :: errmsg_f
+character(len=:), allocatable, target :: errmsg_c
+
+public :: zr, zc, zl, zq, zw, zo, zt, zg
 
 contains
 

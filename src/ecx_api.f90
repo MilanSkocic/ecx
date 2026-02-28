@@ -1,18 +1,18 @@
 module ecx__api
-    !! API
-    use ecx__version, only: version
-    use ecx__common
-    use ecx__core
-    use ecx__eis
-    implicit none
-    private
+!! API
+use ecx__version, only: version
+use ecx__common
+use ecx__core
+use ecx__eis
+implicit none(type,external)
+private
 
-    character(len=:), allocatable, target :: version_f
-    character(len=:), allocatable, target :: errmsg_f
-    character(len=:), allocatable, target :: errmsg_c
+character(len=:), allocatable, target :: version_f
+character(len=:), allocatable, target :: errmsg_f
+character(len=:), allocatable, target :: errmsg_c
 
-    public :: get_version, kTe, z, mm
-    public :: sbv, bv, nernst
+public :: get_version, kTe, z, mm
+public :: sbv, bv, nernst
 
 
 contains

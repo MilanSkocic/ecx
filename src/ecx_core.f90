@@ -1,48 +1,11 @@
 module ecx__core
-    !! Core.
-    use ecx__common
-    private
-    public :: roundn, assertEqual, nm2eV, eV2nm, deg2rad, rad2deg
+!! Core.
+use ecx__common
+implicit none(type,external)
+private
+public :: nm2eV, eV2nm, deg2rad, rad2deg
 
 contains
-
-pure elemental function roundn(x, n)result(r)
-    !! Round x to n digits.
-    implicit none
-    real(dp), intent(in) :: x !! Number to be rounded.
-    integer(int32), intent(in) :: n !! Number of digits.s
-    real(dp) :: r !! Rounded number
-    real(dp) :: fac
-
-    fac = 10**n
-    r = nint(x*fac, kind=kind(x)) / fac
-end function
-
-function assertEqual(x1, x2, n)result(r)
-    !! Assert if two numbers are equal.
-    implicit none
-    real(dp), intent(in) :: x1
-        !! First number to be compared.
-    real(dp), intent(in) :: x2
-        !! Second number to be compared.
-    integer(int32), intent(in) :: n
-        !! Number of digits.
-    logical :: r
-        !! Comparison result.
-
-    real(dp) :: fac
-    real(dp) :: ix1
-    real(dp) :: ix2
-    
-    if(ieee_is_nan(x1) .or. ieee_is_nan(x2))then
-        r = .false.
-    else
-        fac = 10**n
-        ix1 = nint(x1 * fac, kind=kind(n))
-        ix2 = nint(x2 * fac, kind=kind(n))
-        r = ix1 == ix2
-    endif
-end function
 
 pure subroutine ecx_core_linspace(start, end, x)
     !! Linear spaced 1d-array.

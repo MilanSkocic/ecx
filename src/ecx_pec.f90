@@ -1,13 +1,12 @@
-!> @brief PEC
 module ecx__pec
-    !! PEC.
-    use ecx__common
-    use ecx__core
-    implicit none
-    private
+!! PEC.
+use ecx__common
+use ecx__core
+implicit none(type,external)
+private
 
 public :: alpha, iph
-    
+
 contains
 
 

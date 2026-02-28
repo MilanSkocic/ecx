@@ -1,10 +1,12 @@
 module ecx__capi
-    use ecx__common
-    use ecx__core
-    use ecx__api
+use ecx__common
+use ecx__core
+use ecx__api
+implicit none(type,external)
+public
 
-    character(len=:), allocatable, target :: errmsg_c
-    character(len=:), allocatable, target :: version_c
+character(len=:), allocatable, target :: errmsg_c
+character(len=:), allocatable, target :: version_c
 
 contains
 

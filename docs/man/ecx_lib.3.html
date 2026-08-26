@@ -1,0 +1,712 @@
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Wed Aug 26 04:10:40 2026 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>ecx</title>
+
+</head>
+<body>
+
+<h1 align="center">ecx</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#LIBRARY">LIBRARY</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#NOTES">NOTES</a><br>
+<a href="#EXAMPLE">EXAMPLE</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>ecx</b> -
+library for electrochemistry</p>
+
+<h2>LIBRARY
+<a name="LIBRARY"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">ecx
+(<b>-libecx</b>, <b>-lecx</b>)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">ecx (Fortran):
+use ecx <br>
+ecx (C): include &quot;ecx.h&quot; <br>
+ecx (python): import pyecx</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">ecx a Fortran
+library for providing a collection of routines for
+electrochemistry. A C API allows usage from C, or can be
+used as a basis for other wrappers. A Python wrapper allows
+easy usage from Python.</p>
+
+<p style="margin-left:9%; margin-top: 1em">It covers:</p>
+
+<p style="margin-left:18%;"><b>o kinetics</b></p>
+
+<p style="margin-left:27%;">Nernst, Butler-Volmer</p>
+
+<p style="margin-left:18%;"><b>o electrochemical</b></p>
+
+<p style="margin-left:27%;">Impedance, Admittance, Circuit
+Elements, Equivalent Circuits</p>
+
+<p style="margin-left:18%;"><b>o
+photoelectrochemistry</b></p>
+
+<p style="margin-left:27%;">Photocurrent, Band-gap, space
+charge.</p>
+
+<p style="margin-left:9%; margin-top: 1em">The C API is
+defined by adding a prefix to the functions from the Fortran
+API due to the lack of module/namespace feature in the C
+language. The functions are therefore following this
+template: (c_prefix)fortran_func.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Fortran API</p>
+
+<p style="margin-left:18%;"><b>o function
+get_version()result(fptr)</b></p>
+
+<p style="margin-left:27%;">Get the version. <b><br>
+o character(len=:), pointer :: fptr</b></p>
+
+<p style="margin-left:36%;">Version of the library.</p>
+
+<p style="margin-left:18%;"><b>o pure elemental function
+kTe(T)result(r)</b></p>
+
+<p style="margin-left:27%;">Compute the thermal voltage.
+<b><br>
+o real(dp), intent(in) :: T</b></p>
+
+<p style="margin-left:36%;">Temperature in &deg;C.</p>
+
+<p style="margin-left:27%;"><b>o real(dp) :: r</b></p>
+
+<p style="margin-left:36%;">Thermal voltage in V.</p>
+
+<p style="margin-left:18%;"><b>o subroutine z(p, w, zout,
+e, errstat, errmsg)</b></p>
+
+<p style="margin-left:27%;">Compute the complex impedance.
+<b><br>
+o real(dp), intent(in) :: p(:)</b></p>
+
+<p style="margin-left:36%;">Parameters defining the element
+e</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+w(:)</b></p>
+
+<p style="margin-left:36%;">Angular frequencies in
+rad.s-1</p>
+
+<p style="margin-left:27%;"><b>o character(len=1),
+intent(in) :: e</b></p>
+
+<p style="margin-left:36%;">Electrochemical element: R, C,
+L, Q, O, T, G</p>
+
+<p style="margin-left:27%;"><b>o complex(dp), intent(out)
+:: zout(:)</b></p>
+
+<p style="margin-left:36%;">Complex impedance in Ohms.</p>
+
+<p style="margin-left:27%;"><b>o integer(int32),
+intent(out) :: errstat</b></p>
+
+<p style="margin-left:36%;">Error status</p>
+
+<p style="margin-left:27%;"><b>o character(len=:),
+intent(out), pointer :: errmsg</b></p>
+
+<p style="margin-left:36%;">Error message</p>
+
+<p style="margin-left:18%;"><b>o subroutine mm(p, w, zout,
+n)</b></p>
+
+<p style="margin-left:27%;">Compute the measurement model.
+<b><br>
+o real(dp), intent(in) :: p(:)</b></p>
+
+<p style="margin-left:36%;">Parameters.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+w(:)</b></p>
+
+<p style="margin-left:36%;">Angular frequencies in
+rad.s-1</p>
+
+<p style="margin-left:27%;"><b>o complex(dp), intent(out)
+:: zout(:)</b></p>
+
+<p style="margin-left:36%;">Complex impedance in Ohms.</p>
+
+<p style="margin-left:27%;"><b>o integer(int32), intent(in)
+:: n</b></p>
+
+<p style="margin-left:36%;">Number of voigt elements.</p>
+
+<p style="margin-left:18%;"><b>o pure function nernst(E0,
+z, aox, vox, ared, vred, T)result(E)</b></p>
+
+<p style="margin-left:27%;">Compute the Nernst
+electrochemical potential in V. <b><br>
+o real(dp), intent(in) :: E0</b></p>
+
+<p style="margin-left:36%;">Standard electrochemical
+potential in V.</p>
+
+<p style="margin-left:27%;"><b>o integer(int32), intent(in)
+:: z</b></p>
+
+<p style="margin-left:36%;">Number of exchanged
+electrons.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+aox(:)</b></p>
+
+<p style="margin-left:36%;">Activities of the oxidants.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+vox(:)</b></p>
+
+<p style="margin-left:36%;">Coefficients for the
+oxidants.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+ared(:)</b></p>
+
+<p style="margin-left:36%;">Activities of the
+reductants</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+vred(:)</b></p>
+
+<p style="margin-left:36%;">Coefficients for the
+reductants.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+T</b></p>
+
+<p style="margin-left:36%;">Temperature in &deg;C.</p>
+
+<p style="margin-left:27%;"><b>o real(dp) :: E</b></p>
+
+<p style="margin-left:36%;">Nernst potential in V.</p>
+
+<p style="margin-left:18%;"><b>o pure elemental function
+sbv(U, OCV, j0, aa, ac, za, zc, A, <br>
+T)result(I)</b></p>
+
+<p style="margin-left:27%;">Compute Butler Volmer equation
+without mass transport. <b><br>
+o real(dp), intent(in) :: OCV</b></p>
+
+<p style="margin-left:36%;">Open Circuit Voltage in V.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+U</b></p>
+
+<p style="margin-left:36%;">Electrochemical potential in
+V.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+j0</b></p>
+
+<p style="margin-left:36%;">Exchange current density in
+A.cm-2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+aa</b></p>
+
+<p style="margin-left:36%;">Anodic transfer
+coefficient.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+ac</b></p>
+
+<p style="margin-left:36%;">Cathodic transfer
+coefficient.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+za</b></p>
+
+<p style="margin-left:36%;">Number of exchnaged electrons
+in the anodic branch.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+zc</b></p>
+
+<p style="margin-left:36%;">Number of exchnaged electrons
+in the cathodic branch.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+A</b></p>
+
+<p style="margin-left:36%;">Area in cm2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+T</b></p>
+
+<p style="margin-left:36%;">Temperature in &deg;C.</p>
+
+<p style="margin-left:27%;"><b>o real(dp) :: I</b></p>
+
+<p style="margin-left:36%;">Current in A.</p>
+
+<p style="margin-left:18%;"><b>o pure elemental function
+bv(U, OCV, j0, jdla, jdlc, aa, ac, za, <br>
+zc, A, T)result(I)</b></p>
+
+<p style="margin-left:27%;">Compute Butler Volmer equation
+with mass transport. <b><br>
+o real(dp), intent(in) :: OCV</b></p>
+
+<p style="margin-left:36%;">Open Circuit Voltage in V.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+U</b></p>
+
+<p style="margin-left:36%;">Electrochemical potential in
+V.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+j0</b></p>
+
+<p style="margin-left:36%;">Exchange current density in
+A.cm-2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+jdla</b></p>
+
+<p style="margin-left:36%;">Anodic diffusion limiting
+current density in A.cm-2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+jdlc</b></p>
+
+<p style="margin-left:36%;">Cathodic diffusion limiting
+current density in A.cm-2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+aa</b></p>
+
+<p style="margin-left:36%;">Anodic transfer
+coefficient.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+ac</b></p>
+
+<p style="margin-left:36%;">Cathodic transfer
+coefficient.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+za</b></p>
+
+<p style="margin-left:36%;">Number of exchnaged electrons
+in the anodic branch.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+zc</b></p>
+
+<p style="margin-left:36%;">Number of exchnaged electrons
+in the cathodic branch.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+A</b></p>
+
+<p style="margin-left:36%;">Area in cm2.</p>
+
+<p style="margin-left:27%;"><b>o real(dp), intent(in) ::
+T</b></p>
+
+<p style="margin-left:36%;">Temperature in &deg;C.</p>
+
+<p style="margin-left:27%;"><b>o real(dp) :: I</b></p>
+
+<p style="margin-left:36%;">Current in A.</p>
+
+<p style="margin-left:9%; margin-top: 1em">C API</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>char* <b>ecx_get_version</b>(void)</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>const double ecx_core_PI</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>const double ecx_core_T_K</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>void <b>ecx_core_nm2eV</b>(double *lambda, double *E,
+size_t n)</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>void <b>ecx_core_kTe</b>(double *T, double *kTE, size_t
+n)</p> </td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>double <b>ecx_kinetics_nernst</b>(double E0, int z,
+double *aox, double *vox, size_t nox, double *ared, double
+*vred, size_t nred, double T)</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>void <b>ecx_kinetics_sbv</b>(double *U, double OCV,
+double j0, double aa, double ac, double za, double zc,
+double A, double T, double *i, size_t n)</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>void <b>ecx_kinetics_bv</b>(double *U, double OCV,
+double j0, double jdla, double jdlc, double aa, double ac,
+double za, double zc, double A, double T, double *i, size_t
+n)</p> </td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p>void <b>ecx_eis_z</b>(double *p, double *w, ecx_cdouble
+*z, char e, size_t k, size_t n, int *errstat, char
+*(*errmsg))</p> </td></tr>
+</table>
+
+<p style="margin-left:9%; margin-top: 1em">Python
+wrappers</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="3%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em"><b>z</b>(e:str,
+w:Union[np.ndarray,array.array,int,float],
+p:Union[np.ndarray,array.array])-&gt;np.ndarray</p> </td></tr>
+</table>
+
+<h2>NOTES
+<a name="NOTES"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">To use ecx
+within your fpm &lt;https://github.com/fortran-lang/fpm&gt;
+project, add the following lines to your file:</p>
+
+<p style="margin-left:9%; margin-top: 1em">[dependencies]
+<br>
+ecx = {
+git=&quot;https://github.com/MilanSkocic/ecx.git&quot; }</p>
+
+<h2>EXAMPLE
+<a name="EXAMPLE"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Example in
+Fortran:</p>
+
+<p style="margin-left:9%; margin-top: 1em">program
+example_in_f <br>
+use iso_fortran_env <br>
+use ecx <br>
+implicit none</p>
+
+<p style="margin-left:9%; margin-top: 1em">real(real64) ::
+w(3) = [1.0d0, 1.0d0, 100.0d0] <br>
+real(real64) :: r = 100.0d0 <br>
+real(real64) :: p(3) = 0.0d0 <br>
+character(len=1) :: e <br>
+integer :: errstat <br>
+complex(real64) :: zout(3) <br>
+character(len=:), pointer :: errmsg</p>
+
+<p style="margin-left:9%; margin-top: 1em">p(1) = r <br>
+e = &quot;R&quot; <br>
+call z(p, w, zout, e, errstat, errmsg) <br>
+print *, zout <br>
+print *, errstat, errmsg <br>
+end program</p>
+
+<p style="margin-left:9%; margin-top: 1em">Example in
+C:</p>
+
+<p style="margin-left:9%; margin-top: 1em">int main(void){
+<br>
+int errstat, i; <br>
+double w[3] = {1.0, 1.0, 1.0}; <br>
+double p[3] = {100.00, 0.0, 0.0}; <br>
+ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), <br>
+ecx_cbuild(0.0, 0.0), <br>
+ecx_cbuild(0.0, 0.0)}; <br>
+char *errmsg;</p>
+
+<p style="margin-left:9%; margin-top: 1em">ecx_eis_z(p, w,
+z, &rsquo;R&rsquo;, 3, 3, &amp;errstat, &amp;errmsg);</p>
+
+<p style="margin-left:9%; margin-top: 1em">for(i=0;
+i&lt;3;i++){ <br>
+printf(&quot;%f %f 0, creal(z[i]), cimag(z[i])); <br>
+} <br>
+printf(&quot;%d %s0, errstat, errmsg); <br>
+return EXIT_SUCCESS; <br>
+}</p>
+
+<p style="margin-left:9%; margin-top: 1em">Example in
+Python:</p>
+
+<p style="margin-left:9%; margin-top: 1em">import numpy as
+np <br>
+import pyecx <br>
+import matplotlib.pyplot as plt</p>
+
+<p style="margin-left:9%; margin-top: 1em">R = 100 <br>
+C = 1e-6 <br>
+w = np.logspace(6, -3, 100)</p>
+
+<p style="margin-left:9%; margin-top: 1em">p =
+np.asarray([R, 0.0, 0.0]) <br>
+zr = np.asarray(pyecx.z(&quot;R&quot;, w, p)) <br>
+p = np.asarray([C, 0.0, 0.0]) <br>
+zc = np.asarray(pyecx.z(&quot;C&quot;, w, p)) <br>
+zrc = zr*zc / (zr+zc) <br>
+print(&quot;finish&quot;)</p>
+
+<p style="margin-left:9%; margin-top: 1em">fig =
+plt.figure() <br>
+ax = fig.add_subplot(111)</p>
+
+
+<p style="margin-left:9%; margin-top: 1em">ax.set_aspect(&quot;equal&quot;)
+<br>
+ax.plot(zrc.real, zrc.imag, &quot;g.&quot;,
+label=&quot;R/C&quot;)</p>
+
+
+<p style="margin-left:9%; margin-top: 1em">ax.invert_yaxis()</p>
+
+<p style="margin-left:9%; margin-top: 1em">plt.show()</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>complex</b>(7),
+<b>gsl</b>(3), <b>catanh</b>(3), <b>gnuplot</b>(1),
+<b>ecx_get_version</b>(3)</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Example in
+Fortran: <br>
+program example_in_f <br>
+use iso_fortran_env <br>
+use ecx <br>
+implicit none</p>
+
+<p style="margin-left:9%; margin-top: 1em">real(real64) ::
+w(3) = [1.0d0, 1.0d0, 100.0d0] <br>
+real(real64) :: r = 100.0d0 <br>
+real(real64) :: p(3) = 0.0d0 <br>
+character(len=1) :: e <br>
+integer :: errstat <br>
+complex(real64) :: zout(3) <br>
+character(len=:), pointer :: errmsg</p>
+
+<p style="margin-left:9%; margin-top: 1em">p(1) = r <br>
+e = &quot;R&quot; <br>
+call z(p, w, zout, e, errstat, errmsg) <br>
+print *, zout <br>
+print *, errstat, errmsg</p>
+
+<p style="margin-left:9%; margin-top: 1em">end program</p>
+
+<p style="margin-left:9%; margin-top: 1em">Example in C
+<br>
+#include &lt;stdio.h&gt; <br>
+#include &lt;stdlib.h&gt; <br>
+#include &quot;ecx.h&quot;</p>
+
+<p style="margin-left:9%; margin-top: 1em">int
+main(void){</p>
+
+<p style="margin-left:9%; margin-top: 1em">int errstat, i;
+<br>
+double w[3] = {1.0, 1.0, 1.0}; <br>
+double p[3] = {100.00, 0.0, 0.0}; <br>
+ecx_cdouble z[3] = {ecx_cbuild(0.0,0.0), <br>
+ecx_cbuild(0.0, 0.0), <br>
+ecx_cbuild(0.0, 0.0)}; <br>
+char *errmsg;</p>
+
+<p style="margin-left:9%; margin-top: 1em">ecx_eis_z(p, w,
+z, &rsquo;R&rsquo;, 3, 3, &amp;errstat, &amp;errmsg);</p>
+
+<p style="margin-left:9%; margin-top: 1em">for(i=0;
+i&lt;3;i++){ <br>
+printf(&quot;%f %f 0, creal(z[i]), cimag(z[i])); <br>
+} <br>
+printf(&quot;%d %s0, errstat, errmsg); <br>
+return EXIT_SUCCESS; <br>
+}</p>
+
+<p style="margin-left:9%; margin-top: 1em">Example in
+Python <br>
+import sys <br>
+sys.path.insert(0, &quot;../py/src/&quot;) <br>
+import numpy as np <br>
+import pyecx <br>
+import matplotlib.pyplot as plt</p>
+
+<p style="margin-left:9%; margin-top: 1em">R = 100 <br>
+C = 1e-6 <br>
+w = np.logspace(6, -3, 100)</p>
+
+<p style="margin-left:9%; margin-top: 1em">p =
+np.asarray([R, 0.0, 0.0]) <br>
+zr = np.asarray(pyecx.z(&quot;R&quot;, w, p)) <br>
+p = np.asarray([C, 0.0, 0.0]) <br>
+zc = np.asarray(pyecx.z(&quot;C&quot;, w, p)) <br>
+zrc = zr*zc / (zr+zc) <br>
+print(&quot;finish&quot;)</p>
+
+<p style="margin-left:9%; margin-top: 1em">fig =
+plt.figure() <br>
+ax = fig.add_subplot(111)</p>
+
+
+<p style="margin-left:9%; margin-top: 1em">ax.set_aspect(&quot;equal&quot;)
+<br>
+ax.plot(zrc.real, zrc.imag, &quot;g.&quot;,
+label=&quot;R/C&quot;)</p>
+
+
+<p style="margin-left:9%; margin-top: 1em">ax.invert_yaxis()</p>
+
+<p style="margin-left:9%; margin-top: 1em">plt.show()</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>ecx</b>(1)
+<b>ecx_lib</b>(3)</p>
+<hr>
+</body>
+</html>

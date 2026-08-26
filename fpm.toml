@@ -30,8 +30,8 @@ M_CLI2 = {git="https://github.com/urbanjost/M_CLI2.git"}
 library = true
 
 [[executable]]
-name = "ecxcli"
-main = "main.f90"
+name = "ecx"
+main = "main.c"
 
 [[example]]
 name="example_in_f"

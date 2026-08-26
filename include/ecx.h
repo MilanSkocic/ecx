@@ -11,7 +11,7 @@
     #define ecx_cbuild(real, imag) (real+I*imag) 
 #endif
 
-extern char* ecx_get_version(void);
+extern char* ecx_version(void);
 
 
 ADD_IMPORT extern const double ecx_core_PI; 

@@ -1,7 +1,8 @@
 include ../../make.in
 
 MANSRC=ecx.1.man \
-	   ecx_lib.3.man
+	   ecx_lib.3.man \
+	   ecx_version.3.man
 MAN=$(patsubst %.man, %, $(MANSRC))
 MANPDF=$(patsubst %, %.pdf, $(MAN))
 MANTXT=$(patsubst %, %.txt, $(MAN))

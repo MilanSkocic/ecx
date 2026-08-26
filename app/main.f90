@@ -44,7 +44,7 @@ help_text=[character(len=80) :: &
 version_text=[character(len=80) :: &
     'PROGRAM:      '//name//'                                          ', &
     'DESCRIPTION:  Compute light and heavy water properties.           ', &
-    'VERSION:      '//get_version()//'                                 ', &
+    'VERSION:      '//version()//'                                 ', &
     'AUTHOR:       M. Skocic                                           ', &
     'LICENSE:      MIT                                                 ', &
     '' ]

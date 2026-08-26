@@ -6,31 +6,8 @@ implicit none(type,external)
 public
 
 character(len=:), allocatable, target :: errmsg_c
-character(len=:), allocatable, target :: version_c
 
 contains
-
-function capi_get_version()bind(c, name="ecx_get_version")result(cptr)
-    !! C API - Get the version.
-    implicit none
-
-    ! Returns
-    type(c_ptr) :: cptr
-        !! Pointer to version string.
-
-    character(len=:), pointer :: fptr
-    fptr => get_version()
-
-    if(allocated(version_c))then
-        deallocate(version_c)
-    endif
-    allocate(character(len=len(fptr)+1) :: version_c)
-
-    version_c = fptr // c_null_char
-    cptr = c_loc(version_c)
-end function
-
-
 ! CORE -------------------------------------------------------------------------
 pure subroutine capi_nm2eV(lambda, E, n)bind(C, name="ecx_core_nm2eV")
     !! C API - Convert wavelength to energy

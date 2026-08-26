@@ -1,0 +1,41 @@
+ecx_version(3)               Library calls               ecx_version(3)
+
+NAME
+       version - function
+
+LIBRARY
+       Codata library (libecx, -lecx)
+
+SYNOPSIS
+       Fortran   function version()result(fptr)
+
+                    character(len=:), pointer :: fptr
+
+       C         char* ecx_version()
+
+       Python    str:ecx.__version__
+
+DESCRIPTION
+       Get the library version.
+
+RETURN VALUE
+       pointer   Pointer to the version string.
+
+EXAMPLE
+       Fortran:
+           use ecx
+           print *, "version = ", version()
+
+       C:
+           include <stdio.h>
+           include "ecx.h"
+           printf("version = %s\n", ecx_version());
+
+       Python:
+           import pyecx
+           print(f"version = {pyecx.__version__}")
+
+SEE ALSO
+       ecx(1) ecx_lib(3)
+
+0.1.0                        26 August 2026              ecx_version(3)

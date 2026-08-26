@@ -39,7 +39,7 @@ vf = v
 fptr => vf
 end function version
 !-----------------------------------------------------------------------
-function capi_version()bind(C,name="iapws_version")result(cptr)
+function capi_version()bind(C,name="ecx_version")result(cptr)
 !! C API - Get the version
 type(c_ptr) :: cptr !! C pointer to a string indicating the version.
 character(len=:), pointer :: fptr

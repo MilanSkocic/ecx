@@ -4,18 +4,20 @@ NAME
        ecx - library for electrochemistry
 
 LIBRARY
-       ecx (-libecx, -lecx)
+       ecx library (libecx, -lecx)
 
 SYNOPSIS
-         ecx (Fortran): use ecx
-         ecx (C): include "ecx.h"
-         ecx (python): import pyecx
+       Fortran   use ecx
+
+       C         #include "ecx.h"
+
+       Python    import pyecx
 
 DESCRIPTION
-       ecx a Fortran library for providing a collection of routines for
-       electrochemistry.   A  C API allows usage from C, or can be used
-       as a basis for other wrappers.  A Python wrapper allows easy us‐
-       age from Python.
+       ecx  is a Fortran library for providing a collection of routines
+       for electrochemistry.  A C API allows usage from C,  or  can  be
+       used  as  a  basis  for other wrappers.  A Python wrapper allows
+       easy usage from Python.
 
        It covers:
 
@@ -112,4 +114,4 @@ EXAMPLES
 SEE ALSO
        ecx(1) ecx_lib(3)
 
-0.1.0                        26 August 2026                      ecx(3)
+0.1.0                        27 August 2026                      ecx(3)

@@ -1,22 +1,29 @@
-.TH ecx 3 "26 August 2026" "0.1.0" "Library calls"
-.SH NAME
-\fBecx \fP- library for electrochemistry
-\fB
-.SH LIBRARY
-ecx (\fB-libecx\fP, \fB-lecx\fP)
-.SH SYNOPSIS
-.nf
-.fam C
-  ecx (Fortran): use ecx
-  ecx (C): include "ecx.h"
-  ecx (python): import pyecx
+.TH ecx 3 "27 August 2026" "0.1.0" "Library calls"
 
-.fam T
-.fi
-.fam T
-.fi
+.SH NAME
+ecx \- library for electrochemistry
+
+.SH LIBRARY
+ecx library
+.RI ( libecx ", " \-lecx )
+
+.SH SYNOPSIS
+\"{{{
+.IP Fortran 10 
+.B use ecx\fP
+
+.IP C 10
+.B #include \(dqecx.h\(dq
+
+.IP Python 10
+.B import pyecx
+\"}}}
+
 .SH DESCRIPTION
-ecx a Fortran library for providing a collection of routines for electrochemistry.
+\"{{{
+.PP
+.B ecx 
+is a Fortran library for providing a collection of routines for electrochemistry.
 A C API allows usage from C, or can be used as a basis for other wrappers.
 A Python wrapper allows easy usage from Python.
 .PP
@@ -40,6 +47,7 @@ The C API is defined by adding a prefix to the functions from the Fortran
 API due to the lack of module/namespace feature in the C language.
 The functions are therefore following this template:
 (c_prefix)fortran_func.
+\"}}}
 .SH EXAMPLES
 \"{{{
 .PP
@@ -135,5 +143,7 @@ Example in Python
 \"}}}
 
 .SH SEE ALSO
+\"{{{
 .BR ecx (1)
 .BR ecx_lib (3)
+\"}}}

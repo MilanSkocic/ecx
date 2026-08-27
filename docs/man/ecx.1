@@ -1,4 +1,4 @@
-.TH ecx 1 "26 August 2026" "0.1.0" "Library calls"
+.TH ecx 1 "27 August 2026" "0.1.0" "Library calls"
 
 .SH NAME
 ecx \- command line for ecx
@@ -8,6 +8,7 @@ ecx \- command line for ecx
 \fISUBCOMMAND\fP [\fIOPTION\fP]\.\.\.
 
 .SH DESCRIPTION
+\"{{{
 . B ecx 
 is command line interface for computing electro-chemical properties:
 .IP EIS 10
@@ -16,10 +17,10 @@ Electrochemical Impedance Z=f(w)
 j=f(U)
 .IP PEC 10
 Iph=f(hv, U)
+\"}}}
 
-
-.SH OPTIONS
-
+.SH OPTION
+\"{{{
 all:
 .RS
 .TP
@@ -47,6 +48,9 @@ Minimal example
 .ft CR
     ecx COMMAND [OPTION]...
 .ft R
+\"}}}
 .SH SEE ALSO
+\"{{{
 .BR ecx (1)
 .BR ecx_lib (3)
+\"}}}

@@ -36,6 +36,134 @@ DESCRIPTION
        the C language.  The functions are therefore following this tem‐
        plate: (c_prefix)fortran_func.
 
+NOTES
+       [1]    H. Gerischer, “Electrochemical Behavior of Semiconductors
+              under Illumination,” Journal of The Electrochemical Soci‐
+              ety, vol. 113, no. 11, pp. 1174–1182, 1966.
+
+       [2]    W. P. Gomes and F. Cardon, “On the Electrochemical Behav‐
+              iour  of  the  Hexacyanoferrate RedOx System at Different
+              Semiconductor Electrodes,” Zeitschrift für  Physikalische
+              Chemie Neue Folge, vol. 86, pp. 330–334, 1973.
+
+       [3]    R.  A.  L. Vanden Berghe, F. Cardon, and W. P. Gomes, “On
+              the Electrochemical Reactivity of the Redox Couple Fe(CN)
+              at the Single Crystal Zinc Oxide Electrode,” Surface Sci‐
+              ence, vol. 39, pp. 368–384, 1973.
+
+       [4]    B. A. Boukamp, “A Nonlinear Least Squares  Fit  Procedure
+              for  Analysis  of Immittance Data of Electrochemical Sys‐
+              tems,” Solid State Ionics, pp. 31–44, 1986.
+
+       [5]    C. Sunseri, S. Piazza, and F. Di Quarto, “A Photoelectro‐
+              chemical Study of Passivating Layers on Nickel,”  Materi‐
+              als Science Forum, vol. 185–188, pp. 435–446, 1995.
+
+       [6]    J.-P.  Diard,  B.  Le  Gorrec, and C. Montella, Cinétique
+              Électrochimique. Paris: Hermann, 1996.
+
+       [7]    A. Goossens, M. Vazquez, and D. D. Macdonald, “The Nature
+              of Electronic States in Anodic Zirconium Oxide Films Part
+              2: Photoelectrochemical Characterization,” Electrochimica
+              Acta, vol. 41, no. 1, pp. 47–55, 1996.
+
+       [8]    A. J. Bard and L. R. Faulkner,  Electrochemical  Methods:
+              Fundamentals and Applications, 2 ed. New York: John Wiley
+              & Sons, Inc., 2001.
+
+       [9]    C.  H.  Hsu  and F. Mansfeld, “Technical Note: Concerning
+              the Conversion of the Constant Phase Element Parameter  Y
+              into  a  Capacitance,”  Corrosion,  vol.  57,  no. 9, pp.
+              747–748, Sep. 2001, doi: 10.5006/1.3280607.
+
+       [10]   M. Bojinov, P.  Kinnunen,  T.  Laitinen,  K.  Mäkelä,  T.
+              Saario, and P. Sirkiä, “Photocurrent Response of the Pas‐
+              sive  Film  on  Iron  in a High-Temperature Aqueous Elec‐
+              trolyte,” Electrochemistry Communications,  vol.  4,  pp.
+              222–226, 2002.
+
+       [11]   J.  J. Vermoyal, A. Hammou, L. Dessemond, and A. Frichet,
+              “Electrical Characterization of Waterside Corrosion Films
+              Formed on ZrNb(1%)O(0.13%),”  Electrochimica  Acta,  vol.
+              47,     no.     17,    pp.    2679–2695,    2002,    doi:
+              10.1016/S0013-4686(02)00133-0.
+
+       [12]   R. G. Kelly, J. R. Scully, D. W.  Shoesmith,  and  R.  G.
+              Buchheit, Electrochemical Techniques in Corrosion Science
+              and Engineering. 2003.
+
+       [13]   N. Perez, Electrochemistry and Corrosion Science. Boston:
+              Kluwer Academic Publishers, 2004.
+
+       [14]   N.  Ramasubramanian,  “Shadow  Corrosion,” Journal of Nu‐
+              clear Materials, vol. 328, no. 2–3, pp. 249–252, 2004.
+
+       [15]   E. Barsoukov and J. R. Macdonald, Impedance Spectroscopy:
+              Theory, Experiment, and Applications, 2 ed. Hoboken,  NJ,
+              USA: John Wiley & Sons, Inc., 2005.
+
+       [16]   a.  Conde, a. B. Cristóbal, G. Fuentes, T. Tate, and fam‐
+              ily, “Surface Analysis of Electrochemically Stripped  CrN
+              Coatings,” Surface and Coatings Technology, vol. 201, pp.
+              3588–3595, 2006, doi: 10.1016/j.surfcoat.2006.08.110.
+
+       [17]   K.  Amezawa  et  al.,  “Morphologic  and Crystallographic
+              Studies  on  Electrochemically  Formed  Chromium  Nitride
+              Films,”  Electrochimica Acta, vol. 53, pp. 122–126, 2007,
+              doi: 10.1016/j.electacta.2007.06.013.
+
+       [18]   M. E. Orazem and B. Tribollet, Electrochemical  Impedance
+              Spectroscopy. Wiley, 2008. doi: 10.1002/9780470381588.
+
+       [19]   B.  Hirschorn,  M. E. Orazem, B. Tribollet, V. Vivier, I.
+              Frateur, and M. Musiani, “Determination of effective  ca‐
+              pacitance  and film thickness from constant-phase-element
+              parameters,” Electrochimica Acta, vol. 55,  no.  21,  pp.
+              6218–6227,     Aug.     2010,     doi:    10.1016/j.elec‐
+              tacta.2009.10.065.
+
+       [20]   C. GABRIELLI and H. TAKENOUTI, “Méthodes électrochimiques
+              appliquées à la corrosion - Techniques dynamiques,”  Cor‐
+              rosion   Vieillissement,   Jun.  2010,  doi:  10.51257/a-
+              v1-cor811.
+
+       [21]   C. GABRIELLI and H. TAKENOUTI, “Méthodes électrochimiques
+              appliquées à la corrosion  -  Techniques  stationnaires,”
+              Corrosion  Vieillissement,  Jun.  2010,  doi: 10.51257/a-
+              v1-cor810.
+
+       [22]   M. Skocic, D. Kaczorowski, D. Perche, and  J.-C.  Nuguet,
+              “Paper  Number 83: High Temperature (Photo-)Electrochemi‐
+              cal Setup for Studying Zr-based and  Ni-based  Alloys  in
+              Simulated LWR Conditions,” in NPC 2016, Brighton, UK: Nu‐
+              clear Institute, Oct. 2016.
+
+       [23]   S.  El  Euch,  “Recherche  d’une  Corrélation  Entre Car‐
+              actéristiques Électrochimiques et Relâchement  En  Nickel
+              de  l’alliage  690 En Milieu Primaire d’un Réacteur à Eau
+              Pressurisée.” Université Sorbonne, Paris, 2019.
+
+       [24]   S. EL. Euch et al., “Temperature Dependence of the  Elec‐
+              trochemical  Behavior of the 690 Ni-base Alloy between 25
+              and 325^
+
+       [25]   D. Peyret, D. Kaczorowski, M. Skocic, B.  Tribollet,  and
+              V.  Vivier, “Electrochemical and Modelling Study of ZrNbO
+              Alloys Aged under High Temperature and High Pressure  PWR
+              Simulated Conditions,” Corrosion Science, p. 111505, Sep.
+              2023, doi: 10.1016/j.corsci.2023.111505.
+
+       [26]   A.  Ch.  Lazanas  and M. I. Prodromidis, “Electrochemical
+              Impedance Spectroscopy – A Tutorial,” ACS Meas. Sci.  Au,
+              vol.  3,  no. 3, pp. 162–193, Jun. 2023, doi: 10.1021/ac‐
+              smeasuresciau.2c00070.
+
+       [27]   N. Ribière et al., “Electrical Properties  of  the  Oxide
+              Layers  Formed  in Simulated Primary Water Environment on
+              Steam Generator Tubes Made in  Ni  Based  Alloy:  An  EIS
+              Analysis,”  Corrosion Science, p. 113206, Jul. 2025, doi:
+              10.1016/j.corsci.2025.113206.
+
 EXAMPLES
        Example in Fortran:
            program example_in_f
@@ -114,4 +242,4 @@ EXAMPLES
 SEE ALSO
        ecx(1) ecx_lib(3)
 
-0.1.0                        27 August 2026                      ecx(3)
+0.1.0                      04 September 2026                     ecx(3)

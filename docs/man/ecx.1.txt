@@ -38,4 +38,4 @@ EXAMPLES
 SEE ALSO
        ecx(1) ecx_lib(3)
 
-0.1.0                        27 August 2026                      ecx(1)
+0.1.0                      04 September 2026                     ecx(1)

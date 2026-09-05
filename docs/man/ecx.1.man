@@ -1,0 +1,51 @@
+.TH ecx 1 "@DATE@" "@VERSION@" "Library calls"
+
+.SH NAME
+ecx \- command line for ecx
+
+.SH SYNOPSIS
+.B ecx
+\fISUBCOMMAND\fP [\fIOPTION\fP]\.\.\.
+
+.SH DESCRIPTION
+\"{{{
+. B ecx 
+is command line interface for computing electro-chemical properties:
+.IP EIS 10
+Electrochemical Impedance Z=f(w)
+.IP Kinetics 10
+j=f(U)
+.IP PEC 10
+Iph=f(hv, U)
+\"}}}
+
+.SH OPTION
+\"{{{
+all:
+.RS
+.TP
+.B
+\fB-u\fP, \fB--usage\fP
+Show usage text and exit.
+.TP
+.B
+\fB-h\fP, \fB--help\fP
+Show help text and exit.
+.TP
+.B
+\fB-V\fP, \fB--verbose\fP
+Display additional information when availabl
+.TP
+.B
+\fB-v\fP, \fB--version\fP
+Show version information and exit.
+.RE
+
+.SH EXAMPLES
+.PP 
+Minimal example
+.nf
+.ft CR
+    ecx COMMAND [OPTION]...
+.ft R
+\"}}}

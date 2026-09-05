@@ -5,7 +5,7 @@ SOURCE_PATH = os.path.join(PROJECT_PATH,"src")
 sys.path.insert(0, SOURCE_PATH)
 
 import numpy as np
-from pyecx import eis, core
+from pyecx import _ecx as eis
 import matplotlib.pyplot as plt
 
 R = 100.0
@@ -16,8 +16,7 @@ L = 1e-2
 s = 5.0
 w = np.logspace(6, -3, 100)
 
-print(core.PI)
-print(np.asarray(core.nm2eV(np.asarray((1.0,)))))
+print(np.asarray(eis.nm2eV(np.asarray((1.0,)))))
 
 p = np.asarray((R, 0.0, 0.0))
 zr = np.asarray(eis.z("R", w, p))

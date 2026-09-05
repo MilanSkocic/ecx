@@ -48,9 +48,9 @@ py/wheelhouse/
 py/src/pyecx/bin/
 py/src/pyecx/include/
 py/src/pyecx/lib/
+py/src/pyecx/linux
+py/src/pyecx/darwin
+py/src/pyecx/windows
 
-make.in.texi
-make.in.tex
-make.in
 
 main_html/

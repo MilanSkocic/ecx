@@ -1,0 +1,41 @@
+ecx(1)                       Library calls                       ecx(1)
+
+NAME
+       ecx - command line for ecx
+
+SYNOPSIS
+       ecx SUBCOMMAND [OPTION]...
+
+DESCRIPTION
+       ecx  is  command  line  interface for computing electro-chemical
+       properties:
+
+       EIS       Electrochemical Impedance Z=f(w)
+
+       Kinetics  j=f(U)
+
+       PEC       Iph=f(hv, U)
+
+OPTION
+       all:
+
+              -u, --usage
+                     Show usage text and exit.
+
+              -h, --help
+                     Show help text and exit.
+
+              -V, --verbose
+                     Display additional information when availabl
+
+              -v, --version
+                     Show version information and exit.
+
+EXAMPLES
+       Minimal example
+           ecx COMMAND [OPTION]...
+
+SEE ALSO
+       ecx(1) ecx_lib(3)
+
+0.1.0                      04 September 2026                     ecx(1)

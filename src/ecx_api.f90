@@ -1,42 +1,19 @@
 module ecx__api
 !! API
-use ecx__version, only: version
 use ecx__common
 use ecx__core
 use ecx__eis
 implicit none(type,external)
 private
 
-character(len=:), allocatable, target :: version_f
 character(len=:), allocatable, target :: errmsg_f
 character(len=:), allocatable, target :: errmsg_c
 
-public :: get_version, kTe, z, mm
+public :: kTe, z, mm
 public :: sbv, bv, nernst
 
 
 contains
-
-
-
-function get_version()result(fptr) 
-    !! Get the version.
-    implicit none
-
-    ! Return
-    character(len=:), pointer :: fptr      !! Version of the library.
-
-    if(allocated(version_f))then
-        deallocate(version_f)
-    endif
-    allocate(character(len=len(version)) :: version_f)
-    version_f = version
-    fptr => version_f
-end function
-
-
-
-
 pure elemental function kTe(T)result(r) 
     !! Compute the thermal voltage.
     implicit none

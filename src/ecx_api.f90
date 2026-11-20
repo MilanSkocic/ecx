@@ -1,3 +1,5 @@
+! SPDX-License-Identifier: MIT
+
 module ecx__api
 !! API
 use ecx__common

@@ -1,3 +1,5 @@
+! SPDX-License-Identifier: MIT
+
 module ecx__eis
 !! EIS module.
 use ecx__common

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Python wrapper of the (Modern Fortran) ecx library."""
 from typing import Union
 import numpy as np

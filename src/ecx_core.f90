@@ -1,3 +1,5 @@
+! SPDX-License-Identifier: MIT
+
 module ecx__core
 !! Core.
 use ecx__common

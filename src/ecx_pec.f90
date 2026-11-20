@@ -1,3 +1,5 @@
+! SPDX-License-Identifier: MIT
+
 module ecx__pec
 !! PEC.
 use ecx__common

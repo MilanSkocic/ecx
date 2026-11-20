@@ -1,3 +1,5 @@
+! SPDX-License-Identifier: MIT
+
 module ecx__common
 !! Common module for ecx.
 use, intrinsic :: ieee_arithmetic, only: ieee_quiet_nan, &

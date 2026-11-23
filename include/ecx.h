@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 #ifndef ECX_H
 #define ECX_H
 #include <complex.h>

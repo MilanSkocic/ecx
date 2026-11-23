@@ -42,7 +42,7 @@ static void help_text(struct option_t *options){
     int i=0;
     char buf[64];
     printf("%s\n", "Usage: ecx SUBCOMMAND [OPTION]...");
-    printf("%s\n", "ecx - library for electrochemistry.");
+    printf("%s\n", "ecx - electrochemistry.");
     printf("%s\n", "");
     while(options[i].s != NULL){
         buf[0] = '\0';

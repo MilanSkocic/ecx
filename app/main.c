@@ -5,10 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include <math.h>
 #include "ecx.h"
-#include "re.h"
 
 #define VERSION_SIZE 256
+
+#define ERR_MSG_SIZE          256
+#define ERR_NAME              -1
 
 typedef struct option_t {char *s; char *l; char *arg; char *help;} option;
 
@@ -90,7 +95,14 @@ static char *long2short(char *option, struct option_t *options){
 //{{{
 int main(int argc, char **argv){
     int i, opt;
-    char *s=NULL;
+    char *s;
+
+    int ierr;
+    char errmsg[ERR_MSG_SIZE];
+
+    ierr = 0;
+
+    snprintf(errmsg, ERR_MSG_SIZE, "");
 
     
     static struct option_t loptions[]={
@@ -104,7 +116,7 @@ int main(int argc, char **argv){
         if(s!=NULL){argv[i]=s;}
     }
 
-    while ((opt = getopt(argc, argv, ":y:p:aeuvh")) != -1) {
+    while ((opt = getopt(argc, argv, ":uvh")) != -1) {
         switch (opt) {
             case 'v':
                 version_text();

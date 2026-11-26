@@ -29,7 +29,7 @@ extern void ecx_kinetics_sbv(double *U, double OCV, double j0, double aa, double
 extern void ecx_kinetics_bv(double *U, double OCV, double j0, double jdla, double jdlc, double aa, double ac, double za, double zc, double A, double T, double *i, size_t n);
 
 
-extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat, char *(*errmsg)); 
+extern void ecx_eis_z(double *p, double *w, ecx_cdouble *z, char e, size_t k, size_t n, int *errstat, char **errmsg); 
 #endif
 
 

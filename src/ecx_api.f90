@@ -25,178 +25,208 @@ pure elemental function kTe(T)result(r)
     r = (T+T_K) * kB_eV
 end function
 
+!-----------------------------------------------------------------------
+! SUBROUTINE: Z()
+!-----------------------------------------------------------------------
+subroutine z(p, w, zout, e, ierr, errmsg) 
+!{{{
+ !! Compute the complex impedance.
+implicit none
+real(dp), intent(in) :: p(:)            !! Parameters defining the element e
+real(dp), intent(in) :: w(:)            !! Angular frequencies in rad.s-1
+character(len=1), intent(in) :: e       !! Electrochemical element: R, C, L, Q, O, T, G
+complex(dp), intent(out) :: zout(:)     !! Complex impedance in Ohms.
+integer(int32), intent(out) :: ierr     !! Error status
+character(len=:), intent(out), pointer :: errmsg   !! Error message
 
-subroutine z(p, w, zout, e, errstat, errmsg) 
-     !! Compute the complex impedance.
-    implicit none
-    real(dp), intent(in) :: p(:)            !! Parameters defining the element e
-    real(dp), intent(in) :: w(:)            !! Angular frequencies in rad.s-1
-    character(len=1), intent(in) :: e       !! Electrochemical element: R, C, L, Q, O, T, G
-    complex(dp), intent(out) :: zout(:)     !! Complex impedance in Ohms.
-    integer(int32), intent(out) :: errstat  !! Error status
-    character(len=:), intent(out), pointer :: errmsg   !! Error message
 
+if(allocated(errmsg_f))then
+    deallocate(errmsg_f)
+endif
 
-    if(allocated(errmsg_f))then
-        deallocate(errmsg_f)
-    endif
-
-    errstat = 0
-    if(size(p)<3)then
-        errmsg_f = "The size of p must be 3."
-        errstat = 1
-        zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
-                ieee_value(0.0_dp, ieee_quiet_nan), &
-                dp)
-    else
-        select case(e)
-            case("R")
-                zout = zr(w, p(1))
-                errmsg_f = "No error"
-            case("C")
-                zout = zc(w, p(1))
-                errmsg_f = "No error"
-            case("L")
-                zout = zl(w, p(1))
-                errmsg_f = "No error"
-            case("W")
-                zout = zw(w, p(1))
-                errmsg_f = "No error"
-            case("Q")
-                zout = zq(w, p(1), p(2))
-                errmsg_f = "No error"
-            case("O")
-                zout = zo(w, p(1), p(2), p(3))
-                errmsg_f = "No error"
-            case("T")
-                zout = zt(w, p(1), p(2), p(3))
-                errmsg_f = "No error"
-            case("G")
-                zout = zg(w, p(1), p(2))
-                errmsg_f = "No error"
-            case DEFAULT
-                errstat= 2
-                errmsg_f = "Unknown element: "//e
-                zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
-                        ieee_value(0.0_dp, ieee_quiet_nan), &
-                        dp)
-        end select
-    endif
-    errmsg => errmsg_f
+ierr = 0
+if(size(p)<3)then
+    errmsg_f = "The size of p must be 3."
+    ierr = 1
+    zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
+            ieee_value(0.0_dp, ieee_quiet_nan), &
+            dp)
+else
+    select case(e)
+        case("R")
+            zout = zr(w, p(1))
+            errmsg_f = "No error"
+        case("C")
+            zout = zc(w, p(1))
+            errmsg_f = "No error"
+        case("L")
+            zout = zl(w, p(1))
+            errmsg_f = "No error"
+        case("W")
+            zout = zw(w, p(1))
+            errmsg_f = "No error"
+        case("Q")
+            zout = zq(w, p(1), p(2))
+            errmsg_f = "No error"
+        case("O")
+            zout = zo(w, p(1), p(2), p(3))
+            errmsg_f = "No error"
+        case("T")
+            zout = zt(w, p(1), p(2), p(3))
+            errmsg_f = "No error"
+        case("G")
+            zout = zg(w, p(1), p(2))
+            errmsg_f = "No error"
+        case DEFAULT
+            ierr = 2
+            errmsg_f = "Unknown element: "//e
+            zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), &
+                    ieee_value(0.0_dp, ieee_quiet_nan), &
+                    dp)
+    end select
+endif
+errmsg => errmsg_f
 end subroutine
+!}}}
+!-----------------------------------------------------------------------
+subroutine capi_z(p, w, zout, e, k, n, errstat, errmsg)bind(C, name="ecx_eis_z")
+!{{{
+!! Compute the complex impedance for the given element.
+integer(c_size_t), intent(in), value :: n            !! Size of w
+integer(c_size_t), intent(in), value :: k            !! Size of p
+character(len=1,kind=c_char), intent(in), value :: e !! Electrochemical element: R, C, L, Q, O, T, G
+real(c_double), intent(in) :: p(k)                   !! Parameters.
+real(c_double), intent(in) :: w(n)                   !! Angular frequencies in rad.s-1
+complex(c_double_complex), intent(out) :: zout(n)    !! Complex impedance in Ohms.
+integer(c_int), intent(out) :: errstat               !! Error status
+type(c_ptr), intent(out) :: errmsg                   !! errmsg Error message
+
+character(len=:), pointer :: fptr
+
+call z(p, w, zout, e, errstat, fptr)
+
+if(allocated(errmsg_c))then
+    deallocate(errmsg_c)
+endif
+allocate(character(len=len(fptr)+1) :: errmsg_c)
+
+errmsg_c = fptr // c_null_char
+errmsg = c_loc(errmsg_c)
+end subroutine
+!}}}
+!-----------------------------------------------------------------------
 
 
-
-
-
+!-----------------------------------------------------------------------
+! SUBROUTINE: MM()
+!-----------------------------------------------------------------------
 subroutine mm(p, w, zout, n)
-    !! Compute the measurement model.
-    real(dp), intent(in) :: p(:) !! Parameters.
-    real(dp), intent(in) :: w(:) !! Angular frequencies in rad.s-1
-    complex(dp), intent(out) :: zout(:) !! Complex impedance in Ohms.
-    integer(int32), intent(in) :: n !! Number of voigt elements.
+!{{{
+!! Compute the measurement model.
+real(dp), intent(in) :: p(:) !! Parameters.
+real(dp), intent(in) :: w(:) !! Angular frequencies in rad.s-1
+complex(dp), intent(out) :: zout(:) !! Complex impedance in Ohms.
+integer(int32), intent(in) :: n !! Number of voigt elements.
 
-    integer(int32) :: i
-    integer(int32) :: errstat
-    character(len=:), pointer :: errmsg
-    complex(dp) :: zr(size(zout))
-    complex(dp) :: zc(size(zout))
+integer(int32) :: i
+integer(int32) :: errstat
+character(len=:), pointer :: errmsg
+complex(dp) :: zr(size(zout))
+complex(dp) :: zc(size(zout))
 
-    if(n<1)then
-        errstat = 3
-        zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
+if(n<1)then
+    errstat = 3
+    zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
+else
+    if(size(p) == (1+n*2))then
+        call z(p, w, zout, "R", errstat, errmsg)
+        do i = 1, n-2
+            call z(p(i+1:), w, zr, "R", errstat, errmsg)
+            call z(p(i+2:), w, zc, "C", errstat, errmsg)
+            zout = zout + (zr*zc) / (zr+zc)
+        enddo
     else
-        if(size(p) == (1+n*2))then
-            call z(p, w, zout, "R", errstat, errmsg)
-            do i = 1, n-2
-                call z(p(i+1:), w, zr, "R", errstat, errmsg)
-                call z(p(i+2:), w, zc, "C", errstat, errmsg)
-                zout = zout + (zr*zc) / (zr+zc)
-            enddo
-        else
-            errstat = 4
-            zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
-        endif
+        errstat = 4
+        zout = cmplx(ieee_value(0.0_dp, ieee_quiet_nan), ieee_value(0.0_dp, ieee_quiet_nan), dp)
     endif
+endif
 end subroutine
-
-
-
+!}}}
 
 
 pure function nernst(E0, z, aox, vox, ared, vred, T)result(E)
-    !! Compute the Nernst electrochemical potential in V.
-    implicit none
-    real(dp), intent(in) :: E0 !! Standard electrochemical potential in V.
-    integer(int32), intent(in) :: z !! Number of exchanged electrons.
-    real(dp), intent(in) :: aox(:) !! Activities of the oxidants.
-    real(dp), intent(in) :: vox(:) !! Coefficients for the oxidants.
-    real(dp), intent(in) :: ared(:) !! Activities of the reductants
-    real(dp), intent(in) :: vred(:) !! Coefficients for the reductants.
-    real(dp), intent(in) :: T !! Temperature in °C.
-    real(dp) :: E             !! Nernst potential in V. 
+!{{{
+!! Compute the Nernst electrochemical potential in V.
+implicit none
+real(dp), intent(in) :: E0 !! Standard electrochemical potential in V.
+integer(int32), intent(in) :: z !! Number of exchanged electrons.
+real(dp), intent(in) :: aox(:) !! Activities of the oxidants.
+real(dp), intent(in) :: vox(:) !! Coefficients for the oxidants.
+real(dp), intent(in) :: ared(:) !! Activities of the reductants
+real(dp), intent(in) :: vred(:) !! Coefficients for the reductants.
+real(dp), intent(in) :: T !! Temperature in °C.
+real(dp) :: E             !! Nernst potential in V. 
 
-    real(dp) :: ox, red, kTe_
+real(dp) :: ox, red, kTe_
 
-    kTe_ = kTe(T)
-    ox = product(aox**vox)
-    red = product(ared**vred)
+kTe_ = kTe(T)
+ox = product(aox**vox)
+red = product(ared**vred)
 
-    E = E0 + kTe_/z * log(ox/red)
+E = E0 + kTe_/z * log(ox/red)
 end function
-
-
-
+!}}}
 
 
 pure elemental function sbv(U, OCV, j0, aa, ac, za, zc, A, T)result(I)
-    !! Compute Butler Volmer equation without mass transport.
-    real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
-    real(dp), intent(in) :: U !! Electrochemical potential in V.
-    real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
-    real(dp), intent(in) :: aa !! Anodic transfer coefficient.
-    real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
-    real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
-    real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
-    real(dp), intent(in) :: A !! Area in cm2.
-    real(dp), intent(in) :: T !! Temperature in °C.
-    real(dp) :: I             !! Current in A.
+!{{{
+!! Compute Butler Volmer equation without mass transport.
+real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
+real(dp), intent(in) :: U !! Electrochemical potential in V.
+real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
+real(dp), intent(in) :: aa !! Anodic transfer coefficient.
+real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
+real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
+real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
+real(dp), intent(in) :: A !! Area in cm2.
+real(dp), intent(in) :: T !! Temperature in °C.
+real(dp) :: I             !! Current in A.
 
-    real(dp) :: kTe_
+real(dp) :: kTe_
 
-    kTe_ = kTe(T)
+kTe_ = kTe(T)
 
-    I = A * j0 * (exp(aa * za * (U - OCV) / kTe_) - exp(-ac * zc * (U - OCV) / kTe_));
+I = A * j0 * (exp(aa * za * (U - OCV) / kTe_) - exp(-ac * zc * (U - OCV) / kTe_));
 end function
-
-
-
+!}}}
 
 
 pure elemental function bv(U, OCV, j0, jdla, jdlc, aa, ac, za, zc, A, T)result(I)
-    !! Compute Butler Volmer equation with mass transport.
-    implicit none
-    real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
-    real(dp), intent(in) :: U !! Electrochemical potential in V.
-    real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
-    real(dp), intent(in) :: jdla !! Anodic diffusion limiting current density in A.cm-2.
-    real(dp), intent(in) :: jdlc !! Cathodic diffusion limiting current density in A.cm-2.
-    real(dp), intent(in) :: aa !! Anodic transfer coefficient.
-    real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
-    real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
-    real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
-    real(dp), intent(in) :: A !! Area in cm2.
-    real(dp), intent(in) :: T !! Temperature in °C.
-    real(dp) :: I             !! Current in A.
+!{{{
+!! Compute Butler Volmer equation with mass transport.
+implicit none
+real(dp), intent(in) :: OCV !! Open Circuit Voltage in V.
+real(dp), intent(in) :: U !! Electrochemical potential in V.
+real(dp), intent(in) :: j0 !! Exchange current density in A.cm-2.
+real(dp), intent(in) :: jdla !! Anodic diffusion limiting current density in A.cm-2.
+real(dp), intent(in) :: jdlc !! Cathodic diffusion limiting current density in A.cm-2.
+real(dp), intent(in) :: aa !! Anodic transfer coefficient.
+real(dp), intent(in) :: ac !! Cathodic transfer coefficient.
+real(dp), intent(in) :: za !! Number of exchnaged electrons in the anodic branch.
+real(dp), intent(in) :: zc !! Number of exchnaged electrons in the cathodic branch.
+real(dp), intent(in) :: A !! Area in cm2.
+real(dp), intent(in) :: T !! Temperature in °C.
+real(dp) :: I             !! Current in A.
 
-    real(dp) :: kTe_, num, denom
+real(dp) :: kTe_, num, denom
 
-    kTe_ = kTe(T)
+kTe_ = kTe(T)
 
-    num = sbv(U, OCV, j0, aa, ac, za, zc, 1.0_dp, T)
-    denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe_) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe_);
+num = sbv(U, OCV, j0, aa, ac, za, zc, 1.0_dp, T)
+denom = 1 + j0 / jdla * exp(aa * za * (U - OCV) / kTe_) + j0 / jdlc * exp(-ac * zc * (U - OCV) / kTe_);
 
-    I = A * num / denom;
+I = A * num / denom;
 end function
+!}}}
 
 end module ecx__api
